@@ -1,0 +1,8 @@
+<h1>Editing Order</h1>
+
+<%= render 'form', order: @order %>
+
+<hr>
+<%= link_to 'Show', url_for([@user, @order]) %> |
+<%= link_to 'Back', url_for([@user, :orders]) %>
+<hr>

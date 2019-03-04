@@ -1,0 +1,69 @@
+<%= form_with(model: company, local: true) do |form| %>
+  <% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-striped">
+    <thead>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th><%= form.label :name %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :telephone %></th>
+        <td><%= form.text_field :telephone %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :email %></th>
+        <td><%= form.text_field :email %></td>
+      </tr>
+
+      <%= fields_for :locations, company.locations[0] do |f| %>
+
+          <th><%= f.label :address %></th>
+          <td><%= f.text_field :address %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :latitude %></th>
+          <td><%= f.text_field :latitude %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :longitude %></th>
+          <td><%= f.text_field :longitude %></td>
+        </tr>
+      <% end %>
+
+      <tr>
+        <th><%= form.label :radius %></th>
+        <td><%= form.number_field :radius %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :status %></th>
+        <td><%#= form.label @company.status %>
+            <%= form.hidden_field :status %></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

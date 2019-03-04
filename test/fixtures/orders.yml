@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  weight: 9.99
+  length: 9.99
+  width: 9.99
+  heigth: 9.99
+  pickup_time: 2019-03-03 20:46:04
+  delivery_time: 2019-03-03 20:46:04
+  cost: 9.99
+  status: 1
+  radius: 1
+  sender: one
+  transporter: one
+
+two:
+  description: MyText
+  weight: 9.99
+  length: 9.99
+  width: 9.99
+  heigth: 9.99
+  pickup_time: 2019-03-03 20:46:04
+  delivery_time: 2019-03-03 20:46:04
+  cost: 9.99
+  status: 1
+  radius: 1
+  sender: two
+  transporter: two

@@ -1,0 +1,29 @@
+<% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
+  @user.class.name == "Sender" && @order.status == 'draft'%>
+
+  <%= form_with(model: order, url: [@user, order], local: true) do |form| %>
+    <% if order.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+        <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table class="table table-striped">
+      <thead>
+      </thead>
+      <tbody>
+       <%= render 'editUsersOrderLogic', form: form %> 
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+<% end %>

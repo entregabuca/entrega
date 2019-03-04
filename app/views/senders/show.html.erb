@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped">
+  <thead>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <td><%= @sender.name %></td>
+    </tr>
+
+    <tr>
+      <th>Telephone</th>
+      <td><%= @sender.telephone %></td>
+    </tr>
+
+    <tr>
+      <th>email</th>
+      <td><%= @sender.email %></td>
+    </tr>
+
+    <tr>
+      <th>Address</th>
+      <td><%= @sender.locations[0].address %></td>
+    </tr>
+
+    <tr>
+      <th>Coordinates</th>
+      <td><%= [@sender.locations[0].latitude, @sender.locations[0].longitude].to_dms%></td>
+    </tr>
+
+    <tr>
+      <th>Status</th>
+      <td><%= @sender.status %></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<hr>
+<%= link_to 'Orders', sender_orders_path(@sender) %> |
+<%= link_to 'My Posted Orders', posts_sender_orders_path(@sender) %> | 
+<%= link_to 'Edit', edit_sender_path(@sender) %> |
+<%= link_to 'Back to Sender', senders_path %>
+<hr>

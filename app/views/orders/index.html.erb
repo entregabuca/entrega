@@ -1,0 +1,117 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Company</th>
+      <th>Transporter</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Weight</th>
+      <th>Length</th>
+      <th>Width</th>
+      <th>Heigth</th>
+      <th>PickUp address</th>
+      <th>PickUp Coordinates</th>
+      <th>PickUp Time</th>
+      <th>Delivery address</th>
+      <th>Delivery Coordinates</th>
+      <th>Delivery Time</th>
+      <th>Cost</th>      
+      <th>Radius</th>
+      <th>Distance to Order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.sender.name %></td>
+        <td><%= order.transporter.present? ? order.transporter.company.name : "-" %></td>
+        <td><%= order.transporter.present? ? order.transporter.name : "-" %></td>
+        <td><%= order.status.present? ? order.status.capitalize : "-"  %></td>
+        <td><%= order.description %></td>
+        <td><%= order.weight %></td>
+        <td><%= order.length %></td>
+        <td><%= order.width %></td>
+        <td><%= order.heigth %></td>
+        <td><%= address(order,0) %></td>
+        <td><%= coordinates(order,0).to_dms %></td> 
+        <td><%= order.pickup_time %></td>
+        <td><%= address(order,1) %></td>
+        <td><%= coordinates(order,0).to_dms %></td>
+        <td><%= order.delivery_time %></td>
+        <td><%= number_with_delimiter(order.cost.to_i) %></td>
+        <td><%= number_with_delimiter(order.radius) %></td>
+        <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
+            Geocoder::Calculations.distance_between( \
+            [@user.locations[0].latitude,@user.locations[0].longitude], \
+            [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i) : "-"%></td>
+
+        <td><%= link_to url_for([@user, order]) do %><span class="fa fa-eye"></span><% end %></td>
+        
+        <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(order.status) %>          
+          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <td></td>        
+        <% elsif @user.class.name == "Sender" && order.status == 'draft' %>
+          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+  <% if @user.class.name == "Sender" %>
+    <%= link_to 'New Order', url_for([:new, @user, :order]) %> |
+    <%= link_to 'My Orders', sender_orders_path(@user) %> | 
+    <%= link_to 'My Posted Orders', posts_sender_orders_path(@user) %> |    
+  <% end %>
+  <%= link_to 'Back to User', url_for(@user) %>  
+<hr>
+
+<% if (@user.class.name != "Transporter")%>
+  <%= user_icon = {:name => 'user',
+                    :icon_url => asset_path("#{@user.class.name.downcase}.png"),
+                    :icon_size => [40, 40],
+                    :icon_anchor => [20, 20],
+                    :popup_anchor => [0, -20]}
+      plane_icon = {:name => 'plane',
+                        :icon_url => asset_path('plane.png'),
+                        :icon_size => [40, 40],
+                        :icon_anchor => [20, 20],
+                        :popup_anchor => [0, -20]}
+
+      latlng = coordinates(@user,0)
+
+      markers = @orders.map {|order| {
+        :latlng => coordinates(order,0),
+        :popup => "<b>#{address(order,0)}</b><br>#{address(order,1)}",
+        :icon => plane_icon
+        }
+      }
+
+      markers << {
+            :latlng => latlng,
+            :popup => "<b>User</b><br>#{@user.name}",
+            :icon => user_icon
+          }
+
+      map(
+          :center => {
+            :latlng => latlng,
+            :zoom => 13
+          },
+          :markers => markers
+      )
+  %>
+<% end %>

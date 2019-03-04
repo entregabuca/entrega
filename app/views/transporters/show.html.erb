@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped">
+  <thead>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <td><%= @transporter.name %></td>
+    </tr>
+
+    <tr>
+      <th>Telephone</th>
+      <td><%= @transporter.telephone %></td>
+    </tr>
+
+    <tr>
+      <th>email</th>
+      <td><%= @transporter.email %></td>
+    </tr>
+
+    <tr>
+      <th>Status</th>
+      <td><%= @transporter.status %></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<hr>
+<% if  @user.class.name == "Company"  %>
+  <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter) %> |
+  <%= link_to 'Back to Transporters', company_transporters_path(@user) %> | 
+  <%= link_to 'My Orders',orders_company_transporter_path(@user, @transporter) %> 
+<% else %> 
+ <%= link_to 'My Orders', transporter_orders_path(@user)%> 
+<% end %>
+<hr>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  status_time: 2019-03-03 20:46:20
+  status_details: MyText
+  order: one
+
+two:
+  status: 1
+  status_time: 2019-03-03 20:46:20
+  status_details: MyText
+  order: two

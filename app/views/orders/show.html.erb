@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-striped">
+  <thead>
+    <h1 class="headingspace">Order Reference: </b><%= @order.id %></h1>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th>Sender</th>
+      <td><%= @order.sender.name %></td>
+    </tr>
+
+    <% if @order.transporter.present? %>
+      <tr>
+        <th>Company</th>
+        <td><%= @order.transporter.company.name %></td>
+      </tr>
+
+      <tr>
+        <th>Transporter</th>
+        <td><%= @order.transporter.name %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <th>Status</th>
+      <td><%= @order.status.present? ? @order.status.capitalize : "-"  %></td>
+    </tr>
+
+    <%= render 'info', order: @order %>
+
+  </tbody>
+</table>
+
+<hr>
+<% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
+  @user.class.name == "Sender" && @order.status == 'draft'%>  
+  <%= link_to 'Edit', url_for([:edit, @user, @order]) %> |
+<% end %>
+
+<%= link_to 'Back', url_for([@user, :orders]) %>
+<hr>
+
+<%= plane_icon = {:name => 'plane',
+                  :icon_url => asset_path('plane.png'),
+                  :icon_size => [40, 40],
+                  :icon_anchor => [20, 20],
+                  :popup_anchor => [0, -20]}
+    target_icon = {:name => 'target',
+                      :icon_url => asset_path('target.png'),
+                      :icon_size => [40, 40],
+                      :icon_anchor => [20, 20],
+                      :popup_anchor => [0, -20]}
+    pu_latlng = [@order.locations[0].latitude, @order.locations[0].longitude]
+    dy_latlng = [@order.locations[1].latitude, @order.locations[1].longitude]
+    map(
+        :center => {
+          :latlng => pu_latlng,
+          :zoom => 13
+        },
+        :markers => [
+          {
+          :latlng => pu_latlng,
+          :popup => "<b>Recolección:</b><br>#{@order.locations[0].address}",
+          :icon => plane_icon
+          },
+          {
+          :latlng => dy_latlng,
+          :popup => "<b>Entrega:</b><br>#{@order.locations[1].address}",
+          :icon => target_icon
+          }
+        ]
+    )
+%>
+<hr>
