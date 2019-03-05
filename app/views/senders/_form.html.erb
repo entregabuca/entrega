@@ -31,24 +31,28 @@
         <td><%= form.text_field :email %></td>
       </tr>
 
-      <tr>
-        <th><%= form.label :address %></th>
-        <td><%= form.text_field :address %></td>
-      </tr>
+      <%= form.fields_for :locations, sender.locations[0].present? ? sender.locations[0] : Location.new  do |f| %>
 
-      <tr>
-        <th><%= form.label :latitude %></th>
-        <td><%= form.text_field :latitude %></td>
-      </tr>
+        <tr>
+          <th><%= form.label :address %></th>
+          <td><%= form.text_field :address %></td>
+        </tr>
 
-      <tr>
-        <th><%= form.label :longitude %></th>
-        <td><%= form.text_field :longitude %></td>
-      </tr>
+        <tr>
+          <th><%= form.label :latitude %></th>
+          <td><%= form.text_field :latitude %></td>
+        </tr>
+
+        <tr>
+          <th><%= form.label :longitude %></th>
+          <td><%= form.text_field :longitude %></td>
+        </tr>
+
+      <% end %>
 
       <tr>
         <th><%= form.label :status %></th>
-        <td><%= form.label @sender.status %>
+        <td><%#= form.label @sender.status %>
             <%= form.hidden_field :status %></td>
       </tr>
 

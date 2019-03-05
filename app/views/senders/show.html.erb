@@ -22,12 +22,12 @@
 
     <tr>
       <th>Address</th>
-      <td><%= @sender.locations[0].address %></td>
+      <td><%= address(@sender, 0) %><%#= @sender.locations[0].address %></td>
     </tr>
 
     <tr>
       <th>Coordinates</th>
-      <td><%= [@sender.locations[0].latitude, @sender.locations[0].longitude].to_dms%></td>
+      <td><%= coordinates(@sender, 0).to_dms%><%#= [@sender.locations[0].latitude, @sender.locations[0].longitude].to_dms%></td>
     </tr>
 
     <tr>

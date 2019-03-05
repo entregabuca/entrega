@@ -32,7 +32,8 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
+    puts 'Hi'
+    puts company_params
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
@@ -47,6 +48,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
+    puts 'Hi'
     puts company_params
     respond_to do |format|
       if @company.update(company_params)
