@@ -60,7 +60,7 @@ gem 'leaflet-rails'
 gem 'bootstrap'
 
 
-git remote add origin https://github.com/mariomc2/entrega.git
+git remote add origin https://github.com/entregabuca/entrega.git
 git add .
 git commit -m "Inicial"
 git push -u origin master
