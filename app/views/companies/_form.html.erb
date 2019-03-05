@@ -31,7 +31,7 @@
         <td><%= form.text_field :email %></td>
       </tr>
 
-      <%= fields_for :locations, company.locations[0] do |f| %>
+      <%= form.fields_for :locations, company.locations[0].present? ? company.locations[0] : Location.new  do |f| %>
 
           <th><%= f.label :address %></th>
           <td><%= f.text_field :address %></td>
