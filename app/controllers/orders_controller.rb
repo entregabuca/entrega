@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
 
   def posted    
     @orders = @user.orders.posted
+    render :index
   end
 
   # GET /orders/1

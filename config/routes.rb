@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       collection do
         get :posts
         get :taken
+
       end
       member do
         get :take
@@ -22,7 +23,8 @@ Rails.application.routes.draw do
   resources :senders do
     resources :orders do
       collection do
-        get :posts
+        #get :posts
+        get :posted
       end
     end
   end 

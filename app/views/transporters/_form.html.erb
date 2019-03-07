@@ -33,7 +33,7 @@
 
       <tr>
         <th><%= form.label :status %></th>
-        <td><%= form.select :status, Sender.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td>
+        <td><%= form.select :status, Transporter.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td>
       </tr>
 
       <tr>
