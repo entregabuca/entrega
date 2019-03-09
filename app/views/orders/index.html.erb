@@ -22,8 +22,11 @@
       <th>Delivery Time</th>
       <th>Cost</th>      
       <th>Radius</th>
-      <th>Distance to Order</th>
+      <% if @user.class.name == ('Company'   || 'Transporter') %>
+        <th>Distance to Order</th>
+      <% end %>
       <th colspan="3"></th>
+     
     </tr>
   </thead>
 
@@ -47,36 +50,78 @@
         <td><%= order.delivery_time %></td>
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>
-        <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
-            Geocoder::Calculations.distance_between( \
-            [@user.locations[0].latitude,@user.locations[0].longitude], \
-            [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i) : "-"%></td>
 
-        <td><%= link_to url_for([@user, order]) do %><span class="fa fa-eye"></span><% end %></td>
         
-        <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(order.status) %>          
-          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
-          <td></td>        
-        <% elsif @user.class.name == "Sender" && order.status == 'draft' %>
-          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
-          <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
-        <% else %>
-          <td></td>
-          <td></td>
+        <% if @user.class.name == ('Company'  || 'Transporter') %>
+          <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
+                Geocoder::Calculations.distance_between( \
+                [@user.locations[0].latitude,@user.locations[0].longitude], \
+                [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i) : "-"%></td>
         <% end %>
 
+        <td><%= link_to url_for([@user, order]) do %><span class="fa fa-eye"></span><% end %></td>
+
+        <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(order.status) %>          
+          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <td></td> 
+
+        <% elsif @user.class.name == "Sender" && order.status == 'draft'  %>
+          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+           <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+           
+
+        <% elsif @user.class.name == "Sender" && ['completed', 'cancelled'].include?(order.status) %>
+          <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+          <td></td>
+        
+        <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(order.status) %> 
+          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <td></td> 
+
+        <% else %>
+          <td></td>
+          <td></td>          
+
+        <% end %>            
       </tr>
     <% end %>
+
+<%#= render 'distanceAndActions', order: @order %>
+        
   </tbody>
 </table>
 
 <hr>
-  <% if @user.class.name == "Sender" %>
+  <% if @user.class.name == "Sender" && current_page?(controller: 'orders', action: 'index') %>
     <%= link_to 'New Order', url_for([:new, @user, :order]) %> |
-    <%= link_to 'My Orders', sender_orders_path(@user) %> | 
-    <%= link_to 'My Posted Orders', posts_sender_orders_path(@user) %> |    
+    <%= link_to 'My Posted Orders', posted_sender_orders_path(@user) %> | 
+  <% elsif @user.class.name == "Sender"  %> 
+   <%= link_to 'Sender Orders', sender_orders_path(@user) %> |
   <% end %>
-  <%= link_to 'Back to User', url_for(@user) %>  
+
+  <% if @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'index')  %>
+    <%= link_to 'Available Orders', posts_company_orders_path(@user) %> |
+  <% elsif @user.class.name == 'Company' %> 
+   <%= link_to 'Company Orders', company_orders_path(@user) %> |
+  <% end %>
+
+  <% if @user.class.name == 'Transporter' && current_page?(controller: 'orders', action: 'index')  %>
+    <%#= link_to 'Available Orders', posts_company_orders_path(@user) %> |
+  <% elsif @user.class.name == 'Transporter' %> 
+   <%= link_to 'Transporter Orders', transporter_orders_path(@user) %> |
+  <% end %>
+
+
+<%# FROM HERE - LOGIC FOR ALL BACK BUTTONS => MAKE IT PARTIAL %> 
+  <% if @user.class.name == 'Sender'  %>
+    <%= link_to 'Back to Sender', url_for(@user) %>  |
+  <% elsif @user.class.name == 'Company'  %>
+    <%= link_to 'Back to Comapny', url_for(@user) %>  |
+  <% else @user.class.name == 'Transporter'  %>
+    <%= link_to 'Back to Transporter', url_for(@user) %> |
+  <% end %> 
+
+<%# TO HERE %>
 <hr>
 
 <% if (@user.class.name != "Transporter")%>

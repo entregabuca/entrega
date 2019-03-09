@@ -7,7 +7,9 @@
   <tr>
     <th><%= form.label :status %></th>
     <% if @order.status == 'draft'%>
-      <td><%= form.select :status, Order.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td>
+      <td><%= form.select :status, Order.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td> <%# [..] %>
+    <% elsif @order.status == 'posted'%>
+      <td><%= form.select :status, Order.statuses.keys[5].map {|status| [status.titleize,status]} %></td>
     <% else %>
       <td><%= @order.status.capitalize %></td>
     <% end %> 
@@ -49,10 +51,10 @@
 
 <% elsif @user.class.name == "Transporter"  %> 
     <%#= render 'editOrderOnTransporter', form: form %>
-
+  <%= @user.name %>
     <tr>
       <th><%= form.label :company_id %></th> 
-      <td><%=  @order.company.name %></td>
+      <td><%=  @order.transporter.company.name %></td>
     </tr> 
 
     <tr>
@@ -65,5 +67,5 @@
       <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
     </tr>
 
-    <%= render 'info', form: form%>        
+    <%= render 'info', order: @order %>        
 <% end %>

@@ -1,5 +1,6 @@
 <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
-  @user.class.name == "Sender" && @order.status == 'draft'%>
+  @user.class.name == "Sender" && @order.status == 'draft' || \
+  @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
 
   <%= form_with(model: order, url: [@user, order], local: true) do |form| %>
     <% if order.errors.any? %>

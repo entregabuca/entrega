@@ -34,8 +34,8 @@
 </table>
 
 <hr>
-<% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
-  @user.class.name == "Sender" && @order.status == 'draft'%>  
+<% if @user.class.name == (("Company" && ['posted','taken', 'inTransit'].include?(@order.status))||  
+  (@user.class.name == "Sender" &&    ['draft', 'posted'].include?(@order.status))) %>  
   <%= link_to 'Edit', url_for([:edit, @user, @order]) %> |
 <% end %>
 

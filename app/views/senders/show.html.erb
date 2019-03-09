@@ -22,12 +22,12 @@
 
     <tr>
       <th>Address</th>
-      <td><%= @sender.locations[0].address %></td>
+      <td><%= address(@sender, 0) %></td>
     </tr>
 
     <tr>
       <th>Coordinates</th>
-      <td><%= [@sender.locations[0].latitude, @sender.locations[0].longitude].to_dms%></td>
+      <td><%= coordinates(@sender, 0).to_dms%></td>
     </tr>
 
     <tr>
@@ -39,8 +39,8 @@
 </table>
 
 <hr>
-<%= link_to 'Orders', sender_orders_path(@sender) %> |
-<%= link_to 'My Posted Orders', posts_sender_orders_path(@sender) %> | 
+<%= link_to 'My Orders', sender_orders_path(@sender) %> |
+<%= link_to 'My Posted Orders', posted_sender_orders_path(@sender) %> | 
 <%= link_to 'Edit', edit_sender_path(@sender) %> |
-<%= link_to 'Back to Sender', senders_path %>
+<%= link_to 'Back to Senders', senders_path %>
 <hr>

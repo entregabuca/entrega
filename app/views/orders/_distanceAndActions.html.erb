@@ -1,0 +1,31 @@
+<% if @user.class.name == ('Company'  || 'Transporter') %>
+  <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
+    Geocoder::Calculations.distance_between( \
+    [@user.locations[0].latitude,@user.locations[0].longitude], \
+    [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i) : "-"%></td>
+<% end %>
+
+  <td><%= link_to url_for([@user, order]) do %><span class="fa fa-eye"></span><% end %></td>
+
+  <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(order.status) %>          
+    <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+    <td></td> 
+
+
+
+  <% elsif @user.class.name == "Sender" && ['draft'].include?(order.status)  %>
+    <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+     <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+     
+
+  <% elsif @user.class.name == "Sender" && ['completed', 'cancelled'].include?(order.status) %>
+    <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+    <td></td>
+
+  <% else %>
+    <td></td>
+    <td></td>
+    
+
+  <% end %>            
+  </tr>
