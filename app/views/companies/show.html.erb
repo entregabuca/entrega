@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 
+
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+<br>
+<br>
 
 <table class="table table-striped">
   <thead>
@@ -48,11 +51,11 @@
 </table>
 
 <hr>
-<%= link_to 'Available Orders', posts_company_orders_path(@company) %> |
+| <%= link_to 'Available Orders', posts_company_orders_path(@company) %> |
 <%= link_to 'My Orders', company_orders_path(@company) %> |
 <%= link_to 'Transporters', company_transporters_path(@company) %> |
 <%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Companies', companies_path %>
+<%= link_to 'Companies', companies_path %> |
 <hr>
 
 <%= company_icon = {:name => 'company',
