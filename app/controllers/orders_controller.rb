@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
 
   def posted    
     @orders = @user.orders.posted
+    render :index
   end
 
   # GET /orders/1
@@ -70,11 +71,19 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1
   # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to url_for([@user, :orders]), notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
+  def destroy  # only the sender will be allowed to delete orders.
+    unless @user == @sender
+      @order.destroy
+      respond_to do |format|
+        format.html { redirect_to url_for([@user, :orders]), notice: 'Order was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to url_for([@user, :orders]), notice: "You can't delete this order." }
+        format.json { head :no_content }
+     
+      end
     end
   end
 

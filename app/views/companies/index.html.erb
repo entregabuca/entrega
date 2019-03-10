@@ -62,8 +62,12 @@
           <td><%= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td>
           <td><%= link_to company do %><span class="fa fa-eye"></span><% end %></td>
           <td><%= link_to edit_company_path(company) do %><span class="fa fa-edit"></span><% end %></td>
-          <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+          <% if company.orders.size == 0 %>
+          <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
+          <% end %>
+          <td></td>         
         </tr>
+        
       <% end %>
     </tbody>
   </table>

@@ -21,8 +21,8 @@
         <td><%= sender.name %></td>
         <td><%= sender.telephone %></td>
         <td><%= sender.email %></td>
-        <td><%= sender.locations[0].address %></td>
-        <td><%= [sender.locations[0].latitude, sender.locations[0].longitude].to_dms %></td>
+        <td><%= address(sender, 0) %></td>
+        <td><%= coordinates(sender, 0).to_dms %></td>
         <td><%= sender.status %></td>
         <td><%= link_to sender do %><span class="fa fa-eye"></span><% end %></td>
         <td><%= link_to edit_sender_path(sender) do %><span class="fa fa-edit"></span><% end %></td>

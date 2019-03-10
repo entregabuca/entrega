@@ -25,7 +25,8 @@ class SendersController < ApplicationController
   # POST /senders.json
   def create
     @sender = Sender.new(sender_params)
-
+puts 'Hi'
+    puts sender_params
     respond_to do |format|
       if @sender.save
         format.html { redirect_to @sender, notice: 'Sender was successfully created.' }
@@ -40,6 +41,8 @@ class SendersController < ApplicationController
   # PATCH/PUT /senders/1
   # PATCH/PUT /senders/1.json
   def update
+    puts 'Hi'
+    puts sender_params
     respond_to do |format|
       if @sender.update(sender_params)
         format.html { redirect_to @sender, notice: 'Sender was successfully updated.' }
@@ -69,6 +72,6 @@ class SendersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sender_params
-      params.require(:sender).permit(:name, :telephone, :email, :status)
+      params.require(:sender).permit(:name, :telephone, :email, :status, locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

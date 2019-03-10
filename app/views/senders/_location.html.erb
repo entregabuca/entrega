@@ -1,0 +1,18 @@
+<%= form.fields_for :locations, @sender.locations[0].present? ? @sender.locations[0] : Location.new  do |f| %>
+  
+  <tr>
+    <th><%= f.label :address %></th>
+    <td><%= f.text_field :address %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :latitude %></th>
+    <td><%= f.text_field :latitude %></td>
+  </tr>
+
+  <tr>
+    <th><%= f.label :longitude %></th>
+    <td><%= f.text_field :longitude %></td>
+  </tr>
+
+<% end %>
