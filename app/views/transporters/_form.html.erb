@@ -19,7 +19,7 @@
       <tr>
         <th><%= form.label :company_id %></th>
         <td><%= @transporter.company.name %>   <%#= form.label @company.name %>
-            <%#= form.hidden_field :company_id %></td>
+            <%= form.hidden_field :company_id %></td>
       </tr>
 
       <tr>
@@ -40,9 +40,7 @@
       <tr>
         <th><%= form.label :status %></th>
         <td><%= form.select :status, Transporter.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td>
-      </tr>
-
-     
+      </tr>   
 
     </tbody>
   </table>

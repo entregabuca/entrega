@@ -51,7 +51,6 @@
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>
 
-        
         <% if @user.class.name == ('Company'  || 'Transporter') %>
           <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
                 Geocoder::Calculations.distance_between( \
@@ -73,7 +72,7 @@
         <% elsif @user.class.name == "Sender" && ['completed', 'cancelled'].include?(order.status) %>
           <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
           <td></td>
-        
+
         <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(order.status) %> 
           <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
           <td></td> 
@@ -82,11 +81,13 @@
           <td></td>
           <td></td>          
 
-        <% end %>            
+        <% end %>  
+
+        <%#= render 'distanceAndActions', order: @order%>  
       </tr>
     <% end %>
 
-<%#= render 'distanceAndActions', order: @order %>
+
         
   </tbody>
 </table>
@@ -97,12 +98,20 @@
     <%= link_to 'My Posted Orders', posted_sender_orders_path(@user) %> | 
   <% elsif @user.class.name == "Sender"  %> 
    <%= link_to 'Sender Orders', sender_orders_path(@user) %> |
-  <% end %>
+  <% end %> <%# Perfect %>
 
   <% if @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'index')  %>
     <%= link_to 'Available Orders', posts_company_orders_path(@user) %> |
   <% elsif @user.class.name == 'Company' %> 
    <%= link_to 'Company Orders', company_orders_path(@user) %> |
+  <%#= link_to 'Bact to Transporters', company_transporters_path(@user) %> |
+  <% end %>
+
+
+  
+
+  <% if @user.class.name == 'Transporter' && current_page?(controller: 'orders', action: 'index')  %>
+     <%= link_to 'Back to Transporter', url_for(@user) %>
   <% end %>
 
   <% if @user.class.name == 'Transporter' && current_page?(controller: 'orders', action: 'index')  %>
@@ -112,17 +121,31 @@
   <% end %>
 
 
+
+  
+
 <%# FROM HERE - LOGIC FOR ALL BACK BUTTONS => MAKE IT PARTIAL %> 
-  <% if @user.class.name == 'Sender'  %>
-    <%= link_to 'Back to Sender', url_for(@user) %>  |
-  <% elsif @user.class.name == 'Company'  %>
-    <%= link_to 'Back to Comapny', url_for(@user) %>  |
-  <% else @user.class.name == 'Transporter'  %>
-    <%= link_to 'Back to Transporter', url_for(@user) %> |
-  <% end %> 
+
+
+<%= render 'backButtonLogic' %>  <%# Works fine seen from the sender %>
+  
 
 <%# TO HERE %>
 <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <% if (@user.class.name != "Transporter")%>
   <%= user_icon = {:name => 'user',

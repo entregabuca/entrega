@@ -36,9 +36,5 @@
 </table>
 
 <hr>
-<% if @user.class.name == 'Company' %>
-  <%= link_to 'New Transporter', new_company_transporter_path(@user) %> |
-  <%= link_to 'Back', url_for(@user) %>
-<% end %>
-
+<%#= render 'backButtonLogic'%>
 <hr>

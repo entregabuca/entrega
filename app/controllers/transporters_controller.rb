@@ -17,13 +17,13 @@ class TransportersController < ApplicationController
   def show
   end
 
-  def orders
-    @orders = @transporter.orders   
+  def orders 
+    @orders = @transporter.orders 
     render 'orders/index'
   end
 
   # GET /transporters/new
-  def new
+  def new    
     @transporter = @user.transporters.build 
   end
 
@@ -34,6 +34,7 @@ class TransportersController < ApplicationController
   # POST /transporters
   # POST /transporters.json
   def create
+    
     @transporter = @user.transporters.build(transporter_params)
 
     respond_to do |format|

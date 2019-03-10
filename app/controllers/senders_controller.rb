@@ -25,8 +25,7 @@ class SendersController < ApplicationController
   # POST /senders.json
   def create
     @sender = Sender.new(sender_params)
-puts 'Hi'
-    puts sender_params
+
     respond_to do |format|
       if @sender.save
         format.html { redirect_to @sender, notice: 'Sender was successfully created.' }
@@ -41,8 +40,7 @@ puts 'Hi'
   # PATCH/PUT /senders/1
   # PATCH/PUT /senders/1.json
   def update
-    puts 'Hi'
-    puts sender_params
+
     respond_to do |format|
       if @sender.update(sender_params)
         format.html { redirect_to @sender, notice: 'Sender was successfully updated.' }

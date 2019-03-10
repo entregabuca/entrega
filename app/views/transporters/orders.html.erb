@@ -66,28 +66,25 @@
 
 <%# Think of moving this somewhere else and call it as render, probably _forminfo o _info it is called as well at he begining of index%>
 
-      <% if order.status == ('completed') || order.status == ('cancelled')  %>
-         <td></td>
-      <% else %>
-        <% if (@user.class.name == "Sender" && order.status != 'draft')%> <%# User unable to edit ifNot draft %>
-        <td></td>
-        <% elsif %>
-          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>    
-        <% elsif (@user.class.name == "Company")%> 
-          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
-        <% else (@user.class.name == "Transporter")%>
-          <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
-        <% end %>
-      <% end %>
-    
+        <% if order.status == ('completed') || order.status == ('cancelled')  %>
+           <td></td>
+        <% else %>
+          <% if (@user.class.name == "Sender" && order.status != 'draft')%> <%# User unable to edit ifNot draft %>
+          <td></td>
+          <% elsif %>
+            <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>    
+          <% elsif (@user.class.name == "Company")%> 
+            <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <% else (@user.class.name == "Transporter")%>
+            <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+          <% end %>
+        <% end %>    
 
         <td><%= link_to url_for([@user, @order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>  
           <td></td> 
          <% else %>
-       
-<% end %>
       </tr>
-       
+    <% end %>       
   </tbody>
 </table>
 
@@ -120,22 +117,18 @@
                       :icon_size => [40, 40],
                       :icon_anchor => [20, 20],
                       :popup_anchor => [0, -20]}
-
     latlng = [@user.locations[0].latitude, @user.locations[0].longitude]
-
     markers = @orders.map {|order| {
       :latlng => [order.locations[0].latitude, order.locations[0].longitude],
       :popup => "<b>#{order.locations[0].address}</b><br>#{order.locations[1].address}",
       :icon => plane_icon
       }
     }
-
     markers << {
           :latlng => latlng,
           :popup => "<b>User</b><br>#{@user.name}",
           :icon => user_icon
         }
-
     map(
         :center => {
           :latlng => latlng,
