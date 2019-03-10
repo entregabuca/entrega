@@ -39,7 +39,8 @@
   <%= link_to 'Edit', url_for([:edit, @user, @order]) %> |
 <% end %>
 
-<%= link_to 'Back', url_for([@user, :orders]) %>
+| <%= link_to 'Back to Orders', url_for([@user, :orders]) %> |
+
 <hr>
 
 <%= plane_icon = {:name => 'plane',
