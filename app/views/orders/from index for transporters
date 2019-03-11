@@ -1,5 +1,0 @@
-  <% if @user.class.name == 'Transporter' && current_page?(controller: 'orders', action: 'index')  %>
-    <%#= link_to 'Available Orders', posts_company_orders_path(@user) %> |
-  <% elsif @user.class.name == 'Transporter' %> 
-   <%= link_to 'Transporter Orders', transporter_orders_path(@user) %> |
-  <% end %>

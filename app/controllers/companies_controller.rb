@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
-    if @company.orders.size > 0
+    if @company.orders.size == 0
       @company.destroy
       respond_to do |format|
         format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }

@@ -1,4 +1,4 @@
-<%= form_with(model: transporter, url: [@company, transporter], local: true) do |form| %>
+<%= form_with(model: transporter, url: [@user, transporter], local: true) do |form| %>
   <% if transporter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(transporter.errors.count, "error") %> prohibited this transporter from being saved:</h2>

@@ -1,7 +1,0 @@
-<% if @user.class.name == 'Sender'  %>
-  <%= link_to 'Back to Sender', url_for(@user) %>  |
-<% elsif @user.class.name == 'Company'  %>
-  <%= link_to 'Back to Comapny', url_for(@user) %>  |
-<% else @user.class.name == 'Transporter'  %>
-  <%= link_to 'Back to Transporter', url_for(@user) %> |
-<% end %> 

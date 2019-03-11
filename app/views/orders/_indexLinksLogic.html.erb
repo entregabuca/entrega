@@ -1,0 +1,27 @@
+<hr>
+  <% if @user.class.name == "Sender" && current_page?(controller: 'orders', action: 'index') %>
+    <%= link_to 'New Order', url_for([:new, @user, :order]) %> |
+    <%= link_to 'My Posted Orders', posted_sender_orders_path(@user) %> | 
+    <%= link_to 'Back to Sender', url_for(@user) %> 
+  <% elsif @user.class.name == "Sender"  %> 
+    <%= link_to 'My Orders', sender_orders_path(@user) %> |
+    <%= link_to 'Back to Sender', url_for(@user) %>
+  <% end %>
+
+  <% if @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'index')  %> 
+    | <%= link_to 'Available Orders', posts_company_orders_path(@user) %> |
+    <%= link_to 'Back to Company', url_for(@user) %> |
+  <% elsif @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'posts')%> 
+    | <%= link_to 'Company Orders', company_orders_path(@user) %> |
+   <%= link_to 'Back to Company', url_for(@user) %> |
+  <% elsif @user.class.name == 'Company'  %> 
+    | <%= link_to 'Company Orders', company_orders_path(@user) %> |
+    <%= link_to 'Bact to Transporter', company_transporter_path(@user, @transporter) %> | 
+    <%= link_to 'Back to Company', url_for(@user) %> |
+    <%= link_to 'Transporters', company_transporters_path(@user) %> |   
+  <% end %>
+
+  <% if @user.class.name == 'Transporter' && current_page?(controller: 'orders', action: 'index')  %>
+    | <%= link_to 'Back to Transporter', url_for(@user) %> |
+  <% end %>
+<hr>

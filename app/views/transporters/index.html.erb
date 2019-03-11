@@ -10,6 +10,7 @@
       <th>Email</th>
       <th>Status</th>
       <th>Company</th>
+      <th> Total Orders </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= transporter.email %></td>
         <td><%= transporter.status %></td>
         <td><%= transporter.company.name %></td>
+        <td><%= transporter.orders.size %></td>
         <td><%= link_to url_for([@user, transporter]) do %><span class="fa fa-eye"></span><% end %></td>
         <% if @user.class.name == 'Company' %>
           <td><%= link_to edit_company_transporter_path(@user, transporter) do %><span class="fa fa-edit"></span><% end %></td>
@@ -36,5 +38,8 @@
 </table>
 
 <hr>
-<%#= render 'backButtonLogic'%>
+<% if @user.class.name == 'Company' %>
+  <%= link_to 'New Transporter', new_company_transporter_path %>
+  | <%= link_to 'Back to Company', url_for(@user) %> |
+<% end %>
 <hr>
