@@ -17,13 +17,13 @@ class TransportersController < ApplicationController
   def show
   end
 
-  def orders
-    @orders = @transporter.orders   
+  def orders 
+    @orders = @transporter.orders 
     render 'orders/index'
   end
 
   # GET /transporters/new
-  def new
+  def new    
     @transporter = @user.transporters.build 
   end
 
@@ -34,11 +34,12 @@ class TransportersController < ApplicationController
   # POST /transporters
   # POST /transporters.json
   def create
+    
     @transporter = @user.transporters.build(transporter_params)
 
     respond_to do |format|
       if @transporter.save
-        format.html { redirect_to company_transporter_path(@company, @transporter), notice: 'Transporter was successfully created.' }
+        format.html { redirect_to company_transporter_path(@user, @transporter), notice: 'Transporter was successfully created.' }
         format.json { render :show, status: :created, location: @transporter }
       else
         format.html { render :new }
@@ -52,7 +53,7 @@ class TransportersController < ApplicationController
   def update
     respond_to do |format|
       if @transporter.update(transporter_params)
-        format.html { redirect_to company_transporter_path(@company, @transporter), notice: 'Transporter was successfully updated.' }
+        format.html { redirect_to company_transporter_path(@user, @transporter), notice: 'Transporter was successfully updated.' }
         format.json { render :show, status: :ok, location: @transporter }
       else
         format.html { render :edit }
@@ -66,7 +67,7 @@ class TransportersController < ApplicationController
   def destroy
     @transporter.destroy
     respond_to do |format|
-      format.html { redirect_to company_transporters_path(@company), notice: 'Transporter was successfully destroyed.' }
+      format.html { redirect_to company_transporters_path(@user), notice: 'Transporter was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,7 +80,11 @@ class TransportersController < ApplicationController
 
     def set_user  
       resource, id = request.path.split('/')[1,2]
+      puts "EPA"
+      puts resource
+      puts id
       if id != nil
+
         @user = resource.singularize.classify.constantize.find(id)
       end
     end

@@ -1,0 +1,8 @@
+<% if  @user.class.name == "Company"  %>
+  <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter) %> |
+  <%= link_to 'Transporter Orders',orders_company_transporter_path(@user, @transporter) %>| 
+  <%= link_to 'Transporters', company_transporters_path(@user) %>  |
+  <%= link_to 'Back to Company', url_for(@user) %> |
+<% elsif  @user.class.name == "Transporter"  %>
+ | <%= link_to 'My Orders', transporter_orders_path(@user)%> |
+<% end %>
