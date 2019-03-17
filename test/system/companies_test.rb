@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class CompaniesTest < ApplicationSystemTestCase
   setup do
-    @company = companies(:one)
+    @user = companies(:one)
   end
 
   test "visiting the index" do
@@ -14,11 +14,11 @@ class CompaniesTest < ApplicationSystemTestCase
     visit companies_url
     click_on "New Company"
 
-    fill_in "Email", with: @company.email
-    fill_in "Name", with: @company.name
-    fill_in "Radius", with: @company.radius
-    fill_in "Status", with: @company.status
-    fill_in "Telephone", with: @company.telephone
+    fill_in "Email", with: @user.email
+    fill_in "Name", with: @user.name
+    fill_in "Radius", with: @user.radius
+    fill_in "Status", with: @user.status
+    fill_in "Telephone", with: @user.telephone
     click_on "Create Company"
 
     assert_text "Company was successfully created"
@@ -29,11 +29,11 @@ class CompaniesTest < ApplicationSystemTestCase
     visit companies_url
     click_on "Edit", match: :first
 
-    fill_in "Email", with: @company.email
-    fill_in "Name", with: @company.name
-    fill_in "Radius", with: @company.radius
-    fill_in "Status", with: @company.status
-    fill_in "Telephone", with: @company.telephone
+    fill_in "Email", with: @user.email
+    fill_in "Name", with: @user.name
+    fill_in "Radius", with: @user.radius
+    fill_in "Status", with: @user.status
+    fill_in "Telephone", with: @user.telephone
     click_on "Update Company"
 
     assert_text "Company was successfully updated"

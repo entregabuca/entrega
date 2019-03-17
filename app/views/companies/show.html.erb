@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 <br>
 <br>
+<h1> <%= @user.name %> Profile </h1>
+<br>
+<br>
 
 <table class="table table-striped">
   <thead>
@@ -9,37 +12,37 @@
   <tbody>
     <tr>
       <th>Name</th>
-      <td><%= @company.name %></td>
+      <td><%= @user.name %></td>
     </tr>
 
     <tr>
       <th>Telephone</th>
-      <td><%= @company.telephone %></td>
+      <td><%= @user.telephone %></td>
     </tr>
 
     <tr>
       <th>email</th>
-      <td><%= @company.email %></td>
+      <td><%= @user.email %></td>
     </tr>
 
     <tr>
       <th>Address</th>
-      <td><%= address(@company, 0) %></td>
+      <td><%= address(@user, 0) %></td>
     </tr>
 
     <tr>
       <th>Coordiantes</th>
-      <td><%= coordinates(@company, 0).to_dms%></td>
+      <td><%= coordinates(@user, 0).to_dms%></td>
     </tr>
 
     <tr>
       <th>Radius</th>
-      <td><%= @company.radius %></td>
+      <td><%= @user.radius %></td>
     </tr>
 
     <tr>
       <th>Status</th>
-      <td><%= @company.status %></td>
+      <td><%= @user.status %></td>
     </tr>
 
   </tbody>
@@ -54,7 +57,7 @@
                   :icon_size => [40, 40],
                   :icon_anchor => [20, 40],
                   :popup_anchor => [0, -40]}
-    latlng = coordinates(@company, 0)
+    latlng = coordinates(@user, 0)
     map(
         :center => {
           :latlng => latlng,
@@ -63,14 +66,14 @@
         :markers => [
           {
           :latlng => latlng,
-          :popup => "<b>#{@company.name}</b><br>#{address(@company, 0)}",
+          :popup => "<b>#{@user.name}</b><br>#{address(@user, 0)}",
           :icon => company_icon
           }
         ],
         :circles => [
           {
             :latlng => latlng,
-            :radius => @company.radius,
+            :radius => @user.radius,
             :color => 'red',
             :fillColor => '#111',
             :fillOpacity => 0.35

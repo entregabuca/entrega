@@ -1,1 +1,1 @@
-json.partial! "senders/sender", sender: @sender
+json.partial! "senders/sender", sender: @user

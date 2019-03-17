@@ -1,0 +1,83 @@
+<%# elsif @user.class.name == "Sender" &&
+
+
+
+
+
+<% end %> 
+
+
+
+
+ <tr>
+  <th><%= form.label :sender_id %></th> 
+  <td><%= @order.sender.name %></td>
+</tr>
+
+<% if @user.class.name == "Sender"  %>
+  <tr>
+    <th><%= form.label :status %></th>
+    <% if @order.status == 'draft'%>
+      <td><%= form.select :status, Order.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td> <%# [..] %>
+    <% elsif @order.status == 'posted'%>
+      <td><%= form.select :status, Order.statuses.keys[5].map {|status| [status.titleize,status]} %></td>
+    <% else %>
+      <td><%= @order.status.capitalize %></td>
+    <% end %> 
+  </tr>  
+
+  <%= render 'forminfo', form: form %>
+
+<% elsif @user.class.name == "Company"  %>    
+  <tr>
+    <th><%= form.label :company_id %></th> 
+    <td><%=  @user.name %></td>
+  </tr>  
+
+  <tr>
+    <th><%= form.label :transporter_id %></th>
+    <% if @user.class.name == "Company" && @order.status == ('completed') || @order.status == ('cancelled')  %>
+    <td><%= @order.transporter.name %></td>
+    <% elsif @user.class.name == "Company" && @order.status == ('posted') %>
+    <td><%= form.collection_select :transporter_id, @user.transporters,
+        :id, :name, include_blank: false %></td>
+    <% else %>
+    <td><%= @order.transporter.name %></td>
+    <% end %>
+  </tr>
+
+  <tr>
+    <th><%= form.label :status %></th>
+    <% if @order.status == 'posted' %>
+      <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
+    <% elsif @order.status == 'taken' %>
+      <td><%= form.select :status, Order.statuses.keys[3..5].map {|status| [status.titleize,status]} %></td>
+    <% elsif @order.status == 'inTransit' %>
+      <td><%= form.select :status, Order.statuses.keys[3..5].map {|status| [status.titleize,status]} %>
+    <% else @order.status == 'completed' || @order.status == 'cancelled' %>
+      <td><%= @order.status %></td>
+    <% end %>
+  </tr>
+
+  <%= render 'info', order: @order %>
+
+<% elsif @user.class.name == "Transporter"  %> 
+  <%= @user.name %>
+  <tr>
+    <th><%= form.label :company_id %></th> 
+    <td><%=  @order.transporter.company.name %></td>
+  </tr> 
+
+  <tr>
+    <th><%= form.label :transporter_id %></th>
+    <td><%=  @user.name %></td>
+  </tr>
+
+  <tr>
+    <th><%= form.label :status %></th>
+    <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
+  </tr>
+
+    <%= render 'info', order: @order %> 
+
+<% end %>

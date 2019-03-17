@@ -1,1 +1,1 @@
-json.array! @senders, partial: 'senders/sender', as: :sender
+json.array! @users, partial: 'senders/sender', as: :sender

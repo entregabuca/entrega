@@ -1,3 +1,7 @@
+ <%#=render 'restrictedAccess' %>
+ <br>
+ <br>
+ <!-- if added to make it normal -->
 <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
   @user.class.name == "Sender" && @order.status == 'draft' || \
   @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
@@ -19,8 +23,7 @@
       </thead>
       <tbody>
        <%= render 'editOrderStatusLogic', form: form %> 
-      
-      <%#= render 'editUsersOrderLogic', form: form %></tbody>
+     </tbody>
     </table>
 
     <div class="actions">
@@ -28,4 +31,4 @@
     </div>
   <% end %>
   
-<% end %>
+  <% end %>

@@ -1,4 +1,4 @@
-<%= form.fields_for :locations, @sender.locations[0].present? ? @sender.locations[0] : Location.new  do |f| %>
+<%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
   
   <tr>
     <th><%= f.label :address %></th>

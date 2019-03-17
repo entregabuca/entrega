@@ -20,8 +20,10 @@ class OrdersController < ApplicationController
     render :index
   end
 
-  def posted    
+  def posted  
+
     @orders = @user.orders.posted
+    @user = @user  
     render :index
   end
 
@@ -72,7 +74,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy  # only the sender will be allowed to delete orders.
-    unless @user == @sender
+    unless @user == @user
       @order.destroy
       respond_to do |format|
         format.html { redirect_to url_for([@user, :orders]), notice: 'Order was successfully destroyed.' }
