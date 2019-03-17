@@ -80,11 +80,7 @@ class TransportersController < ApplicationController
 
     def set_user  
       resource, id = request.path.split('/')[1,2]
-      puts "EPA"
-      puts resource
-      puts id
       if id != nil
-
         @user = resource.singularize.classify.constantize.find(id)
       end
     end

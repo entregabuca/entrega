@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<br>
+<br>
+<h1> <%= @user.name %> Profile </h1>
+<br>
+<br>
+
 
 <table class="table table-striped">
   <thead>
@@ -7,32 +13,32 @@
   <tbody>
     <tr>
       <th>Name</th>
-      <td><%= @sender.name %></td>
+      <td><%= @user.name %></td>
     </tr>
 
     <tr>
       <th>Telephone</th>
-      <td><%= @sender.telephone %></td>
+      <td><%= @user.telephone %></td>
     </tr>
 
     <tr>
       <th>email</th>
-      <td><%= @sender.email %></td>
+      <td><%= @user.email %></td>
     </tr>
 
     <tr>
       <th>Address</th>
-      <td><%= address(@sender, 0) %></td>
+      <td><%= address(@user, 0) %></td>
     </tr>
 
     <tr>
       <th>Coordinates</th>
-      <td><%= coordinates(@sender, 0).to_dms%></td>
+      <td><%= coordinates(@user, 0).to_dms%></td>
     </tr>
 
     <tr>
       <th>Status</th>
-      <td><%= @sender.status %></td>
+      <td><%= @user.status %></td>
     </tr>
 
   </tbody>

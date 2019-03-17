@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
+  #before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /companies
   # GET /companies.json
   def index
@@ -21,7 +22,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    @user = Company.new
   end
 
   # GET /companies/1/edit
@@ -31,14 +32,14 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
+    @user = Company.new(company_params)
     respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
+      if @user.save
+        format.html { redirect_to @user, notice: 'Company was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,12 +48,12 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
-      if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { render :show, status: :ok, location: @company }
+      if @user.update(company_params)
+        format.html { redirect_to @user, notice: 'Company was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,8 +61,8 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
-    if @company.orders.size == 0
-      @company.destroy
+    if @user.orders.size == 0
+      @user.destroy
       respond_to do |format|
         format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
         format.json { head :no_content }
@@ -76,8 +77,13 @@ class CompaniesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_company
-      @company = Company.find(params[:id])
+      @user = Company.find(params[:id])
+    end
+    def set_user
+      resource, id = request.path.split('/')[1,2]
+      @user = resource.singularize.classify.constantize.find(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

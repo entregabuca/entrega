@@ -1,8 +1,16 @@
-<h1>Editing Order</h1>
+<!-- securedEdit commented out to check for error on creation of Transporter, (it works fine) -->
 
-<%= render 'form', order: @order %>
+<%#= render 'securedEdit' %>
+
+  <h1>Editing Order <%= @order.id %></h1>
+  <%= render 'form', order: @order %>
+
+
 
 <hr>
   | <%= link_to 'Show Order', url_for([@user, @order]) %> |
-  <%= link_to 'Back Orders', url_for([@user, :orders]) %> |
+  <%= link_to 'Back', url_for([@user, :orders]) %> |
 <hr>
+
+
+

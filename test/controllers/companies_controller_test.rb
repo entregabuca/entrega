@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @company = companies(:one)
+    @user = companies(:one)
   end
 
   test "should get index" do
@@ -17,30 +17,30 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create company" do
     assert_difference('Company.count') do
-      post companies_url, params: { company: { email: @company.email, name: @company.name, radius: @company.radius, status: @company.status, telephone: @company.telephone } }
+      post companies_url, params: { company: { email: @user.email, name: @user.name, radius: @user.radius, status: @user.status, telephone: @user.telephone } }
     end
 
     assert_redirected_to company_url(Company.last)
   end
 
   test "should show company" do
-    get company_url(@company)
+    get company_url(@user)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_company_url(@company)
+    get edit_company_url(@user)
     assert_response :success
   end
 
   test "should update company" do
-    patch company_url(@company), params: { company: { email: @company.email, name: @company.name, radius: @company.radius, status: @company.status, telephone: @company.telephone } }
-    assert_redirected_to company_url(@company)
+    patch company_url(@user), params: { company: { email: @user.email, name: @user.name, radius: @user.radius, status: @user.status, telephone: @user.telephone } }
+    assert_redirected_to company_url(@user)
   end
 
   test "should destroy company" do
     assert_difference('Company.count', -1) do
-      delete company_url(@company)
+      delete company_url(@user)
     end
 
     assert_redirected_to companies_url
