@@ -12,15 +12,9 @@
       </li>
 
 <!-- SENDER -->
- <%#if @sender.present? && @sender.id.present? && @sender.id.present? %> 
+ <% if @user.class.name == "Sender" && @user.id.present? %> 
 
- <%#  current_page?(controller: 'senders', action: 'index') %>
-<%#= ' Hi' %>
-
-      <% if @user.class.name == "Sender"%>
-
-      
-        <li class="nav-item">
+     <li class="nav-item">
          <%= link_to 'New Order', new_sender_order_path(@user), class: 'nav-link'%>    
         </li>
         <li class="nav-item">
@@ -48,7 +42,7 @@
 
       <!-- COMPANY -->
 
-      <% if @user.class.name == "Company"%>  
+      <% if @user.class.name == "Company"  && @user.id.present? %>  
         <li class="nav-item">
           <%= link_to 'Available Orders', posts_company_orders_path(@user), class: 'nav-link'  %> 
         </li>
