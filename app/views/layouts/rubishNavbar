@@ -11,8 +11,6 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
 
-
-      <!-- SENDER -->
       <% if @user.class.name == "Sender"  %>  
         <li class="nav-item">
          <%= link_to 'New Order', new_sender_order_path(@user), class: 'nav-link'%>    
@@ -36,10 +34,10 @@
           </div>
         </li>      
       <% end %>
-      <!-- Ends SENDER -->
-    
 
-      <!-- COMPANY -->
+
+
+      <!-- COMPANY  Works for viewing @company details and creatig a transporter-->
 
       <% if @user.class.name == "Company"%>  
         <li class="nav-item">
@@ -51,6 +49,14 @@
         <li class="nav-item">
           <%= link_to 'Transporters', company_transporters_path(@user), class: 'nav-link'  %>
         </li> 
+        <li class="nav-item">
+          <%= link_to 'New Transporter', new_company_transporter_path(@user), class: 'nav-link'  %>
+        </li> 
+
+<!-- New errorrrr. If & end added  -->
+        <%# if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
+
+        <!-- Company dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= @user.name %>
@@ -62,20 +68,23 @@
             <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
           </div>
         </li>
-
-
-        <!-- Create a new transporter -->
-        <%# if @user.class.name == "Company" && @transporters.present? %>  
-          <!--li class="nav-item">
-            <%#= link_to 'New Transporter', new_company_transporter_path(@user), class: 'nav-link'  %>
-          </li>
         <%# end %>
-        <! Finish create New transporter -->
+<!-- ends error -->
+
+
+        <!-- Ends Company dropdown -->
+
+      <!-- Adding Link to New Transporter -->
+      <%# if @user.class.name == "Company" && @transporters.present? && @transporter.blank?%>
+
+       
+     
 
 
 
-        <!-- Viewing the Transporter from the company -->
-        <% if @user.class.name == "Company" && @transporter.present? %> 
+        <!-- Viewing the Transporter from the company ... Here .blan? after .presennt works-->
+
+        <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Transporter <%= @transporter.name %>
@@ -87,22 +96,15 @@
               <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
             </div>
           </li>
-        <% elsif @user.class.name == "Company" && @transporter == nil %>
-          <%= render 'form', transporter: @transporter  %>
+         
+         
         <% end %>
         <!-- Finish Viewing the transporter from the  Company -->
       <% end %>
 
 
-      <!-- Ends COMPANY -->
 
-
-
-
-
-
-
-      <!-- TRANSPORTER -->
+<!-- TRANSPORTER -->
       <% if @user.class.name == "Transporter"  %> 
         <li class="nav-item">
             <%= link_to 'My Orders', transporter_orders_path(@user), class: 'nav-link'  %> 
@@ -119,8 +121,9 @@
           </div>
         </li>
       <% end %>
-     <!-- Ends TRANSPORTER -->
-
     </ul>
   </div>
 </nav>
+
+
+
