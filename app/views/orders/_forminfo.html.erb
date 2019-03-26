@@ -24,19 +24,16 @@
 </tr>
 
 <tr>
-  <th><%= form.label :pickup_address %></th>
-  <td><%= form.text_field :pickup_address %></td>
+  <th> </th>
+  <td></td>
 </tr>
 
 <tr>
-  <th><%= form.label :pickup_latitude %></th>
-  <td><%= form.text_field :pu_lat %></td>
+  <th> Pick Up Details </th>
+  <td></td>
 </tr>
 
-<tr>
-  <th><%= form.label :pickup_longitude %></th>
-  <td><%= form.text_field :pu_lng %></td>
-</tr>
+<%= render 'location', form: form %>
 
 <tr>
   <th><%= form.label :pickup_time %></th>
@@ -44,19 +41,18 @@
 </tr>
 
 <tr>
-  <th><%= form.label :delivery_address %></th>
-  <td><%= form.text_field :delivery_address %></td>
+  <th> </th>
+  <td></td>
 </tr>
 
 <tr>
-  <th><%= form.label :delivery_latitude %></th>
-  <td><%= form.text_field :dy_lat %></td>
+  <th> Delivery Details </th>
+  <td></td>
 </tr>
 
-<tr>
-  <th><%= form.label :delivery_longitude %></th>
-  <td><%= form.text_field :dy_lng %></td>
-</tr>
+<%= render 'location', form: form %>
+
+<%#= render 'deliveryLocation', form: form %>
 
 <tr>
   <th><%= form.label :delivery_time %></th>
@@ -66,11 +62,6 @@
 <tr>
   <th><%= form.label :cost %></th>
   <td><%= form.text_field :cost %></td>
-</tr>
-
-<tr>
-  <th><%= form.label :status %></th>
-  <td><%= form.number_field :status %></td>
 </tr>
 
 <tr>

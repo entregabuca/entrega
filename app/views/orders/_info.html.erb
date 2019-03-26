@@ -25,12 +25,12 @@
 
     <tr>
       <th>Pickup Address</th>
-      <td><%#= order.locations[0].address %></td>
+      <td><%= order.locations[0].address %></td>
     </tr>
 
     <tr>
       <th>Pickup Coordinates</th>
-      <td><%#= [order.locations[0].latitude, order.locations[0].longitude].to_dms %></td>
+      <td><%= [order.locations[0].latitude, order.locations[0].longitude].to_dms %></td>
     </tr>
 
     <tr>
@@ -40,12 +40,12 @@
 
     <tr>
       <th>Delivery Address</th>
-      <td><%#= order.locations[1].address %></td>
+      <td><%= order.locations[1].address %></td>
     </tr>
 
     <tr>
       <th>Delivery Coordinates</th>
-      <td><%#= [order.locations[1].latitude, order.locations[1].longitude].to_dms %></td>
+      <td><%= [order.locations[1].latitude, order.locations[1].longitude].to_dms %></td>
     </tr>
 
     <tr>
