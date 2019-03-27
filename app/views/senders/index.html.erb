@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Senders</h1>
+<h1 class='headingspace'>Senders (<%= Sender.all.count %>)</h1>
 
 <table class="table table-striped">
   <thead>
@@ -11,6 +11,7 @@
       <th>Address</th>
       <th>Coordinates</th>
       <th>Status</th>
+      <th> Total Orders </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,11 +23,16 @@
         <td><%= sender.telephone %></td>
         <td><%= sender.email %></td>
         <td><%= address(sender, 0) %></td>
-        <td><%#= coordinates(sender, 0).to_dms %></td>
+        <td><%= coordinates(sender, 0).to_dms %></td>
         <td><%= sender.status %></td>
+        <td class="d-flex justify-content-center"><%= sender.orders.size %></td>
         <td><%= link_to sender do %><span class="fa fa-eye"></span><% end %></td>
         <td><%= link_to edit_sender_path(sender) do %><span class="fa fa-edit"></span><% end %></td>
-        <td><%= link_to sender, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
+        <% if sender.orders.size == 0 %>
+          <td><%= link_to sender, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
+        <% else %>
+          <td></td>
+        <% end %>          
       </tr>
     <% end %>
   </tbody>

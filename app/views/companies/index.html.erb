@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Companies</h1>
+<h1 class='headingspace'>Companies (<%= Company.all.count %>)</h1>
 
 <hr>
 <div data-turbolinks="false">
@@ -65,11 +65,11 @@
           <td><%= link_to company do %><span class="fa fa-eye"></span><% end %></td>
           <td><%= link_to edit_company_path(company) do %><span class="fa fa-edit"></span><% end %></td>
           <% if company.orders.size == 0 %>
-          <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
-          <% end %>
-          <td></td>         
-        </tr>
-        
+            <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
+          <% else %>
+            <td></td>
+          <% end %>       
+        </tr>        
       <% end %>
     </tbody>
   </table>
@@ -79,45 +79,7 @@
 <%= link_to 'New Company', new_company_path %>
 <hr>
 
-<%= @companies = @companies.select{|c| c.locations[0]}
-    company_icon = {:name => 'company',
-                  :icon_url => asset_path('company.png'),
-                  :icon_size => [20, 20],
-                  :icon_anchor => [10, 20],
-                  :popup_anchor => [0, -20]}
-    latlng = mean_coordinates(@companies,0)
+<%= render 'companies/map' %>
 
-    markers = @companies.map {|company| {
-      :latlng => coordinates(company, 0),
-      :popup => "<b>#{company.name}</b><br>#{address(company, 0)}",
-      :icon => company_icon
-      }
-    }
 
-    if @search_coordinates.present?
-        markers << {
-          :latlng => @search_coordinates,
-          :popup => "<b>Search</b><br>#{params[:search]}"
-        }
-
-        circles = [
-          {
-            :latlng => @search_coordinates,
-            :radius => params[:radius].to_i,
-            :color => 'red',
-            :fillColor => '#111',
-            :fillOpacity => 0.35
-          }
-        ]
-    end
-    map(
-        :center => {
-          :latlng => latlng,
-          :zoom => 13
-        },
-        :markers => markers,
-        :circles => circles
-    )
-%>
-<br>
 <hr>

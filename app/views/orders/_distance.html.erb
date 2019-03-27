@@ -1,0 +1,10 @@
+<% if ['Company', 'Transporter'].include? @user.class.name %>
+  <td><%= @user.class.name == 'Company' ? number_with_delimiter(( \
+        Geocoder::Calculations.distance_between( \
+        [@user.locations[0].latitude,@user.locations[0].longitude], \
+        [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i) : number_with_delimiter(( \
+        Geocoder::Calculations.distance_between( \
+        [@user.company.locations[0].latitude,@user.company.locations[0].longitude], \
+        [order.locations[0].latitude,order.locations[0].longitude])*1000).to_i)%></td>
+<% end %>
+
