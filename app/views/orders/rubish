@@ -1,3 +1,77 @@
+-------------------------- || ------------------------
+orders/edit
+<!-- securedEdit commented out to check for error on creation of Transporter, (it works fine) -->
+
+<%#= render 'securedEdit' %>
+
+  <h1 class='headingspace'>Editing Order <%= @order.id %></h1>
+  <%= render 'form', order: @order %>
+
+
+
+<hr>
+  | <%= link_to 'Show Order', url_for([@user, @order]) %> |
+  <%= link_to 'Back', url_for([@user, :orders]) %> |
+<hr>
+
+-------------------------- || ------------------------
+
+orders/restrictedAcces
+
+<!-- Created to Allow or not to Edit depending on the class and the Oder.status -->
+
+<% if ['completed','cancelled'].include?(@order.status) %>
+  <br> 
+  <%= render 'restrictedAccess'%>
+
+<% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
+  @user.class.name == "Sender" && @order.status == 'draft' || \
+  @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
+
+  <h1>Editing Order <%= @order.id %></h1>
+  <%= render 'form', order: @order %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%# elsif @user.class.name == "Sender" &&
 
 

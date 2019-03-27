@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<!-- move to indexRubish -->
+<%= render 'orders/headingUserOrdersTypes' %>
 
 <table class="table table-striped">
   <thead>
@@ -50,49 +50,16 @@
         <td><%= order.delivery_time %></td>
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>
-        <%= render 'orders/distanceAndActions', order: order %>  
+        <%= render 'orders/distance', order: order %>
+        <%= render 'orders/actions', order: order %>
       </tr>
     <% end %>        
   </tbody>
 </table>
 
 <%= render 'orders/indexLinksLogic' %>
+<%= render 'orders/map' %>
 
-<% if (@user.class.name != "Transporter")%>
-  <%= user_icon = {:name => 'user',
-                    :icon_url => asset_path("#{@user.class.name.downcase}.png"),
-                    :icon_size => [40, 40],
-                    :icon_anchor => [20, 20],
-                    :popup_anchor => [0, -20]}
-      plane_icon = {:name => 'plane',
-                        :icon_url => asset_path('plane.png'),
-                        :icon_size => [40, 40],
-                        :icon_anchor => [20, 20],
-                        :popup_anchor => [0, -20]}
 
-      latlng = coordinates(@user,0)
-
-      markers = @orders.map {|order| {
-        :latlng => coordinates(order,0),
-        :popup => "<b>#{address(order,0)}</b><br>#{address(order,1)}",
-        :icon => plane_icon
-        }
-      }
-
-      markers << {
-            :latlng => latlng,
-            :popup => "<b>User</b><br>#{@user.name}",
-            :icon => user_icon
-          }
-
-      map(
-          :center => {
-            :latlng => latlng,
-            :zoom => 13
-          },
-          :markers => markers
-      )
-  %>
-<% end %>
 <br>
 <br>

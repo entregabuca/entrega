@@ -10,6 +10,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders <% end %>
+      </li>
 
     <!-- SENDER -->
       <% if @user.class.name == "Sender" && @user.id.present? %> 

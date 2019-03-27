@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   has_many :locations, as: :addressable
   has_many :order_statuses, dependent: :destroy
 
+  accepts_nested_attributes_for :locations
+
   enum status:{
     "draft" => 0,
     "posted" => 1,

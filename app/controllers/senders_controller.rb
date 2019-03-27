@@ -55,10 +55,17 @@ class SendersController < ApplicationController
   # DELETE /senders/1
   # DELETE /senders/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to senders_url, notice: 'Sender was successfully destroyed.' }
-      format.json { head :no_content }
+    if @user.orders.size == 0
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to senders_url, notice: 'Sender was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else 
+      respond_to do |format|
+        format.html { redirect_to senders_url, notice: 'This Sender can only chage its status to Inactive' }
+        format.json { head :no_content }
+      end 
     end
   end
 

@@ -1,0 +1,17 @@
+<%if @user.class.name == 'Sender' && current_page?(controller: 'orders', action: 'posted') %>    
+  <h1 class='headingspace'><%= @user.name %> Posted Orders</h1> 
+<% elsif @user.class.name == 'Sender' && current_page?(controller: 'orders', action: 'index') %>  
+ <h1 class='headingspace'><%= @user.name %> Orders - (<%= @user.orders.size %>) </h1>
+<% end %>
+
+<% if @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'posts')%> 
+  <h1 class='headingspace'>Orders Available to <%= @user.name %>  </h1>
+<% elsif @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'index') %>  
+  <h1 class='headingspace'> <%= @user.name %> is working on (<%= @user.orders.size %>) orders </h1>
+<% elsif @user.class.name == 'Company' && @transporter.present? %>
+  <h1 class='headingspace'> <%= @transporter.name %> is working on(<%= @transporter.orders.size %>) orders</h1>
+<% end %>
+
+<% if @user.class.name == 'Transporter' %> 
+  <h1 class='headingspace'> <%= @user.name %> is working on (<%= @user.orders.size %>) orders</h1>
+<% end %>
