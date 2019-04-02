@@ -1,7 +1,6 @@
- <%#=render 'restrictedAccess' %>
- <br>
- <br>
- <!-- if added to make it normal -->
+<br>
+<br>
+
 <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
   @user.class.name == "Sender" && @order.status == 'draft' || \
   @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
@@ -31,4 +30,4 @@
     </div>
   <% end %>
   
-  <% end %>
+<% end %>

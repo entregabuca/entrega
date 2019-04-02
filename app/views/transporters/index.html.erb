@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="headingspace"><%= @user.present? ? @user.name : "ALL" %> Transporters</h1>
+<h1 class="headingspace"><%= @user.present? ? @user.name  : "ALL" %> - Transporters</h1>
 
 <table class="table table-striped">
   <thead>
@@ -40,10 +40,3 @@
     <% end %>
   </tbody>
 </table>
-
-<hr>
-<% if @user.class.name == 'Company' %>
-  <%= link_to 'New Transporter', new_company_transporter_path(@user) %>
-  | <%= link_to 'Back to Company', url_for(@user) %> |
-<% end %>
-<hr>

@@ -1,3 +1,5 @@
+----------------------------------- ||| ------------------------------------------------------
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +36,37 @@
           </div>
         </li>      
       <% end %>
+
+----------------------------------- ||| ------------------------------------------------------
+
+OLD SIDE NAVBAR - MOVED HERE
+
+
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders<%#end %>
+              </li>
+            </ul>
+          </div>
+        </nav> 
+
+----------------------------------- ||| ------------------------------------------------------
+
+
+
+
 
 
 
