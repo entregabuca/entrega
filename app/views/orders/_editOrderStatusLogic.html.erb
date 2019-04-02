@@ -6,16 +6,25 @@
 <% if @user.class.name == "Sender"  %>
   <tr>
     <th><%= form.label :status %></th>
-    <% if @order.status == 'draft'%>
-      <td><%= form.select :status, Order.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td> 
+    <% if @order.status == 'draft' %>
+      <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 5).map {|status| [status.titleize,status]} %></td>
+      <%= render 'forminfo', form: form %> 
+
+    <% elsif @order.status == 'posted' && @order.status_changed? %>
+      <td><%= form.select :status, Order.statuses.keys.values_at(1, 5).map {|status| [status.titleize,status]} %></td>
+      <%= render 'forminfo', form: form %> 
+
     <% elsif @order.status == 'posted'%>
-      <td><%= form.select :status, Order.statuses.keys[5].map {|status| [status.titleize,status]} %></td>
+      <td><%= form.select :status, Order.statuses.keys.values_at(1, 5).map {|status| [status.titleize,status]} %></td> 
+       <%= render 'info', order: @order %>
+
+    <% elsif @order.status == 'taken'%> 
+      <td><%= form.select :status, Order.statuses.keys.values_at(2, 5).map {|status| [status.titleize,status]} %></td>
+       <%= render 'info', order: @order %>
     <% else %>
       <td><%= @order.status.capitalize %></td>
     <% end %> 
   </tr>  
-
-  <%= render 'forminfo', form: form %>
 
 <% elsif @user.class.name == "Company"  %>    
   <tr>
@@ -25,7 +34,7 @@
 
   <tr>
     <th><%= form.label :transporter_id %></th>
-    <% if @user.class.name == "Company" && @order.status == ('completed') || @order.status == ('cancelled')  %>
+    <% if @user.class.name == "Company" && ['completed','cancelled'].include?(@order.status) %>
     <td><%= @order.transporter.name %></td>
     <% elsif @user.class.name == "Company" && @order.status == ('posted') %>
     <td><%= form.collection_select :transporter_id, @user.transporters,
@@ -38,12 +47,12 @@
   <tr>
     <th><%= form.label :status %></th>
     <% if @order.status == 'posted' %>
-      <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
+      <td><%= form.select :status, Order.statuses.keys[1..5].map {|status| [status.titleize,status]} %></td>
     <% elsif @order.status == 'taken' %>
-      <td><%= form.select :status, Order.statuses.keys[3..5].map {|status| [status.titleize,status]} %></td>
+      <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
     <% elsif @order.status == 'inTransit' %>
       <td><%= form.select :status, Order.statuses.keys[3..5].map {|status| [status.titleize,status]} %>
-    <% else @order.status == 'completed' || @order.status == 'cancelled' %>
+    <% else ['completed','cancelled'].include?(@order.status)  %>
       <td><%= @order.status %></td>
     <% end %>
   </tr>
@@ -64,7 +73,7 @@
 
   <tr>
     <th><%= form.label :status %></th>
-    <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
+    <td><%= form.select :status, Order.statuses.keys[3..4].map {|status| [status.titleize,status]} %></td>
   </tr>
 
     <%= render 'info', order: @order %> 
