@@ -4,7 +4,9 @@
   <thead>
     <h1 class="headingspace">Order Reference: </b><%= @order.id %></h1>
   </thead>
-
+  <hr>
+    <%= link_to 'Edit', url_for([:edit, @user, @order]) %>
+  <hr>
   <tbody>
     <tr>
       <th>Sender</th>
@@ -36,8 +38,10 @@
 <hr>
 | <%= link_to 'Back to Orders', url_for([@user, :orders]) %> |
 
+<%= link_to 'Edit', url_for([:edit, @user, @order]) %>
+
 <hr>
-<%= render 'orders/showMap' %>
+<%#= render 'orders/showMap' %> <!-- Commented for testing Validations -->
 
 <hr>
 <br>
