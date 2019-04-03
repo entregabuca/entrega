@@ -20,6 +20,16 @@
 //= require bootstrap-sprockets
 
 
+function getCoordinatesFromAddress(button){
+  var address = $(button).closest('td').find('input#address').val();
+  $.when($.ajax('https://nominatim.openstreetmap.org/search.php?q=' + address + '&format=json')).done(function(data){
+    if (data.length > 0){
+      map.setView([data[0].lat, data[0].lon],map.getZoom());
+    } else{
+      alert("No address found")
+    }
+  });
+}
 
 
 function writeCoordinates(){
@@ -37,7 +47,6 @@ function writeCoordinates(){
 	}
 	iniMap(map); 
   event.preventDefault();
-
 }
 
 function getCenter(){

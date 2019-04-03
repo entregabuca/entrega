@@ -1,7 +1,9 @@
 <%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
   <tr>
     <th><%= f.label :address %></th>
-    <td><%= f.text_field :address %></td>
+    <td><%= f.text_field :address, id: 'address' %>
+      <input id="clickToCoordinates" type="button" value="Search" onclick="getCoordinatesFromAddress(this);" />
+    </td>
   </tr>
 
   <tr id="MapRow">
