@@ -42,11 +42,11 @@
         <td><%= order.length %></td>
         <td><%= order.width %></td>
         <td><%= order.heigth %></td>
-        <td><%= address(order,0) %></td>
-        <td><%= coordinates(order,0).to_dms %></td> 
+        <td><%#= address(order,0) %></td>
+        <td><%#= coordinates(order,0) %></td> 
         <td><%= order.pickup_time %></td>
-        <td><%= address(order,1) %></td>
-        <td><%= coordinates(order,0).to_dms %></td>
+        <td><%#= address(order,1) %></td>
+        <td><%#= coordinates(order,1) %></td>
         <td><%= order.delivery_time %></td>
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>
