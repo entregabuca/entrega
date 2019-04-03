@@ -1,16 +1,36 @@
 <%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
   <tr>
     <th><%= f.label :address %></th>
-    <td><%= f.text_field :address %></td>
+    <td><%= f.text_field :address, id: 'address' %>
+      <input id="clickToCoordinates" type="button" value="Search" onclick="getCoordinatesFromAddress(this);" />
+    </td>
   </tr>
 
-  <tr>
-    <th><%= f.label :latitude %></th>
-    <td><%= f.text_field :latitude %></td>
+  <tr id="MapRow">
+    <th>Map</th>
+    <td>    
+      <%=
+        latlng = Geocoder.search(request.remote_ip).first.coordinates
+        latlng = latlng.empty? ? [0,0] : latlng
+        map(:container_id => "map",
+            :center => {
+              :latlng => [0, 0],
+              doubleClickZoom: 'center',
+              :zoom => 1,
+            },
+            :markers => [{:latlng => latlng}]
+          )
+      %>
+    </td>
+    <%= f.hidden_field :latitude, id: 'latitude' %>
+    <%= f.hidden_field :longitude, id: 'longitude' %>
+
   </tr>
 
-  <tr>
-    <th><%= f.label :longitude %></th>
-    <td><%= f.text_field :longitude %></td>
-  </tr>
+  <%= javascript_tag do %>
+    $(writeCoordinates);
+
+    map.on('move', getCenter);
+  <% end %>
+
 <% end %>
