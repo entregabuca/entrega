@@ -2,7 +2,9 @@
   <tr>
     <th><%= f.label :address %></th>
     <td><%= f.text_field :address, id: 'address' %>
-      <input id="clickToCoordinates" type="button" value="Search" onclick="getCoordinatesFromAddress(this);" />
+      <%= link_to 'Search Address', {action: 'geocode', controller: 'locations'}, remote: true%>
+
+      <input id="clickToCoordinatesOSM" type="button" value="Search OSM" onclick="getCoordinatesFromAddressOSM(this);" />      
     </td>
   </tr>
 
@@ -28,6 +30,7 @@
   </tr>
 
   <%= javascript_tag do %>
+    $(iniMap(map));
     $(writeCoordinates);
 
     map.on('move', getCenter);

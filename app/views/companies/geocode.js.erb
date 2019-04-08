@@ -1,0 +1,10 @@
+var address = encodeURIComponent($('#address').val());
+$.when($.ajax('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyAZq7Rk1lymOh7d9PFVPCrRUO16OBxQfF4')).done(function(data){
+  if (data.results.length > 0){
+    loc = data.results[0].geometry.location
+    map.setView([loc.lat, loc.lng],map.getZoom());
+  } else{
+    alert("No address found")
+  }
+
+});

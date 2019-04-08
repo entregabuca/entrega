@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'locations/geocode'
   # THIS IS THE LATEST WORKING PROJECT 
 
   root 'companies#index'
