@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
   end
 
   def posted  
-
     @orders = @user.orders.posted
     @user = @user  
     render :index
