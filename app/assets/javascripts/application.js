@@ -19,9 +19,46 @@
 //= require popper
 //= require bootstrap-sprockets
 
+// Initialize Map
+function iniMap(map){
+  map.options.scrollWheelZoom = 'center';
+  map.options.doubleClickZoom = 'center';
+  map.options.touchZoom = 'center';
 
-function getCoordinatesFromAddress(button){
-  var address = $(button).closest('td').find('input#address').val();
+  var legend = L.control({position: 'bottomleft'});
+
+  legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend leaflet-control-attribution');
+    div.innerHTML = "<div id='legend'>-</div>";
+
+    return div;
+  };
+
+  legend.addTo(map);
+}
+
+// Get the browsers coordinates to initialize the Map to its location
+function writeCoordinates(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var lat = position.coords.latitude,
+          lng = position.coords.longitude;
+      $('#latitude').val(lat);
+      $('#longitude').val(lng);
+      map.setView([lat, lng], 13);
+      marker.setLatLng(map.getCenter());
+    });
+  } else {
+    alert("Geolocation is not supported by this browser! Upgrade!");
+  }
+  event.preventDefault();
+}
+
+
+// Funcion to show coordinates using OSM
+function getCoordinatesFromAddressOSM(button){
+  var address = encodeURIComponent($(button).closest('td').find('input#address').val());
   $.when($.ajax('https://nominatim.openstreetmap.org/search.php?q=' + address + '&format=json')).done(function(data){
     if (data.length > 0){
       map.setView([data[0].lat, data[0].lon],map.getZoom());
@@ -32,23 +69,6 @@ function getCoordinatesFromAddress(button){
 }
 
 
-function writeCoordinates(){
-  if (navigator.geolocation) {
-	  navigator.geolocation.getCurrentPosition(function (position) {
-	  	var lat = position.coords.latitude,
-					lng = position.coords.longitude;
-			$('#latitude').val(lat);
-			$('#longitude').val(lng);
-			map.setView([lat, lng], 13);
-			marker.setLatLng(map.getCenter());
-	  });
-	} else {
-	  alert("Geolocation is not supported by this browser! Upgrade!");
-	}
-	iniMap(map); 
-  event.preventDefault();
-}
-
 function getCenter(){
 	var cnt = map.getCenter();
   marker.setLatLng(cnt);
@@ -57,24 +77,6 @@ function getCenter(){
 	$('#legend')[0].innerHTML = convertDMS(cnt.lat,cnt.lng);
 }
 
-function iniMap(map){
-	map.options.scrollWheelZoom = 'center';
-  map.options.doubleClickZoom = 'center';
-  map.options.touchZoom = 'center';
-
-  var legend = L.control({position: 'bottomleft'});
-
-	legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend leaflet-control-attribution');
-    div.innerHTML = "<div id='legend'>-</div>";
-
-    return div;
-	};
-
-	legend.addTo(map);
-
-}
 
 function convertDMS( lat, lng ) {
  
