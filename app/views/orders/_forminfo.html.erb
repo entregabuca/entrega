@@ -64,5 +64,6 @@
 
 <tr>
   <th><%= form.label :radius %></th>
-  <td><%= form.number_field :radius %></td>
+  <td><%=  500  %></td> <!--  As this is the Order's value that we would like to add for every posted order --> 
+  <td> <%= form.hidden_field :radius, :value => 500 %></td>
 </tr>

@@ -34,10 +34,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order= @user.orders.build(status: 'draft')
+    #@order= @user.orders.build(status: 'draft', radius: 500)
   end
 
   # GET /orders/1/edit
   def edit
+    #posted_or_taken
   end
 
   # POST /orders
@@ -91,6 +93,40 @@ class OrdersController < ApplicationController
       resource, id = request.path.split('/')[1,2]
       @user = resource.singularize.classify.constantize.find(id)
     end
+
+    def posted_or_taken
+
+      count = 1
+      # In rality the radius below will be brought from the order with a value of 500 
+      initial_radius = @order.radius
+
+      while @order.status == 'posted' && count < 4 # if after 40 secs order hasn't been 
+                                #taken bring it back to status Draft and its radius back to 500 
+        @order.radius = 500
+        n = 1        
+        while @order.status == 'posted' && count < 10 # Check for 10 secs otherwise extend radius
+          sleep 1     
+          n += 1
+        end
+
+        if @order.status == 'posted'
+          count += 1
+          @order.radius *= count
+        elsif @order.status == 'taken'
+          @order.radius *= count
+        end
+
+        #@order.radius =500 This was commented as it didn't affect
+      end
+
+      if @order.status == 'taken'
+        # Print an alert??
+      else
+        @order.radius = 7356  # initial_radius
+        @order.status = 'draft'
+      end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
