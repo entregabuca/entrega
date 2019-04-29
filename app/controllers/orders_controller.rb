@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
   end
 
   def posted  
-
     @orders = @user.orders.posted
     @user = @user  
     render :index
@@ -35,35 +34,40 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order= @user.orders.build(status: 'draft')
+    #@order= @user.orders.build(status: 'draft', radius: 500)
   end
 
   # GET /orders/1/edit
   def edit
+    #posted_or_taken
   end
 
   # POST /orders
   # POST /orders.json
   def create
-    @order= @user.orders.build(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    @order= @user.orders.build(order_params)
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
+          format.json { render :show, status: :created, location: @order }
+          order_posted_create
+        else
+          format.html { render :new }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
     end
   end
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
+        order_posted_update
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -93,8 +97,26 @@ class OrdersController < ApplicationController
       @user = resource.singularize.classify.constantize.find(id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def order_posted_create
+      if @order.status == 'posted'
+        PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
+      end
+    end
+
+    def order_posted_update
+      @order = Order.find(params[:id])
+      if @order.status == 'posted'
+      	PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
+      end
+    end
+
+
+
+# Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, :cost, :status, :radius, :sender_id, :transporter_id, locations_attributes: [:id, :address])
+      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, 
+        :cost, :status, :radius, :sender_id, :transporter_id, 
+        locations_attributes: [:id, :address, :latitude, :longitude])
     end
 end
+

@@ -19,19 +19,24 @@ class Order < ApplicationRecord
   # Sort orders by most recent first
   default_scope {order("created_at DESC")} 
   
-
-
   validate :pickup_time_cannot_be_in_the_past
-  validate :delivery_time_cannot_be_in_the_past
-  validate :delivery_time_greater_than_pickup_time
+  validate :delivery_time_is_a_minute_greater_than_now
+  validate :delivery_time_must_greater_than_pickup_time
   #validate :pickup_time_cannot_be_greater_than_delivery_time
-  
+  validate :status_draft_radius_500
 
 
-  # Sort orders by most recent first
+
  
 
-  # ----------------------------------- || -------------------------------------------------------------
+  def status_draft_radius_500
+    if status == 'draft'
+      self.radius = 500      
+    end
+  end
+
+
+   # ----------------------------------- || -------------------------------------------------------------
 
 # CHECK REFACTORING ON TIME LOGICS TO SEE WHAT CAN BE COMBINED OR ELIMINATED
 
@@ -51,7 +56,7 @@ class Order < ApplicationRecord
 
 
 # Code below avoids notifying user that has to set Delivery Time has to be minimun 1 minute later in the present
-  def delivery_time_cannot_be_in_the_past
+  def delivery_time_is_a_minute_greater_than_now 
     if ['draft', 'posted'].include?(self.status)
       if delivery_time < DateTime.current
         self.delivery_time = DateTime.current + 1.minutes     
@@ -64,38 +69,11 @@ class Order < ApplicationRecord
 # Currently it notifies the user if delivery_time added is earlier thatn pickup time.
 # Will need revision later depending on business logic when User may want to have things deliver by certain time 
 # which will reduce/increase the cost of the service, needs double check
-  def delivery_time_greater_than_pickup_time
+  def delivery_time_must_greater_than_pickup_time
     if ['posted'].include?(self.status)
       if delivery_time <= pickup_time
         errors.add(:delivery_time, 'MUST be later than Pickup Time ')    
       end
     end
   end
-
-
-  # ----------------------------------- || -------------------------------------------------------------
-  
-def order_posted  # could be changed to order_posted
-  self.status == 'posted'     
-end
-
-#validates :weight, numericality: { :greater_than_or_equal_to => 0.01 }
-
-validates_associated :locations, if: :order_posted 
-
-
-with_options if: :order_posted do |order|
-  order.validates :description, presence: true 
-  order.validates :weight, numericality: { :greater_than_or_equal_to => 0.01 }
-  order.validates :length, numericality: { :greater_than_or_equal_to => 1 }
-  order.validates :width, numericality: { :greater_than_or_equal_to => 1 } 
-  order.validates :heigth, numericality: { :greater_than_or_equal_to => 1 }
-  #validates_associated :address
-  #order.validates :locations, presence: true
-  order.validates :status, presence: true 
-  order.validates :cost, numericality: { :greater_than_or_equal_to => 1 }  
-  #order.validates :radius, presence: true, numericality: true 
-  order.validates :sender_id, presence: true  
-end
-  
 end

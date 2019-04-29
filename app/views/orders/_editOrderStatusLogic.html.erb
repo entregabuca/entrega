@@ -10,14 +10,10 @@
       <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 5).map {|status| [status.titleize,status]} %></td>
       <%= render 'forminfo', form: form %> 
 
-    <% elsif @order.status == 'posted' && @order.status_changed? %>
-      <td><%= form.select :status, Order.statuses.keys.values_at(1, 5).map {|status| [status.titleize,status]} %></td>
-      <%= render 'forminfo', form: form %> 
-
     <% elsif @order.status == 'posted'%>
-      <td><%= form.select :status, Order.statuses.keys.values_at(1, 5).map {|status| [status.titleize,status]} %></td> 
+      <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 2, 5).map {|status| [status.titleize,status]} %></td> 
        <%= render 'info', order: @order %>
-
+      
     <% elsif @order.status == 'taken'%> 
       <td><%= form.select :status, Order.statuses.keys.values_at(2, 5).map {|status| [status.titleize,status]} %></td>
        <%= render 'info', order: @order %>

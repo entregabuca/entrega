@@ -33,7 +33,7 @@
   <td></td>
 </tr>
 
-<%= render 'location', form: form %>
+<%= render 'location', form: form, id: 0 %>
 
 <tr>
   <th><%= form.label :pickup_time %></th>
@@ -50,7 +50,7 @@
   <td></td>
 </tr>
 
-<%= render 'location', form: form %>
+<%= render 'location', form: form, id: 1 %>
 
 <tr>
   <th><%= form.label :delivery_time %></th>
@@ -62,7 +62,9 @@
   <td><%= form.text_field :cost %></td>
 </tr>
 
+<!-- The label wil be comment out as it won't be seen by the sneder Only for development and testing-->
 <tr>
   <th><%= form.label :radius %></th>
-  <td><%= form.number_field :radius %></td>
+  <td><%=  500  %></td> <!--  As this is the Order's value that we would like to add for every posted order --> 
+  <td> <%= form.hidden_field :radius, :value => 500 %></td> <!-- ITIAL_RADIUS -->
 </tr>

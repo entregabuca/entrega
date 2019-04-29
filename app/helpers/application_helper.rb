@@ -15,6 +15,14 @@ module ApplicationHelper
 		end
 	end
 
+	def coordinates?(variable, i)
+		if variable.locations[i].present?
+			true
+		else
+			false
+		end
+	end
+
 	def mean_coordinates(variable, i)
 		clean_var = variable.select{|c| c.locations[i]}
 		if clean_var.size > 1
