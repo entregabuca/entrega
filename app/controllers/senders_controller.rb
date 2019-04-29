@@ -77,6 +77,6 @@ class SendersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sender_params
-      params.require(:sender).permit(:name, :telephone, :email, :status, locations_attributes: Location.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:sender).permit(:name, :telephone, :email, :status, locations_attributes: [:id, :address, :latitude, :longitude])
     end
 end

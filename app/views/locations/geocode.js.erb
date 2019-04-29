@@ -1,13 +1,12 @@
 // Get Addres in TextBox
-var address = encodeURIComponent($('#address').val());
-
+var address = encodeURIComponent($('#address<%=@map_id%>').val());
 // Make a GEocoding Request to Google
 $.when($.ajax('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=' + '<%= j Rails.application.credentials.GGL_GEOCODING_KEY%>')).done(function(data){
   // Check whether there is any data to show
   if (data.results.length > 0){
   	// Update the map marker
     loc = data.results[0].geometry.location
-    map.setView([loc.lat, loc.lng],map.getZoom());
+    <%= "map#{@map_id}"%>.setView([loc.lat, loc.lng],Math.max(13,<%= "map#{@map_id}"%>.getZoom()));
   } else{
     alert("No address found")
   }

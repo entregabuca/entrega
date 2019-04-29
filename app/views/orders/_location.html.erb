@@ -1,17 +1,35 @@
-<%= form.fields_for :locations, @order.locations[0].present? ? @order.locations[0] : Location.new  do |f| %> 
+<% id = local_assigns[:id] %>
+<%= form.fields_for :locations, @order.locations[id].present? ? @order.locations[id] : Location.new  do |f| %> 
   <tr>
     <th><%= f.label :address %></th>
-    <td><%= f.text_field :address %></td>
+    <td><%= f.text_field :address, id: "address#{id}" %>
+      <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true%>
+    </td>
   </tr>
 
-  <tr>
-    <th><%= f.label :latitude %></th>
-    <td><%= f.text_field :latitude %></td>
+  <tr id="MapRow">
+    <th>Map</th>
+    <td>    
+      <div id="map<%=id%>">
+      </div>
+    </td>
+    <%= f.hidden_field :latitude, id: "latitude#{id}" %>
+    <%= f.hidden_field :longitude, id: "longitude#{id}" %>
+
   </tr>
 
-  <tr>
-    <th><%= f.label :longitude %></th>
-    <td><%= f.text_field :longitude%></td>
-  </tr>
+  <script>
+    //<![CDATA[
+      var map<%=id%> = L.map('map<%=id%>');
+      var marker<%=id%> = L.marker([0,0]).addTo(map<%=id%>);
+      lat<%=id%> = '#latitude<%=id%>';
+      lng<%=id%> = '#longitude<%=id%>';
+      lgnd<%=id%> = '#legend<%=id%>';
+
+      $(iniMap(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>, lgnd<%=id%>));
+      $(getNavCoordinates(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>));
+      map<%=id%>.on('move', function(){ getCenter(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>, lgnd<%=id%>) });
+    //]]>
+  </script>
   
 <% end %>
