@@ -46,7 +46,7 @@
         <td><%= coordinates(order,0).to_dms %></td> 
         <td><%= order.pickup_time %></td>
         <td><%= address(order,1) %></td>
-        <td><%= coordinates(order,0).to_dms %></td>
+        <td><%= coordinates(order,1).to_dms %></td>
         <td><%= order.delivery_time %></td>
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>

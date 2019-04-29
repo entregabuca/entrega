@@ -1,39 +1,35 @@
+<% id = local_assigns[:id] %>
 <%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
   <tr>
     <th><%= f.label :address %></th>
-    <td><%= f.text_field :address, id: 'address' %>
-      <%= link_to 'Search Address', {action: 'geocode', controller: 'locations'}, remote: true%>
-
-      <input id="clickToCoordinatesOSM" type="button" value="Search OSM" onclick="getCoordinatesFromAddressOSM(this);" />      
+    <td><%= f.text_field :address, id: "address#{id}" %>
+      <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true%>   
     </td>
   </tr>
 
   <tr id="MapRow">
     <th>Map</th>
     <td>    
-      <%=
-        latlng = Geocoder.search(request.remote_ip).first.coordinates
-        latlng = latlng.empty? ? [0,0] : latlng
-        map(:container_id => "map",
-            :center => {
-              :latlng => [0, 0],
-              doubleClickZoom: 'center',
-              :zoom => 1,
-            },
-            :markers => [{:latlng => latlng}]
-          )
-      %>
+      <div id="map<%=id%>">
+      </div>
     </td>
-    <%= f.hidden_field :latitude, id: 'latitude' %>
-    <%= f.hidden_field :longitude, id: 'longitude' %>
+    <%= f.hidden_field :latitude, id: "latitude#{id}" %>
+    <%= f.hidden_field :longitude, id: "longitude#{id}" %>
 
   </tr>
 
-  <%= javascript_tag do %>
-    $(iniMap(map));
-    $(writeCoordinates);
+  <script>
+    //<![CDATA[
+      var map<%=id%> = L.map('map<%=id%>');
+      var marker<%=id%> = L.marker([0,0]).addTo(map<%=id%>);
+      lat<%=id%> = '#latitude<%=id%>';
+      lng<%=id%> = '#longitude<%=id%>';
+      lgnd<%=id%> = '#legend<%=id%>';
 
-    map.on('move', getCenter);
-  <% end %>
+      $(iniMap(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>, lgnd<%=id%>));
+      $(getNavCoordinates(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>));
+      map<%=id%>.on('move', function(){ getCenter(map<%=id%>, marker<%=id%>, lat<%=id%>, lng<%=id%>, lgnd<%=id%>) });
+    //]]>
+  </script>
 
 <% end %>
