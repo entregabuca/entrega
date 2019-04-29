@@ -1,0 +1,135 @@
+while status = "posted" && count < 9
+#
+#	#if order.status == 'posted'#  && count < 6
+#       #count += 1  		#new
+#	   #puts " Count: #{count}"
+#
+#	   #while status == 'posted' && count < 8 && status != 'draft' # if after 15 secs order hasn't been taken bring it back to status Draft and its radius back to 500 
+#		
+#		#while count < 6 
+#		    radius = order.radius 
+#
+#		    #n = 1        
+#		    #while status == 'posted' && n < 5 # Check for 5 secs otherwise extend radius
+#		    #  sleep 1     
+#		    #  n += 1
+#		    #end
+#		    puts ""
+#		    puts ""
+#		    puts " Initial Count was: #{count}"
+#		    sleep 1
+#		    count += 1 
+#		    puts " Count is now: #{count}"
+#		    puts ""
+#		    puts ""
+#		    radius *= count
+#		    puts " Radius * Count is: #{radius}"
+#		    puts ""
+#		    puts "" 
+#
+#		      sleep 1
+#		      order.radius = radius
+#		      order.save
+#		      break if status == "draft"
+#
+#	    end
+#
+#
+#
+#	if order.status == 'posted'
+#      sleep 2
+#     #count += 1
+#     #radius *= count
+#     #order.radius = 3500
+#     #order.save
+#      
+# 	elsif order.status == 'taken'
+#      sleep 2
+#      order.radius = 3500
+#      order.save
+#    elsif order.status == 'draft'
+#      sleep 4
+#      order.radius = 500
+#      order.save
+#    end 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------\\----------------------------------
+
+
+
+
+
+
+count = 1
+	while status == 'posted' && count < 3 
+		n = 1        
+		    while status == 'posted' && n < 5 # Check for 5 secs otherwise extend radius
+		      sleep 1     
+		      n += 1
+		    end
+
+		puts " Count: #{count}"
+
+	    if status == 'posted'
+	      count += 1  		#new
+	      puts " Count: #{count}"
+	      puts ""
+		  puts ""
+	      puts " Radius is: #{initial_radius}"
+	      puts " Status is: #{status}"
+	      puts ""
+		  puts ""
+
+	 	  initial_radius *= count    #new
+	 	  puts " Radius after multiplying by count is: #{initial_radius}"
+	 	  puts ""
+		  puts ""
+	      #sleep 7
+	      #radius = 1000
+	      #radius = radius
+	      order.save
+	   # elsif order.status == 'taken'
+	   #   radius *= count 
+	   #   puts ""
+		#  puts ""
+	   #   puts " Radius is: #{radius}"
+	   #   puts " Status is: #{status}"
+	   #   puts ""
+		#  puts ""
+	   #   #sleep 7
+	   #   #radius = 1500
+	   #   radius = radius
+	      order.save
+	    elsif status == 'draft'
+	      #sleep 7
+	      radius = 500
+	      order.save
+	   end
+	   
+	    puts ""
+		puts ""
+	    puts " New Status is: #{status}"
+	  	#radius = order.radius 
+	  	puts " New Radius is: #{radius}"
+	  	puts ""
+		puts ""
+	  
+	 end
