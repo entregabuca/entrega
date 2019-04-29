@@ -1,5 +1,9 @@
 <h1 class='headingspace'>New Order</h1>
 
+<hr>
+  | <%= link_to 'Back to Orders', url_for([@user, :orders]) %> |
+<hr>
+
 <%= render 'form', order: @order %>
 
 <hr>
