@@ -19,15 +19,24 @@ class Order < ApplicationRecord
   # Sort orders by most recent first
   default_scope {order("created_at DESC")} 
   
-
-
   validate :pickup_time_cannot_be_in_the_past
   validate :delivery_time_is_a_minute_greater_than_now
   validate :delivery_time_must_greater_than_pickup_time
   #validate :pickup_time_cannot_be_greater_than_delivery_time
+  validate :status_draft_radius_500
 
 
-  # ----------------------------------- || -------------------------------------------------------------
+
+ 
+
+  def status_draft_radius_500
+    if status == 'draft'
+      self.radius = 500      
+    end
+  end
+
+
+   # ----------------------------------- || -------------------------------------------------------------
 
 # CHECK REFACTORING ON TIME LOGICS TO SEE WHAT CAN BE COMBINED OR ELIMINATED
 
@@ -67,34 +76,4 @@ class Order < ApplicationRecord
       end
     end
   end
-
-
-  # ----------------------------------- || -------------------------------------------------------------
-  
-#  def order_posted 
-#    self.status == 'posted'     
-#  end
-#
-#  #validates :weight, numericality: { :greater_than_or_equal_to => 0.01 }
-#
-#  validates_associated :locations, if: :order_posted 
-#
-#
-#  with_options if: :order_posted do |order|
-#    order.validates :description, presence: true 
-#    order.validates :weight, numericality: { :greater_than_or_equal_to => 1 }
-#    order.validates :length, numericality: { :greater_than_or_equal_to => 1 }
-#    order.validates :width, numericality: { :greater_than_or_equal_to => 1 } 
-#    order.validates :heigth, numericality: { :greater_than_or_equal_to => 1 }
-#    #validates_associated :address
-#    #order.validates :locations, presence: true
-#    order.validates :status, presence: true 
-#    order.validates :cost, numericality: { :greater_than_or_equal_to => 1 }  
-#    #order.validates :radius, presence: true, numericality: true 
-#    order.validates :sender_id, presence: true  
-#  end
-# ----------------------------------- || -------------------------------------------------------------
-  
-
-  
 end

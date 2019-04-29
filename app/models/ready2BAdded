@@ -1,0 +1,26 @@
+
+  # ----------------------------------- ATTENTION ANTONIO !!!!!  The Code encapsulated below works. AWAITING FOR MARIO TO FINISH HIS PART  -------
+  
+#  def order_posted 
+#    order.status == 'posted'     
+#  end
+#
+#  #validates :weight, numericality: { :greater_than_or_equal_to => 0.01 }
+#
+#  validates_associated :locations, if: :order_posted 
+#
+#
+#  with_options if: :order_posted do |order|
+#    order.validates :description, presence: true 
+#    order.validates :weight, numericality: { :greater_than_or_equal_to => 1 }
+#    order.validates :length, numericality: { :greater_than_or_equal_to => 1 }
+#    order.validates :width, numericality: { :greater_than_or_equal_to => 1 } 
+#    order.validates :heigth, numericality: { :greater_than_or_equal_to => 1 }
+#    #validates_associated :address
+#    #order.validates :locations, presence: true
+#    order.validates :status, presence: true 
+#    order.validates :cost, numericality: { :greater_than_or_equal_to => 1 }  
+#    #order.validates :radius, presence: true, numericality: true 
+#    order.validates :sender_id, presence: true  
+#  end
+# ----------------------------------- || -------------------------------------------------------------
