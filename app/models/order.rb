@@ -23,11 +23,11 @@ class Order < ApplicationRecord
   validate :delivery_time_is_a_minute_greater_than_now
   validate :delivery_time_must_greater_than_pickup_time
   #validate :pickup_time_cannot_be_greater_than_delivery_time
-
-
-
-
   validate :status_draft_radius_500
+
+
+
+ 
 
   def status_draft_radius_500
     if status == 'draft'
