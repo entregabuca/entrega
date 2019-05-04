@@ -33,8 +33,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order= @user.orders.build(status: 'draft')
+    @order = @user.orders.build(status: 'draft')
     #@order= @user.orders.build(status: 'draft', radius: 500)
+    @order.recipients.build
   end
 
   # GET /orders/1/edit
@@ -45,7 +46,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-
+    puts ""
+    puts "" 
+    puts "OE"
+    puts params
+    puts ""
+    puts ""
     @order= @user.orders.build(order_params)
       respond_to do |format|
         if @order.save
@@ -116,7 +122,7 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, 
         :cost, :status, :radius, :sender_id, :transporter_id, 
-        locations_attributes: [:id, :address, :latitude, :longitude])
+        locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
     end
 end
 

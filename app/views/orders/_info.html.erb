@@ -26,34 +26,45 @@
 <tr>
 
   <th>Pickup Address</th>
-  <td><%#= order.locations[0].address %></td>
+  <td><%= order.locations[0].address %></td>
 </tr>
 
 <tr>
   <th>Pickup Coordinates</th>
-  <td><%#= coordinates(order,0) %></td>
+  <td><%= coordinates(order,0) %></td>
 
 <tr>
   <th>Pickup Time</th>
   <td><%= order.pickup_time %></td>
 </tr>
 
-
-
 <tr>
   <th>Delivery Address</th>
-  <td><%#= order.locations[1].address %></td>
+  <td><%= order.locations[1].address %></td>
 </tr>
 
 <tr>
   <th>Delivery Coordinates</th>
-  <td><%#= coordinates(order,0)%></td>  
+  <td><%= coordinates(order,0)%></td>  
 </tr>
 
 
 <tr>
   <th>Delivery Time</th>
   <td><%= order.delivery_time %></td>
+</tr>
+
+<tr>
+  <th>Recipient</th>
+  <td><%= order.recipients.first.name %></td>
+</tr> 
+<tr>
+  <th>Recipient Telephone </th>
+  <td><%= order.recipients.first.telephone %></td>
+</tr>
+<tr>
+  <th>Recipien Email</th>
+  <td><%= order.recipients.first.email %></td>
 </tr>
 
 
