@@ -2,10 +2,98 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .headingspace{
-  margin-top: 2.8rem;
+  margin-top: 1.5rem;
   margin-bottom: 4rem;
 }
 
 .h3Space{
   margin-bottom: 4.5rem;
 }
+
+// Sender ordering scree from here
+
+.sender,  {
+  margin-top: 2.2rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+
+.fontsize {
+  font-size: 0.9rem !important;
+}
+
+.form-row {
+    margin-top: 2.5rem;
+}
+
+.status {
+  margin-top: 2.5rem;
+}
+
+.maps-row {
+  display: flex;
+  flex-wrap: wrap;
+ // margin-right: -15px;
+  //margin-left: -15px;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  #MapRow{
+    margin-left: 18%;
+    margin-right: 10%;
+  }
+}
+
+.card-body-left {
+  background-color: #78a9ba;
+}
+.card-body-right {
+  background-color: #85ad94;
+}
+.card-header {
+  padding-top: 2rem; 
+  margin-bottom: 2rem !important;
+}
+.address {
+  margin-bottom: 2rem !important;
+}
+
+
+/* #address0, #address1 {
+  min-width: 400px;
+}*/
+
+
+.pickup-time, .delivery-time{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.recipient {
+  margin-bottom: 4rem;
+  h3{
+  margin-bottom: 4rem;
+  }
+}
+
+
+.order-create-update-buttons {
+   margin-top: 4rem;
+   margin-bottom: 4rem;
+}
+
+
+
+
+/*---Media Queries --*/
+
+@media (min-width: 736px) and (orientation : landscape) { 
+  .leaflet-container {
+    height: 400px;
+    width: 450px !important;
+  }
+  .btn-addres-search{
+    font-weight: 250 !important;
+  }
+  
+}
+

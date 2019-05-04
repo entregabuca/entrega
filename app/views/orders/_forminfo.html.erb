@@ -1,70 +1,30 @@
-<tr>
-  <th><%= form.label :description %></th>
-  <td><%= form.text_area :description %></td>
-</tr>
+<div class="maps-row">
+  <div class="col-md-6 mb-3 mb-md-0">
+    <div class="card left text-center z-depth-2"> <!-- mdb-color lighten-2  -->
+      <div class="card-body-left">
+        <h3 class="card-header">Sender Location</h3>          
+        <div class="location_contain">
+          <%= render 'location', form: form, id: 0 %>
+        </div>
+        <br>
+        <strong><%= form.label :pickup_time, 'Pickup date/time', :class => "col-sm-2 pickup-time" %></strong>
+          <%= form.datetime_select :pickup_time, :class => "col-sm-4" %>      
+      </div>
+    </div> 
+  </div>
 
-<tr>
-  <th><%= form.label :weight %></th>
-  <td><%= form.text_field :weight %></td> <!--form.number_field :weight , value: number_with_precision(form.object.weight, precision: 2)   -->
-</tr>
 
-<tr>
-  <th><%= form.label :length %></th>
-  <td><%= form.text_field :length %></td>
-</tr>
-
-<tr>
-  <th><%= form.label :width %></th>
-  <td><%= form.text_field :width %></td>
-</tr>
-
-<tr>
-  <th><%= form.label :heigth %></th>
-  <td><%= form.text_field :heigth %></td>
-</tr>
-
-<tr>
-  <th> </th>
-  <td></td>
-</tr>
-
-<tr>
-  <th> Pick Up Details </th>
-  <td></td>
-</tr>
-
-<%= render 'location', form: form, id: 0 %>
-
-<tr>
-  <th><%= form.label :pickup_time %></th>
-  <td><%= form.datetime_select :pickup_time %></td>
-</tr>
-
-<tr>
-  <th> </th>
-  <td></td>
-</tr>
-
-<tr>
-  <th> Delivery Details </th>
-  <td></td>
-</tr>
-
-<%= render 'location', form: form, id: 1 %>
-
-<tr>
-  <th><%= form.label :delivery_time %></th>
-  <td><%= form.datetime_select :delivery_time %></td>
-</tr>
-
-<tr>
-  <th><%= form.label :cost %></th>
-  <td><%= form.text_field :cost %></td>
-</tr>
-
-<!-- The label wil be comment out as it won't be seen by the sneder Only for development and testing-->
-<tr>
-  <th><%= form.label :radius %></th>
-  <td><%=  500  %></td> <!--  As this is the Order's value that we would like to add for every posted order --> 
-  <td> <%= form.hidden_field :radius, :value => 500 %></td> <!-- ITIAL_RADIUS -->
-</tr>
+  <div class="col-md-6">
+    <div class="card right text-center z-depth-2">  <!--  mdb-color lighten-2  -->
+      <div class="card-body-right">        
+       <h3 class="card-header">Recipient Location</h3>
+       <div class="location_contain">
+        <%= render 'location', form: form, id: 1 %>
+       </div>
+       <br>     
+       <strong><%= form.label :delivery_time, 'Delivery date/time', :class => "col-sm-2 delivery-time" %></strong>
+        <%= form.datetime_select :delivery_time %>
+      </div>
+    </div>
+  </div>
+</div>

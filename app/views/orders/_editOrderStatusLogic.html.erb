@@ -1,14 +1,13 @@
- <tr>
-  <th><%= form.label :sender_id %></th> 
-  <td><%= @order.sender.name %></td>
-</tr>
-
 <% if @user.class.name == "Sender"  %>
   <tr>
-    <th><%= form.label :status %></th>
+    <div class="status"> <!-- This should be remived once the buttons have been added-->
+    <th><%= form.label :status, :class => "mr-4" %></th>
     <% if @order.status == 'draft' %>
       <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 5).map {|status| [status.titleize,status]} %></td>
-      <%= render 'forminfo', form: form %> 
+    </div>
+      
+        <%= render 'forminfo', form: form %> 
+      
 
     <% elsif @order.status == 'posted'%>
       <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 2, 5).map {|status| [status.titleize,status]} %></td> 
