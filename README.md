@@ -64,3 +64,8 @@ git remote add origin https://github.com/entregabuca/entrega.git
 git add .
 git commit -m "Inicial"
 git push -u origin master
+
+
+## Notifications
+
+rails g channel web_notification

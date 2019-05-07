@@ -7,8 +7,9 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
     if order.status == 'posted'  
       if order.radius < MAX_RADIUS
 	      order.radius += DELTA_RADIUS
-	      order.save	             
-        PostedOrderJob.set(wait: 2.second).perform_later(order.id) # DELTA_TIME
+	      order.save
+        WebNotificationsChannel.broadcast_to(Company.find(1), title: 'Notificación', body: 'Orden Lista Para Tomar!!!')            
+        PostedOrderJob.set(wait: 10.second).perform_later(order.id) # DELTA_TIME
       else 
         order.status = 'draft'         
         order.radius = 500
