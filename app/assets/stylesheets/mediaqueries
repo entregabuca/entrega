@@ -1,0 +1,77 @@
+
+/*---Media Queries 
+
+/* @media (min-width: 1024px) and (orientation : landscape) {
+  .leaflet-container {
+    height: 400px !important;
+    width: 300px !important;
+  } 
+
+}
+
+//@media (max-width: 667px) and (orientation : landscape) { 
+@media only screen and (max-width: 667px) {
+
+  .btn-addres-search{
+    font-weight: 250 !important;
+  }
+  .leaflet-container {
+    height: 300px !important;
+    width: 300px !important;
+  }
+
+  #map0, #map1 {
+   // margin-left: -15% !important;
+    //height: 10px !important;
+    //width: 15px !important;
+  }
+  
+  
+}
+
+@media (max-width: 414px) and (orientation : portrait) { 
+  .card-body-left {
+    padding-bottom: 8% !important;
+  }
+  .left {
+   margin-bottom: 30px !important;
+  }
+  
+  .leaflet-container {
+    height: 300px;
+    width: 350px !important;
+  }
+  #address0, #address1 {
+    width: 90% !important;
+  }
+  .btn-addres-search{
+    font-weight: 500 !important;
+    width: 50% !important;
+  }
+  .pickup-time, .delivery-time{
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  }
+
+  .btn-draft-button{
+  margin-bottom: 30px !important;
+  width: 50% !important;
+  margin-right: 0 !important;
+  
+  }
+  .btn-post-button{
+  width: 50% !important;
+  //margin-bottom: 30px !important;
+   // margin-left: 25% !important;
+   // margin-right: 25% !important;
+  }
+
+  .maps-row #MapRow {
+    margin-left: 10%  !important;
+    margin-right: 20% !important;
+    margin-top: 10% !important;
+
+  }
+  
+} 
+*/

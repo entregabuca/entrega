@@ -12,93 +12,9 @@
         <% end %>
         </ul>
       </div>
-    <% end %>
+    <% end %>  
 
-    <div class="form-group sender">  
-      <%= form.label :sender_id, "Sender: "%>
-      <strong><%= @order.sender.name %></strong>
-    </div>
-   
-    <div class="card">
-      <div class="card-body text-center"> 
-
-        <div class="form-group description col-md-6">     
-          <%= form.label :description, :class => "col-sm-3"%>
-          <%= form.text_field :description, placeholder: "Add a short description", :class => "fontsize col-sm-4" %>
-        </div>        
-        
-        <div class="form-group col-md-6">      
-          <%= form.label :weight, :class => "col-sm-3"%>
-          <%= form.text_field :weight, placeholder: "Aprrox. weight in cm", :class => "fontsize col-sm-4" %>
-           <!--form.number_field :weight , value: number_with_precision(form.object.weight, precision: 2)   -->
-        </div>
-
-         <div class="form-group col-md-6">
-          <%= form.label :length, :class => "col-sm-3"%>
-          <%= form.text_field :length, placeholder: "Aprrox. length in cm", :class => "fontsize col-sm-4" %>
-        </div>
-
-        <div class="form-group col-md-6">
-          <%= form.label :width, :class => "col-sm-3"%>
-          <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "fontsize col-sm-4" %>
-        </div>
-
-        <div class="form-group col-md-6">
-          <%= form.label :heigth, :class => "col-sm-3"%>
-          <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "fontsize col-sm-4" %>
-        </div>      
-        
-      </div>
-    </div>
-       
-    <%= render 'editOrderStatusLogic', form: form %> 
-
-
-    <%= form.fields_for :recipients do |f| %>
-      <div class="card recipient text-center">
-        <div class="card-body">            
-          <h3 class="card-title">Recipient details</h3>
-          
-            <div class="form-group col-md-6">
-              <%= f.label :name, :class => "col-sm-3" %>
-              <%= f.text_field :name, :class => "col-sm-4", placeholder: "Full name" %>
-            </div>
-            <div class="form-group col-md-6">
-              <%= f.label :telephone, :class => "col-sm-3" %>
-              <%= f.text_field :telephone, :class => "col-sm-4" %>
-            </div>
-            <div class="form-group col-md-6">
-              <%= f.label :email, :class => "col-sm-3" %>
-              <%= f.text_field :email, :class => "col-sm-4" %>
-            </div>
-        
-        </div>
-      </div>
-    <% end %>
-    
-    <div class="card">
-      <div class="card-body text-center">       
-        <div class="form-group col-md-6">
-          <%= form.label :cost, :class => "col-sm-3" %>
-          <%= form.text_field :cost, :class => "col-sm-4"%>
-        </div>
-
-        <!-- Code below for testing only -->
-        <div class="form-group col-md-6 radius">
-          <%= form.label :radius, :class => "col-sm-2" %>
-          <%=  500  %> <!--  Default value for draft/create orders --> 
-          <%= form.hidden_field :radius, :value => 500 %> <!-- INITIAL_RADIUS -->
-        </div>
-      </div>
-    </div>
-        
-   
-  <div class="order-create-update-buttons">
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-  </div>
-
-  
+      <%= render 'editOrderStatusLogic', form: form %>
+           
+  <% end %>  
 <% end %>

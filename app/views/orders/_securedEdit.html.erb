@@ -1,15 +1,27 @@
-<!-- Created to Allow or Not Editing depending on the class and the Oder.status -->
+<!-- Allows edition depending on the user and Order status -->
 
 <% if ['completed','cancelled'].include?(@order.status) %>
   <%= render 'restrictedAccess'%>
 
-<% elsif @user.class.name == "Sender" && ['inTransit', 'cancelled', 'completed'].include?(@order.status)   %>
+<% elsif @user.class.name == "Sender" && ['taken', 'inTransit'].include?(@order.status) %> <!-- ['inTransit', 'cancelled', 'completed'].include?(@order.status)   %> -->  
   <%= render 'restrictedAccess'%>
-<% elsif @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) %> 
+  
+<% elsif @user.class.name == "Sender" && ['draft', 'posted'].include?(@order.status) %> 
+<!-- NEEDS TESTING WHEN ORDERS START TO REALLY APPEARS CLOSE TO A COMPANY. MOST LIKELY 'taken' to be added. 
+If Sender needs to cancel an oreder once it has been posted it needs to contact the company that tooks the order directly -->
   <%= render 'form', order: @order %> 
+
+
+
+
 
 <% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>
   <%= render 'form', order: @order %> 
+
+
+
+
+  
 
 <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %>
   <%= render 'form', order: @order %>  

@@ -1,75 +1,56 @@
-<% if @user.class.name == "Sender"  %>
-  <tr>
-    <div class="status"> <!-- This should be remived once the buttons have been added-->
-    <th><%= form.label :status, :class => "mr-4" %></th>
-    <% if @order.status == 'draft' %>
-      <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 5).map {|status| [status.titleize,status]} %></td>
-    </div>
-      
-        <%= render 'forminfo', form: form %> 
-      
+<!-- DIRECTS LOGIC TO RENDER VIEWS DEPENDING ON THE USER & THE ORDER.STATUS -->
 
-    <% elsif @order.status == 'posted'%>
-      <td><%= form.select :status, Order.statuses.keys.values_at(0, 1, 2, 5).map {|status| [status.titleize,status]} %></td> 
-       <%= render 'info', order: @order %>
-      
+<% if @user.class.name == "Sender"  %> 
+
+    <% if @order.status == 'draft' %>     
+      <%= render 'forminfo', form: form %>
+    <% elsif @order.status == 'posted'%>      
+       <%= render 'info', order: @order %>      
     <% elsif @order.status == 'taken'%> 
-      <td><%= form.select :status, Order.statuses.keys.values_at(2, 5).map {|status| [status.titleize,status]} %></td>
+      <!-- <td><%#= form.select :status, Order.statuses.keys.values_at(2, 5).map {|status| [status.titleize,status]} %></td> -->
        <%= render 'info', order: @order %>
     <% else %>
-      <td><%= @order.status.capitalize %></td>
-    <% end %> 
-  </tr>  
+      <td><%= @order.status.capitalize %></td> <!-- Antonio CHECK later if this is doing something -->
+    <% end %>  
 
-<% elsif @user.class.name == "Company"  %>    
-  <tr>
-    <th><%= form.label :company_id %></th> 
-    <td><%=  @user.name %></td>
-  </tr>  
-
-  <tr>
-    <th><%= form.label :transporter_id %></th>
-    <% if @user.class.name == "Company" && ['completed','cancelled'].include?(@order.status) %>
-    <td><%= @order.transporter.name %></td>
-    <% elsif @user.class.name == "Company" && @order.status == ('posted') %>
-    <td><%= form.collection_select :transporter_id, @user.transporters,
-        :id, :name, include_blank: false %></td>
-    <% else %>
-    <td><%= @order.transporter.name %></td>
-    <% end %>
-  </tr>
-
-  <tr>
-    <th><%= form.label :status %></th>
-    <% if @order.status == 'posted' %>
-      <td><%= form.select :status, Order.statuses.keys[1..5].map {|status| [status.titleize,status]} %></td>
+<% elsif @user.class.name == "Company"  %>  
+  <% if @order.status == 'posted' %>
+      <%= render 'info', order: @order %> <!-- Pilas commented out -->
     <% elsif @order.status == 'taken' %>
-      <td><%= form.select :status, Order.statuses.keys[2..5].map {|status| [status.titleize,status]} %></td>
+      <%= render 'info', order: @order %>
     <% elsif @order.status == 'inTransit' %>
-      <td><%= form.select :status, Order.statuses.keys[3..5].map {|status| [status.titleize,status]} %>
-    <% else ['completed','cancelled'].include?(@order.status)  %>
-      <td><%= @order.status %></td>
-    <% end %>
-  </tr>
+      <%= render 'info', order: @order %>
+  <% end %>
 
-  <%= render 'info', order: @order %>
+  <%#= render 'info', order: @order %>
+
+
+
+  <%#= render 'forminfo', form: form %> 
+
+
+
 
 <% elsif @user.class.name == "Transporter"  %> 
-  <%= @user.name %>
+
+<!--
+  <%#= @user.name %>
   <tr>
-    <th><%= form.label :company_id %></th> 
-    <td><%=  @order.transporter.company.name %></td>
+    <th><%#= form.label :company_id %></th> 
+    <td><%#=  @order.transporter.company.name %></td>
   </tr> 
 
   <tr>
-    <th><%= form.label :transporter_id %></th>
-    <td><%=  @user.name %></td>
+    <th><%#= form.label :transporter_id %></th>
+    <td><%#=  @user.name %></td>
   </tr>
 
   <tr>
-    <th><%= form.label :status %></th>
-    <td><%= form.select :status, Order.statuses.keys[3..4].map {|status| [status.titleize,status]} %></td>
-  </tr>
+    <th><%#= form.label :status %></th>
+    <td><%#= form.select :status, Order.statuses.keys[3..4].map {|status| [status.titleize,status]} %></td>
+  </tr> -->
+
+
 
     <%= render 'info', order: @order %> 
 

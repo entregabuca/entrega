@@ -4,11 +4,11 @@
   <div class="form-group">
    <!-- <strong><%#= f.label :address, :class => "col-sm-2 address" %></strong> -->
     <%= f.text_field :address, placeholder: "Enter Address", id: "address#{id}", :class => "col-sm-7 address" %>
-    <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-3 btn btn-primary btn-addres-search" %>
+    <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-3 btn btn-primary btn-addres-search mb-5" %>
   </div> 
 
   <div id="MapRow">
-    <div id="map<%=id%>">
+    <div class="mx-auto" id="map<%=id%>">
     </div>   
     <%= f.hidden_field :latitude, id: "latitude#{id}" %>
     <%= f.hidden_field :longitude, id: "longitude#{id}" %>

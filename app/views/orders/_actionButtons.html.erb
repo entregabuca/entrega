@@ -1,0 +1,73 @@
+<%= link_to 'Back to Orders', url_for([@user, :orders]), :class => "col-xs-3 btn btn-primary btn-back mb-5" %> 
+
+<% if ['completed', 'cancelled'].include?(@order.status) %>
+
+<!-- Sender -->
+<% elsif @user.class.name == "Sender" && ['draft', 'posted'].include?(@order.status) %>
+      <% if ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %> 
+        <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
+
+        <%#= render 'forminfo', order: @order%>
+      <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit')  %> 
+        <div>    
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'cancelled' %>
+            <%= form.submit  'Cancel Order', :class => 'col-sm-3 btn btn-primary btn-cancel', name: 'cancel' %>
+          <% end %>
+        </div>
+
+      <% end %>
+
+<!-- Company -->
+<% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>     
+
+  <% if ['posted','taken', 'inTransit'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
+    <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
+
+
+  <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %>                 
+    <%= render 'editOrderStatusLogic', order: @order %>   
+
+  <% elsif  @order.status == 'taken' %>
+    <div class="col-lg-10 col-sm-10 editor">    
+      <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+        <%= form.hidden_field :status, :value => 'inTransit' %>
+        <%= form.submit  'In Transit', :class => 'col-sm-2 btn btn-primary btn-intransit', name: 'inTransit' %>
+      <% end %>
+    </div>
+  <% elsif @order.status == 'inTransit' %>
+    <div class="col-lg-10 col-sm-10 editor">    
+      <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+        <%= form.hidden_field :status, :value => 'completed' %>
+        <%= form.submit  'Complet', :class => 'col-sm-2 btn btn-primary btn-complet', name: 'complete' %>
+      <% end %>
+    </div>
+  <% end %>    
+
+
+<!-- Transporter -->
+<% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
+  <% if @user.class.name == "Transporter" && current_page?(controller: 'orders', action: 'show') %>
+  <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
+
+  <% elsif current_page?(controller: 'orders', action: 'edit') %> 
+    <% if  @order.status == 'taken' %>
+      <div class="col-lg-10 col-sm-10 editor">    
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'inTransit' %>
+          <%= form.submit  'In Transit', :class => 'col-sm-2 btn btn-primary btn-intransit', name: 'inTransit' %>
+        <% end %>
+      </div>
+    <% elsif @order.status == 'inTransit' %>
+      <div class="col-lg-10 col-sm-10 editor">    
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'completed' %>
+          <%= form.submit  'Complet', :class => 'col-sm-2 btn btn-primary btn-complet', name: 'complete' %>
+        <% end %>
+      </div>
+
+      <%= render 'editOrderStatusLogic', order: @order %> 
+    <% end %>
+  <% end %>
+<% end %>  
+

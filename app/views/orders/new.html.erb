@@ -1,7 +1,11 @@
-<h1 class='headingspace'>New Order</h1>
+<%= link_to 'Back to Orders', url_for([@user, :orders]), :class => "col-xs-3 btn btn-primary btn-back mb-5" %> 
+
+<h2 class='headingspace'>New Order</h2>
+
 
 <%= render 'form', order: @order %>
 
 <hr>
-  | <%= link_to 'Back to Orders', url_for([@user, :orders]) %> |
+<%= link_to 'Back to Orders', url_for([@user, :orders]), :class => "col-xs-3 btn btn-primary btn-back" %> 
+  
 <hr>

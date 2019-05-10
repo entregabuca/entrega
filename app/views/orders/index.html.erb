@@ -51,7 +51,7 @@
         <td><%= number_with_delimiter(order.cost.to_i) %></td>
         <td><%= number_with_delimiter(order.radius) %></td>
         <%= render 'orders/distance', order: order %>
-        <%= render 'orders/actions', order: order %>
+        <%= render 'orders/indexActions', order: order %>
       </tr>
     <% end %>        
   </tbody>

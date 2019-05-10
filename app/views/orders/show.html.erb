@@ -1,50 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table table-striped">
-  <thead>
-    <h1 class="headingspace">Order Reference: </b><%= @order.id %></h1>
-  </thead>
-  <hr>
-    <%= link_to 'Edit', url_for([:edit, @user, @order]) %>
-  <hr>
-  <tbody>
-    <tr>
-      <th>Sender</th>
-      <td><%= @order.sender.name %></td>
-    </tr>
 
-    <% if @order.transporter.present? %>
-      <tr>
-        <th>Company</th>
-        <td><%= @order.transporter.company.name %></td>
-      </tr>
-
-      <tr>
-        <th>Transporter</th>
-        <td><%= @order.transporter.name %></td>
-      </tr>
-    <% end %>
-
-    <tr>
-      <th>Status</th>
-      <td><%= @order.status.present? ? @order.status.capitalize : "-"  %></td>
-    </tr>
-
-    <%= render 'info', order: @order %>
-
-  </tbody>
-</table>
-
+ <%= render 'orders/actionButtons' %>
 <hr>
-| <%= link_to 'Back to Orders', url_for([@user, :orders]) %> |
-
-<%= link_to 'Edit', url_for([:edit, @user, @order]) %>
-
-<hr>
-<%#= render 'orders/showMap' %> <!-- Commented for testing Validations -->
+<%= render 'orders/info' %> <!-- Commented for testing Validations -->
 
 <hr>
 <br>
 <br>
 <br>
 
+  <%= render 'orders/actionButtons' %>
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

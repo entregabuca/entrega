@@ -27,14 +27,13 @@ class Order < ApplicationRecord
   validate :status_draft_radius_500
 
 
-
- 
-
   def status_draft_radius_500
     if status == 'draft'
       self.radius = 500      
     end
   end
+
+
 
 
    # ----------------------------------- || -------------------------------------------------------------
