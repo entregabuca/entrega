@@ -6,11 +6,8 @@
       <%= render 'forminfo', form: form %>
     <% elsif @order.status == 'posted'%>      
        <%= render 'info', order: @order %>      
-    <% elsif @order.status == 'taken'%> 
-      <!-- <td><%#= form.select :status, Order.statuses.keys.values_at(2, 5).map {|status| [status.titleize,status]} %></td> -->
-       <%= render 'info', order: @order %>
-    <% else %>
-      <td><%= @order.status.capitalize %></td> <!-- Antonio CHECK later if this is doing something -->
+    <% elsif @order.status == 'taken'%>       
+       <%= render 'info', order: @order %> <!-- Order Taken can be cancelled- Will need to contact Agency directly. 2B DISCUSSED -->
     <% end %>  
 
 <% elsif @user.class.name == "Company"  %>  
@@ -22,34 +19,7 @@
       <%= render 'info', order: @order %>
   <% end %>
 
-  <%#= render 'info', order: @order %>
-
-
-
-  <%#= render 'forminfo', form: form %> 
-
-
-
-
 <% elsif @user.class.name == "Transporter"  %> 
-
-<!--
-  <%#= @user.name %>
-  <tr>
-    <th><%#= form.label :company_id %></th> 
-    <td><%#=  @order.transporter.company.name %></td>
-  </tr> 
-
-  <tr>
-    <th><%#= form.label :transporter_id %></th>
-    <td><%#=  @user.name %></td>
-  </tr>
-
-  <tr>
-    <th><%#= form.label :status %></th>
-    <td><%#= form.select :status, Order.statuses.keys[3..4].map {|status| [status.titleize,status]} %></td>
-  </tr> -->
-
 
 
     <%= render 'info', order: @order %> 

@@ -8,7 +8,7 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
       if order.radius < MAX_RADIUS
 	      order.radius += DELTA_RADIUS
 	      order.save	             
-        PostedOrderJob.set(wait: 3.second).perform_later(order.id) # DELTA_TIME
+        PostedOrderJob.set(wait: 2.second).perform_later(order.id) # DELTA_TIME
       else 
         order.status = 'draft'         
         order.radius = 500

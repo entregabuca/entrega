@@ -7,18 +7,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> -->
+    <meta charset="utf-8" name="viewport" content= "width=device-width, initial-scale=1.0"> 
+
+
   </head>
 
   <body>
+
     <%= render 'layouts/navbar' %>
-    <div class="container-fluid">
-      <div class="row">
+  
+<!--<div class="container-fluid"> -->
+    <%= yield %>
+
+
+      <!-- <div class="row">
         <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
           <div>
-            <%= yield %>
+            <%#= yield %>
           </div>
         </main>
-      </div>
-    </div>
+      </div>  -->
+
+
+    <!-- </div> -->
   </body>
 </html>

@@ -1,8 +1,7 @@
 <!-- SENDER -->
-
 <div class="form-group sender mb-4">  
-  <b><%= form.label :sender_id, "Sender: "%></b>
-  <%= @order.sender.name %>
+  <%= form.label :sender_id, 'Sender: ' %>
+  <b><%= @order.sender.name %></b>
 </div>
 
 <!-- DESCRIPTION & MEASUREMENTS -->
@@ -10,64 +9,64 @@
   <div class="card-body top-card"> 
     <h3 class="h3Space">Order Measurements</h3> 
 
-    <div class="form-group description col-md-6">     
-      <%= form.label :description, :class => "col-sm-4"%>
-      <%= form.text_field :description, placeholder: "Add a short description", :class => "fontsize col-sm-3" %>
-    </div>        
+    <div class="form-group col-md-12">     
+      <%= form.label :description, :class => "col-sm-5 description"%>
+      <%= form.text_field :description, placeholder: "Add a short description", :class => "fontsize col-sm-6" %>
+    </div>         
     
-    <div class="form-group col-md-6">      
-      <%= form.label :weight, 'Weight (g)', :class => "col-sm-3"%>
-      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "fontsize col-sm-4" %>
+    <div class="form-group col-md-12">      
+      <%= form.label :weight, 'Weight (g)', :class => "col-sm-5 weight"%>
+      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "fontsize col-sm-6" %>
     </div>
 
-     <div class="form-group col-md-6">
-      <%= form.label :length, 'Length (cm)', :class => "col-sm-3"%>
-      <%= form.text_field :length, placeholder: "Aprrox. length in centimeters", :class => "fontsize col-sm-4" %>
+     <div class="form-group col-md-12">
+      <%= form.label :length, 'Length (cm)', :class => "col-sm-5 length"%>
+      <%= form.text_field :length, placeholder: "Aprrox. length in centimeters", :class => "fontsize col-sm-6" %>
     </div>
 
-    <div class="form-group col-md-6">
-      <%= form.label :width, 'Width (cm)', :class => "col-sm-3"%>
-      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "fontsize col-sm-4" %>
+    <div class="form-group col-md-12">
+      <%= form.label :width, 'Width (cm)', :class => "col-sm-5 width"%>
+      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "fontsize col-sm-6" %>
     </div>
 
-    <div class="form-group col-md-6">
-      <%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-3"%>
-      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "fontsize col-sm-4" %>
-    </div>      
+    <div class="form-group col-md-12">
+      <%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-5 height"%>
+      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "fontsize col-sm-6" %>
+    </div>    
     
   </div>
 </div>
 
 <!-- MAPS -->
 <div class="maps-row">
-  <div class="col-md-6 mb-3">
-    <div class="card left text-center z-depth-2"> 
+  <div class="col-md-6 mb-3 card-left ">
+    <div class="card  text-center z-depth-2"> 
       <div class="card-body-left">
         <h3 class="card-header">Sender Location</h3>          
-        <div>
+        <div class="location_contain">
           <%= render 'location', form: form, id: 0 %>
         </div>
         <br>
-        <div class="mb-5">   
-        <strong><%= form.label :pickup_time, 'Pickup date/time', :class => "col-sm-3 pickup-time" %></strong>
-          <%= form.datetime_select :pickup_time, :class => "col-sm-4 " %>  
-          </div>    
+        <div class="mb-5 time">   
+         <strong><%= form.label :pickup_time, 'Pickup date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+          <%= form.datetime_select :pickup_time, :class => "col-sm-12"  %>
+        </div>
       </div>
     </div> 
   </div>
 
 
-  <div class="col-md-6 mb-3">
-    <div class="card right text-center z-depth-2">  
+  <div class="col-md-6 mb-3 card-right">
+    <div class="card text-center z-depth-2">  
       <div class="card-body-right">        
        <h3 class="card-header">Recipient Location</h3>
        <div class="location_contain">
         <%= render 'location', form: form, id: 1 %>
        </div>
        <br>   
-       <div class="mb-5">   
-       <strong><%= form.label :delivery_time, 'Delivery date/time', :class => "col-sm-3 delivery-time" %></strong>
-        <%= form.datetime_select :delivery_time, :class => "col-sm-4"  %>
+       <div class="mb-5 time">   
+       <strong><%= form.label :delivery_time, 'Delivery date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+        <%= form.datetime_select :delivery_time, :class => "col-sm-12" %>
       </div>
       </div>
     </div>
@@ -79,18 +78,18 @@
 
   <div class="card recipient text-center recipient-card">
     <div class="card-body">            
-      <h3 class="card-title">Recipient details</h3>      
-        <div class="form-group col-md-6 reciptname">
-          <%= f.label :name, :class => "col-sm-3 col-md-4 " %>
-          <%= f.text_field :name, :class => "col-sm-4 col-md-4", placeholder: "Full name" %>
+      <h3 class="recipient-title">Recipient details</h3>      
+        <div class="form-group col-md-12">
+          <%= f.label :name, :class => "col-sm-5 recipient-name-label" %>
+          <%= f.text_field :name, :class => "col-sm-6 recipient-name-input", placeholder: "Full name" %>
         </div>
-        <div class="form-group col-md-6 reciptelephone">
-          <%= f.label :telephone, :class => "col-sm-3 col-md-4" %>
-          <%= f.text_field :telephone, :class => "col-sm-4 col-md-4" %>
+        <div class="form-group col-md-12"> <!-- Probably to change it to 12 or other on md -->
+          <%= f.label :telephone, :class => "col-sm-5 telephone-label" %>
+          <%= f.text_field :telephone, :class => "col-sm-6 telephone-input" %>
         </div>
-        <div class="form-group col-md-6 reciptemail">
-          <%= f.label :email, :class => "col-sm-3 col-md-4" %>
-          <%= f.text_field :email, :class => "col-sm-4 col-md-4" %>
+        <div class="form-group col-md-12">
+          <%= f.label :email, :class => "col-sm-5 email-label" %>
+          <%= f.text_field :email, :class => "col-sm-6 email-input" %>
         </div>    
     </div>
   </div>
@@ -98,34 +97,27 @@
 
 <!-- COST -->    
 <div class="card">
-  <div class="card-body text-center cost-card">       
-    <div class="form-group col-md-6">
-      <%= form.label :cost, :class => "col-sm-3" %>
-      <%= form.text_field :cost, :class => "col-sm-4"%>
-    </div>
-
-    <!-- Code below for testing only 
-    <div class="form-group col-md-6 radius">
-      <%#= form.label :radius, :class => "col-sm-2" %>
-      <%#=  500  %>   Default value for draft/create orders --> 
-      <%#= form.hidden_field :radius, :value => 500 %> <!-- INITIAL_RADIUS -->
+  <div class="card-body text-center">       
+    <div class="form-group col-md-12">
+      <%= form.label :cost, :class => "col-sm-5 cost-label" %>
+      <%= form.text_field :cost, :class => "col-sm-6 cost-input"%>
     </div>
   </div>
 </div>
+
     
 <!-- SUBMIT BUTTONS -->
 <div class="order-create-update-buttons text-center ">
   <% if @order.status == 'draft' %>
     <div class="actions btn-group" role="group" >
-      <div class="mr-5">
-      <%= form.submit  'Save Draft', :class => 'btn btn-primary btn-draft ', name: 'save_draft' %>
-</div>
-<div>
-      <%= form.submit  'Post', :class => ' btn btn-primary btn-post', name: 'post' %>
-  </div>  
+      <div class="space">
+      <%= form.submit  'Save Draft', :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
+      </div>
+      <div>
+        <%= form.submit  'Post', :class => ' btn btn-primary btn-post' %>   <!-- , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER -->
+      </div>  
     </div>
   <% else %>
-
     <div class="actions">
       <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
     </div>

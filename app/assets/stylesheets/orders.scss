@@ -2,20 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
-
-
-
-/*---Media Queries --*/
-@media (max-width: 992px) {
-
-  }
-@media (max-width: 768px) and (orientation : portrait)  {
-
-
-
 .headingspace{
   margin-bottom: 3rem;
 }
@@ -24,33 +10,32 @@
   margin-bottom: 4.5rem;
 }
 
-// Sender - Ordering scree from here
-
-.sender,  {
+.sender {
   margin-top: 2.2rem;
-  //margin-bottom: 3rem;
   font-size: 1.9rem;
 }
 
-.top-card, .recipient, .cost-card {
+.top-card, .recipient, .cost-label {
     font-size: 1.5rem;
 }
 
-.fontsize {
+.fontsize, .recipient-name-input, .telephone-input, .email-input, .cost-input {
   font-size: 1.3rem !important;
 }
 
-.form-row {
+/*.form-row {
     margin-top: 2.5rem;
-}
+}*/
 
-.status {
+/*.status {
   margin-top: 2.5rem;
-}
+}*/
 
 .card-body-left {
   background-color: #78a9ba;
 }
+
+
 .card-body-right {
   background-color: #85ad94;
 }
@@ -63,26 +48,24 @@
   width: 90% !important;
 }
 
-.btn-addres-search {
-  width: 50% !important;
-}
 
 .maps-row {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .leaflet-container {
     height: 400px;
     width: 90% !important;
-    //margin-left: 7%;
 }
+
 .pickup-time, .delivery-time{
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
 .recipient {
   margin-bottom: 4rem;
   h3{
@@ -90,215 +73,262 @@
   }
 }
 
-
 .order-create-update-buttons {
    margin-top: 4rem;
    margin-bottom: 4rem;
 }
 
-.btn-draft {
-  color: black !important;
-  border-color: #78a9ba !important;
-  background-color: #78a9ba !important;
-  border-radius: 3.5rem !important;
-  margin-bottom: 5% !important;
-  font-size: 1.6rem !important;
-  padding: 0.375rem 1.75rem !important;
-  width: 100% !important;
-}
-.btn-draft:hover {
-  color: #fff !important;
-  background-color: #0069d9 !important;
-  border-color: #0062cc !important;
+#map {
+    margin-left: 0px !important;
 }
 
-
-.btn-post, .btn-taken, .btn-intransit, .btn-complet {
-  color: black !important;
-  border-color: #85ad94 !important;
-  background-color: #85ad94 !important;
-  border-radius: 3.5rem !important;
-  font-size: 1.6rem !important;
-  padding: 0.375rem 3.75rem !important;
-  width: 100% !important;
-}
-// PUT ALL THIS HOVER UNDER A VARIABLE 
-
-.btn-post:hover {
-  color: #fff !important;
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.btn-taken:hover {
-  color: #fff !important;
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.btn-intransit:hover {
-  color: #fff !important;
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
- .btn-complet:hover {
-  color: #fff !important;
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.btn-cancel {
-  color: #fff !important;
-  background-color: #ff0000 !important;
-  border-color: #ff0000 !important;
-  font-size: 1rem !important;
-  padding: 0.375rem 0.75rem !important;
-  border-radius: 3.5rem !important;
-}
-
-.btn-cancel:hover{ 
-  color: #ff0000 !important;
-  background-color:  #fff !important;
-  border-color:  #ff0000  !important;
-}
-
-.messageTransComp {
-  color: #e19500 !important;
-}
-
-// Sender - Ordering scree up to here
-
-// Order - Show from here 
-.bolds {
-  font-weight: bold;
-}
-
-.order-measurements {
-    margin-left: 20% !important;
-    margin-right: 20% !important;
-}
-
-.show-times{
-  margin-left: 20% !important;
-  margin-right: 20% !important;
-}
-
-/* #MapRow {
-    height: 600px !important;
-    width: 1975px !important;
+/*.map-no-border {
+  border:0 !important;
 }*/
 
-#map{
-   //height: 600px !important;
-   // width: 1975px !important;
-    margin-left: 0 !important;
-}
-
-.map-no-border{
-  border:0 !important;
+.card-left, .card-right {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 
-/*--- Order-NEW or Show-ON DRAFT --*/
-
-.btn-back {
-    color: WHITE!important;
-    background-color: #000000 !important;
-    border-color: #000000 !important;
-    border-radius: 3.5rem !important;
-    margin-right: 90px !important;
+.description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    max-width: 25% !important;
+    text-align: right !important;
 }
 
-.btn-back:hover{
-  color: black !important;
-  background-color: white !important;
-  border-color: black !important;
+#order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input {
+  max-width: 30% !important;
+  border-color: #ffffff24 !important;
 }
 
-.btn-edit {
-    color: black !important;
-    background-color: #e5ef04 !important;
-    border-color: #e5ef04 !important;
-    border-radius: 3.5rem !important;
-}
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
 
-.btn-edit:hover{
-  color: #fff !important;
-  background-color: #0069d9 !important;
-  border-color: #0062cc !important;
-}
+@media (max-width: 1200px) and (orientation : portrait) {
 
+  .description, .weight, .length, .width, .height, .cost-label  {
+      max-width: 25% !important;
+  }
 
+  .space {
+      margin-right: 140px !important;
+  }
+
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input  {
+      max-width: 30% !important;
+  }
+} 
+
+/* ========================================================= */
+
+@media (max-width: 992px) { 
+
+  .time select {
+        font-size: 1rem !important;
+  }
   
+  .description, .weight, .length, .width, .height, .cost-label {
+      max-width: 25% !important;
+  }
 
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input {
+    max-width: 30% !important;
+     
+  }
 
+  .fontsize, .recipient-name-input, .telephone-input, .email-input, .cost-input {
+    font-size: 1rem !important;
+  }
+
+  .headingspace {
+    margin-bottom: 2.5rem !important;
+    font-size: 2rem !important;
+  }
+  .sender {
+    font-size: 1.5rem !important;
+  }
+
+  .h3Space, .recipient-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+   .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    font-size: 1.3rem !important;
+  }
+
+  .recipient-name-label, .telephone-label, .email-label, .cost-label {
+      max-width: 15% !important;
+  }  
 }
 
+/* ========================================================= */
 
+@media (max-width: 862px)  and (min-width: 768px) and (orientation : portrait) {
 
+  .time select {
+        font-size: 0.7rem !important;
+  }
 
+  .space {
+      margin-right: 170px !important;
+  }
+}
 
+/* ========================================================= */
+
+@media (max-width: 767px) and (orientation : portrait) {
+
+  .pickup-label, .delivery-label {
+    font-size: 1.4rem !important;
+    max-width: 100% ;
+  }
+
+  .time select {
+    font-size: 1.2rem !important;
+  }
+
+  .space {
+      margin-right: 130px !important;
+  }
+
+  .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    max-width: 100% !important;
+  }
+
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input  {
+    max-width: 50% !important;
+    border-color: #ffffff24;
+    text-align: center;
+  }
+
+  .fontsize, .recipient-name-input, .telephone-input, .email-input {
+  font-size: 1.1rem !important;
+  max-width: 40% !important;
+  text-align: center;
+  }
+
+  .headingspace {
+    margin-bottom: 2.5rem !important;
+    font-size: 1.5rem !important;
+  }
+  .sender {
+    font-size: 1.3rem !important;
+  }
+
+  .h3Space, .recipient-title {
+    font-size: 1.4rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+}
 
 
 /* ========================================================= */
+
+@media (max-width: 627px) and (orientation : portrait) {
+
+ .fontsize, .recipient-name-input, .telephone-input, .email-input {
+   max-width: 60% !important;
+  }
+}
+
+/* ========================================================= */
+
 @media (max-width: 576px) and (orientation : portrait) {
 
-
-
-  .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet {
-    font-size: 1.3rem !important;   
+  .pickup-label, .delivery-label {
+    font-size: 1.2rem !important;
+    max-width: 100%;
   }
 
-  .btn-draft {
-    padding: 0.375rem 1.5rem !important;
-  }
-  .btn-post {
-    padding: 0.375rem 2.95rem !important;
+  .time select {
+    font-size: 1rem !important;
   }
 
+  .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    font-size: 1.3rem !important;
+  }
 
+  .h3Space, .recipient-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 2.5rem !important;
+  }
 }
 
 /* ========================================================= */
 
-/* --- UP TO HERE MEDIA QUERY FOR 576px --- */
+@media (max-width: 460px)  and (min-width: 440px) and (orientation : portrait) {
+
+  .time select {
+    font-size: 0.8rem !important;
+  }
+}                          
 
 /* ========================================================= */
 
 
 @media (max-width: 440px) and (orientation : portrait) {
-      .btn-addres-search {
-      width: 90% !important;
+  
+  .card-left, .card-right {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 
-  .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet {
-    font-size: 1.1rem !important;  
+
+  .time select {
+    font-size: 0.7rem !important;
   }
-  .btn-draft {
-    padding: 0.375rem 1.5rem !important;
+
+  .space {
+      margin-right: 80px !important;
   }
-  .btn-post {
-    padding: 0.375rem 2.95rem !important;
+
+  .sender {
+    font-size: 1.2rem !important;
+  }
+
+  .headingspace {
+    font-size: 1.5rem !important;
+  }
+
+  .h3Space, .recipient-title {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 400px) and (orientation : portrait) {
+
+  .time select {
+    font-size: 0.6rem !important;
+  }
+
+  .space {
+      margin-right: 20px !important;
+  }
+
+  .sender {
+    font-size: 1.2rem !important;
   }
 }
 
 
+/* =============================================================== */
+/* ===================MEDIA QUERIES - LANDSCAPE ================== */
+/* =============================================================== */
 
-/*
-Extra small (xs) devices (portrait phones, less than 576px)
-No media query since this is the default in Bootstrap
+@media (min-width: 1024px) and (orientation : landscape) {
 
-Small (sm) devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+  .space {
+      margin-right: 120px !important;
+  }
+}
 
-Medium (md) devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
+@media (max-width: 1024px) and (orientation : landscape) {
 
-Large (lg) devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-Extra (xl) large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... }
-*/
-
+  .space {
+      margin-right: 90px !important;
+  }
+}

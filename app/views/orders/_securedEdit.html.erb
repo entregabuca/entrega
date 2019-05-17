@@ -11,17 +11,8 @@
 If Sender needs to cancel an oreder once it has been posted it needs to contact the company that tooks the order directly -->
   <%= render 'form', order: @order %> 
 
-
-
-
-
 <% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>
-  <%= render 'form', order: @order %> 
-
-
-
-
-  
+  <%= render 'form', order: @order %>   
 
 <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %>
   <%= render 'form', order: @order %>  
