@@ -1,0 +1,273 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* ========================================================= */
+/* ================  VIEW ORDER FROM COMPANY ============== */
+/* ========================================================= */
+
+/*
+.transporterCompanyAdd-card {
+    font-size: 1.5rem;
+}*/
+
+/*.order-measurements {
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+}*/
+
+/* #MapRow {
+    height: 600px !important;
+    width: 1975px !important;
+}*/
+
+/* .map-no-border {
+  border:0 !important;
+}*/
+
+/* =============  Up is all companened =============== */
+
+
+
+.pick-label, .deliver-label {
+    text-align: right !important;
+}
+.pick-time, .deliver-time {
+    text-align: left !important;
+}
+
+.bolds {
+  font-weight: bold;
+}
+
+.show-times {
+  margin-left: 20% !important;
+  margin-right: 20% !important;
+}
+
+.maps-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.leaflet-container {
+    height: 400px;
+    width: 90% !important;
+}
+
+.pickup-time, .delivery-time {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings  {
+  text-align: right !important; 
+}
+
+.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values {
+  text-align: left !important; 
+}
+
+
+.messageTransComp {
+  color: #e19500 !important;
+}
+
+.recipient-title {
+  font-size: 1.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+.card-show-map { 
+  padding-left: 10% !important; 
+}
+
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+@media (max-width: 1200px) and (orientation : portrait) {
+ 
+  .recipient-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .card-header {
+   font-size: 1.5rem !important;
+  }
+} 
+
+/* ========================================================= */
+
+@media (max-width: 992px) { 
+
+  .pick-label, .deliver-label {
+    text-align: right !important;
+  }
+
+  .pick-time, .deliver-time {
+    text-align: left !important;
+  }  
+}
+
+/* ========================================================= */
+
+@media (max-width: 855px) and (orientation : portrait) {
+
+  .pick-label, .deliver-label {
+    text-align: center !important;
+  }
+
+  .pick-time, .deliver-time {
+    text-align: center !important;
+  }
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 767px) and (orientation : portrait) {
+
+  .card-header {
+   font-size: 1.5rem !important;
+  }
+
+  .card-show-map {
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    padding-left: 13% !important;
+    max-width: 100%;
+  }
+
+  .order-headings, .sender-headings, .company-headings, .transporter-headings, .cost-heading  {
+    max-width: 47% !important;
+    padding-right:0 !important;
+    text-align: right !important; 
+  }
+
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values,  .cost-values {
+    max-width: 53% !important;
+    padding-right: 0 !important;
+    text-align: left !important; 
+  }
+
+  .measurements-headings {
+    padding-right:0 !important;
+    padding-left: 0 !important;
+    max-width: 47% !important; 
+  }
+
+  .measurements-values, {
+    max-width: 52% !important; 
+    
+  }
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 576px) and (orientation : portrait) {
+
+
+}                         
+
+/* ========================================================= */
+
+
+@media (max-width: 440px) and (orientation : portrait) {
+
+  /*.btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet {
+    font-size: 1.1rem !important;  
+  }*/
+
+  .btn-draft {
+    padding: 0.375rem 1.5rem !important;
+  }
+  .btn-post {
+    padding: 0.375rem 2.95rem !important;
+  }
+
+  /*.transporter-headings {
+    font-size: 
+  } */
+
+  #map {
+      margin-left: 0 !important;
+  }
+
+  .messageTransComp {
+    color: #e19500 !important;
+  }
+
+  /*.transporterCompanyAdd-card {
+    font-size: 1rem !important;
+  }*/
+
+  .sendLocation, .recipientLocation{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .card-header {
+   font-size: 1.45rem !important;
+  }
+
+  .showAddress, .pick-time, .deliver-time {
+  font-size: 1rem !important;
+  }
+
+  .pickdeli-times {
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+  }
+
+  .pick-time, .deliver-time {
+    font-size: 1rem !important;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    padding-right: 0% !important;
+    padding-left: 0% !important;    
+  } 
+
+  .leaflet-container {
+    height: 400px;
+    width: 100% !important;
+  }
+
+  .card-show-map {
+    padding-left: 9% !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 420px) and (orientation : portrait) {
+
+  .showAddress {
+    font-size: 0.9rem !important;
+  }
+
+  .company-values, .transporter-values {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* =============================================================== */
+/* ========MEDIA QUERIES - LANDSCAPE NOT CHECKED YET FOR SHOW ==== */
+/* =============================================================== */
+
+@media (max-width: 770px) and (orientation : landscape) {
+  .pick-label, .deliver-label {
+    text-align: center !important;
+  }
+
+  .pick-time, .deliver-time {
+    text-align: center !important;
+  }
+
+}

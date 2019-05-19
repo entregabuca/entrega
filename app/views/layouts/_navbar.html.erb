@@ -1,34 +1,65 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top noflow-x">
+  <div class="container-fluid"> 
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders <% end %>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ulitems">
 
-    <!-- SENDER -->
-      <% if @user.class.name == "Sender" && @user.id.present? %> 
+        <li class="nav-item active ">
+          <a class="nav-link" href="#">Home <span class="sr-only my-4.5">(current)</span></a>
+        </li>
         <li class="nav-item">
-           <%= link_to 'New Order', new_sender_order_path(@user), class: 'nav-link'%>    
-          </li>
-          <li class="nav-item">
-            <%= link_to 'My Orders', sender_orders_path(@user), class: 'nav-link'%> 
-          </li>
-          <li class="nav-item">
-           <%= link_to 'My Posted Orders', posted_sender_orders_path(@user), class: 'nav-link'%>
-          </li>
+          <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders <% end %>
+        </li>
 
+      <!-- SENDER -->
+        <% if @user.class.name == "Sender" && @user.id.present? %> 
+          <li class="nav-item">
+             <%= link_to 'New Order', new_sender_order_path(@user), class: 'nav-link'%>    
+            </li>
+            <li class="nav-item">
+              <%= link_to 'My Orders', sender_orders_path(@user), class: 'nav-link'%> 
+            </li>
+            <li class="nav-item">
+             <%= link_to 'My Posted Orders', posted_sender_orders_path(@user), class: 'nav-link'%>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= @user.name %>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'My Profile', url_for(@user), class: 'nav-link' %>
+                <%= link_to 'Edit', edit_sender_path(@user), class: 'nav-link' %>
+                <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
+              </div>
+            </li>      
+        <% end %>
+      <!-- Finish SENDER -->
+
+      <!-- COMPANY -->
+        <% if @user.class.name == "Company"  && @user.id.present? %>  
+          <li class="nav-item">
+            <%= link_to 'Available Orders', posts_company_orders_path(@user), class: 'nav-link'  %> 
+          </li>
+          <li class="nav-item">
+            <%= link_to 'My Orders', company_orders_path(@user), class: 'nav-link'  %> 
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Transporters', company_transporters_path(@user), class: 'nav-link'  %>
+          </li> 
+          <li class="nav-item">
+            <%= link_to 'New Transporter', new_company_transporter_path(@user), class: 'nav-link'  %>
+          </li> 
+          <!-- Company dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= @user.name %>
@@ -36,77 +67,47 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to 'My Profile', url_for(@user), class: 'nav-link' %>
-              <%= link_to 'Edit', edit_sender_path(@user), class: 'nav-link' %>
+              <%= link_to 'Edit', edit_company_path(@user), class: 'nav-link' %>
               <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
             </div>
-          </li>      
-      <% end %>
-    <!-- Finish SENDER -->
+          </li>
 
-    <!-- COMPANY -->
-      <% if @user.class.name == "Company"  && @user.id.present? %>  
-        <li class="nav-item">
-          <%= link_to 'Available Orders', posts_company_orders_path(@user), class: 'nav-link'  %> 
-        </li>
-        <li class="nav-item">
-          <%= link_to 'My Orders', company_orders_path(@user), class: 'nav-link'  %> 
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Transporters', company_transporters_path(@user), class: 'nav-link'  %>
-        </li> 
-        <li class="nav-item">
-          <%= link_to 'New Transporter', new_company_transporter_path(@user), class: 'nav-link'  %>
-        </li> 
-        <!-- Company dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= @user.name %>
-          </a>
+          <!-- Viewing the Transporter from the company -->
+          <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Transporter <%= @transporter.name %>
+              </a>
 
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'My Profile', url_for(@user), class: 'nav-link' %>
-            <%= link_to 'Edit', edit_company_path(@user), class: 'nav-link' %>
-            <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
-          </div>
-        </li>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to 'Orders', orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to 'Profile', company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+              </div>
+            </li>        
+          <% end %>
+          <!-- Finish Viewing the transporter from the  Company -->
+        <% end %>
+      <!-- Finish COMPANY -->
 
-        <!-- Viewing the Transporter from the company -->
-        <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
+      <!-- TRANSPORTER -->
+        <% if @user.class.name == "Transporter"  %> 
+          <li class="nav-item">
+              <%= link_to 'My Orders', transporter_orders_path(@user), class: 'nav-link'  %> 
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Transporter <%= @transporter.name %>
+              <%= @user.name %>
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'Orders', orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
-              <%= link_to 'Profile', company_transporter_path(@user, @transporter), class: 'nav-link' %>
-              <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+              <%= link_to 'My Profile', url_for(@user), class: 'nav-link' %>
+              <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
             </div>
-          </li>        
+          </li>
         <% end %>
-        <!-- Finish Viewing the transporter from the  Company -->
-      <% end %>
-    <!-- Finish COMPANY -->
-
-    <!-- TRANSPORTER -->
-      <% if @user.class.name == "Transporter"  %> 
-        <li class="nav-item">
-            <%= link_to 'My Orders', transporter_orders_path(@user), class: 'nav-link'  %> 
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= @user.name %>
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'My Profile', url_for(@user), class: 'nav-link' %>
-            <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
-          </div>
-        </li>
-      <% end %>
-        </ul>
+          </ul>
+    </div>
   </div>
 </nav>
-
-
 

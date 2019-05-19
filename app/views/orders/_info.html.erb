@@ -1,72 +1,297 @@
-<tr>
-  <th>Description</th>
-  <td><%= order.description %></td>
-</tr>
+<!-- ORDER REF, STATUS & DESCRIPTION -->
+<div class="card mb-2  ">
+  <div class="card-body pl-1"> 
+    <div class="col-md-12 mb-2 mt-2">
+      <div class="row">
+        <div class="d-inline col-sm-6 order-headings bolds ">
+           <%= "Order Reference: "%>
+        </div>
+        <div class="d-inline col-sm-6  mb-3 order-values">
+         <%= @order.id %>
+        </div>
+      </div>    
 
-<tr>
-  <th>Weight</th>
-  <td><%= order.weight %></td>
-</tr>
+      <div class="row">
+        <div class="d-inline col-sm-6 order-headings bolds "><%= "Status: "%>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 order-values"><%= @order.status.present? ? @order.status.capitalize : "-"  %>
+        </div>
+      </div>
 
-<tr>
-  <th>Length</th>
-  <td><%= order.length %></td>
-</tr>
-
-<tr>
-  <th>Width</th>
-  <td><%= order.width %></td>
-</tr>
-
-<tr>
-  <th>Heigth</th>
-  <td><%= order.heigth %></td>
-</tr>
-
-<tr>
-
-  <th>Pickup Address</th>
-  <td><%#= order.locations[0].address %></td>
-</tr>
-
-<tr>
-  <th>Pickup Coordinates</th>
-  <td><%#= coordinates(order,0) %></td>
-
-<tr>
-  <th>Pickup Time</th>
-  <td><%= order.pickup_time %></td>
-</tr>
-
-
-
-<tr>
-  <th>Delivery Address</th>
-  <td><%#= order.locations[1].address %></td>
-</tr>
-
-<tr>
-  <th>Delivery Coordinates</th>
-  <td><%#= coordinates(order,0)%></td>  
-</tr>
-
-
-<tr>
-  <th>Delivery Time</th>
-  <td><%= order.delivery_time %></td>
-</tr>
-
-
-<tr>
-  <th>Cost</th>
-  <td><%= number_with_delimiter(order.cost.to_i) %></td>
-</tr>
+      <div class="row"> 
+        <div class="d-inline col-sm-6 order-headings bolds ">
+          <%= "Description: "%>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 order-values"><%= @order.description %>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>  <!-- SCSS TICKED -->
 
 
 
 
-<!-- COMMENTED TO TEST THE RADIUS UPDATES EVERY AFTER 5 SECONDS  -->
-<tr>
-  <th>Radius</th>
-  <td><%= number_with_delimiter(order.radius) %></td>
-</tr>  
+<!-- COMPANY & TRANSPORTER  -->  
+<!-- This will be shown only when Transporter & Company need or have been added -->
+<% if @user.class.name == "Company"  %> 
+  <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
+    <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+      <div class="card mb-3">
+        <div class="card-body text-center transporterCompanyAdd-card"> 
+          <div class="form-group col-md-12">      
+            <div class="d-inline col-sm-6 company-headings bolds">
+               <%= "Company: "%>
+            </div>
+            <div class="d-inline col-sm-6 mb-3 company-values">
+             <%= @user.name.upcase  %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-12"> 
+            <div class="d-inline col-sm-6 transporter-headings bolds">
+               <%= "Transporter: "%>
+            </div> 
+            <% if @user.class.name == "Company" && ['completed','cancelled'].include?(@order.status) %>
+              <div class="d-inline col-sm-6 mb-3 transporter-values">
+               <%= @order.transporter.name %>
+              </div>
+            <% elsif @user.class.name == "Company"  && @order.status == ('posted') %>
+             <div class="d-inline col-sm-6 mb-3 transporter-values">
+              <%= form.collection_select :transporter_id, @user.transporters, :id, :name, include_blank: false, :class => "d-inline col-sm-6 mb-3 transporter-values" %>
+            </div>
+            <% else %>
+              <div class="d-inline col-sm-6 mb-3 transporter-values">
+                <%= @order.transporter.name %>
+              </div> 
+            <% end %>           
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-lg-10 editor">    
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'taken' %>
+          <%= form.submit  'Take Order', :class => 'col-sm-2 btn btn-primary btn-taken mb-3', name: 'take' %>
+        <% end %>
+      </div> 
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
+  <% if @order.transporter.present? %>
+    <%= render 'orders/compa-transporter', order: @order %>
+  <% else %> 
+    <div class="card mb-3 p-3 messageTransComp text-center"> 
+      <%= "No Company and Transporter assigned yet!" %>
+    </div>  <!-- SCSS TICKED --> 
+  <% end %>
+<% end %>
+
+<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'edit')%> 
+  <% if @order.transporter.present? %>
+    <%= render 'orders/compa-transporter', order: @order %>
+  <% end %>
+<% end %>
+
+<!-- SENDER & RECIPIENT DETAILS -->
+<div class="card mb-2  ">
+  <div class="card-body pl-1"> 
+    <div class="col-md-12 mb-2 mt-2">
+      <div class="row">
+        <div class="d-inline col-sm-6 sender-headings bolds">
+           <%= "Sender: "%>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 sender-values">
+         <%= @order.sender.name %>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="d-inline col-sm-6 sender-headings bolds ">
+           <%= "Telephone: "%>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 sender-values">
+         <%= @order.sender.telephone %>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>   <!-- SCSS TICKED -->
+
+<% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
+  <% if @order.transporter.present? %>
+    <%= render 'orders/compa-transporter', order: @order %>
+  <% end %>
+
+  <% if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
+  <div class="card mb-2  ">
+    <div class="card-body pl-1"> 
+      <div class="col-md-12 mb-2 mt-2">
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-headings bolds"><%= "Recipient: "%>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 recipient-values">
+            <%= @order.recipients.last.name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-headings bolds ">
+            <%= "Telephone: "%>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-values">
+            <%= @order.recipients.first.telephone %>
+          </div>
+        </div>                
+      </div>
+    </div>   
+  </div>
+  <% end %>
+<% end %>
+  
+<!-- MAPS -->
+ <div class="maps-row">
+    <div class="col-md-6 mb-3 sendLocation">
+      <div class="card left text-center">
+        <div class="card-body-left">
+          <h3 class="card-header">Sending Location</h3>
+           <div class="bolds ">
+            <%= "Address:"%>
+          </div>          
+          <div class="mb-3 showAddress"><%= @order.locations[0].address %>
+          </div>                  
+            <br>
+            <div class="row mb-3 text-center pickdeli-times mb-4">
+              <div class="d-inline col-md-5 bolds pick-label"><%= "Pickup Time: "%>
+              </div>
+              <div class="d-inline col-md-6 pick-time mb-4"><%= @order.pickup_time.strftime('%d %b %Y  %H:%M') %> 
+              </div>
+            </div>
+          </div> 
+      </div>
+    </div>
+
+    <% if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
+      <div class="col-md-6 mb-3 recipientLocation">
+          <div class="card right text-center"> <!-- mdb-color lighten-2  -->
+            <div class="card-body-right ">
+              <h3 class="card-header">Reciving Location</h3> 
+              <div class="bolds ">
+                <%= "Address:"%>
+              </div>           
+              <div class="mb-3 showAddress"><%= @order.locations[1].address %>
+              </div>  
+              <br>
+              <div class="row mb-3 text-center pickdeli-times mb-4">
+                <div class="d-inline col-md-6 bolds deliver-label"><%= "Delivery Time: "%>
+                </div>
+                <div class="d-inline col-md-6 deliver-time mb-4"><%= @order.delivery_time.strftime('%d %b %Y  %H:%M') %>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+
+<div class="map-row">  
+<div class="col-md-12 card-show-map mb-3 ">  
+   <div  id="MapRow2">
+      <%= plane_icon = {:name => 'plane',
+        :icon_url => asset_path('plane.png'),
+        :icon_size => [20, 20],
+        :icon_anchor => [20, 40],
+        :popup_anchor => [0, -40]}
+
+        target_icon = {:name => 'target',
+        :icon_url => asset_path('target.png'),
+        :icon_size => [20, 20],
+        :icon_anchor => [20, 40],
+        :popup_anchor => [0, -40]}
+      
+         markers = [{:latlng => coordinates(@order, 0),
+           :popup => "Sending Location <br><b>#{address(@order,0)}</b>",
+          :icon => plane_icon}]
+
+         markers << { :latlng => coordinates(@order, 1),
+           :popup => "Reciving Location <br><b>#{address(@order,1)}</b>",
+          :icon => target_icon
+         }
+
+
+      latlng = coordinates(@order, 0)
+      map(
+          :center => {
+            :latlng => latlng,
+            :zoom => 13
+          },
+          :markers => markers                      
+      )
+      %>
+     
+  </div>
+ </div>
+</div>
+
+
+<!-- ORDER MEASUREMENTS -->
+<div class="card mb-2  ">
+  <div class="card-body"> 
+    <div class="col-md-12 mb-2 mt-2">
+    <h3 class="recipient-title text-center">Measurement details</h3>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%="Weight: "%>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.weight%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Length: " %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%=  @order.length %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Width: " %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.width %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Heigth: " %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.heigth %>
+      </div>
+    </div>
+  </div>        
+</div>
+ </div>  
+
+<!-- COST -->
+
+<div class="row mb-3">
+  <div class="col-md-12 mb-3 ">     
+    <div class="card mb-3">        
+      <div class="card-block mt-3 ">
+        <div class="row">
+          <div class="d-inline col-sm-6 cost-heading bolds"><%="Cost: "%>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 cost-values">
+            <%= @order.cost  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,6 +1,3 @@
-<br>
-<br>
-
 <% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) || \
   @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) || \
   @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
@@ -15,19 +12,9 @@
         <% end %>
         </ul>
       </div>
-    <% end %>
+    <% end %>  
 
-    <table class="table table-striped">
-      <thead>
-      </thead>
-      <tbody>
-       <%= render 'editOrderStatusLogic', form: form %> 
-     </tbody>
-    </table>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-  
+      <%= render 'editOrderStatusLogic', form: form %>
+           
+  <% end %>  
 <% end %>

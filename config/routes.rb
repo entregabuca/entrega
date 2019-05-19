@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   get 'locations/geocode'
   # THIS IS THE LATEST WORKING PROJECT 
 
@@ -12,22 +13,24 @@ Rails.application.routes.draw do
       end      
     end
     resources :orders do
-      collection do
-        get :posts
-        get :taken
-      end
-      member do
-        get :take
-      end
+      resources :recipients
+        collection do
+          get :posts
+          get :taken
+        end
+        member do
+          get :take
+        end      
     end
   end
 
   resources :senders do
     resources :orders do
+      resources :recipients 
       collection do
         get :posts
         get :posted
-      end
+      end      
     end
   end 
 

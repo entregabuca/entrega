@@ -1,22 +1,17 @@
 <% id = local_assigns[:id] %>
 <%= form.fields_for :locations, @order.locations[id].present? ? @order.locations[id] : Location.new  do |f| %> 
-  <tr>
-    <th><%= f.label :address %></th>
-    <td><%= f.text_field :address, id: "address#{id}" %>
-      <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true%>
-    </td>
-  </tr>
+  
+  <div class="form-group">
+    <%= f.text_field :address, placeholder: "Enter Address", id: "address#{id}", :class => "col-sm-12 address" %>
+    <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-addres-search mb-5" %>
+  </div> 
 
-  <tr id="MapRow">
-    <th>Map</th>
-    <td>    
-      <div id="map<%=id%>">
-      </div>
-    </td>
+  <div id="MapRow">
+    <div class="mx-auto" id="map<%=id%>">
+    </div>   
     <%= f.hidden_field :latitude, id: "latitude#{id}" %>
     <%= f.hidden_field :longitude, id: "longitude#{id}" %>
-
-  </tr>
+  </div>
 
   <script>
     //<![CDATA[
