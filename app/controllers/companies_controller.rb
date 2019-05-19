@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
-  #before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  include Accessible
+  before_action :authenticate_company!, except: [:index]
+  #before_action :set_company, only: [:show, :edit, :update, :destroy]
+
   
   # GET /companies
   # GET /companies.json
@@ -79,8 +81,14 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_company
-      @user = Company.find(params[:id])
+      if current_company.id == params[:id].to_i
+        @user = current_company
+      else
+        sign_out(current_company)
+        redirect_to new_company_session_path
+      end
     end
+
     def set_user
       resource, id = request.path.split('/')[1,2]
       @user = resource.singularize.classify.constantize.find(id)

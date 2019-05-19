@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
 
+
+  get 'access/home'
   
+  devise_for :senders
+  devise_for :companies
+
+  devise_for :transporters
+
   get 'locations/geocode'
   # THIS IS THE LATEST WORKING PROJECT 
 
-  root 'companies#index'
+  root 'access#home'
 
   resources :companies do
     resources :transporters do 

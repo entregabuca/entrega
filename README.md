@@ -64,3 +64,21 @@ git remote add origin https://github.com/entregabuca/entrega.git
 git add .
 git commit -m "Inicial"
 git push -u origin master
+
+Test Pull Request:
+git fetch upstream pull/123/head:pr
+
+---
+
+gem 'devise'
+
+rails generate devise:install
+rails generate devise Company
+rails generate devise Sender
+rails generate devise Transporter
+
+rails db:migrate
+
+rails g devise:views
+
+rails g controller access home

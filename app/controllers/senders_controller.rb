@@ -1,5 +1,8 @@
 class SendersController < ApplicationController
+  include Accessible
+  before_action :authenticate_sender!, except: [:index]
   before_action :set_sender, only: [:show, :edit, :update, :destroy]
+
 
   # GET /senders
   # GET /senders.json
