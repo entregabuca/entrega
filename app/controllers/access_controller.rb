@@ -1,5 +1,5 @@
 class AccessController < ApplicationController
-	include Accessible
+
   def home
   	if sender_signed_in?
   		redirect_to(current_sender)

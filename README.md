@@ -76,6 +76,7 @@ rails generate devise:install
 rails generate devise Company
 rails generate devise Sender
 rails generate devise Transporter
+rails generate devise Admin
 
 rails db:migrate
 

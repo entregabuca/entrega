@@ -39,7 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-gem 'font-awesome-sass', '~> 4.7.0'
+gem 'font-awesome-sass', '~> 5.8.1'
 gem 'faker'
 gem 'leaflet-rails'
 gem 'geocoder'
