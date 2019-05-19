@@ -1,0 +1,329 @@
+ 
+
+[role="main"] {
+    padding-top: 0 !important;
+}
+
+.btn-addres-search {
+  width: 30% ;
+  border-radius: 3.5rem !important;
+}
+
+.buttons {
+  margin-left: 30% !important;
+}
+
+.btn-draft {
+  color: black !important;
+  border-color: #78a9ba !important;
+  background-color: #78a9ba !important;
+  border-radius: 3.5rem !important;
+  margin-bottom: 5% !important;
+  font-size: 1.6rem;
+  padding: 0.375rem 1.75rem !important;
+  width: 100% !important;
+}
+
+.btn-draft:hover {
+  color: #fff !important;
+  background-color: #0069d9 !important;
+  border-color: #0062cc !important;
+}
+
+.space {
+    margin-right: 180px !important;
+}
+
+.btn-back {
+  color: WHITE!important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  border-radius: 3.5rem !important;
+  margin-right: 180px !important;
+  padding: 0.45rem 1.4rem 0.45rem 1.4rem;
+}
+
+.btn-back:hover {
+  color: black !important;
+  background-color: white !important;
+  border-color: black !important;
+}
+
+.btn-edit {
+  color: black !important;
+  background-color: #e5ef04 !important;
+  border-radius: 3.5rem !important;
+  width: 155.75px !important;
+}
+
+.btn-edit:hover {
+  color: #fff !important;
+  background-color: #0069d9 !important;
+  border-color: #0062cc !important;
+}
+
+.btn-post, .btn-taken, .btn-intransit, .btn-complet {
+  color: black !important;
+  border-color: #85ad94 !important;
+  background-color: #85ad94 !important;
+  border-radius: 3.5rem !important;
+  font-size: 1.6rem;
+  padding: 0.375rem 3.75rem !important;
+  width: 100% !important;
+}
+
+.btn-taken {
+  max-width: 210px !important;
+  max-height: 46px !important;
+  margin-left: 48%;
+  font-size: 1.4rem !important;
+}
+
+.btn-post:hover, .btn-taken:hover, .btn-intransit:hover, .btn-complet:hover {
+  color: #fff !important;
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+}
+
+.btn-cancel {
+  color: #fff !important;
+  background-color: #ff0000 !important;
+  border-color: #ff0000 !important;
+  font-size: 1rem !important;
+  padding: 0.375rem 0.75rem !important;
+  border-radius: 3.5rem !important;
+}
+
+.btn-cancel:hover { 
+  color: #ff0000 !important;
+  background-color:  #fff !important;
+  border-color:  #ff0000  !important;
+}
+
+.btn-intransit, .btn-complet {
+  color: black !important;
+  border-color: #85ad94 !important;
+  background-color: #85ad94 !important;
+  border-radius: 3.5rem !important;
+
+    width: 155.75px !important;
+    height: 40.4px !important;
+    font-size :1rem !important;   
+    padding: 0.375rem 2.95rem !important;
+    font-weight: 650 !important;
+}
+
+.btn-cancel, .edit  {
+    border-color: black !important;
+    width: 155.75px !important;
+    height: 40.4px !important;
+    font-size :1rem !important;   
+    padding: 0 !important;
+    font-weight: 650 !important;
+}
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+
+@media (max-width: 1200px) and (orientation : portrait) {
+
+ .buttons {
+    margin-left: 30% !important;
+  }
+
+  .btn-back {  
+    margin-right: 160px !important;
+  }
+
+  .btn-intransit, .btn-complet {
+    padding: 0.375rem 2.95rem !important;
+    font-weight: 650 !important;
+  }
+
+} 
+
+/* ========================================================= */
+
+@media (max-width: 992px) { 
+
+  .btn-addres-search {
+    width: 50% !important;
+    display: 0 !important;
+  } 
+
+  .buttons {
+      margin-left: 27% !important;
+  }
+
+  .btn-back {  
+    margin-right: 110px !important;
+  }
+
+  .btn-intransit, .btn-complet {
+    padding: 0.375rem 2.95rem !important;
+    font-weight: 650 !important;
+  }  
+}
+
+/* ========================================================= */
+
+@media (max-width: 870px)  and (min-width: 768px) and (orientation : portrait) {
+
+  .space {
+      margin-right: 170px !important;
+  }
+
+  .buttons {
+      margin-left: 20% !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 767px) and (orientation : portrait) {
+  
+  .btn-taken {
+    margin-left: 35%;
+  }
+
+  .btn-addres-search {
+    width: 30% !important;
+  } 
+  .space {
+      margin-right: 130px !important;
+  }
+
+  .buttons {
+      margin-left: 15% !important;
+  }
+
+ .btn-back {  
+    margin-right: 80px !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 650px) and (orientation : portrait) {
+
+  .buttons {
+      margin-left: 15% !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 576px) and (orientation : portrait) {
+
+  .btn-taken {
+    margin-left: 25%;
+  }
+
+  .btn-addres-search {
+    width: 42% !important;
+  } 
+
+  .buttons {
+    margin-left: 10% !important;
+  }
+
+  .btn-back {  
+    margin-right: 70px !important;
+  }
+
+  .btn-post {
+    padding: 0.375rem 2.95rem !important;
+  }
+
+  .btn-draft {
+    padding: 0.375rem 1.5rem !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 500px) and (orientation : portrait) {
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 440px) and (orientation : portrait) {
+
+  [role="main"] {
+    padding-top: 0%;
+  }
+
+  .btn-taken {
+    max-width: 168px !important;
+    max-height: 41px !important;
+    margin-left: 25%;
+  }
+
+  .btn-addres-search {
+    width: 62% !important;
+  }
+
+  .btn-back {
+    //padding: 0.45rem 0.7rem 0.45rem 0.7rem;
+    margin-right: 45px !important;
+  }  
+  .space {
+      margin-right: 80px !important;
+  }
+
+  .btn-draft {
+    padding: 0.375rem 1.5rem !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 410px) and (orientation : portrait) {
+
+  .btn-edit, .btn-intransit, .btn-complet {
+    width: 155.35px !important;
+    height: 40.4px !important;
+    //padding: 0.375rem 0.75rem !important;
+  }  
+
+  .space {
+      margin-right: 40px !important;
+  }
+
+  .btn-post {
+    padding: 0.375rem 2.95rem !important;
+  }
+}
+
+/* ========================================================= */
+
+@media (max-width: 400px) and (orientation : portrait) {
+  .buttons {
+    margin-left: 5% !important;
+  }
+
+  .btn-back {
+    margin-right: 13px !important;
+  }
+
+  .btn-edit, .btn-intransit, .btn-complet {
+    width: 135.35px !important;
+    height: 38px !important;
+    //padding: 0.375rem 0.75rem !important;
+  }
+}
+
+/* =============================================================== */
+/* ===================MEDIA QUERIES - LANDSCAPE ================== */
+/* =============================================================== */
+
+@media (min-width: 1024px) and (orientation : landscape) {
+  
+  .space {
+      margin-right: 120px !important;
+  }
+}
+

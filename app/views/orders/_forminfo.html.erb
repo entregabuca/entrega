@@ -1,70 +1,126 @@
-<tr>
-  <th><%= form.label :description %></th>
-  <td><%= form.text_area :description %></td>
-</tr>
+<!-- SENDER -->
+<div class="form-group sender mb-4">  
+  <%= form.label :sender_id, 'Sender: ' %>
+  <b><%= @order.sender.name %></b>
+</div>
 
-<tr>
-  <th><%= form.label :weight %></th>
-  <td><%= form.text_field :weight %></td> <!--form.number_field :weight , value: number_with_precision(form.object.weight, precision: 2)   -->
-</tr>
+<!-- DESCRIPTION & MEASUREMENTS -->
+<div class="card text-center ">
+  <div class="card-body top-card"> 
+    <h3 class="h3Space">Order Measurements</h3> 
 
-<tr>
-  <th><%= form.label :length %></th>
-  <td><%= form.text_field :length %></td>
-</tr>
+    <div class="form-group col-md-12">     
+      <%= form.label :description, :class => "col-sm-5 description"%>
+      <%= form.text_field :description, placeholder: "Add a short description", :class => "fontsize col-sm-6" %>
+    </div>         
+    
+    <div class="form-group col-md-12">      
+      <%= form.label :weight, 'Weight (g)', :class => "col-sm-5 weight"%>
+      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "fontsize col-sm-6" %>
+    </div>
 
-<tr>
-  <th><%= form.label :width %></th>
-  <td><%= form.text_field :width %></td>
-</tr>
+     <div class="form-group col-md-12">
+      <%= form.label :length, 'Length (cm)', :class => "col-sm-5 length"%>
+      <%= form.text_field :length, placeholder: "Aprrox. length in centimeters", :class => "fontsize col-sm-6" %>
+    </div>
 
-<tr>
-  <th><%= form.label :heigth %></th>
-  <td><%= form.text_field :heigth %></td>
-</tr>
+    <div class="form-group col-md-12">
+      <%= form.label :width, 'Width (cm)', :class => "col-sm-5 width"%>
+      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "fontsize col-sm-6" %>
+    </div>
 
-<tr>
-  <th> </th>
-  <td></td>
-</tr>
+    <div class="form-group col-md-12">
+      <%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-5 height"%>
+      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "fontsize col-sm-6" %>
+    </div>    
+    
+  </div>
+</div>
 
-<tr>
-  <th> Pick Up Details </th>
-  <td></td>
-</tr>
+<!-- MAPS -->
+<div class="maps-row">
+  <div class="col-md-6 mb-3 card-left ">
+    <div class="card  text-center z-depth-2"> 
+      <div class="card-body-left">
+        <h3 class="card-header">Sender Location</h3>          
+        <div class="location_contain">
+          <%= render 'location', form: form, id: 0 %>
+        </div>
+        <br>
+        <div class="mb-5 time">   
+         <strong><%= form.label :pickup_time, 'Pickup date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+          <%= form.datetime_select :pickup_time, :class => "col-sm-12"  %>
+        </div>
+      </div>
+    </div> 
+  </div>
 
-<%= render 'location', form: form, id: 0 %>
 
-<tr>
-  <th><%= form.label :pickup_time %></th>
-  <td><%= form.datetime_select :pickup_time %></td>
-</tr>
+  <div class="col-md-6 mb-3 card-right">
+    <div class="card text-center z-depth-2">  
+      <div class="card-body-right">        
+       <h3 class="card-header">Recipient Location</h3>
+       <div class="location_contain">
+        <%= render 'location', form: form, id: 1 %>
+       </div>
+       <br>   
+       <div class="mb-5 time">   
+       <strong><%= form.label :delivery_time, 'Delivery date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+        <%= form.datetime_select :delivery_time, :class => "col-sm-12" %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>          
+  
+<!-- RECIPIENT-->
+<%= form.fields_for :recipients, @order.recipients[0].present? ? @order.recipients[0] : Recipient.new  do |f| %>
 
-<tr>
-  <th> </th>
-  <td></td>
-</tr>
+  <div class="card recipient text-center recipient-card">
+    <div class="card-body">            
+      <h3 class="recipient-title">Recipient details</h3>      
+        <div class="form-group col-md-12">
+          <%= f.label :name, :class => "col-sm-5 recipient-name-label" %>
+          <%= f.text_field :name, :class => "col-sm-6 recipient-name-input", placeholder: "Full name" %>
+        </div>
+        <div class="form-group col-md-12"> <!-- Probably to change it to 12 or other on md -->
+          <%= f.label :telephone, :class => "col-sm-5 telephone-label" %>
+          <%= f.text_field :telephone, :class => "col-sm-6 telephone-input" %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :email, :class => "col-sm-5 email-label" %>
+          <%= f.text_field :email, :class => "col-sm-6 email-input" %>
+        </div>    
+    </div>
+  </div>
+<% end %>
 
-<tr>
-  <th> Delivery Details </th>
-  <td></td>
-</tr>
+<!-- COST -->    
+<div class="card">
+  <div class="card-body text-center">       
+    <div class="form-group col-md-12">
+      <%= form.label :cost, :class => "col-sm-5 cost-label" %>
+      <%= form.text_field :cost, :class => "col-sm-6 cost-input"%>
+    </div>
+  </div>
+</div>
 
-<%= render 'location', form: form, id: 1 %>
+    
+<!-- SUBMIT BUTTONS -->
+<div class="order-create-update-buttons text-center ">
+  <% if @order.status == 'draft' %>
+    <div class="actions btn-group" role="group" >
+      <div class="space">
+      <%= form.submit  'Save Draft', :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
+      </div>
+      <div>
+        <%= form.submit  'Post', :class => ' btn btn-primary btn-post' %>   <!-- , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER -->
+      </div>  
+    </div>
+  <% else %>
+    <div class="actions">
+      <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
+    </div>
+  <% end %>
+</div>
 
-<tr>
-  <th><%= form.label :delivery_time %></th>
-  <td><%= form.datetime_select :delivery_time %></td>
-</tr>
-
-<tr>
-  <th><%= form.label :cost %></th>
-  <td><%= form.text_field :cost %></td>
-</tr>
-
-<!-- The label wil be comment out as it won't be seen by the sneder Only for development and testing-->
-<tr>
-  <th><%= form.label :radius %></th>
-  <td><%=  500  %></td> <!--  As this is the Order's value that we would like to add for every posted order --> 
-  <td> <%= form.hidden_field :radius, :value => 500 %></td> <!-- ITIAL_RADIUS -->
-</tr>

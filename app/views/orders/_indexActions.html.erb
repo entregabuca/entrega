@@ -8,9 +8,10 @@
   <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
    <td><%= link_to url_for([@user, order]), method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td>
 
-<% elsif @user.class.name == "Sender" && ['posted','taken'].include?(order.status)       %> 
-  <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
+<% elsif @user.class.name == "Sender" && ['posted'].include?(order.status) %> 
+  <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td> 
   <td></td> 
+
 <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(order.status) %> 
   <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
   <td></td> 

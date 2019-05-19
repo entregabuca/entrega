@@ -11,13 +11,46 @@
  * It is generally better to create a new file per style scope.
  *
  *= require leaflet
- *= require_tree .
- *= require_self
+ *= require_tree . 
+ // most likely to be commented out as per Bootstrap documentation
+ *= require_self   
+ // most likely to be commented out as per Bootstrap documentation
  */
  @import "dashboard";
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+
  // Custom bootstrap variables must be set or imported *before* bootstrap.
  @import "bootstrap";
 
- .leaflet-container { height:400px; width: 600px; }
+.bolds {
+  font-weight: bold;
+}
+
+.leaflet-container { 
+  height:400px; 
+  width: 800px; 
+}
+
+
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+

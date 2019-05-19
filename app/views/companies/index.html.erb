@@ -1,85 +1,86 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class='headingspace'>Companies (<%= Company.all.count %>)</h1>
+  <h1 class='headingspace'>Companies (<%= Company.all.count %>)</h1>
 
-<hr>
-<div data-turbolinks="false">
-  <%= form_with(url: companies_path, method: :get, local: true) do |form| %>
+  <hr>
+  <div data-turbolinks="false">
+    <%= form_with(url: companies_path, method: :get, local: true) do |form| %>
 
+      <table class="table table-striped">
+        <thead>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th><%= form.label :search %></th>
+            <td><%= form.text_field :search, value: params[:search].present? ? params[:search] : "Bucaramanga" %></td>
+          </tr>
+
+          <tr>
+            <th><%= form.label :radius %></th>
+            <td><%= form.number_field :radius, value: params[:radius].present? ? params[:radius] : 500 %></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <%= form.submit "Search Address" %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= @search_coordinates.present? ? @search_coordinates : "" %>
+  </div>
+  <hr>
+  <br>
+
+  <% if !@companies_near.nil? %>
+
+  <div class="container-fluid">
     <table class="table table-striped">
       <thead>
+        <tr>
+          <th>Name</th>
+          <th>Telephone</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Coordinates</th>
+          <th>Radius</th>
+          <th>Status</th>
+          <th>Dist. to Search</th>
+          <th> Total Orders </th>
+          <th colspan="3"></th>
+        </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <th><%= form.label :search %></th>
-          <td><%= form.text_field :search, value: params[:search].present? ? params[:search] : "Bucaramanga" %></td>
-        </tr>
-
-        <tr>
-          <th><%= form.label :radius %></th>
-          <td><%= form.number_field :radius, value: params[:radius].present? ? params[:radius] : 500 %></td>
-        </tr>
-
+        <% @companies_near.each do |company| %>
+          <tr>
+            <td><%= company.name %></td>
+            <td><%= company.telephone %></td>
+            <td><%= company.email %></td>
+            <td><%= address(company, 0) %></td>
+            <td><%= coordinates(company, 0).to_dms %></td>
+            <td><%= company.radius %></td>
+            <td><%= company.status %></td>
+            <td><%= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td>
+            <td><%= company.orders.size %></td>
+            <td><%= link_to company do %><span class="fa fa-eye"></span><% end %></td>
+            <td><%= link_to edit_company_path(company) do %><span class="fa fa-edit"></span><% end %></td>
+            <% if company.orders.size == 0 %>
+              <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
+            <% else %>
+              <td></td>
+            <% end %>       
+          </tr>        
+        <% end %>
       </tbody>
     </table>
-    <%= form.submit "Search Address" %>
   <% end %>
+
+  <hr>
+  <%= link_to 'New Company', new_company_path %>
+  <hr>
+    <%= render 'companies/map' %>
+   <hr>
 </div>
 
-<div>
-  <%= @search_coordinates.present? ? @search_coordinates : "" %>
-</div>
-<hr>
-<br>
-
-<% if !@companies_near.nil? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Telephone</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Coordinates</th>
-        <th>Radius</th>
-        <th>Status</th>
-        <th>Dist. to Search</th>
-        <th> Total Orders </th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @companies_near.each do |company| %>
-        <tr>
-          <td><%= company.name %></td>
-          <td><%= company.telephone %></td>
-          <td><%= company.email %></td>
-          <td><%= address(company, 0) %></td>
-          <td><%= coordinates(company, 0).to_dms %></td>
-          <td><%= company.radius %></td>
-          <td><%= company.status %></td>
-          <td><%= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td>
-          <td><%= company.orders.size %></td>
-          <td><%= link_to company do %><span class="fa fa-eye"></span><% end %></td>
-          <td><%= link_to edit_company_path(company) do %><span class="fa fa-edit"></span><% end %></td>
-          <% if company.orders.size == 0 %>
-            <td><%= link_to company, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 
-          <% else %>
-            <td></td>
-          <% end %>       
-        </tr>        
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<hr>
-<%= link_to 'New Company', new_company_path %>
-<hr>
-
-<%= render 'companies/map' %>
-
-
-<hr>
