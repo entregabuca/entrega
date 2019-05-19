@@ -44,60 +44,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-       puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts "PARAMS - 1"
-    puts params
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-
-
-
-
-
-    #action_button_pressed 
-
-
-
-    
-
-    puts "Button Pressed"
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts "PARAMS - 2"
-    puts params
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-
     @order= @user.orders.build(order_params)
-    #@order.status = 'draft' if save_draft?
-    #@order.status = 'posted' if posted?
-    action_button_pressed 
       respond_to do |format|
         if @order.save
-
-
-          puts ""
-          puts ""
-          puts ""
-          puts "PARAMS - 3"
-          puts params
-          puts ""
-          puts ""
-          puts ""
-
+          draft_or_posted
           format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
           format.json { render :show, status: :created, location: @order }
           order_posted_create
@@ -111,44 +61,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts params
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-
-
-
-
-
-    action_button_pressed 
-    #@order.status = 'posted' if posted?
-    
-
-    puts "Button Pressed"
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts params
-    puts ""
-    puts ""
-    puts ""
-    puts ""
-    puts "" 
-
-
     respond_to do |format|
       if @order.update(order_params)
+        draft_or_posted
         format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
         order_posted_update
@@ -158,10 +73,6 @@ class OrdersController < ApplicationController
       end
     end
   end
-
-  #def cancel
-
-  #end 
 
   # DELETE /orders/1
   # DELETE /orders/1.json
@@ -198,28 +109,14 @@ class OrdersController < ApplicationController
       end
     end
 
-  #  def posted?
-  #    params[:commit] == 'Post'
-  #  end
-#
-  #  def save_draft?
-  #    params[:commit] == 'Save Draft'
-  #  end
-
-
-######################################################################################
-# OJO CON ESTE CODIGO TIENE QUE MODIFICARLO PARA QUE TRABAJE TODA LA APP
-
-
-    def action_button_pressed
-      if params[:commit] == 'Save Draft'       
-          @order.status = 'draft'       
+    def draft_or_posted     
+      if params[:commit] == 'Save Draft'  
+        @order.update(status: 'draft', radius: 500)      
       elsif params[:commit] == 'Post'
-         @order.status = 'posted'      
+        @order.update(status: 'posted', radius: 500)     
       end
-      
     end 
-######################################################################################
+
 
 
 # Never trust parameters from the scary internet, only allow the white list through.

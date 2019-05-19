@@ -25,15 +25,13 @@ class Order < ApplicationRecord
   validate :delivery_time_must_greater_than_pickup_time
   #validate :pickup_time_cannot_be_greater_than_delivery_time
   validate :status_draft_radius_500
-
+ #validate :status_posted_radius_500, on: :create
 
   def status_draft_radius_500
     if status == 'draft'
       self.radius = 500      
     end
   end
-
-
 
 
    # ----------------------------------- || -------------------------------------------------------------
