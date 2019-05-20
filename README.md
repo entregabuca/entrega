@@ -88,3 +88,8 @@ rails db:migrate
 rails g devise:views
 
 rails g controller access home
+
+# Heroku
+
+heroku run rails db:migrate:status --app entregabuca
+heroku logs --app entregabuca
