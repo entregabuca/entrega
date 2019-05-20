@@ -1,88 +1,28 @@
 <!-- Back Button -->
-<% if @company.present? %>
+
+<% if @user.class.name == "Company" && @user.id.present? %>
+
   <div class="d-inline">  
     <%= link_to 'Back to Company', company_path, :class => "btn btn-primary btn-back mb-2 mt-2" %> 
   </div>
+
+  <% if current_page?(controller: 'companies', action: 'new') %>
+
+      <div class="d-inline">
+        <div class="d-flex mx-auto actions">
+          <%= form.submit 'Create Company', :class => ' btn btn-primary btn-post btn-create' %> <!-- 2B deleted btn-post -->
+        </div>
+      </div>
+
+  <% elsif current_page?(controller: 'companies', action: 'edit')  %> 
+
+    <div class="d-inline"">
+      <div class="d-flex mx-auto actions">
+        <%= form.submit 'Update Company', :class => ' btn btn-primary btn-post btn-update' %><!-- 2B deleted btn-post -->
+      </div>
+    </div>
+  <% end %>
+
 <% end %>
 
-<% if ['completed', 'cancelled'].include?(@order.status) %>
-
-<!-- Sender -->
-<% elsif @user.class.name == "Sender" && ['draft', 'posted'].include?(@order.status) %>
-      <% if ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'new') %>
-        <!-- IT WILL RENDER THE FORM ITSELF -->
-      <% elsif ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
-        <div class="d-inline">     
-          <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
-        </div>
-      <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit')  %> 
-        <div>    
-          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-            <%= form.hidden_field :status, :value => 'cancelled' %>
-            <div class="d-inline">
-              <%= form.submit  'Cancel Order', :class => 'mt-2 btn btn-primary btn-cancel', name: 'cancel' %>
-            </div>
-          <% end %>
-        </div>
-
-      <% end %>
-
-<!-- Company -->
-<% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>     
-
-  <% if ['posted','taken', 'inTransit'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
-    <div class="d-inline">  
-      <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
-    </div>
-
-
-  <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
-
-    <%#= render 'editOrderStatusLogic', order: @order %>  <!--LEAVE IT COMMENTED OUT UNFITL END OF TESTING -->
-
-  <% elsif  @order.status == 'taken' %>
-      <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-        <%= form.hidden_field :status, :value => 'inTransit' %>
-        <div class="d-inline"> 
-          <%= form.submit  'In Transit', :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
-        </div>
-      <% end %>
-  <% elsif @order.status == 'inTransit' %> 
-      <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-        <%= form.hidden_field :status, :value => 'completed' %>
-        <div class="d-inline">
-          <%= form.submit  'Complet', :class => 'mt-2 btn btn-primary btn-complet', name: 'complete' %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>    
-
-
-<!-- Transporter -->
-<% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
-  <% if @user.class.name == "Transporter" && current_page?(controller: 'orders', action: 'show') %>
-  <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
-
-  <% elsif current_page?(controller: 'orders', action: 'edit') %> 
-    <% if  @order.status == 'taken' %>   
-        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-          <%= form.hidden_field :status, :value => 'inTransit' %>
-          <div class="d-inline">
-            <%= form.submit  'In Transit', :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
-          </div>
-        <% end %>
-      </div>
-    <% elsif @order.status == 'inTransit' %> 
-        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-          <%= form.hidden_field :status, :value => 'completed' %>
-          <div class="d-inline">
-            <%= form.submit  'Complet', :class => 'mt-2 btn btn-primaryy btn-complet', name: 'complete' %>
-          </div>
-        <% end %>
-      </div>
-
-      <%= render 'editOrderStatusLogic', order: @order %> 
-    <% end %>
-  <% end %>
-<% end %>  
 

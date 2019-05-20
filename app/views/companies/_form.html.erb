@@ -38,14 +38,14 @@
        <h3>Company Location</h3> 
       </div>
       <div class="card-body">   
-      <%= render 'location', form: form, id: 1 %>
+      <%= render 'location', form: form, id: 0 %>
       </div>
     </div>
 
   
 
-     <div class="card text-center mx-5 ">
-      <div class="card-body top-card"> 
+     <div class="card text-center mx-5 mb-5 ">
+      <div class="card-body company-create-edit"> 
         <!--<div class="form-group col-md-12">
           <%#= form.label :radius, :class => "col-sm-5 width"%>
           <%#= form.text_field :radius, :class => "fontsize col-sm-6" %>
@@ -59,10 +59,20 @@
     </div>
 
 
-    <div class="d-flex flex-row my-4 ">
-      <div class="d-flex justify-content-center actions">
-        <%= form.submit 'Create Company', :class => ' btn btn-primary btn-post' %>
+
+
+<div class="row buttons btn-group " > 
+  <%= render 'companies/actionButtons', form: form %>
+</div>
+
+
+
+<!--
+    <div class="d-flex flex-row my-4 mt-5 ">
+      <div class="d-flex mx-auto actions">
+        <%#= form.submit 'Create Company', :class => ' btn btn-primary btn-post btn-create' %>
       </div>
-    </div>
+    </div> 
+  -->
 
 <% end %>
