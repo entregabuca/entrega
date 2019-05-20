@@ -6,19 +6,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto ulitems">
+
 
         <li class="nav-item active ">
           <a class="nav-link" href="#">Home <span class="sr-only my-4.5">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders <% end %>
-        </li>
 
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to companies_path, class: "nav-link" do %><span class="fa fa-building"></span> Companies<% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to senders_path, class: "nav-link" do %><span class="fa fa-users"></span> Senders <% end %>
+          </li>
+        <% end %>
       <!-- SENDER -->
         <% if @user.class.name == "Sender" && @user.id.present? %> 
           <li class="nav-item">
@@ -106,7 +110,11 @@
             </div>
           </li>
         <% end %>
-          </ul>
+
+        <li class="nav-item">
+          <%= admin_signed_in? ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(current_admin), method: :delete, class: 'nav-link') : @user ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

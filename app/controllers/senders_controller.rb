@@ -1,6 +1,6 @@
 class SendersController < ApplicationController
-  before_action :set_sender, only: [:show, :edit, :update, :destroy]
-
+  include Accessible
+  
   # GET /senders
   # GET /senders.json
   def index
@@ -70,11 +70,6 @@ class SendersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sender
-      @user = Sender.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def sender_params
       params.require(:sender).permit(:name, :telephone, :email, :status, locations_attributes: [:id, :address, :latitude, :longitude])

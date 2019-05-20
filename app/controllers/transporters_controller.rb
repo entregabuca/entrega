@@ -1,6 +1,6 @@
 class TransportersController < ApplicationController
+  include Accessible
   before_action :set_transporter, only: [:show, :edit, :update, :destroy, :orders]
-  before_action :set_user
 
   # GET /transporters
   # GET /transporters.json
@@ -76,13 +76,6 @@ class TransportersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_transporter
       @transporter = Transporter.find(params[:id])
-    end
-
-    def set_user  
-      resource, id = request.path.split('/')[1,2]
-      if id != nil
-        @user = resource.singularize.classify.constantize.find(id)
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

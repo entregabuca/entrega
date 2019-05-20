@@ -98,7 +98,7 @@ class OrdersController < ApplicationController
 
     def order_posted_create
       if @order.status == 'posted'
-        PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
+        PostedOrderJob.perform_later(@order.id) # DELTA_TIME
       end
     end
 

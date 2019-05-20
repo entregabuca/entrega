@@ -6,6 +6,8 @@ ruby '2.6.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 
+gem 'devise'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -37,7 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-gem 'font-awesome-sass', '~> 4.7.0'
+gem 'font-awesome-sass', '~> 5.8.1'
 gem 'faker'
 gem 'leaflet-rails'
 gem 'geocoder'
@@ -70,8 +72,9 @@ group :test do
 end
 
 group :production do
-   gem 'pg'
-   gem 'rails_12factor'
+  gem 'redis', '~> 4.1', '>= 4.1.1'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

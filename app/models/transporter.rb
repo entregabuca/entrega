@@ -1,4 +1,8 @@
 class Transporter < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   belongs_to :company
   has_many :orders, dependent: :destroy  # if dependent destroy isn't placed we aren't unable to destroy the Company
 
