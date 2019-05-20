@@ -1,0 +1,28 @@
+<!-- Back Button -->
+
+<% if @user.class.name == "Company" && @user.id.present? %>
+
+  <div class="d-inline">  
+    <%= link_to 'Back to Company', company_path, :class => "btn btn-primary btn-back mb-2 mt-2" %> 
+  </div>
+
+  <% if current_page?(controller: 'companies', action: 'new') %>
+
+      <div class="d-inline">
+        <div class="d-flex mx-auto actions">
+          <%= form.submit 'Create Company', :class => ' btn btn-primary btn-post btn-create' %> <!-- 2B deleted btn-post -->
+        </div>
+      </div>
+
+  <% elsif current_page?(controller: 'companies', action: 'edit')  %> 
+
+    <div class="d-inline"">
+      <div class="d-flex mx-auto actions">
+        <%= form.submit 'Update Company', :class => ' btn btn-primary btn-post btn-update' %><!-- 2B deleted btn-post -->
+      </div>
+    </div>
+  <% end %>
+
+<% end %>
+
+
