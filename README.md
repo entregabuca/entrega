@@ -68,6 +68,11 @@ git push -u origin master
 Test Pull Request:
 git fetch upstream pull/123/head:pr
 
+Create a Pull Request
+git push upstream
+
+## Notifications
+rails g channel notification
 ---
 
 gem 'devise'
