@@ -8,7 +8,7 @@ module ApplicationHelper
 	end
 
 	def coordinates(variable, i)
-		if variable.locations[i].present?
+		if variable.present? && variable.locations[i].present?
 			[variable.locations[i].latitude, variable.locations[i].longitude]
 		else
 			[0,0]
@@ -16,7 +16,7 @@ module ApplicationHelper
 	end
 
 	def coordinates?(variable, i)
-		if variable.locations[i].present?
+		if variable.present? && variable.locations[i].present?
 			true
 		else
 			false

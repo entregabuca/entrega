@@ -30,8 +30,10 @@ N.times do |i|
   sender[i] = Sender.create(
     name: Faker::Name.unique.name,
     telephone: (Faker::PhoneNumber.cell_phone).to_s,
-    email: Faker::Internet.email,    
-    status: Random.rand(2)
+    email: "s#{i}@s.com",#Faker::Internet.email,    
+    status: Random.rand(2),
+    password: "123456",
+    password_confirmation: "123456" 
   )
   sender[i].locations.create(address: col_address,
     latitude: Random.rand*(0.04)+7.1,
@@ -47,9 +49,11 @@ N.times do |i|
   company[i] = Company.create(
     name: Faker::Company.unique.name,
     telephone: (Faker::PhoneNumber.phone_number).to_s,
-    email: Faker::Internet.email,    
+    email: "c#{i}@c.com",#Faker::Internet.email,    
     radius: 10000,
-    status: Random.rand(2)
+    status: Random.rand(2),
+    password: "123456",
+    password_confirmation: "123456"
   )
   company[i].locations.create(address: col_address,
     latitude: Random.rand*(0.04)+7.1,
@@ -65,9 +69,11 @@ transporter = Array.new(4*N)
   transporter[i] = Transporter.create(
     name: Faker::Name.unique.name,
     telephone: (Faker::PhoneNumber.cell_phone).to_s,
-    email: Faker::Internet.email,
+    email: "t#{i}@t.com",#Faker::Internet.email,
     company: company[Random.rand(N)],
-    status: Random.rand(2)
+    status: Random.rand(2),
+    password: "123456",
+    password_confirmation: "123456"
   )
   puts "Transporter #{i}: #{transporter[i].name} created!"
 end

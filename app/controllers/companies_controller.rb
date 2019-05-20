@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
-  #before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
-  
+  include Accessible
+    
   # GET /companies
   # GET /companies.json
   def index
@@ -76,16 +75,6 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-
-    def set_company
-      @user = Company.find(params[:id])
-    end
-    def set_user
-      resource, id = request.path.split('/')[1,2]
-      @user = resource.singularize.classify.constantize.find(id)
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:name, :telephone, :email, :radius, 

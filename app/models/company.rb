@@ -1,4 +1,8 @@
 class Company < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   has_many :transporters, dependent: :destroy
   has_many :orders, through: :transporters
   has_many :locations, as: :addressable, :dependent => :destroy
@@ -9,6 +13,7 @@ class Company < ApplicationRecord
    "inactive" => 0,
    "active" => 1
  }
+
 
  def status_active  # could be changed to order_posted
    self.status == 'active'     
