@@ -1,36 +1,25 @@
-// Place all the styles related to the Companies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-.company-create-edit {
-   
-}
+
 
 .company-card-location {
     background-color: #00fffe !important;
 }
 
 
-.company-top-card, .company-rad-status{
-	font-size: 1.32rem;
+.companyLocation {
+	padding-right: 0 !important;
+    padding-left: 0 !important;
 }
 
-.company-status-card {
-	width: 80% !important;
+.company-Showlabels {
+  text-align: right !important; 
 }
 
-.name, .telephone, .email, .status {
-	text-align: right !important;
-}
-.company-name, .company-telephone, .company-email, .company-status {
-	text-align: left !important;
-	border-color: #ffffff24 !important;
-}
-
-.company-status {
-    max-width: 150px !important;
-}
-
+.company-Showinputs {
+	max-width: 53% !important;
+    padding-right: 0 !important;
+    text-align: left !important; 
+} 
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
@@ -64,14 +53,26 @@
 
 @media (max-width: 767px) and (orientation : portrait) {
   
- 	.name, .telephone, .email, .status {
+ 	/*.name, .telephone, .email, .status {
 		font-size: 1.2rem !important;
 
 	}
 
   	.company-name, .company-telephone, .company-email, .company-status {
 		font-size: 1rem !important;
+	}*/
+
+	.company-Showlabels {
+	max-width: 47% !important;
+    padding-right:0 !important;
+    text-align: right !important; 
 	}
+
+	.company-Showinputs {
+	max-width: 53% !important;
+    padding-right: 0 !important;
+    text-align: left !important; 
+	} 
 
 }
 

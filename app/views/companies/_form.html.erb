@@ -12,28 +12,28 @@
   <% end %>
 
     <div class="card text-center mx-5">
-      <div class="card-body top-card"> 
+      <div class="card-body company-top-card"> 
         <h3 class="h3Space"> Company Details </h3> 
 
         <div class="form-group col-md-12">     
-          <%= form.label :name, :class => "col-sm-5 name"%>
-          <%= form.text_field :name, :class => "fontsize col-sm-6" %>
+          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
+          <%= form.text_field :name, :class => "col-sm-6 company-name" %>
         </div>         
         
         <div class="form-group col-md-12">      
-          <%= form.label :telephone, :class => "col-sm-5 telephone"%>
-          <%= form.text_field :telephone, :class => "fontsize col-sm-6" %>
+          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
+          <%= form.text_field :telephone, :class => "col-sm-6 company-telephone" %>
         </div>
 
          <div class="form-group col-md-12">
-          <%= form.label :email, :class => "col-sm-5 email"%>
-          <%= form.text_field :email, :class => "fontsize col-sm-6" %>
+          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
+          <%= form.text_field :email, :class => "col-sm-6 company-email" %>
         </div>
       </div>
     </div>
 
  <!-- SHOWING MAP -->
-    <div class="card text-center my-5 mx-5">
+    <div class="card company-card-location text-center my-5 mx-5">
       <div class="card-header">
        <h3>Company Location</h3> 
       </div>
@@ -45,34 +45,26 @@
   
 
      <div class="card text-center mx-5 mb-5 ">
-      <div class="card-body company-create-edit"> 
+      <div class="card-body company-rad-status"> 
         <!--<div class="form-group col-md-12">
           <%#= form.label :radius, :class => "col-sm-5 width"%>
-          <%#= form.text_field :radius, :class => "fontsize col-sm-6" %>
+          <%#= form.text_field :radius, :class => " col-sm-6" %>
         </div> -->
 
-        <div class="form-group col-md-12">
-          <%= form.label :status,:class => "col-sm-5 status"%>
-          <%= form.text_field :status, :class => "fontsize col-sm-6" %>
+        <div class="form-group col-md-12 company-status-card">
+          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
+          <%#= form.text_field :status, :class => " col-sm-6" %>
+          <%= form.select :status, Company.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 company-status"} %>
         </div>            
       </div>
     </div>
 
 
 
-
+<hr> 
 <div class="row buttons btn-group " > 
   <%= render 'companies/actionButtons', form: form %>
 </div>
-
-
-
-<!--
-    <div class="d-flex flex-row my-4 mt-5 ">
-      <div class="d-flex mx-auto actions">
-        <%#= form.submit 'Create Company', :class => ' btn btn-primary btn-post btn-create' %>
-      </div>
-    </div> 
-  -->
+<hr class="mb-5"> 
 
 <% end %>

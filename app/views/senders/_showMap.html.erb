@@ -1,5 +1,5 @@
-<%= company_icon = {:name => 'company',
-                  :icon_url => asset_path('company.png'),
+<%= sender_icon = {:name => 'sender',
+                  :icon_url => asset_path('sender.png'),
                   :icon_size => [40, 40],
                   :icon_anchor => [20, 40],
                   :popup_anchor => [0, -40]}
@@ -13,13 +13,13 @@
           {
           :latlng => latlng,
           :popup => "<b>#{@user.name}</b><br>#{address(@user, 0)}",
-          :icon => company_icon
+          :icon => sender_icon
           }
         ],
         :circles => [
           {
             :latlng => latlng,
-            :radius => @user.radius,
+            :radius => 0,  #@user.radius,
             :color => 'red',
             :fillColor => '#111',
             :fillOpacity => 0.35

@@ -1,0 +1,42 @@
+
+
+
+
+
+
+
+
+
+  <table class="table table-striped">
+    <thead>
+    </thead>
+
+    <tbody>
+      <tr>
+        <th><%= form.label :company_id %></th>
+        <td><%= @transporter.company.name %>   <%#= form.label @user.name %>
+            <%#= form.hidden_field :transporter_id %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :name %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :telephone %></th>
+        <td><%= form.text_field :telephone %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :email %></th>
+        <td><%= form.text_field :email %></td>
+      </tr>
+
+      <tr>
+        <th><%= form.label :status %></th>
+        <td><%= form.select :status, Transporter.statuses.keys[0..1].map {|status| [status.titleize,status]} %></td>
+      </tr>   
+
+    </tbody>
+  </table>

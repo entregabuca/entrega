@@ -11,39 +11,59 @@
     </div>
   <% end %>
   
-  <table class="table table-striped">
-    <thead>
-    </thead>
+      <div class="card text-center mx-5">
+      <div class="card-body sender-top-card"> 
+        <h3 class="h3Space"> Sender Details </h3> 
 
-    <tbody>
-      <tr>
-        <th><%= form.label :name %></th>
-        <td><%= form.text_field :name %></td>
-      </tr>
+        <div class="form-group col-md-12">     
+          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
+          <%= form.text_field :name, :class => "col-sm-6 sender-name" %>
+        </div>         
+        
+        <div class="form-group col-md-12">      
+          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
+          <%= form.text_field :telephone, :class => "col-sm-6 sender-telephone" %>
+        </div>
 
-      <tr>
-        <th><%= form.label :telephone %></th>
-        <td><%= form.text_field :telephone %></td>
-      </tr>
+         <div class="form-group col-md-12">
+          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
+          <%= form.text_field :email, :class => "col-sm-6 sender-email" %>
+        </div>
+      </div>
+    </div>
 
-      <tr>
-        <th><%= form.label :email %></th>
-        <td><%= form.text_field :email %></td>
-      </tr>
-
+ <!-- SHOWING MAP -->
+    <div class="card sender-card-location text-center my-5 mx-5">
+      <div class="card-header">
+       <h3>Sender Location</h3> 
+      </div>
+      <div class="card-body">   
       <%= render 'location', form: form, id: 0 %>
+      </div>
+    </div>
 
-      <tr>
-        <th><%= form.label :status %></th>
-        <td><%= form.select :status, Sender.statuses.keys[0..1].map {|status| [status.titleize,status]} %>
-            <%#= form.hidden_field :status %></td>
-      </tr>
+  
+
+     <div class="card text-center mx-5 mb-5 ">
+      <div class="card-body sender-rad-status"> 
+        <!--<div class="form-group col-md-12">
+          <%#= form.label :radius, :class => "col-sm-5 width"%>
+          <%#= form.text_field :radius, :class => " col-sm-6" %>
+        </div> -->
+
+        <div class="form-group col-md-12 sender-status-card">
+          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
+          <%#= form.text_field :status, :class => " col-sm-6" %>
+          <%= form.select :status, Sender.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 sender-status"} %>
+        </div>            
+      </div>
+    </div>
 
 
-    </tbody>
-  </table>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<hr> 
+<div class="row buttons btn-group " > 
+  <%= render 'senders/actionButtons', form: form %>
+</div>
+<hr class="mb-5"> 
 <% end %>
