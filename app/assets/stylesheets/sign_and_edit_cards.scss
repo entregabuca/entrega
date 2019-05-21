@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*.card {
+    width: 28rem;
+}*/
+
+a.btn.btn-back {
+    background-color: #0d0d0dd4;
+    color: #ffffffed;
+}
+
+input#user_remember_me {
+    margin-right: 10px;
+}
+
+.singup-input, .signin-input { 
+    border-color: #ffffff24 !important;
+}
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(250, 247, 247, 0) !important;
+}

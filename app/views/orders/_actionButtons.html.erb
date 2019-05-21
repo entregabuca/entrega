@@ -18,7 +18,10 @@
           <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
             <%= form.hidden_field :status, :value => 'cancelled' %>
             <div class="d-inline">
-              <%= form.submit  'Cancel Order', :class => 'mt-2 btn btn-primary btn-cancel', name: 'cancel' %>
+              <%= form.submit  'Cancel Order', :class => 'mt-2 mb-2 btn btn-primary btn-cancel', name: 'cancel' %>
+            </div>
+            <div class="space">
+              <%= form.submit  'Save Draft', :class => 'mt-2  btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
             </div>
           <% end %>
         </div>
