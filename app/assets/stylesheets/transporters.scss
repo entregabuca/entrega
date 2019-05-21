@@ -1,3 +1,105 @@
 // Place all the styles related to the Transporters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.transporer {
+  margin-top: 2.2rem;
+  font-size: 1.9rem;
+}
+
+.name, .telephone, .email, .status {
+	text-align: right !important;
+}
+
+.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+	text-align: left !important;
+	border-color: #ffffff24 !important;
+}
+
+.transporter-status {
+    max-width: 150px !important;
+}
+
+
+.transporter-status-card {
+	text-align: left !important;
+}
+
+.status {
+    margin-left: 40px !important;
+}
+
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+@media (max-width: 1200px) and (orientation : portrait) {
+
+
+	.transporter-status-card {
+		text-align: left !important;
+	}
+
+	.status {
+	    margin-left: 40px !important;
+	}
+}
+
+/* ========================================================= */
+
+@media (max-width: 992px) { 
+
+	.transporter-status-card {
+		text-align: left !important;
+	}
+
+	.status {
+	    margin-left: 32px !important;
+	}
+}
+
+/* ========================================================= */
+
+	@media (max-width: 767px) and (orientation : portrait) {
+  
+ 	.name, .telephone, .email, .status {
+		font-size: 1.2rem !important;
+
+	}
+
+  	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+		font-size: 1rem !important;
+	}
+
+
+	.transporter-status-card {
+		text-align: left !important;
+	}
+
+	.status {
+	    margin-left: 16px !important;
+	}
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 576px) and (orientation : portrait) {
+
+	.name, .telephone, .email, .status {
+		text-align: center !important;
+	}
+
+	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+	    text-align: center !important;
+	}
+
+	.transporter-status-card {
+		text-align: center !important;
+	}
+
+
+
+}

@@ -16,20 +16,8 @@
 }
 
 .top-card, .recipient, .cost-label {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
-
-.fontsize, .recipient-name-input, .telephone-input, .email-input, .cost-input {
-  font-size: 1.3rem !important;
-}
-
-/*.form-row {
-    margin-top: 2.5rem;
-}*/
-
-/*.status {
-  margin-top: 2.5rem;
-}*/
 
 .card-body-left {
   background-color: #78a9ba;
@@ -98,8 +86,10 @@
 }
 
 #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input {
+  font-size: 1.12rem;
   max-width: 30% !important;
   border-color: #ffffff24 !important;
+  text-align: left !important;
 }
 
 /* ========================================================= */
@@ -138,7 +128,7 @@
      
   }
 
-  .fontsize, .recipient-name-input, .telephone-input, .email-input, .cost-input {
+  .recipient-name-input, .telephone-input, .email-input, .cost-input {
     font-size: 1rem !important;
   }
 
@@ -155,7 +145,7 @@
     margin-bottom: 2.5rem !important;
   }
    .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
-    font-size: 1.3rem !important;
+    font-size: 1.2rem !important;
   }
 
   .recipient-name-label, .telephone-label, .email-label, .cost-label {
@@ -193,20 +183,22 @@
       margin-right: 130px !important;
   }
 
+  .order-measurements {
+    text-align: left !important;
+  } 
+
+
+
   .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
-    max-width: 100% !important;
-  }
-
-  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input  {
     max-width: 50% !important;
-    border-color: #ffffff24;
-    text-align: center;
+    text-align: right !important;
   }
 
-  .fontsize, .recipient-name-input, .telephone-input, .email-input {
-  font-size: 1.1rem !important;
-  max-width: 40% !important;
-  text-align: center;
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input  {
+    font-size: 0.98rem !important;
+    text-align: left !important;
+    max-width: 40% !important;
+    border-color: #ffffff24;
   }
 
   .headingspace {
@@ -228,9 +220,6 @@
 
 @media (max-width: 627px) and (orientation : portrait) {
 
- .fontsize, .recipient-name-input, .telephone-input, .email-input {
-   max-width: 60% !important;
-  }
 }
 
 /* ========================================================= */
@@ -247,7 +236,20 @@
   }
 
   .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
-    font-size: 1.3rem !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  /*#order_description {
+    max-width: 100% !important;
+  }*/
+
+
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input  {
+    font-size: 1rem !important;
+    text-align: center !important;
+    max-width: 274px !important;
   }
 
   .h3Space, .recipient-title {
@@ -295,6 +297,8 @@
   .h3Space, .recipient-title {
     font-size: 1.3rem !important;
   }
+
+
 }
 
 /* ========================================================= */

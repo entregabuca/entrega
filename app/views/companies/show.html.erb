@@ -1,54 +1,78 @@
 <h1 class='headingspace'> <%= @user.name %> Profile </h1>
 
 
-<table class="table table-striped">
-  <thead>
-  </thead>
 
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <td><%= @user.name %></td>
-    </tr>
+<div class="card mb-2  ">
+  <div class="card-body pl-1"> 
+    <div class="col-md-12 mb-2 mt-2">
+      <div class="row">
+        <div class="d-inline col-sm-6 company-Showlabels">
+           <b><%= "Company: "%></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
+         <%= @user.name %>
+        </div>
+      </div> 
 
-    <tr>
-      <th>Telephone</th>
-      <td><%= @user.telephone %></td>
-    </tr>
+      <div class="row">
+        <div class="d-inline col-sm-6 company-Showlabels ">
+           <b><%= "Telephone: "%></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
+         <%= @user.telephone %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-inline col-sm-6 company-Showlabels">
+           <b><%= "Email: "%></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
+         <%= @user.email  %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-inline col-sm-6 company-Showlabels">
+          <b><%= "Status: "%></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
+         <%= @user.status %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-inline col-sm-6 company-Showlabels">
+          <b><%#= "Radius: "%></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
+         <%#= @user.radius %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 
-    <tr>
-      <th>email</th>
-      <td><%= @user.email %></td>
-    </tr>
+ <!-- SHOWING MAP -->
+ <div class="maps-row">
+  <div class="col-md-12 mb-3 companyLocation">
+    <div class="card left text-center company-card-location">
+      <div class="card-body-left company-card-location">
+        <h3 class="card-header">Company Location</h3>
+         <div class="bolds ">
+          <%= "Address:"%>
+        </div> 
+        <% if @user.locations.present? %>         
+          <div class="mb-5 companyAddress">
+             <%= @user.locations[0].address %>
+          </div> 
+          <div class="comp-Map d-flex justify-content-center mb-5">
+           <%= render 'companies/showingMap' %> 
+          </div>  
+        <% end %>  
+      </div> 
+    </div>
+  </div>
+</div>
 
-    <tr>
-      <th>Address</th>
-      <td><%= address(@user, 0) %></td>
-    </tr>
+  <br>
+  <br>
+  
 
-    <tr>
-      <th>Coordiantes</th>
-      <td><%= coordinates(@user, 0).to_dms%></td>
-    </tr>
-
-    <tr>
-      <th>Radius</th>
-      <td><%= @user.radius %></td>
-    </tr>
-
-    <tr>
-      <th>Status</th>
-      <td><%= @user.status %></td>
-    </tr>
-
-  </tbody>
-</table>
-
-<hr>
-  <%= render 'links' %> 
-<hr>
-<%= render 'companies/showMap' %>
-<br>
-<br>
-<br>
-<br>

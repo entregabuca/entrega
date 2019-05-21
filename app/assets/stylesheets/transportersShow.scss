@@ -1,58 +1,41 @@
-// Place all the styles related to the Senders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.sender-top-card, .sender-rad-status{
-	font-size: 1.32rem;
+.transporter-Showlabels {
+  text-align: right !important; 
 }
 
-
-
-.sender-create-edit {
-   
-}
-
-.sender-card-location {
-    background-color: #00fffe !important;
-}
-
-
-.sender-top-card, .sender-rad-status{
-	font-size: 1.32rem;
-}
-
-.sender-status-card {
-	width: 80% !important;
-}
-
-.name, .telephone, .email, .status {
-	text-align: right !important;
-}
-.sender-name, .sender-telephone, .sender-email, .sender-status {
-	text-align: left !important;
-	border-color: #ffffff24 !important;
-}
-
-.sender-status {
-    max-width: 150px !important;
-}
-
+.transporter-Showinputs {
+	max-width: 53% !important;
+    padding-right: 0 !important;
+    text-align: left !important; 
+} 
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
 
+
 @media (max-width: 767px) and (orientation : portrait) {
   
- 	.name, .telephone, .email, .status {
+ 	/*.name, .telephone, .email, .status {
 		font-size: 1.2rem !important;
 
 	}
 
   	.sender-name, .sender-telephone, .sender-email, .sender-status {
 		font-size: 1rem !important;
+	}*/
+
+	.transporter-Showlabels {
+	max-width: 47% !important;
+    padding-right:0 !important;
+    text-align: right !important; 
 	}
+
+	.transporter-Showinputs {
+	max-width: 53% !important;
+    padding-right: 0 !important;
+    text-align: left !important; 
+	} 
 
 }
 
@@ -73,3 +56,6 @@
 	}
 
 }
+
+
+

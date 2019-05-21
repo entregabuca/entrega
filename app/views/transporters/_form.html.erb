@@ -11,6 +11,84 @@
     </div>
   <% end %>
 
+   <div class="card text-center mx-5">
+      <div class="card-body transporter-top-card"> 
+        <h3 class="h3Space"> Transporter Details </h3> 
+
+        <div class="form-group sender mb-4">  
+          <%= form.label :company_id, 'Company: ' %>
+          <b><%= @transporter.company.name  %></b>
+        </div>
+
+        <div class="form-group col-md-12">     
+          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
+          <%= form.text_field :name, :class => "col-sm-6 transporter-name" %>
+        </div>         
+        
+        <div class="form-group col-md-12">      
+          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
+          <%= form.text_field :telephone, :class => "col-sm-6 transporter-telephone" %>
+        </div>
+
+         
+        <div class="form-group col-md-12 transporter-status-card">
+          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
+          <%#= form.text_field :status, :class => " col-sm-6" %>
+          <%= form.select :status, Transporter.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 transporter-status"} %>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
+          <%= form.text_field :email, :class => "col-sm-6 transporter-email" %>
+        </div>
+
+
+
+       <!--  <div class="form-group col-md-12">
+          <%#= form.label :email %><br />
+          <%#= form.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div> -->
+
+        <div class="form-group col-md-12">
+          <%= form.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= form.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="form-group col-md-12">
+          <%= form.label :password_confirmation %><br />
+          <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+<hr> 
+<div class="row buttons btn-group " > 
+  <%= render 'transporters/actionButtons', form: form %>
+</div>
+<hr class="mb-5"> 
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+
+
+
+
+
   <table class="table table-striped">
     <thead>
     </thead>
@@ -19,7 +97,7 @@
       <tr>
         <th><%= form.label :company_id %></th>
         <td><%= @transporter.company.name %>   <%#= form.label @user.name %>
-            <%= form.hidden_field :company_id %></td>
+            <%#= form.hidden_field :transporter_id %></td>
       </tr>
 
       <tr>
@@ -45,7 +123,6 @@
     </tbody>
   </table>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+
+
+  <% end %>

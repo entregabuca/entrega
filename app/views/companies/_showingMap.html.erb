@@ -1,0 +1,29 @@
+<%= company_icon = {:name => 'company',
+                  :icon_url => asset_path('company.png'),
+                  :icon_size => [40, 40],
+                  :icon_anchor => [20, 40],
+                  :popup_anchor => [0, -40]}
+    latlng = coordinates(@user, 0)
+    map(
+        :center => {
+          :latlng => latlng,
+          :zoom => 13
+        },
+        :markers => [
+          {
+          :latlng => latlng,
+          :popup => "<b>#{@user.name}</b><br>#{address(@user, 0)}",
+          :icon => company_icon
+          }
+        ],
+        :circles => [
+          {
+            :latlng => latlng,
+            :radius => 1, #@user.radius,
+            :color => 'red',
+            :fillColor => '#111',
+            :fillOpacity => 0.35
+          }
+        ]
+    )
+%>

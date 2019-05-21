@@ -9,29 +9,29 @@
   <div class="card-body top-card"> 
     <h3 class="h3Space">Order Measurements</h3> 
 
-    <div class="form-group col-md-12">     
-      <%= form.label :description, :class => "col-sm-5 description"%>
-      <%= form.text_field :description, placeholder: "Add a short description", :class => "fontsize col-sm-6" %>
+    <div class="form-group col-md-12 order-measurements text-center">     
+      <b><%= form.label :description, :class => "col-sm-5 description"%></b>
+      <%= form.text_field :description, placeholder: "Short description", :class => "col-sm-6" %>
     </div>         
     
-    <div class="form-group col-md-12">      
-      <%= form.label :weight, 'Weight (g)', :class => "col-sm-5 weight"%>
-      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "fontsize col-sm-6" %>
+    <div class="form-group col-md-12 order-measurements text-center">      
+      <b><%= form.label :weight, 'Weight (g)', :class => "col-sm-5 weight"%></b>
+      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "col-sm-6" %>
     </div>
 
-     <div class="form-group col-md-12">
-      <%= form.label :length, 'Length (cm)', :class => "col-sm-5 length"%>
-      <%= form.text_field :length, placeholder: "Aprrox. length in centimeters", :class => "fontsize col-sm-6" %>
+     <div class="form-group col-md-12 order-measurements text-center">
+      <b><%= form.label :length, 'Length (cm)', :class => "col-sm-5 length"%></b>
+      <%= form.text_field :length, placeholder: "Aprrox. length in cm", :class => "col-sm-6" %>
     </div>
 
-    <div class="form-group col-md-12">
-      <%= form.label :width, 'Width (cm)', :class => "col-sm-5 width"%>
-      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "fontsize col-sm-6" %>
+    <div class="form-group col-md-12 order-measurements text-center">
+      <b><%= form.label :width, 'Width (cm)', :class => "col-sm-5 width"%></b>
+      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "col-sm-6" %>
     </div>
 
-    <div class="form-group col-md-12">
-      <%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-5 height"%>
-      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "fontsize col-sm-6" %>
+    <div class="form-group col-md-12 order-measurements text-center">
+      <b><%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-6 height"%></b>
+      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "col-sm-6" %>
     </div>    
     
   </div>
@@ -80,15 +80,15 @@
     <div class="card-body">            
       <h3 class="recipient-title">Recipient details</h3>      
         <div class="form-group col-md-12">
-          <%= f.label :name, :class => "col-sm-5 recipient-name-label" %>
+          <b><%= f.label :name, :class => "col-sm-5 recipient-name-label" %></b>
           <%= f.text_field :name, :class => "col-sm-6 recipient-name-input", placeholder: "Full name" %>
         </div>
         <div class="form-group col-md-12"> <!-- Probably to change it to 12 or other on md -->
-          <%= f.label :telephone, :class => "col-sm-5 telephone-label" %>
+          <b><%= f.label :telephone, :class => "col-sm-5 telephone-label" %></b>
           <%= f.text_field :telephone, :class => "col-sm-6 telephone-input" %>
         </div>
         <div class="form-group col-md-12">
-          <%= f.label :email, :class => "col-sm-5 email-label" %>
+          <b><%= f.label :email, :class => "col-sm-5 email-label" %></b>
           <%= f.text_field :email, :class => "col-sm-6 email-input" %>
         </div>    
     </div>
@@ -98,8 +98,8 @@
 <!-- COST -->    
 <div class="card">
   <div class="card-body text-center">       
-    <div class="form-group col-md-12">
-      <%= form.label :cost, :class => "col-sm-5 cost-label" %>
+    <div class="form-group col-md-12 text-center">
+      <b><%= form.label :cost, :class => "col-sm-5 cost-label" %></b>
       <%= form.text_field :cost, :class => "col-sm-6 cost-input"%>
     </div>
   </div>

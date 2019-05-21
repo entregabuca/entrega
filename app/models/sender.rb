@@ -13,9 +13,11 @@ class Sender < ApplicationRecord
     "active" => 1
   }
 
-# def status_active  # could be changed to order_posted
-#   self.status == 'active'     
-# end
+ def status_active  # could be changed to order_posted
+   self.status == 'active'     
+ end
+
+
 # #EMAIL_REGEX = /\A[a-z0-9.%+-]+@[a-z09.-]+\.[a-z]{2,4}\Z/i
 # #t.integer "radius" Unsure if radius needs validation
 # with_options if: :status_active do |sender|
