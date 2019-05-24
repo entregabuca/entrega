@@ -4,8 +4,8 @@
 
   <% if ['Sender', 'Company', 'Transporter'].include? @user.class.name %>
     <%= render "orders/indexTable" %>
-  <% else %>
-    <%= render "orders/indexTable4Admin" %>
+  <%# elsif current_admin %>
+    <%#= render "orders/indexTable4Admin" %>
    <% end %>
 
 </div>

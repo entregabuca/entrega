@@ -1,0 +1,41 @@
+<%= @senders = @senders.select{|c| c.locations[0]}
+    sender_icon = {:name => 'sender',
+                  :icon_url => asset_path('sender.png'),
+                  :icon_size => [20, 20],
+                  :icon_anchor => [10, 20],
+                  :popup_anchor => [0, -20]}
+    latlng = mean_coordinates(@senders,0)
+
+    markers = @senders.map {|sender| {
+      :latlng => coordinates(sender, 0),
+      :popup => "<b>#{sender.name}</b><br>#{address(sender, 0)}",
+      :icon => sender_icon
+      }
+    }
+
+    if @search_coordinates.present?
+        markers << {
+          :latlng => @search_coordinates,
+          :popup => "<b>Search</b><br>#{params[:search]}"
+        }
+
+        circles = [
+          {
+            :latlng => @search_coordinates,
+            :radius => params[:radius].to_i,
+            :color => 'red',
+            :fillColor => '#111',
+            :fillOpacity => 0.35
+          }
+        ]
+    end
+    map(
+        :center => {
+          :latlng => latlng,
+          :zoom => 13
+        },
+        :markers => markers,
+        :circles => circles
+    )
+%>
+<br>
