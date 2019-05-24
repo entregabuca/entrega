@@ -9,6 +9,10 @@
     width: 28rem;
 }*/
 
+.signin-card, .signup-card  {
+    width: 50vmin !important;
+}
+
 a.btn.btn-back {
     background-color: #0d0d0dd4;
     color: #ffffffed;
@@ -18,9 +22,24 @@ input#user_remember_me {
     margin-right: 10px;
 }
 
-.singup-input, .signin-input { 
-    border-color: #ffffff24 !important;
+
+.login, .signup {
+    font-size: 3.6vmin !important;
 }
+.signup-label, .signin-label, .rememberme, .forgotPassword  {
+    font-size: 2vmin !important;
+}
+.singup-input, .signin-input {
+    border-color: #ffffff24 !important;
+    width: 25vmin !important;
+    font-size: 1.6vmin !important;
+    text-align: center !important;
+}
+
+.btn-signup-login {
+    color: white !important;
+}
+
 .flex-fill {
     flex: 1 1 auto;
 }
@@ -28,4 +47,118 @@ input#user_remember_me {
 .card-footer {
     padding: 0.75rem 1.25rem;
     background-color: rgba(250, 247, 247, 0) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 3vmin !important;
 }
+
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+
+@media (max-width: 1200px){
+
+    .signup-label, .signin-label, .rememberme, .forgotPassword {
+        font-size: 2vmin !important;
+    }
+
+    .singup-input, .signin-input {   
+    font-size: 1.6vmin !important;
+  
+    }
+
+} 
+
+/* ========================================================= */
+
+@media (max-width: 992px) { 
+
+    .signup-label, .signin-label, .rememberme, .forgotPassword  {
+        font-size: 2.2vmin !important;
+    }
+
+    .singup-input, .signin-input {   
+    font-size: 1.4vmin !important;
+  
+    }
+
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 870px)  and (min-width: 768px) and (orientation : portrait) {
+
+
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 767px) and (orientation : portrait) {
+    
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 650px) and (orientation : portrait) {
+
+.singup-input, .signin-input {   
+    font-size: 2vmin !important;
+  
+    }
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 576px) and (orientation : portrait) {
+
+    
+
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 500px) and (orientation : portrait) {
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 440px) and (orientation : portrait) {
+
+  
+
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 410px) and (orientation : portrait) {
+    
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 400px) and (orientation : portrait) {
+
+
+
+}
+
+/* =============================================================== */
+/* ===================MEDIA QUERIES - LANDSCAPE ================== */
+/* =============================================================== */
+
+@media (min-width: 1024px) and (orientation : landscape) {
+  
+}
+
+
+

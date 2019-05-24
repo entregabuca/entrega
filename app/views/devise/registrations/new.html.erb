@@ -1,32 +1,32 @@
 <div class="container h-100"> <!-- This div and the one below will do center the card -->
   <div class="row h-100 justify-content-center align-items-center"> 
 
-    <div class="card  text-center">
+    <div class="card  signup-card text-center">
       <div class="card-header">
-        <h2>Sign up</h2>
+        <h2 class="signup">Sign up</h2>
       </div>
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-inputs mb-5">
           <div class="field"> 
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "singup-input"  %>
+            <%= f.label :email, :class => "signup-label" %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "singup-input mb-4"  %>
           </div> 
 
           <div class="field"> 
-            <%= f.label :password %>
+            <%= f.label :password, :class => "signup-label"  %>
             <!--<%# if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> )</em>
             <%# end %> -->
 
             <br />
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 characters minimum", :class => "singup-input" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "6 characters minimum", :class => "singup-input mb-4" %>
           </div>
 
           <div class="field"> 
-            <%= f.label :password_confirmation, 'Confirm Password' %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm password", :class => "singup-input" %>
+            <%= f.label :password_confirmation, 'Confirm Password', :class => "signup-label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm password", :class => "singup-input mb-4" %>
           </div> 
           
           </div>
