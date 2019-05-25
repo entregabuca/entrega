@@ -44,7 +44,7 @@
               <th>Email</th>
               <th>Address</th>
               <th>Status</th>
-            <!--  <th>Coordinates</th> 
+          <!--<th>Coordinates</th> 
               <th>Radius</th>              
               <th>Dist. to Search</th>-->
               <th> Total Orders </th>
@@ -60,7 +60,7 @@
                 <td><%= company.email %></td>
                 <td><%= address(company, 0) %></td>
                 <td><%= company.status %></td>
-                <!--<td><%#= coordinates(company, 0).to_dms %></td>
+            <!--<td><%#= coordinates(company, 0).to_dms %></td>
                 <td><%= company.radius %></td>                
                 <td><%#= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td> -->
                 <td><%= company.orders.size %></td>
@@ -85,7 +85,5 @@
   <div class="d-flex justify-content-center my-5">
     <%= render 'companies/map' %>
   </div>
-   <hr>
-
-
-
+  <hr>
+  

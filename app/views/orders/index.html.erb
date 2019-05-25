@@ -1,23 +1,11 @@
 <%= render 'orders/headingUserOrdersTypes' %>
 
 <div class="row card indextable">
-
-  <% if ['Sender', 'Company', 'Transporter'].include? @user.class.name %>
-    <%= render "orders/indexTable" %>
-  <%# elsif current_admin %>
-    <%#= render "orders/indexTable4Admin" %>
-   <% end %>
-
+    <%= render "orders/indexTable" %>  
 </div>
 
-<%#= render 'orders/indexLinksLogic' %>
 <div class="d-flex justify-content-center my-5">
   <%= render 'orders/map' %>
 </div>
 
-    
-
-
-
-<br>
 <br>
