@@ -43,8 +43,8 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to_in_li  'My Profile', url_for(@user), class: 'nav-link' %>
-                <%= link_to_in_li  'Edit', edit_sender_path(@user), class: 'nav-link' %>
+                <%= link_to  'My Profile', url_for(@user), class: 'nav-link' %>
+                <%= link_to 'Edit', edit_sender_path(@user), class: 'nav-link' %>
                 <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
               </div>
             </li>      
@@ -86,9 +86,9 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to_in_li  'Orders', orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to_in_li  'Profile', company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to_in_li  'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to 'Orders', orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to 'Profile', company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
               </div>
             </li>        
           <% end %>
