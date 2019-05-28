@@ -1,5 +1,23 @@
 
 
+               <!-- <tr>
+                  <div class="field">
+                    <th><%#= form.label :password %></th>
+                    <td>
+                      <% #if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                      <%# end %><br />
+                      <%#= form.password_field :password, autocomplete: "new-password" %>
+                  </td>
+                  </div>
+                </tr>
+                <tr>
+                  <div class="field">
+                    <th><%#= form.label :password_confirmation %></th>
+                    <td><%#= form.password_field :password_confirmation, autocomplete: "new-password" %></td>
+                  </div>
+                </tr> -->
+
 
 
 

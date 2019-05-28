@@ -2,7 +2,7 @@
 
 
 
-<h1 class='headingspace'> <%= @transporter.name %> Profile </h1>
+<h1 class='headingspace'> <%= @transporter.name.titlecase %> Profile </h1>
 
 <div class="card mb-2  ">
   <div class="card-body pl-1"> 
@@ -12,7 +12,7 @@
            <b><%= "Transporter: "%></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
-         <%= @transporter.name %>
+         <%= @transporter.name.titlecase %>
         </div>
       </div> 
 
@@ -63,46 +63,3 @@
   <br>
   <br>
   
-
-
-
-
-
-
-
-
-
-
-
-
-<table class="table table-striped">
-  <thead>
-  </thead>
-
-  <tbody>
-    <tr>
-      <th>Name</th>
-      <td><%= @transporter.name %></td>
-    </tr>
-
-    <tr>
-      <th>Telephone</th>
-      <td><%= @transporter.telephone %></td>
-    </tr>
-
-    <tr>
-      <th>email</th>
-      <td><%= @transporter.email %></td>
-    </tr>
-
-    <tr>
-      <th>Status</th>
-      <td><%= @transporter.status %></td>
-    </tr>
-
-  </tbody>
-</table>
-
-<hr>
-  <%= render 'links' %> 
-<hr>

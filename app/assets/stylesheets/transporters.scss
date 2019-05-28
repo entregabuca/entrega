@@ -8,11 +8,11 @@
   font-size: 1.9rem;
 }
 
-.name, .telephone, .email, .status {
+.name, .telephone, .email, .status, .password, .password-confirm {
 	text-align: right !important;
 }
 
-.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+.transporter-name, .transporter-telephone, .transporter-email, .transporter-status, .transporter-password, .transporter-password-confirm {
 	text-align: left !important;
 	border-color: #ffffff24 !important;
 }
@@ -64,12 +64,12 @@
 
 	@media (max-width: 767px) and (orientation : portrait) {
   
- 	.name, .telephone, .email, .status {
+ 	.name, .telephone, .email, .status, .password, .password-confirm  {
 		font-size: 1.2rem !important;
 
 	}
 
-  	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+  	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status, .transporter-password, .transporter-password-confirm  {
 		font-size: 1rem !important;
 	}
 
@@ -88,11 +88,11 @@
 
 @media (max-width: 576px) and (orientation : portrait) {
 
-	.name, .telephone, .email, .status {
+	.name, .telephone, .email, .status, .password, .password-confirm {
 		text-align: center !important;
 	}
 
-	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status {
+	.transporter-name, .transporter-telephone, .transporter-email, .transporter-status, .transporter-password, .transporter-password-confirm  {
 	    text-align: center !important;
 	}
 
