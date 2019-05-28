@@ -1,86 +1,89 @@
-<h1 class='headingspace'><%= @user.name %> Profile </h1>
+<% provide(:page_title, "Sender") %>
 
-<div class="card mb-2  ">
-  <div class="card-body pl-1"> 
-    <div class="col-md-12 mb-2 mt-2">
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-Showlabels">
-           <b><%= "Sender: "%></b>
-        </div>
-        <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-         <%= @user.name %>
-        </div>
-      </div> 
 
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-Showlabels ">
-           <b><%= "Telephone: "%></b>
+  <h1 class='headingspace'><%= @user.name %> Profile </h1>
+
+  <div class="card mb-2  ">
+    <div class="card-body pl-1"> 
+      <div class="col-md-12 mb-2 mt-2">
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-Showlabels">
+             <b><%= "Sender: "%></b>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
+           <%= @user.name %>
+          </div>
+        </div> 
+
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-Showlabels ">
+             <b><%= "Telephone: "%></b>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
+           <%= @user.telephone %>
+          </div>
         </div>
-        <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-         <%= @user.telephone %>
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-Showlabels">
+             <b><%= "Email: "%></b>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
+           <%= @user.email  %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-Showlabels">
-           <b><%= "Email: "%></b>
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-Showlabels">
+            <b><%= "Status: "%></b>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
+           <%= @user.status %>
+          </div>
         </div>
-        <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-         <%= @user.email  %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-Showlabels">
-          <b><%= "Status: "%></b>
-        </div>
-        <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-         <%= @user.status %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-Showlabels">
-          <b><%#= "Radius: "%></b>
-        </div>
-        <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-         <%#= @user.radius %>
+        <div class="row">
+          <div class="d-inline col-sm-6 sender-Showlabels">
+            <b><%#= "Radius: "%></b>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
+           <%#= @user.radius %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div> 
+  </div> 
 
- <!-- SHOWING MAP -->
- <div class="maps-row">
-  <div class="col-md-12 mb-3 senderLocation">
-    <div class="card left text-center sender-card-location">
-      <div class="card-body-left sender-card-location">
-        <h3 class="card-header">Sender Location</h3>
-         <div class="bolds ">
-          <%= "Address:"%>
-        </div>          
-        <% if @user.locations.present? %>
-          <div class="mb-5 senderAddress">
-             <%= @user.locations[0].address %>
-          </div> 
-          <div class="comp-Map d-flex justify-content-center mb-5">
-           <%= render 'senders/showMap' %> 
-          </div>  
-        <% end %>  
-      </div> 
+   <!-- SHOWING MAP -->
+   <div class="maps-row">
+    <div class="col-md-12 mb-3 senderLocation">
+      <div class="card left text-center sender-card-location">
+        <div class="card-body-left sender-card-location">
+          <h3 class="card-header">Sender Location</h3>
+           <div class="bolds ">
+            <%= "Address:"%>
+          </div>          
+          <% if @user.locations.present? %>
+            <div class="mb-5 senderAddress">
+               <%= @user.locations[0].address %>
+            </div> 
+            <div class="comp-Map d-flex justify-content-center mb-5">
+             <%= render 'senders/showMap' %> 
+            </div>  
+          <% end %>  
+        </div> 
+      </div>
     </div>
   </div>
-</div>
 
-<hr> 
-<div class="row buttons btn-group " > 
-  <div class="d-inline mt-2 mb-2">  
-    <%#= link_to 'Back to Sender', sender_path, :class => "btn btn-primary btn-back" %>  
+  <hr> 
+  <div class="row buttons btn-group " > 
+    <div class="d-inline mt-2 mb-2">  
+      <%#= link_to 'Back to Sender', sender_path, :class => "btn btn-primary btn-back" %>  
+    </div>
   </div>
-</div>
-<hr class="mb-5">
+  <hr class="mb-5">
 
-  <br>
-  <br>
-  
+    <br>
+    <br>
+    
 
 
 

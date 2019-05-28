@@ -1,0 +1,98 @@
+
+
+
+<table class="table table-striped table-hover mb-5">
+  <thead>
+    <tr class="tableHeadingbar">  
+      <th class="text-center"> Order No. </th>
+      <% if  current_admin %> 
+        
+        <th>Sender</th> 
+        <th>Company</th>
+        <th>Transporter</th>
+
+       <% elsif @user.class.name == "Sender" %>
+
+        <th>Company</th>
+        <th>Transporter</th>
+
+      <% elsif ['Company', 'Transporter'].include? @user.class.name %>
+
+        <th>Sender</th> 
+
+      <% end %>
+
+        <th>Status</th>
+        <th>Description</th>
+
+      <% if  current_admin %>       
+        <th>Weight</th>
+        <th>Length</th>
+        <th>Width</th>
+        <th>Heigth</th>
+        <th>PickUp address</th>
+        <th>PickUp Coordinates</th>
+        <th>PickUp Time</th>
+        <th>Delivery address</th>
+        <th>Delivery Coordinates</th>
+        <th>Delivery Time</th>             
+        <th>Radius</th>         
+      <% end %>
+<!-- <th>Distance to Order</th>-->
+        <th>Cost</th> 
+
+      <% if ['Company', 'Transporter'].include? @user.class.name %>
+        <th>Distance to Order</th>
+      <% end %>
+      <th colspan="3"></th>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr class="odd tableValues">
+        <td class="text-center"><%= order.id %>
+        <% if  current_admin %> 
+
+          <td><%= order.sender.name %></td>
+          <td><%= order.transporter.present? ? order.transporter.company.name : "No Added yet" %></td>
+          <td><%= order.transporter.present? ? order.transporter.name : "No Added yet" %></td>
+
+        <% elsif @user.class.name == "Sender" %>
+
+                <td><%= order.transporter.present? ? order.transporter.company.name : "No Added yet" %></td>
+                <td><%= order.transporter.present? ? order.transporter.name : "No Added yet" %></td>
+        <% elsif @user.class.name == "Company" ||  @user.class.name == "Transporter"%>
+
+                <td><%= order.sender.name %></td>
+        <% end %>
+
+          <td><%= order.status.present? ? order.status.capitalize : "-"  %></td>
+          <td><%= order.description %></td>
+        <% if  current_admin %>    
+          <td><%= order.weight %></td>
+          <td><%= order.length %></td>
+          <td><%= order.width %></td>
+          <td><%= order.heigth %></td>
+          <td><%= address(order,0) %></td>
+          <td><%= coordinates(order,0) %></td> 
+          <td><%= order.pickup_time %></td>
+          <td><%= address(order,1) %></td>
+          <td><%= coordinates(order,1).to_dms %></td>
+          <td><%= order.delivery_time %></td>
+          <td><%= number_with_delimiter(order.radius) %></td>
+        <% end %>
+          
+          <td><%= number_with_delimiter(order.cost.to_i) %></td>
+
+       <!-- <td><%= number_with_delimiter(order.radius) %></td> -->
+        <% if ['Company', 'Transporter'].include? @user.class.name %>
+          <%= render 'orders/distance', order: order %>
+        <% end %>
+        <%= render 'orders/indexActions', order: order %>
+      </tr>
+    <% end %>        
+  </tbody>
+</table>
+
