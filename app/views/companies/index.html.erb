@@ -1,4 +1,6 @@
-  <h1 class='headingspace'>Companies (<%= Company.all.count %>)</h1>
+<% provide(:page_title, "Companies") %>
+
+<h1 class='headingspace'>Companies (<%= Company.all.count %>)</h1>
 
   <hr>
   <div data-turbolinks="false">

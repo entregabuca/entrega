@@ -1,8 +1,74 @@
-.ulitems {
-	font-size: 1rem;
-    line-height: 2rem;
+.navbar-brand {
+  font-weight: bolder;
+  font-size:28px;
+  .different {
+      font-weight: 50;
+      color: #f75656;                
+  }
 }
 
-.navbarlinks {
-	margin-left: 10vmin !important; 
+
+.ulitems {
+	font-size: 1rem;
+    line-height: 2rem; // Could be commented out
+}
+
+
+.navbar-default {
+	background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) !important;
+    li a {
+    	color: white !important;
+    }   
+}
+
+.navbar-brand {
+    font-size: 1.35rem !important;
+}
+
+.navbar-toggler {
+  background-color: #5965a375 !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+li.active {
+    background-color: #598da3;
+} 
+.nav-link:hover, .nav-link:focus {
+    background-color: #598da3;
+}
+
+
+.dropdown-menu {
+     background-color: #34bbe1 !important;
+}
+
+
+
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+@media (max-width: 1200px) and (orientation : portrait) {
+
+
+}
+@media (max-width: 862px) and (orientation : portrait) {
+  
+  .ulitems {
+	font-size: 0.85rem !important;   
+  }
+ 	
+
+}
+
+/* ========================================================= */
+
+@media (max-width: 576px) and (orientation : portrait) {
+
+	
+
 }

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Entrega</title>
+    <title>| Entrega  | <%= yield(:page_title) %> </title>   <!-- This will give the name on browser's tab -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> -->
@@ -20,8 +19,12 @@
      
       <%= render 'layouts/navbar' %>
       <%= render 'layouts/alerts' %>
-      <div class="container">
-       <%= yield %>  <!-- Commented out as it was causing conflict, showing to forms -->
+
+
+
+
+    <div class="container"> <!-- this is the cotainer working without action higlighting-->
+       <%= yield %>  <!-- Commented out as it was causing conflict, showing to forms 
       </div>
 
   </div>
