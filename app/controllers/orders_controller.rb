@@ -67,6 +67,9 @@ class OrdersController < ApplicationController
         format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
         order_posted_update
+        if @order.status == "inTransit"
+          NotificationChannel.broadcast_to(@order.sender, title: 'Notificación', body: "Orden #{@order.id} en Transito!!!")
+        end
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }

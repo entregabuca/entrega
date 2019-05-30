@@ -1,16 +1,16 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-  	identified_by :current_company
+  	identified_by :current_user
 
     def connect
-      self.current_company = find_verified_company
+      self.current_user = find_verified_user
     end
 
     private
-      def find_verified_company
-        if verified_company = Company.find(cookies.encrypted[:user_id])
-          puts "CONNECTED AS: #{verified_company.name}"
-          verified_company
+      def find_verified_user
+        if verified_user = cookies.encrypted[:user_type].constantize.find(cookies.encrypted[:user_id])
+          puts "CONNECTED AS:: #{verified_user.class.name}: #{verified_user.name}"
+          verified_user
         else
           reject_unauthorized_connection
           puts "NOT CONNECTED"

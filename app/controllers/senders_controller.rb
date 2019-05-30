@@ -1,6 +1,6 @@
 class SendersController < ApplicationController
   include Accessible
-  
+   
   # GET /senders
   # GET /senders.json
   def index
