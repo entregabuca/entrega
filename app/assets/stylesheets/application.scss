@@ -19,6 +19,10 @@
  //@import "dashboard";
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ @import "alertify";
+ @import "alertify/default";
+ @import "alertify/bootstrap";
+
 
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
