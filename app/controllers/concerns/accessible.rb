@@ -14,8 +14,9 @@ module Accessible
       resource, id = request.path.split('/')[1,2]
       if id
         @user = resource.singularize.classify.constantize.find(id)
+      else
+        @user = current_admin
       end
-      return
     elsif sender_signed_in?
       @user = current_sender
     elsif company_signed_in?
@@ -37,13 +38,15 @@ module Accessible
       puts "SESSION IS EMPTY!!!"
     end
 
-    resource, id = request.path.split('/')[1,2] 
-    if resource && id
-      if @user.class.name != resource.singularize.classify || @user.id != id.to_i
+    if !admin_signed_in?
+      resource, id = request.path.split('/')[1,2] 
+      if resource && id
+        if @user.class.name != resource.singularize.classify || @user.id != id.to_i
+          return redirect_to @user
+        end
+      else
         return redirect_to @user
       end
-    else
-      return redirect_to @user
     end
   end
 end

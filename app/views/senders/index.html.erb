@@ -28,7 +28,7 @@
           <!-- <td><%#= coordinates(sender, 0).to_dms %></td> -->
           <td><%= sender.status %></td>
           <td class="d-flex justify-content-center"><%= sender.orders.size %></td>
-          <td><%= link_to sender do %><span class="fa fa-eye"></span><% end %></td>
+          <td><%= link_to sender, 'data-turbolinks': false do %><span class="fa fa-eye"></span><% end %></td>
           <td><%= link_to edit_sender_path(sender) do %><span class="fa fa-edit"></span><% end %></td>
           <% if sender.orders.size == 0 %>
             <td><%= link_to sender, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash"></span><% end %></td> 

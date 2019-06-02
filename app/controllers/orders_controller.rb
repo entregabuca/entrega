@@ -68,7 +68,10 @@ class OrdersController < ApplicationController
         format.json { render :show, status: :ok, location: @order }
         order_posted_update
         
-        NotificationChannel.broadcast_to(@order.sender, title: 'Notificación', body: "El Estado de la orden No: #{@order.id}, ha cambiado a #{@order.status}")
+        NotificationChannel.broadcast_to(@order.sender,
+              title: 'Notificación', 
+              body: "El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
+                    ha cambiado a #{@order.status}")
       
       else
         format.html { render :edit }
