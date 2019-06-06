@@ -1,6 +1,6 @@
 <%= form.fields_for :locations, @order.locations[1].present? ? @order.locations[0] : Location.new  do |f| %> 
   <tr>
-    <th><%= f.label :address %></th>
+    <th><%= f.label t (:address) %></th>
     <td calss="address"><%= f.text_field :address %></td>
   </tr>
 

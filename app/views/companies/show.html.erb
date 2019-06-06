@@ -1,7 +1,7 @@
 <% provide(:page_title, "Company") %>
 
 
-<h1 class='headingspace'> <%= @user.name %> Profile </h1>
+<h1 class='headingspace'> <%= @user.name %> <%= t (:profile) %></h1>  
 
 
 
@@ -9,8 +9,8 @@
   <div class="card-body pl-1"> 
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
-        <div class="d-inline col-sm-6 company-Showlabels">
-           <b><%= "Company: "%></b>
+        <div class="d-inline col-sm-6 company-Showlabels ">  
+           <b><%= Company.human_attribute_name(:name)  %>:</b> 
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
          <%= @user.name %>
@@ -19,7 +19,7 @@
 
       <div class="row">
         <div class="d-inline col-sm-6 company-Showlabels ">
-           <b><%= "Telephone: "%></b>
+           <b><%= Company.human_attribute_name(:telephone) %>:</b>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
          <%= @user.telephone %>
@@ -27,7 +27,7 @@
       </div>
       <div class="row">
         <div class="d-inline col-sm-6 company-Showlabels">
-           <b><%= "Email: "%></b>
+           <b><%= Company.human_attribute_name(:email) %>:</b>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
          <%= @user.email  %>
@@ -35,10 +35,10 @@
       </div>
       <div class="row">
         <div class="d-inline col-sm-6 company-Showlabels">
-          <b><%= "Status: "%></b>
+          <b><%= Company.human_attribute_name(:status) %>:</b>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
-         <%= @user.status %>
+         <%#= @user.status.capitalize %><%= enum_l(@user, :status).capitalize %>
         </div>
       </div>
       <div class="row">
@@ -58,9 +58,9 @@
   <div class="col-md-12 mb-3 companyLocation">
     <div class="card left text-center company-card-location">
       <div class="card-body-left company-card-location">
-        <h3 class="card-header">Company Location</h3>
+        <h3 class="card-header"><%= t (:company_location) %></h3>
          <div class="bolds ">
-          <%= "Address:"%>
+          <%= t (:adress) %>:
         </div> 
         <% if @user.locations.present? %>         
           <div class="mb-5 companyAddress">

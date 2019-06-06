@@ -15,6 +15,7 @@
 
 .h3Space{
   margin-bottom: 4.5rem;
+  font-size: 1.5rem !important;
 }
 
 .tableHeadingbar {
@@ -44,11 +45,11 @@
 
 .sender {
   margin-top: 2.2rem;
-  font-size: 1.9rem;
+  font-size: 1.44rem;
 }
 
 .top-card, .recipient, .cost-label {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
 }
 
 .card-body-left {
@@ -174,7 +175,7 @@
   }
 
   .h3Space, .recipient-title {
-    font-size: 1.5rem !important;
+    font-size: 1.44rem !important;
     margin-bottom: 2.5rem !important;
   }
    .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
@@ -258,7 +259,7 @@
   }
 
   .h3Space, .recipient-title {
-    font-size: 1.4rem !important;
+    font-size: 1.35rem !important;
     margin-bottom: 2.5rem !important;
   }
 
@@ -338,14 +339,6 @@
 
   .sender {
     font-size: 1.2rem !important;
-  }
-
-  /*.headingspace {
-    font-size: 1.5rem !important;
-  }*/
-
-  .h3Space, .recipient-title {
-    font-size: 1.3rem !important;
   }
 
 }

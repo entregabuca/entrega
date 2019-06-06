@@ -1,14 +1,14 @@
 <% provide(:page_title, "Sender") %>
 
 
-  <h1 class='headingspace'><%= @user.name %> Profile </h1>
+  <h1 class='headingspace'><%= @user.name %> <%= t (:profile) %></h1>
 
   <div class="card mb-2  ">
     <div class="card-body pl-1"> 
       <div class="col-md-12 mb-2 mt-2">
         <div class="row">
           <div class="d-inline col-sm-6 sender-Showlabels">
-             <b><%= "Sender: "%></b>
+             <b><%= Sender.human_attribute_name(:name) %></b>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
            <%= @user.name %>
@@ -17,7 +17,7 @@
 
         <div class="row">
           <div class="d-inline col-sm-6 sender-Showlabels ">
-             <b><%= "Telephone: "%></b>
+             <b><%= Sender.human_attribute_name(:telephone) %></b>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
            <%= @user.telephone %>
@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="d-inline col-sm-6 sender-Showlabels">
-             <b><%= "Email: "%></b>
+             <b><%= Sender.human_attribute_name(:email) %></b>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
            <%= @user.email  %>
@@ -33,10 +33,10 @@
         </div>
         <div class="row">
           <div class="d-inline col-sm-6 sender-Showlabels">
-            <b><%= "Status: "%></b>
+            <b><%= Sender.human_attribute_name(:status) %></b>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-           <%= @user.status %>
+             <%= enum_l(@user, :status) %>
           </div>
         </div>
         <div class="row">
@@ -56,9 +56,9 @@
     <div class="col-md-12 mb-3 senderLocation">
       <div class="card left text-center sender-card-location">
         <div class="card-body-left sender-card-location">
-          <h3 class="card-header">Sender Location</h3>
+          <h3 class="card-header"><%= t (:sender_location) %></h3>
            <div class="bolds ">
-            <%= "Address:"%>
+            <%= t :adress %>:
           </div>          
           <% if @user.locations.present? %>
             <div class="mb-5 senderAddress">

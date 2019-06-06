@@ -1,37 +1,38 @@
 <!-- SENDER -->
 <div class="form-group sender mb-4">  
-  <%= form.label :sender_id, 'Sender: ' %>
+  <%= t (:sender) %>:
   <b><%= @order.sender.name %></b>
 </div>
 
 <!-- DESCRIPTION & MEASUREMENTS -->
 <div class="card text-center ">
   <div class="card-body top-card"> 
-    <h3 class="h3Space">Order Measurements</h3> 
+    <h3 class="h3Space"><%= t (:measurement_details) %></h3> 
 
     <div class="form-group col-md-12 order-measurements text-center">     
       <b><%= form.label :description, :class => "col-sm-5 description"%></b>
-      <%= form.text_field :description, placeholder: "Short description", :class => "col-sm-6" %>
+      <%= form.text_field :description, placeholder: "#{t (:short_description)}", :class => "col-sm-6" %>
     </div>         
     
     <div class="form-group col-md-12 order-measurements text-center">      
-      <b><%= form.label :weight, 'Weight (g)', :class => "col-sm-5 weight"%></b>
-      <%= form.text_field :weight, placeholder: "Aprrox. weight in grams", :class => "col-sm-6" %>
+      <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
+
+      <%= form.text_field :weight, placeholder: "#{t (:aprrox_weight)}", :class => "col-sm-6" %>
     </div>
 
      <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label :length, 'Length (cm)', :class => "col-sm-5 length"%></b>
-      <%= form.text_field :length, placeholder: "Aprrox. length in cm", :class => "col-sm-6" %>
+      <b><%= form.label  Order.human_attribute_name(:length), :class => "col-sm-5 length"%></b>
+      <%= form.text_field :length, placeholder: "#{t (:aprrox_length)}", :class => "col-sm-6" %>
     </div>
 
     <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label :width, 'Width (cm)', :class => "col-sm-5 width"%></b>
-      <%= form.text_field :width, placeholder: "Aprrox. width in cm", :class => "col-sm-6" %>
+      <b><%= form.label Order.human_attribute_name(:width), :class => "col-sm-5 width"%></b>
+      <%= form.text_field :width, placeholder: "#{t (:approx_width)}", :class => "col-sm-6" %>
     </div>
 
     <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label :heigth, 'Heigth (cm)',:class => "col-sm-6 height"%></b>
-      <%= form.text_field :heigth, placeholder: "Aprrox. height in cm", :class => "col-sm-6" %>
+      <b><%= form.label Order.human_attribute_name(:heigth),:class => "col-sm-6 height"%></b>
+      <%= form.text_field :heigth, placeholder: "#{t (:approx_height)}", :class => "col-sm-6" %>
     </div>    
     
   </div>
@@ -42,13 +43,13 @@
   <div class="col-md-6 mb-3 card-left ">
     <div class="card  text-center z-depth-2"> 
       <div class="card-body-left">
-        <h3 class="card-header">Sender Location</h3>          
+        <h3 class="card-header"><%= Order.human_attribute_name(:sending_location)%></h3>          
         <div class="location_contain">
           <%= render 'location', form: form, id: 0 %>
         </div>
         <br>
         <div class="mb-5 time">   
-         <strong><%= form.label :pickup_time, 'Pickup date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+         <strong><%= form.label Order.human_attribute_name(:pickup_time), :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
           <%= form.datetime_select :pickup_time, :class => "col-sm-12"  %>
         </div>
       </div>
@@ -59,13 +60,13 @@
   <div class="col-md-6 mb-3 card-right">
     <div class="card text-center z-depth-2">  
       <div class="card-body-right">        
-       <h3 class="card-header">Recipient Location</h3>
+       <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3>
        <div class="location_contain">
         <%= render 'location', form: form, id: 1 %>
        </div>
        <br>   
        <div class="mb-5 time">   
-       <strong><%= form.label :delivery_time, 'Delivery date/time', :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+       <strong><%= form.label Order.human_attribute_name(:delivery_time), :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
         <%= form.datetime_select :delivery_time, :class => "col-sm-12" %>
       </div>
       </div>
@@ -80,15 +81,15 @@
     <div class="card-body">            
       <h3 class="recipient-title">Recipient details</h3>      
         <div class="form-group col-md-12">
-          <b><%= f.label :name, :class => "col-sm-5 recipient-name-label" %></b>
+          <b><%= f.label t(:recipt_name), :class => "col-sm-5 recipient-name-label" %></b>
           <%= f.text_field :name, :class => "col-sm-6 recipient-name-input", placeholder: "Full name" %>
         </div>
         <div class="form-group col-md-12"> <!-- Probably to change it to 12 or other on md -->
-          <b><%= f.label :telephone, :class => "col-sm-5 telephone-label" %></b>
+          <b><%= f.label t(:recipt_telephone), :class => "col-sm-5 telephone-label" %></b>
           <%= f.text_field :telephone, :class => "col-sm-6 telephone-input" %>
         </div>
         <div class="form-group col-md-12">
-          <b><%= f.label :email, :class => "col-sm-5 email-label" %></b>
+          <b><%= f.label t(:recipt_email), :class => "col-sm-5 email-label" %></b>
           <%= f.text_field :email, :class => "col-sm-6 email-input" %>
         </div>    
     </div>
@@ -111,10 +112,12 @@
   <% if @order.status == 'draft' %>
     <div class="actions btn-group" role="group" >
       <div class="space">
-      <%= form.submit  'Save Draft', :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
+        <%#= form.hidden_field :status, :value => 'draft' %>
+      <%= form.submit   Order.human_attribute_name(:save_draft), :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
       </div>
       <div>
-        <%= form.submit  'Post', :class => ' btn btn-primary btn-post' %>   <!-- , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER -->
+        <%#= form.hidden_field :status, :value => 'posted' %>
+        <%= form.submit  Order.human_attribute_name(:post), :class => ' btn btn-primary btn-post' %>   <!-- , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER -->
       </div>  
     </div>
   <% else %>

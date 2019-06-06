@@ -12,29 +12,29 @@
 
 
         <li class="nav-item">
-          <%= link_to_in_li  'Home', root_path, class: 'nav-link' %>
+          <%= link_to_in_li  I18n.t(:home), root_path, class: 'nav-link' %>
         </li>
 
         <% if admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to_in_li  'Companies', companies_path, class: 'nav-link' %>
+            <%= link_to_in_li  I18n.t(:companies), companies_path, class: 'nav-link' %>
             
           </li>
           <li class="nav-item">
-            <%= link_to_in_li  'Senders', senders_path, class: "nav-link"  %>
+            <%= link_to_in_li  I18n.t(:senders), senders_path, class: "nav-link"  %>
           </li>
         <% end %>
 
       <!-- SENDER -->
         <% if @user.class.name == "Sender" && @user.id.present? %> 
           <li class="nav-item">
-             <%= link_to_in_li  'New Order', new_sender_order_path(@user), class: 'nav-link'%>    
+             <%= link_to_in_li I18n.t(:new_order), new_sender_order_path(@user), class: 'nav-link'%>    
             </li>
             <li class="nav-item">
-              <%= link_to_in_li  'My Orders', sender_orders_path(@user), class: 'nav-link'%> 
+              <%= link_to_in_li I18n.t(:my_orders), sender_orders_path(@user), class: 'nav-link'%> 
             </li>
             <li class="nav-item">
-             <%= link_to_in_li  'My Posted Orders', posted_sender_orders_path(@user), class: 'nav-link'%>
+             <%= link_to_in_li  I18n.t(:my_posted_orders), posted_sender_orders_path(@user), class: 'nav-link'%>
             </li>
 
             <li class="nav-item dropdown">
@@ -43,8 +43,8 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to  'My Profile', url_for(@user), class: 'nav-link' %>
-                <%= link_to 'Edit', edit_sender_path(@user), class: 'nav-link' %>
+                <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
+                <%= link_to I18n.t(:edit), edit_sender_path(@user), class: 'nav-link' %>
                 <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
               </div>
             </li>      
@@ -54,16 +54,16 @@
       <!-- COMPANY -->
         <% if @user.class.name == "Company"  && @user.id.present? %>  
           <li class="nav-item">
-            <%= link_to_in_li  'Available Orders', posts_company_orders_path(@user), class: 'nav-link ' %> 
+            <%= link_to_in_li  I18n.t(:available_orders), posts_company_orders_path(@user), class: 'nav-link ' %> 
           </li>
           <li class="nav-item">
-            <%= link_to_in_li 'My Orders', company_orders_path(@user), class: 'nav-link'  %> 
+            <%= link_to_in_li I18n.t(:my_orders), company_orders_path(@user), class: 'nav-link'  %> 
           </li>
           <li class="nav-item">
-            <%= link_to_in_li  'Transporters', company_transporters_path(@user), class: 'nav-link'  %>
+            <%= link_to_in_li  I18n.t(:transporters), company_transporters_path(@user), class: 'nav-link'  %>
           </li> 
           <li class="nav-item">
-            <%= link_to_in_li  'New Transporter', new_company_transporter_path(@user), class: 'nav-link'  %>
+            <%= link_to_in_li  I18n.t(:new_transporter), new_company_transporter_path(@user), class: 'nav-link'  %>
           </li> 
           <!-- Company dropdown -->
           <li class="nav-item dropdown">
@@ -72,8 +72,8 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to  'My Profile', url_for(@user), class: 'nav-link' %>
-              <%= link_to  'Edit', edit_company_path(@user), class: 'nav-link' %>
+              <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
+              <%= link_to  I18n.t(:edit), edit_company_path(@user), class: 'nav-link' %>
               <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
             </div>
           </li>
@@ -82,13 +82,13 @@
           <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Transporter <%= @transporter.name %>
+                <%= t (:transporter) %> <%= @transporter.name %>
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to 'Orders', orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to 'Profile', company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to 'Edit', edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to I18n.t(:trans_orders), orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to I18n.t(:trans_profile), company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to I18n.t(:edit), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
               </div>
             </li>        
           <% end %>
@@ -99,17 +99,15 @@
       <!-- TRANSPORTER -->
         <% if @user.class.name == "Transporter"  %> 
           <li class="nav-item">
-              <%= link_to_in_li  'My Orders', transporter_orders_path(@user), class: 'nav-link'  %> 
+              <%= link_to_in_li  I18n.t(:my_orders), transporter_orders_path(@user), class: 'nav-link'  %> 
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= @user.name %>
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to_in_li  'My Profile', url_for(@user), class: 'nav-link' %>
-              <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
-            </div>
+              <%#= @user.name %>
+            </a> -->
+          <li class="nav-item">            
+            <%= link_to_in_li  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
+              <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>           
           </li>
         <% end %>
 
