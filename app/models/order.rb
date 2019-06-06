@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
- enum status:{
+  enum status:{
     "draft" => 0,
     "posted" => 1,
     "taken" => 2,

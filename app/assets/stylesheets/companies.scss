@@ -12,9 +12,14 @@
 
 
 .company-top-card, .company-rad-status{
-	font-size: 1.32rem;
+	font-size: 1rem;
 }
 
+.company-location {
+		h3{
+			font-size: 1.3rem !important;
+		}
+}
 .company-status-card {
 	width: 80% !important;
 }
@@ -48,7 +53,11 @@
 @media (max-width: 992px) { 
 
 
-
+	.company-location {
+		h3{
+			font-size: 1.44rem !important;
+		}
+	}
 
 }
 
@@ -65,7 +74,7 @@
 @media (max-width: 767px) and (orientation : portrait) {
   
  	.name, .telephone, .email, .status {
-		font-size: 1.2rem !important;
+		font-size: 1rem !important;
 
 	}
 
@@ -73,6 +82,11 @@
 		font-size: 1rem !important;
 	}
 
+	.company-location {
+		h3{
+			font-size: 1.35rem !important;
+		}
+	}
 }
 
 /* ========================================================= */
@@ -97,6 +111,12 @@
 
 	.company-status-card {
 		width: 100% !important;
+	}
+
+	.company-location {
+		h3{
+			font-size: 1.3rem !important;
+		}
 	}
 
 }

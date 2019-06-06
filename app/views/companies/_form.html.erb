@@ -13,7 +13,7 @@
 
     <div class="card text-center mx-5">
       <div class="card-body company-top-card"> 
-        <h3 class="h3Space"> Company Details </h3> 
+        <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
         <div class="form-group col-md-12">     
           <b><%= form.label :name, :class => "col-sm-5 name"%></b>
@@ -34,8 +34,8 @@
 
  <!-- SHOWING MAP -->
     <div class="card company-card-location text-center my-5 mx-5">
-      <div class="card-header">
-       <h3>Company Location</h3> 
+      <div class="card-header company-location">
+       <h3><%= t (:company_location) %></h3> 
       </div>
       <div class="card-body">   
       <%= render 'location', form: form, id: 0 %>
@@ -53,8 +53,7 @@
 
         <div class="form-group col-md-12 company-status-card">
           <b><%= form.label :status,:class => "col-sm-5 status"%></b>
-          <%#= form.text_field :status, :class => " col-sm-6" %>
-          <%= form.select :status, Company.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 company-status"} %>
+          <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => "col-sm-6 company-status"} %>
         </div>            
       </div>
     </div>

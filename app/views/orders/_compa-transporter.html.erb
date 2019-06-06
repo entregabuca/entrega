@@ -3,7 +3,7 @@
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
         <div class="d-inline col-sm-6 company-headings bolds">
-           <%=  "Company: "%>
+          <%= Order.human_attribute_name(:company) %>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-values">
          <%= @order.transporter.company.name  %>
@@ -12,7 +12,7 @@
 
       <div class="row">
         <div class="d-inline col-sm-6 transporter-headings bolds ">
-           <%= "Transporter: "%>
+          <%= Order.human_attribute_name(:transporter_id) %>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-values">
          <%= @order.transporter.name  %>

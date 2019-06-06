@@ -1,15 +1,13 @@
 <% provide(:page_title, "Transporter") %>
 
-<h1>Nuevo</h1>
-
-<h1 class='headingspace'> <%= @transporter.name.titlecase %> Profile </h1>
+<h1 class='headingspace'> <%= @transporter.name.titlecase %> <%= t (:profile) %></h1>
 
 <div class="card mb-2 showing-card   ">
   <div class="card-body pl-1"> 
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels">
-           <b><%= "Transporter: "%></b>
+           <b><%= Transporter.human_attribute_name(:name) %></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
          <%= @transporter.name.titlecase %>
@@ -18,7 +16,7 @@
 
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels ">
-           <b><%= "Telephone: "%></b>
+           <b><%= Transporter.human_attribute_name(:telephone) %></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
          <%= @transporter.telephone %>
@@ -26,7 +24,7 @@
       </div>
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels">
-           <b><%= "Email: "%></b>
+           <b><%= Transporter.human_attribute_name(:email) %></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
          <%= @transporter.email  %>
@@ -34,10 +32,10 @@
       </div>
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels">
-          <b><%= "Status: "%></b>
+          <b><%= Transporter.human_attribute_name(:status) %></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
-         <%= @transporter.status %>
+         <%= enum_l(@user, :status).capitalize %>
         </div>
       </div>
       <div class="row">
@@ -62,4 +60,3 @@
 
   <br>
   <br>
-  
