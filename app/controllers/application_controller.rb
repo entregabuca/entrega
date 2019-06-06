@@ -31,5 +31,4 @@ class ApplicationController < ActionController::Base
 	# { locale: I18n.locale }
 	#end
 
-
 end
