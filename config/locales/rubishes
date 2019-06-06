@@ -1,0 +1,127 @@
+admin: Administrador
+  admin_sign_in: Administrador Iniciar sesión
+  admin_sign_out: Terminar sesión
+  admin_sign_up: Administrador Crear Cuenta
+  company: Compañia
+  #telephone: Telefono
+  company_sign_in: Compañia Iniciar sesión
+  company_sign_out: Terminar sesión
+  company_sign_up: Compañia Crear Cuenta
+  hello: Hola Mundo
+  models:
+    companies: compañias
+    orders: ordenes 
+  profile: Perfil
+  sender: Usuario
+  sender_sign_in: Usuario Iniciar sesión
+  sender_sign_out: Terminar sesión
+  sender_sign_up: Usuario Crear Cuenta
+  transporter: Transportador
+  transporter_sign_in: Transportador Iniciar sesión
+  transporter_sign_out: Terminar sesión
+  transporter_sign_up: Transportador Crear Cuenta
+  routes:
+    companies: companias
+    show: mostrar
+    new: nueva
+    edit: editar
+    create: crear
+    update: actualizar
+    destroy: eliminar
+    orders: ordenes      
+    senders: usuarios   
+    transporters: transportadores
+
+//  activerecord:
+   // attributes:
+   //  order:
+     //   order_id: Orden No.
+      //  description: Descripción
+       // weight: Peso
+       // length: Largo
+       // width: Ancho
+      //  heigth: Alto
+      //  pickup_time: Hora de Recogida
+     //   delivery_time: Hora de Entrega
+     //   cost: Costo
+     //   status: Estado
+       //radius: Radio 
+       // sender_id: Usuario
+       // transporter_id: Transportador
+        cread_at: Creado el
+        updad_at: Actualizado el
+       // company: Compañia
+       // telephone: Telefono
+        //sending_location: Ubicación del Envío 
+        //reciving_location: Destino del Envío 
+        address: Dirección
+        measurement_details: Medidas Aproximadas
+  //distance_to_order: "Distancia a la Orden"
+  orders:
+    show:
+      no_company_added: "Ordern esperando ser tomada para Compañia y Transportador"
+    info:
+      #sending_location: Ubicación del Envío 
+      #reciving_location: Recibo del Envío   
+
+  LATEST ADDITION
+
+  editing_company: Editando Compañia
+  //profile: Perfil
+ NO VA -  company: Compañia
+  sender: Usuario NO HUmman Att
+  transporter: Transportador
+  Admin: Administrador
+  //company_location: Ubicación de la Compañia
+  //search_address: Buscar Dirección
+ // enter_address: Ingrese Dirección
+  //adress: Dirección
+  sign_in: Iniciar sesión
+  sign_out: Terminar sesión
+  sign_up: Crear Cuenta
+  admin_sign_out: Administrador Terminarsesión
+  admin_sign_in: Administrador Iniciar sesión
+  admin_sign_up: Administrador Crear Cuenta
+  activerecord:
+    attributes:
+      order:
+        order_id: Orden No.
+        description: Descripción
+        weight: Peso
+        length: Largo
+        width: Ancho
+        heigth: Alto
+        sending_location: Ubicación del Envío 
+        address: Dirección
+        pickup_time: Hora de Recogida
+        reciving_location: Destino del Envío 
+        delivery_time: Hora de Entrega
+        status: Estado
+        radius: Radio
+        cost: Costo
+        company: Compañia
+        transporter_id: Transportador
+        sender_id: Usuario2
+        telephone: Teléfono
+        cread_at: Creado el
+        updad_at: Actualizado el
+        measurement_details: Medidas Aproximadas
+  distance_to_order: Distancia a la Orden
+  home: Descubre
+  available_orders: Ordenes Disponibles
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

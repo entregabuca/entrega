@@ -2,8 +2,8 @@
 <%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
   
   <div class="form-group">
-    <%= f.text_field :address, placeholder: "Enter Address", id: "address#{id}", :class => "col-sm-12 address" %>
-    <%= link_to 'Search Address', {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-addres-search mb-5" %>  
+    <%= f.text_field :address, placeholder: "#{t (:enter_address)}", id: "address#{id}", :class => "col-sm-12 address" %>
+    <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-addres-search mb-5" %>  
     </td>
   </div>
 

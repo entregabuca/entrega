@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.transporer {
+/*.transporer {
   margin-top: 2.2rem;
   font-size: 1.9rem;
-}
+}*/
 
 .name, .telephone, .email, .status, .password, .password-confirm {
 	text-align: right !important;
@@ -65,7 +65,7 @@
 	@media (max-width: 767px) and (orientation : portrait) {
   
  	.name, .telephone, .email, .status, .password, .password-confirm  {
-		font-size: 1.2rem !important;
+		font-size: 1rem !important;
 
 	}
 

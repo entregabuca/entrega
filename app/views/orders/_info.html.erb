@@ -4,7 +4,7 @@
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
         <div class="d-inline col-sm-6 order-headings bolds ">
-           <%= "Order Reference: "%>
+           <%= Order.human_attribute_name(:order_id) %>
         </div>
         <div class="d-inline col-sm-6  mb-3 order-values">
          <%= @order.id %>
@@ -12,15 +12,15 @@
       </div>    
 
       <div class="row">
-        <div class="d-inline col-sm-6 order-headings bolds "><%= "Status: "%>
+        <div class="d-inline col-sm-6 order-headings bolds "><%= Order.human_attribute_name(:status) %>
         </div>
-        <div class="d-inline col-sm-6 mb-3 order-values"><%= @order.status.present? ? @order.status.capitalize : "-"  %>
+        <div class="d-inline col-sm-6 mb-3 order-values"><%= enum_l(@order, :status) %>
         </div>
       </div>
 
       <div class="row"> 
         <div class="d-inline col-sm-6 order-headings bolds ">
-          <%= "Description: "%>
+          <%= Order.human_attribute_name(:description) %>
         </div>
         <div class="d-inline col-sm-6 mb-3 order-values"><%= @order.description %>
         </div> 
@@ -41,7 +41,7 @@
         <div class="card-body text-center transporterCompanyAdd-card"> 
           <div class="form-group col-md-12">      
             <div class="d-inline col-sm-6 company-headings bolds">
-               <%= "Company: "%>
+               <%#= Order.human_attribute_name(:company) %>
             </div>
             <div class="d-inline col-sm-6 mb-3 company-values">
              <%= @user.name.upcase  %>
@@ -85,7 +85,7 @@
     <%= render 'orders/compa-transporter', order: @order %>
   <% else %> 
     <div class="card mb-3 p-3 messageTransComp text-center"> 
-      <%= "No Company and Transporter assigned yet!" %>
+      <%= t ".no_company_added" %>
     </div>  <!-- SCSS TICKED --> 
   <% end %>
 <% end %>
@@ -102,19 +102,19 @@
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
         <div class="d-inline col-sm-6 sender-headings bolds">
-           <%= "Sender: "%>
+          <%= Order.human_attribute_name(:sender_id) %> 
         </div>
         <div class="d-inline col-sm-6 mb-3 sender-values">
-         <%= @order.sender.name %>
+          <%= @order.sender.name %>
         </div>
       </div> 
 
       <div class="row">
         <div class="d-inline col-sm-6 sender-headings bolds ">
-           <%= "Telephone: "%>
+          <%= Order.human_attribute_name(:telephone) %> 
         </div>
         <div class="d-inline col-sm-6 mb-3 sender-values">
-         <%= @order.sender.telephone %>
+          <%= @order.sender.telephone %>
         </div>
       </div> 
     </div>
@@ -156,15 +156,15 @@
     <div class="col-md-6 mb-3 sendLocation">
       <div class="card left text-center">
         <div class="card-body-left">
-          <h3 class="card-header">Sending Location</h3>
+          <h3 class="card-header"><%= Order.human_attribute_name(:sending_location)%></h3>
            <div class="bolds ">
-            <%= "Address:"%>
+            <%= Order.human_attribute_name(:address) %>
           </div>          
           <div class="mb-3 showAddress"><%= @order.locations[0].address %>
           </div>                  
             <br>
             <div class="row mb-3 text-center pickdeli-times mb-4">
-              <div class="d-inline col-md-5 bolds pick-label"><%= "Pickup Time: "%>
+              <div class="d-inline col-md-5 bolds pick-label"><%= Order.human_attribute_name(:pickup_time) %>
               </div>
               <div class="d-inline col-md-6 pick-time mb-4"><%= @order.pickup_time.strftime('%d %b %Y  %H:%M') %> 
               </div>
@@ -177,15 +177,15 @@
       <div class="col-md-6 mb-3 recipientLocation">
           <div class="card right text-center"> <!-- mdb-color lighten-2  -->
             <div class="card-body-right ">
-              <h3 class="card-header">Reciving Location</h3> 
+              <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3> 
               <div class="bolds ">
-                <%= "Address:"%>
+                <%= Order.human_attribute_name(:address) %>
               </div>           
               <div class="mb-3 showAddress"><%= @order.locations[1].address %>
               </div>  
               <br>
               <div class="row mb-3 text-center pickdeli-times mb-4">
-                <div class="d-inline col-md-6 bolds deliver-label"><%= "Delivery Time: "%>
+                <div class="d-inline col-md-6 bolds deliver-label"><%= Order.human_attribute_name(:delivery_time) %>
                 </div>
                 <div class="d-inline col-md-6 deliver-time mb-4"><%= @order.delivery_time.strftime('%d %b %Y  %H:%M') %>
                 </div>
@@ -242,30 +242,34 @@
 <div class="card mb-2  ">
   <div class="card-body"> 
     <div class="col-md-12 mb-2 mt-2">
-    <h3 class="recipient-title text-center">Measurement details</h3>
+    <h3 class="recipient-title text-center"><%= Order.human_attribute_name(:measurement_details)%></h3>
     <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds"><%="Weight: "%>
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%=
+        Order.human_attribute_name(:weight) %>
       </div>
       <div class="d-inline col-sm-6 mb-3 measurements-values">
         <%= @order.weight%>
       </div>
     </div>
     <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Length: " %>
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:length) %>
       </div>
       <div class="d-inline col-sm-6 mb-3 measurements-values">
         <%=  @order.length %>
       </div>
     </div>
     <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Width: " %>
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:width) %>
       </div>
       <div class="d-inline col-sm-6 mb-3 measurements-values">
         <%= @order.width %>
       </div>
     </div>
     <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds"><%= "Heigth: " %>
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:heigth) %>
       </div>
       <div class="d-inline col-sm-6 mb-3 measurements-values">
         <%= @order.heigth %>
@@ -282,9 +286,9 @@
     <div class="card mb-3">        
       <div class="card-block mt-3 ">
         <div class="row">
-          <div class="d-inline col-sm-6 cost-heading bolds"><%="Cost: "%>
+          <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
           </div>
-          <div class="d-inline col-sm-6 mb-3 cost-values">
+          <div class="d-inline col-sm-6 mb-3 cost-values">            
             <%= @order.cost  %>
           </div>
         </div>

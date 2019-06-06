@@ -1,46 +1,56 @@
 <div class="homelinks">
+	<%#= link_to t(:users), users_path  THIS IS FROM THE I18N VIDEO CHECK WHAT CAN I DO %>
+
+	<%= content_tag :li do %>
+		<%= link_to 'Switch to English', locale: :en %>
+	<% end unless current_page?(locale: :en) %>
+
+	<%= content_tag :li do %>
+		<%= link_to 'Cambiar a Español', locale: :es %>
+	<% end unless current_page?(locale: :es) %>
+
 	
 
 <hr>
-<h1>Company</h1>
+<h1><%= t :company %></h1>
 
 <% if current_company %>
-	<%= link_to "Company Sign Out", destroy_company_session_path, method: :delete %>
+	<%= link_to t(:sign_out), destroy_company_session_path, method: :delete %>
 <% else %>
-	<%= link_to "Company Sign In", new_company_session_path %> |
-	<%= link_to "Company Sign Up", new_company_registration_path %>
+	<%= link_to t(:sign_in), new_company_session_path %> |
+	<%= link_to t(:sign_up), new_company_registration_path %>
 <% end %>
 
 <hr>
-<h1>Sender</h1>
+<h1><%= t :sender %></h1>
 
 <% if current_sender %>
-	<%= link_to "Sender Sign Out", destroy_sender_session_path, method: :delete %>
+	<%= link_to t(:sign_out), destroy_sender_session_path, method: :delete %>
 <% else %>
-	<%= link_to "Sender Sign In", new_sender_session_path %> |
-	<%= link_to "Sender Sign Up", new_sender_registration_path %>
+	<%= link_to t(:sign_in), new_sender_session_path %> |
+	<%= link_to t(:sign_up), new_sender_registration_path %>
 <% end %>
 
 <hr>
-<h1>Transporter</h1>
+<h1><%= t :transporter%></h1>
 
 <% if current_transporter %>
-	<%= link_to "Transporter Sign Out", destroy_transporter_session_path, method: :delete %>
+	<%= link_to t(:sign_out), destroy_transporter_session_path, method: :delete %>
 <% else %>
-	<%= link_to "Transporter Sign In", new_transporter_session_path %> |
-	<%= link_to "Transporter Sign Up", new_transporter_registration_path %>
+	<%= link_to t(:sign_in), new_transporter_session_path %> |
+	<%= link_to t(:sign_up), new_transporter_registration_path %>
 <% end %>
 
 <hr>
 <br>
 <hr>
-<h1>Admin</h1>
+<h1><%= t :admin%></h1>
 
 <% if current_admin %>
-	<%= link_to "Admin Sign Out", destroy_admin_session_path, method: :delete %>
+	<%= link_to t(:admin_sign_out), destroy_admin_session_path, method: :delete %>
 <% else %>
-	<%= link_to "Admin Sign In", new_admin_session_path %> |
-	<%= link_to "Admin Sign Up", new_admin_registration_path %>
+	<%= link_to t(:admin_sign_in), new_admin_session_path %> |
+	<%= link_to t(:admin_sign_up), new_admin_registration_path %>
 <% end %>
 
 </div>

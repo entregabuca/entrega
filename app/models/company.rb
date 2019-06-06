@@ -9,10 +9,10 @@ class Company < ApplicationRecord
 
   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
 
- enum status:{
-   "inactive" => 0,
-   "active" => 1
- }
+  enum status:{
+    "inactive" => 0,
+    "active" => 1
+  }
 
 
  def status_active  # could be changed to order_posted

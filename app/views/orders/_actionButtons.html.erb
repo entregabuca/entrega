@@ -1,6 +1,8 @@
 <!-- Back Button -->
 <div class="d-inline">  
-  <%= link_to 'Back to Orders', url_for([@user, :orders]), :class => "btn btn-primary btn-back mb-2 mt-2" %> 
+  <%= link_to "#{Order.human_attribute_name(:back_to_orders)}", url_for([@user, :orders]), :class => "btn btn-primary btn-back mb-2 mt-2" %> 
+
+   <%#= link_to 'Back to Orders', url_for([@user, :orders]), :class => "btn btn-primary btn-back mb-2 mt-2" %> 
 </div>
 
 <% if ['completed', 'cancelled'].include?(@order.status) %>
@@ -11,17 +13,17 @@
         <!-- IT WILL RENDER THE FORM ITSELF -->
       <% elsif ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
         <div class="d-inline">     
-          <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
+          <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
         </div>
       <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit')  %> 
         <div>    
           <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
             <%= form.hidden_field :status, :value => 'cancelled' %>
             <div class="d-inline">
-              <%= form.submit  'Cancel Order', :class => 'mt-2 mb-2 btn btn-primary btn-cancel', name: 'cancel' %>
+              <%= form.submit  Order.human_attribute_name(:cancel_order), :class => 'mt-2 mb-2 btn btn-primary btn-cancel', name: 'cancel' %>
             </div>
             <div class="space">
-              <%= form.submit  'Save Draft', :class => 'mt-2  btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
+              <%= form.submit  Order.human_attribute_name(:save_draft), :class => 'mt-2  btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
             </div>
           <% end %>
         </div>
@@ -33,7 +35,7 @@
 
   <% if ['posted','taken', 'inTransit'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
     <div class="d-inline">  
-      <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
+      <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "mt-2 btn btn-primary btn-edit" %>
     </div>
 
 
@@ -45,14 +47,14 @@
       <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
         <%= form.hidden_field :status, :value => 'inTransit' %>
         <div class="d-inline"> 
-          <%= form.submit  'In Transit', :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
+          <%= form.submit  "#{Order.human_attribute_name(:inTransit)}", :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
         </div>
       <% end %>
   <% elsif @order.status == 'inTransit' %> 
       <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
         <%= form.hidden_field :status, :value => 'completed' %>
         <div class="d-inline">
-          <%= form.submit  'Complet', :class => 'mt-2 btn btn-primary btn-complet', name: 'complete' %>
+          <%= form.submit  "#{Order.human_attribute_name(:complet)}", :class => 'mt-2 btn btn-primary btn-complet', name: 'complete' %>
         </div>
       <% end %>
     </div>
@@ -62,14 +64,14 @@
 <!-- Transporter -->
 <% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %> 
   <% if @user.class.name == "Transporter" && current_page?(controller: 'orders', action: 'show') %>
-  <%= link_to 'Edit Order', url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
+  <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "col-sm-3 btn btn-primary btn-edit" %>
 
   <% elsif current_page?(controller: 'orders', action: 'edit') %> 
     <% if  @order.status == 'taken' %>   
         <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
           <%= form.hidden_field :status, :value => 'inTransit' %>
           <div class="d-inline">
-            <%= form.submit  'In Transit', :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
+            <%= form.submit  "#{Order.human_attribute_name(:inTransit)}", :class => 'mt-2 btn btn-primary btn-intransit', name: 'inTransit' %>
           </div>
         <% end %>
       </div>
@@ -77,7 +79,7 @@
         <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
           <%= form.hidden_field :status, :value => 'completed' %>
           <div class="d-inline">
-            <%= form.submit  'Complet', :class => 'mt-2 btn btn-primaryy btn-complet', name: 'complete' %>
+            <%= form.submit  "#{Order.human_attribute_name(:complet)}", :class => 'mt-2 btn btn-primaryy btn-complet', name: 'complete' %>
           </div>
         <% end %>
       </div>

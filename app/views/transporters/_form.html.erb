@@ -13,10 +13,10 @@
 
    <div class="card text-center mx-5">
       <div class="card-body transporter-top-card"> 
-        <h3 class="h3Space"> Transporter Details </h3> 
+        <h3 class="h3Space"><%= t (:transporter_details) %></h3> 
 
         <div class="form-group col-md-12 mb-4">  
-          <%= form.label :company_id, 'Company: ' %>
+          <%= t (:company) %>:
           <b><%= @transporter.company.name  %></b>
         </div>
 
@@ -33,8 +33,7 @@
          
         <div class="form-group col-md-12 transporter-status-card">
           <b><%= form.label :status,:class => "col-sm-5 status"%></b>
-          <%#= form.text_field :status, :class => " col-sm-6" %>
-          <%= form.select :status, Transporter.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 transporter-status"} %>
+          <%= form.select :status, enum_options_for_select(Transporter, :status), {}, { :class => "col-sm-6 transporter-status"} %>
         </div>
 
         <div class="form-group col-md-12">
@@ -59,17 +58,23 @@
 
       </div>
     </div>
+    <hr> 
+    <div class="row buttons btn-group " > 
+      <%= render 'transporters/actionButtons', form: form %>
+    </div>
+    <hr class="mb-5"> 
 
-<hr> 
-<div class="row buttons btn-group " > 
-  <%= render 'transporters/actionButtons', form: form %>
-</div>
-<hr class="mb-5"> 
+<% end %> 
 
 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 
-<% end %>
+
+
+
+
+
+
+
+
+
