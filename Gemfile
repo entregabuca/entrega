@@ -44,6 +44,7 @@ gem 'faker'
 gem 'leaflet-rails'
 gem 'geocoder'
 gem 'geo_units'
+gem 'alertifyjs-rails'
 
 #gem 'delayed_job_active_record'
 
