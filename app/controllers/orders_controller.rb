@@ -120,7 +120,7 @@ class OrdersController < ApplicationController
     def draft_or_posted     
       if params[:commit] == 'Save Draft' ||  params[:commit] == 'Borrador' 
         @order.update(status: 'draft', radius: 500)      
-      elsif params[:commit] == 'Post' ||  params[:commit] == 'Enviar' 
+      elsif params[:commit] == 'Post' ||  params[:commit] == 'Solicitar' 
         @order.update(status: 'posted', radius: 500)     
       end
     end 

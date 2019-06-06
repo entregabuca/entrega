@@ -27,8 +27,6 @@ module Accessible
       return redirect_to :root
     end
 
-    puts (@user.class.name + @user.id.to_s)
-
     ### Write the cookie for the Notification Channel
     if @user
       cookies.encrypted[:user_id] = @user.id
