@@ -26,7 +26,7 @@
           <td><%= transporter.status %></td>
           <td><%= transporter.company.name %></td>
           <td><%= transporter.orders.size %></td>
-          <td><%= link_to url_for([@user, transporter]) do %><span class="fa fa-eye"></span><% end %></td>
+          <td><%= link_to url_for([@user, transporter]), 'data-turbolinks': false do %><span class="fa fa-eye"></span><% end %></td>
           <% if @user.class.name == 'Company' %>
             <td><%= link_to edit_company_transporter_path(@user, transporter) do %><span class="fa fa-edit"></span><% end %></td> 
             <% if transporter.orders.size == 0 %>    

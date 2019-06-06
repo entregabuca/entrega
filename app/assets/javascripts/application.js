@@ -12,13 +12,16 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
 //= require leaflet
 //= require jquery3
 //= require popper
+//= require turbolinks
+//= require_tree .
 //= require bootstrap-sprockets
+//= require alertify
+//= require alertify/confirm-ujs
 
+alertify.set('notifier','position', 'top-right');
 
 // Get the browsers coordinates to initialize the Map to its location
 function getNavCoordinates(map, marker, lat, lng){
