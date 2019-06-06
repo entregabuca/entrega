@@ -8,12 +8,16 @@ module ApplicationCable
 
     private
       def find_verified_user
-        if verified_user = cookies.encrypted[:user_type].constantize.find(cookies.encrypted[:user_id])
-          puts "CONNECTED AS:: #{verified_user.class.name}: #{verified_user.has_attribute?(:name) ? verified_user.name : verified_user.id}"
-          verified_user
+        if cookies.encrypted[:user_id] != nil
+          if verified_user = cookies.encrypted[:user_type].constantize.find(cookies.encrypted[:user_id])
+            puts "CONNECTED AS:: #{verified_user.class.name}: #{verified_user.has_attribute?(:name) ? verified_user.name : verified_user.id}"
+            verified_user
+          else
+            reject_unauthorized_connection
+            puts "NOT CONNECTED"
+          end
         else
-          reject_unauthorized_connection
-          puts "NOT CONNECTED"
+          puts "NOT CONNECTED2"
         end
       end
   end

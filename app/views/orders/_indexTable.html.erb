@@ -69,7 +69,7 @@
         <% end %>
 
       <!-- <td><%#= enum_l(@order, :status) %></td> -->
-          <td><%= order.status.present? ? order.status.capitalize : "-"  %></td>
+          <td><%= order.status.present? ? enum_l(order, :status) : "-"  %></td>
           <td><%= order.description %></td>
         <% if  current_admin %>    
           <td><%= order.weight %></td>

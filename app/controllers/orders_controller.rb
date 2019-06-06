@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
+  include Accessible 
+
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  #before_action :set_user
 
   # GET /orders
   # GET /orders.json
