@@ -38,9 +38,10 @@ es:
         updad_at: Actualizado el
         measurement_details: Medidas Aproximadas
         save_draft: Guardar Borrador
-        post: Enviar
+        post: Solicitar
         back_to_orders: Ir a Ordenes  
         edit_order : Editar Orden
+        take_order: Tomar Orden
         taken: Tomada
         inTransit: En Camino
         complet: Completar

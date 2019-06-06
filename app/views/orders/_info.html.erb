@@ -72,7 +72,7 @@
       <div class="col-sm-10 col-lg-10 editor">    
         <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
           <%= form.hidden_field :status, :value => 'taken' %>
-          <%= form.submit  'Take Order', :class => 'col-sm-2 btn btn-primary btn-taken mb-3', name: 'take' %>
+          <%= form.submit  Order.human_attribute_name(:take_order), :class => 'col-sm-2 btn btn-primary btn-taken mb-3', name: 'take' %>
         <% end %>
       </div> 
     <% end %>
