@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+#include Accessible
 	before_action :set_session
 	before_action :set_locale
 	def set_session

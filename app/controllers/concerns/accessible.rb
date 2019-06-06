@@ -27,11 +27,13 @@ module Accessible
       return redirect_to :root
     end
 
+    puts (@user.class.name + @user.id.to_s)
+
     ### Write the cookie for the Notification Channel
     if @user
       cookies.encrypted[:user_id] = @user.id
       cookies.encrypted[:user_type] = @user.class.name
-      puts "SESSION CREATED!!! Company: #{@user.id}"
+      puts "SESSION CREATED!!! #{@user.class.name}: #{@user.id}"
     else
       cookies.encrypted[:user_id] = nil
       cookies.encrypted[:user_type] = nil
