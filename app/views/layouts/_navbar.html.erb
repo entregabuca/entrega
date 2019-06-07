@@ -6,10 +6,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
     <div class="collapse navbar-collapse navbarlinks" id="collapsingnavbar">
       <ul class="navbar-nav mr-auto ulitems">
-
 
         <li class="nav-item">
           <%= link_to_in_li  I18n.t(:home), root_path, class: 'nav-link' %>
@@ -36,7 +34,7 @@
             <li class="nav-item">
              <%= link_to_in_li  I18n.t(:my_posted_orders), posted_sender_orders_path(@user), class: 'nav-link'%>
             </li>
-
+            <!-- Sender dropdown -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= @user.name %>
@@ -44,12 +42,10 @@
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-                <%= link_to I18n.t(:edit), edit_sender_path(@user), class: 'nav-link' %>
-                <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
+                <%= link_to I18n.t(:edit_profile), edit_sender_path(@user), class: 'nav-link' %>
               </div>
             </li>      
         <% end %>
-      <!-- Finish SENDER -->
 
       <!-- COMPANY -->
         <% if @user.class.name == "Company"  && @user.id.present? %>  
@@ -73,8 +69,7 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-              <%= link_to  I18n.t(:edit), edit_company_path(@user), class: 'nav-link' %>
-              <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>
+              <%= link_to  I18n.t(:edit_profile), edit_company_path(@user), class: 'nav-link' %>             
             </div>
           </li>
 
@@ -84,35 +79,28 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= t (:transporter) %> <%= @transporter.name %>
               </a>
-
+              <!-- Transporter dropdown -->
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to I18n.t(:trans_orders), orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
                 <%= link_to I18n.t(:trans_profile), company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to I18n.t(:edit), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                <%= link_to I18n.t(:edit_profile), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
               </div>
             </li>        
           <% end %>
-          <!-- Finish Viewing the transporter from the  Company -->
-        <% end %>
-      <!-- Finish COMPANY -->
+        <% end %>   
 
       <!-- TRANSPORTER -->
         <% if @user.class.name == "Transporter"  %> 
           <li class="nav-item">
               <%= link_to_in_li  I18n.t(:my_orders), transporter_orders_path(@user), class: 'nav-link'  %> 
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%#= @user.name %>
-            </a> -->
           <li class="nav-item">            
             <%= link_to_in_li  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-              <%#= link_to "Logout", destroy_user_session_path, method: :delete,class: "nav-link" %><%# SIGN OUT %>           
           </li>
         <% end %>
 
         <li class="nav-item">
-          <%= admin_signed_in? ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(current_admin), method: :delete, class: 'nav-link') : @user ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
+          <%= admin_signed_in? ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(current_admin), method: :delete, class: 'nav-link') : @user ? (link_to icon('fas', 'running', I18n.t(:sign_out)), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
         </li>
       </ul>
     </div>
