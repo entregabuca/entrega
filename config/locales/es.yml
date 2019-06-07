@@ -14,7 +14,9 @@ es:
         reset_password_token: Reiniciar Password Token
         status: Estado
         telephone: Teléfono
-        updated_at: Actualizado El  
+        updated_at: Actualizado El 
+        update: Actualizar
+        back_to_company: Ver Compañia
       order:
         order_id: Orden No.
         description: Descripción
@@ -39,7 +41,7 @@ es:
         measurement_details: Medidas Aproximadas
         save_draft: Guardar Borrador
         post: Solicitar
-        back_to_orders: Ir a Ordenes  
+        back_to_orders: Ver Ordenes  
         edit_order : Editar Orden
         take_order: Tomar Orden
         taken: Tomada
@@ -56,6 +58,8 @@ es:
         total_orders: Ordenes Totales
         password: Contraseña
         password_confirmation: Confirme Contraseña
+        update_transporter: Actualizar Transportador
+        back_to_transporters: Ver Transportadores
       sender:
         created_at: Creado El
         email: "Email"
@@ -68,6 +72,8 @@ es:
         status: Estado
         telephone: Teléfono
         updated_at: Actualizado El
+        update: Actualizar
+        back_to_sender: Ver Usuario
     enums: 
       sender:
         statuses:
@@ -111,9 +117,9 @@ es:
   distance_to_order: Distancia a la Orden
   sender_location: Ubicación del Usuario
   sender_details: Información del Usuario
-  editing_sender: Editar Usuario
-  editing_company: Editar Compañia
-  editing_transporter: Editar Transportador
+  editing_sender: Actualizando Usuario
+  editing_company: Actualizando Compañia
+  editing_transporter: Actualizando Transportador
   transporter_details: Información del Transportador
 
   restrict_title: Hola !!! No deberias estar aca !!!
@@ -148,17 +154,14 @@ es:
   new_transporter: Nuevo Transportador
   my_profile: Mi Perfil
   trans_profile: Perfil del Transportador
-  edit: Editar
+  edit_profile: Actualizar Perfil
 
   sign_in: Iniciar sesión
-  sign_out: Terminar sesión
+  sign_out: Salir
   sign_up: Crear Cuenta
   admin_sign_out: Administrador Terminarsesión
   admin_sign_in: Administrador Iniciar sesión
   admin_sign_up: Administrador Crear Cuenta
-
-
-
 
   date:
     abbr_day_names:

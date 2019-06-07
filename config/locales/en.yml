@@ -15,6 +15,8 @@ en:
         status: Status
         telephone: Telephone
         updated_at: Updated At
+        update: Update
+        back_to_company:: Back to Company
       order:
         order_id: Order No.
         description: Description
@@ -41,7 +43,7 @@ en:
         post: Posted
         back_to_orders: Back to Orders
         edit_order: Edit Order
-        take_order: Take Order'
+        take_order: Take Order
         taken: Taken
         inTransit: In Transit
         complet: Complet
@@ -56,6 +58,8 @@ en:
         total_orders: Total Orders
         password: Password
         password_confirmation: Confirm New Password
+        update_transporter: Update Transporter
+        back_to_transporters: Transporters
       sender:
         created_at: Created At
         email: Email
@@ -67,7 +71,9 @@ en:
         reset_password_token: Reset Password Token
         status: Status
         telephone: Telephone
-        updated_at: Updated At 
+        updated_at: Updated At
+        update: Update
+        back_to_sender: Back to Sender 
     enums: 
       sender:
         statuses:
@@ -148,7 +154,7 @@ en:
   new_transporter: New Transporter
   my_profile: My Profile
   trans_profile: Transporter Profile
-  edit: Edit
+  edit_profile: Edit Profile
 
   sign_in: Sign In
   sign_out: Sign Out
@@ -156,10 +162,6 @@ en:
   admin_sign_out: Admin Sign Out
   admin_sign_in: Admin Sign In  
   admin_sign_up: Admin Sign Up
-
-#  enum: 
-#    inactive: Desactivado
-#    active: Activo
 
   date:
     abbr_day_names:

@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
         NotificationChannel.broadcast_to(@order.sender,
               title: 'Notificación', 
               body: "El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
-                    ha cambiado a #{@order.status}")
+                    ha cambiado a #{enum_l(@order, :status)} ")
       
       else
         format.html { render :edit }
@@ -124,6 +124,14 @@ class OrdersController < ApplicationController
         @order.update(status: 'posted', radius: 500)     
       end
     end 
+# See how I can make this Two(2) last methods available globally
+    def enum_l(model, enum)
+      enum_i18n(model.class, enum, model.send(enum))
+    end
+
+    def enum_i18n(class_name, enum, key)
+     I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
+    end
 
 
 
