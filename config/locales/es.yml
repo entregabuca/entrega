@@ -36,6 +36,7 @@ es:
         transporter_id: Transportador
         sender_id: Usuario
         telephone: Teléfono
+        recipient: Receptor
         cread_at: Creado el
         updad_at: Actualizado el
         measurement_details: Medidas Aproximadas
@@ -162,7 +163,21 @@ es:
   admin_sign_out: Administrador Terminarsesión
   admin_sign_in: Administrador Iniciar sesión
   admin_sign_up: Administrador Crear Cuenta
-
+  log_in: Ininciar
+  sign_up: Crear Cuenta
+  password: Contraseña
+  current_password : Contraseña actual
+  password_confirmation: Confirme Contraseña
+  minimum_password_length: Entre 6 caracteres minimo
+  confirm_password: Entre Contraseña de nuevo
+  enter_email: Escriba su Email
+  enter_password: Escriba su contraseña
+  remember_me: Recuerdame
+  forgot_password: Olvidaste tu contraseña?
+  send_reset_password: Enviame instrucciones
+  didnot_receive_confirmation_instructions: No recibió Instrucciones de confirmacion?
+  didnot_receive_unlock_instructions: No recibió Instrucciones para desbloquear cuenta?
+  change my password: Cambiar Contraseña
   date:
     abbr_day_names:
     - dom

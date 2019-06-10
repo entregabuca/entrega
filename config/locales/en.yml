@@ -36,6 +36,7 @@ en:
         transporter_id: Transporter
         sender_id: Sender
         telephone: Telephone
+        recipient: Recipient
         cread_at: Created At
         updad_at: Updated At
         measurement_details: Approximate Measurements
@@ -162,7 +163,21 @@ en:
   admin_sign_out: Admin Sign Out
   admin_sign_in: Admin Sign In  
   admin_sign_up: Admin Sign Up
-
+  log_in: Log in
+  sign_up: Sign up
+  password: Password
+  current_password: Current Password
+  password_confirmation: Confirm Pas11sword
+  minimum_password_length: 6 characters minimum
+  confirm_password: Confirm Password
+  enter_email: Enter Email
+  enter_password: Enter your password
+  remember_me: Remember me
+  forgot_password: Forgot your Password?
+  send_reset_password: Send me reset password instructions 
+  didnot_receive_confirmation_instructions: Didn't receive confirmation instructions?
+  didnot_receive_unlock_instructions: Didn't receive unlock instructions?
+  change my password: Change my password
   date:
     abbr_day_names:
     - Sun
