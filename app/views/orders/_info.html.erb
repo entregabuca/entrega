@@ -125,13 +125,14 @@
   <% if @order.transporter.present? %>
     <%= render 'orders/compa-transporter', order: @order %>
   <% end %>
+<% end %>
 
-  <% if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
+  <%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
   <div class="card mb-2  ">
     <div class="card-body pl-1"> 
       <div class="col-md-12 mb-2 mt-2">
         <div class="row">
-          <div class="d-inline col-sm-6 sender-headings bolds"><%= "Recipient: "%>
+          <div class="d-inline col-sm-6 sender-headings bolds"><%= Order.human_attribute_name(:recipient)%>
           </div>
           <div class="d-inline col-sm-6 mb-3 recipient-values">
             <%= @order.recipients.last.name %>
@@ -139,7 +140,7 @@
         </div>
         <div class="row">
           <div class="d-inline col-sm-6 sender-headings bolds ">
-            <%= "Telephone: "%>
+            <%= Order.human_attribute_name(:telephone) %>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-values">
             <%= @order.recipients.first.telephone %>
@@ -148,8 +149,8 @@
       </div>
     </div>   
   </div>
-  <% end %>
-<% end %>
+  
+<%# end %>
   
 <!-- MAPS -->
  <div class="maps-row">

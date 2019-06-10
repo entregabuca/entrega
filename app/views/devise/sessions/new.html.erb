@@ -13,23 +13,23 @@
 
             <div class="field">
               <%= f.label :email, :class => "signin-label" %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email", :class => "signin-input mb-4" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "#{t (:enter_email)}", :class => "signin-input mb-4" %>
             </div>
 
             <div class="field">
-              <%= f.label :password, :class => "signin-label" %><br />
-              <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter your password", :class => "signin-input mb-4" %>
+              <%= f.label t(:password), :class => "signin-label" %><br />
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "#{t (:enter_password)}", :class => "signin-input mb-4" %>
           
 
             <% if devise_mapping.rememberable? %>
               <div class="field mt-2 rememberme">
                 <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+                <%= f.label t(:remember_me) %>
               </div>
              <% end %>
           </div>
           <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-success  mb-2'  %>
+            <%= f.submit t(:log_in), class: 'btn btn-success mb-2 btn-devise'  %>
           </div>
       <% end %>
          
