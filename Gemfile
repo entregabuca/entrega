@@ -47,6 +47,8 @@ gem 'geo_units'
 
 gem 'alertifyjs-rails'
 
+# pg was added as per insructions for ePay
+gem 'pg'
 
 #gem 'delayed_job_active_record'
 
@@ -63,7 +65,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.6'
+  #gem 'sqlite3', '~> 1.3.6'
 end
 
 group :test do
