@@ -1,0 +1,43 @@
+<script >	
+  var handler = ePayco.checkout.configure({
+		key: '<%= ENV["EPAYCO_PUBLIC_KEY"]%>',
+		test: true
+		//test: '<%#= Rails.env.production? ? false : true %>'
+		
+	})
+
+	var data={
+    //Parametros compra (obligatorio)
+    name: "Courrier",
+    description: "Servicio de Domicilio",
+    invoice: "<%= @charge.uid %>",
+    currency: "cop",
+    amount: "<%= @charge.amount %>",
+    tax_base: "0",
+    tax: "0",
+    country: "co",
+    lang: "en",
+
+    //Onpage="false" - Standard="true"
+    external: "false",
+
+
+    //Atributos opcionales
+    //extra1: "extra1",
+    //extra2: "extra2",
+    //extra3: "extra3",
+    response: "<%= ENV["HOSTNAME"] %>/epayco/response",  
+    confirmation: "<%= ENV["HOSTNAME"] %>/epayco/confirmation",
+
+    //Atributos del cliente
+    //name_billing: "Andres Perez",
+    //address_billing: "Carrera 19 numero 14 91",
+    //type_doc_billing: "cc",
+    //mobilephone_billing: "3050000000",
+    //number_doc_billing: "100000000"
+  }
+
+  handler.open(data)
+	 
+
+</script>

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get "epayco/response", to: "epayco#result"
+  get "epayco/confirmation", to: "epayco#confirmation"
+
+
+  
   get 'charges/index'
   resources :charges, only: [ :new, :create] 
   
