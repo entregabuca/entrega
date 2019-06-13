@@ -1,0 +1,38 @@
+<div class="charges pt-4">
+	<div class="container">
+		<div class="row">  
+			<div class="col">
+				<%= link_to "New Charge", new_charge_path, class: "btn btn-link" %>
+
+				<table class="table mt-3">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Reference</th>
+							<th>Amount</th>
+							<th>Status</th>
+							<th>Payment Method</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @charges.each do |charge| %>
+						<tr>
+							<td><%= charge.created_at %></td>
+							<td><%= charge.uid %></td>
+							<td><%= charge.amount%></td>
+							<td>
+								<%= charge.status %>
+								<% if charge.error_message %>
+									<small style="display: block;"><%= charge.error_message %></small>
+								<% end %>
+							</td>
+							<td><%= charge.payment_method %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</div>
