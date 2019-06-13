@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-
+  get 'charges/index'
+  resources :charges, only: [ :new, :create] 
+  
+  #get 'charges/create'
+  
 get '/:locale' => 'access#home' # from GUIDES
 root 'access#home'
 
