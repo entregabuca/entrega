@@ -9,19 +9,19 @@ class ChargesController < ApplicationController
   end
 
   def create
-  	charge = Charge.new(charge_params)
-  	if charge.save
-  	 redirect_to charges_index_path
+  	@charge = Charge.new(charge_params)
+  	if @charge.save
+  		render :epayco
+  	 #redirect_to charges_index_path
   	else
-  	 render :new
+  		render :new
   	end
   end
 
   private
 
   def charge_params
-  	params.require(:charge).permit(:amout)
-
+  	params.require(:charge).permit(:amount)
   end
 
 end

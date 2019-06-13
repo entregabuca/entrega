@@ -50,6 +50,8 @@ gem 'alertifyjs-rails'
 # pg was added as per insructions for ePay
 gem 'pg'
 
+gem 'httparty', '~> 0.17.0'
+
 #gem 'delayed_job_active_record'
 
 group :development, :test do
