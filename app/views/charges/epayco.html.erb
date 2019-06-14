@@ -2,7 +2,7 @@
   var handler = ePayco.checkout.configure({
 		key: '<%= ENV["EPAYCO_PUBLIC_KEY"]%>',
 		test: true
-		//test: '<%= Rails.env.production? ? false : true %>'
+		//test: '<%#= Rails.env.production? ? false : true %>'
 	})
 
 	var data={

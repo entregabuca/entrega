@@ -1,6 +1,7 @@
 class Charge < ApplicationRecord
 
-enum status: [:created, :pending, :paid, :rejected, :error]
+#enum status: [:created, :pending, :paid, :rejected]
+enum status: [:paid, :rejected, :pending, :error, :error]
 enum payment_method: [:unknown, :credit_card, :debit_card, :pse, :cash, :referenced]
 
 before_create :genereate_uid
