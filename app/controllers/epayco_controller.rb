@@ -26,7 +26,8 @@ class EpaycoController < ApplicationController
   	charge.update!(response_data: params.as_json, error_message: nil)
 
   	if signature == params[:x_signature]
-  		update_status(charge, params[:x_cod_response])
+  		#update_status(charge, params[:x_cod_response])
+      update_status(charge, params[:x_cod_transaction_state])
   		update_payment_method(charge, params[:x_franchise])
   		head :no_content
   	else
