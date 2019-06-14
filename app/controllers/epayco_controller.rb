@@ -1,6 +1,6 @@
 class EpaycoController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:confirmation]
+  skip_before_action :verify_authenticity_token, only: [:result, :confirmation]
 
   def result
   	url = "https://secure.epayco.co/validation/v1/reference/#{params[:ref_payco]}"
