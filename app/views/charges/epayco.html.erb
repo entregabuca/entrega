@@ -3,8 +3,6 @@
 		key: '<%= ENV["EPAYCO_PUBLIC_KEY"]%>',
 		//test: true
 		test: '<%= Rails.env.production? ? false : true %>'
-
-		
 	})
 
 	var data={
@@ -20,7 +18,7 @@
     lang: "en",
 
     //Onpage="false" - Standard="true"
-    external: "false",
+    external: "true",
 
 
     //Atributos opcionales
