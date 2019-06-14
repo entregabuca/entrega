@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get "epayco/response", to: "epayco#result"
-  get "epayco/confirmation", to: "epayco#confirmation"
+  get "epayco/response", to: "epayco#result" # You MUST chnge the METHOD to Post if external: true
+  post "epayco/confirmation", to: "epayco#confirmation"
 
 
   

@@ -58,7 +58,7 @@ class EpaycoController < ApplicationController
 
   	def update_payment_method(charge, payment_method)
   		if ['VS', 'MC', 'DC', 'CR', 'AM'].include?(payment_method)
-  			charge.creditcard!
+  			charge.credit_card!
   		elsif payment_method == 'PSE'
   			charge.pse!
   		else
