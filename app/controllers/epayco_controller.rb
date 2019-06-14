@@ -27,7 +27,7 @@ class EpaycoController < ApplicationController
 
   	if signature == params[:x_signature]
   		update_status(charge, params[:x_cod_response])
-      #update_status(charge, params[:x_cod_transaction_state])
+      ##update_status(charge, params[:x_cod_transaction_state])
   		update_payment_method(charge, params[:x_franchise])
   		head :no_content
   	else
@@ -46,7 +46,7 @@ class EpaycoController < ApplicationController
 
   	def update_status(charge, status)
   		if status == '1'
-  			charged.paid!
+  			charge.paid!
   		elsif status == '2' || status == '4'
   			charge.update!(status: :rejected, error_message: params[:x_response_reason_text])
   		elsif status == '3'
