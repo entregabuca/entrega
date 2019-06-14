@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post "epayco/response", to: "epayco#result" # You MUST chnge the METHOD to Post if external: true
+  post "epayco/response", to: "epayco#result" # You MUST change the METHOD to Post if external: true on epayco.html.erb
   post "epayco/confirmation", to: "epayco#confirmation"
 
 
