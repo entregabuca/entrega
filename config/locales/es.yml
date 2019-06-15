@@ -37,11 +37,13 @@ es:
         sender_id: Usuario
         telephone: Teléfono
         recipient: Receptor
-        cread_at: Creado el
-        updad_at: Actualizado el
+        created_at: Creado el
+        updated_at: Actualizado el
         measurement_details: Medidas Aproximadas
         save_draft: Guardar Borrador
         post: Solicitar
+        notification: Notificación
+        order_ready: Orden lista para tomar!!
         back_to_orders: Ver Ordenes  
         edit_order : Editar Orden
         take_order: Tomar Orden
