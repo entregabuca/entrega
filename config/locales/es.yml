@@ -393,6 +393,6 @@ es:
 
 
 
-
+"#{Order.human_attribute_name(:notification)}", body: "#{Order.human_attribute_name(:order_ready)}"
 
       
