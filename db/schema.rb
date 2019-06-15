@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.float "latitude"
     t.float "longitude"
     t.string "addressable_type"
-    t.integer "addressable_id"
+    t.bigint "addressable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_locations_on_addressable_type_and_addressable_id"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.integer "status"
     t.datetime "status_time"
     t.text "status_details"
-    t.integer "order_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_statuses_on_order_id"
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.decimal "cost"
     t.integer "status"
     t.integer "radius"
-    t.integer "sender_id"
-    t.integer "transporter_id"
+    t.bigint "sender_id"
+    t.bigint "transporter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sender_id"], name: "index_orders_on_sender_id"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.string "name"
     t.string "telephone"
     t.string "email"
-    t.integer "order_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_recipients_on_order_id"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.string "telephone"
     t.string "email"
     t.integer "status"
-    t.integer "company_id"
+    t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
@@ -151,4 +151,9 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.index ["reset_password_token"], name: "index_transporters_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "order_statuses", "orders"
+  add_foreign_key "orders", "senders"
+  add_foreign_key "orders", "transporters"
+  add_foreign_key "recipients", "orders"
+  add_foreign_key "transporters", "companies"
 end
