@@ -8,7 +8,7 @@ class PostedOrderNotificationJob < ApplicationJob
 
   	companies_near.each do |company|
   		puts "   Notification Sent to Company #{company.id}"
-  		NotificationChannel.broadcast_to(company, title: 'Notificación', body: 'Orden Lista Para Tomar!!!')
+  		NotificationChannel.broadcast_to(company, title: "#{Order.human_attribute_name(:notification)}", body: "#{Order.human_attribute_name(:order_ready)}")
   	end
   end
 end
