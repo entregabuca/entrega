@@ -12,7 +12,6 @@ class ChargesController < ApplicationController
   	@charge = Charge.new(charge_params)
   	if @charge.save
   		render :epayco
-  	 #redirect_to charges_index_path
   	else
   		render :new
   	end
