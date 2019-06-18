@@ -99,6 +99,7 @@ en:
           inTransit: In Transit
           completed: Completed
           cancelled: Cancelled
+          payment: Payment
 
       errors:
         messages:
