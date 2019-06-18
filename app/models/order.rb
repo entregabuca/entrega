@@ -47,7 +47,7 @@ include ActiveModel::Dirty
   def check_status_is_posted
     if self.saved_change_to_status? && status == 'posted'
       puts "POSTED JOB STARTED "
-      PostedOrderJob.perform_later(@order.id)
+      PostedOrderJob.perform_later(self.id)
     end
   end
 

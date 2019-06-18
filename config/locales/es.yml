@@ -99,6 +99,7 @@ es:
           inTransit: En Camino
           completed: Completado
           cancelled: Cancelado
+          payment:  Pagando
 
       errors:
         messages:
