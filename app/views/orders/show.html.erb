@@ -15,3 +15,46 @@
 </div>
 <hr>
 <br>
+
+<%= form_for @charge do |f| %>
+	<div class="form-group">
+		<%= f.label :order_cost, @order.cost.to_s %>
+		<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
+		<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
+	</div>
+	<div>
+		<%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
+		<%= f.submit " Pay ", class: "btn btn-primary" %>
+	</div>
+<% end %>
+
+
+<br>
+
+<br>
+
+<br>
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+
+<br>
+
+<br>
+
+<br>
+
+<br>

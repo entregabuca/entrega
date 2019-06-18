@@ -42,6 +42,7 @@ en:
         measurement_details: Approximate Measurements
         save_draft: Save Draft
         post: Posted
+        payment: Payment
         notification: Notification
         order_ready: New order available!!
         back_to_orders: Back to Orders

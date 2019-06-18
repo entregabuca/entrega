@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_120218) do
+ActiveRecord::Schema.define(version: 2019_06_18_152838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "charges", force: :cascade do |t|
     t.string "uid", limit: 50
     t.integer "status", default: 0
@@ -36,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.jsonb "response_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_charges_on_order_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -151,6 +158,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_120218) do
     t.index ["reset_password_token"], name: "index_transporters_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "charges", "orders"
   add_foreign_key "order_statuses", "orders"
   add_foreign_key "orders", "senders"
   add_foreign_key "orders", "transporters"
