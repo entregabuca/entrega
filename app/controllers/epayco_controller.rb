@@ -47,6 +47,16 @@ class EpaycoController < ApplicationController
   	def update_status(charge, status)
   		if status == '1'
   			charge.paid!
+        order = charge.order
+        order.status = 'posted'    
+        order.save
+
+        NotificationChannel.broadcast_to(charge.order.sender,
+              title: 'Notificación', 
+              body: "Pago Aceptado"
+              )
+
+
   		elsif status == '2' || status == '4'
   			charge.update!(status: :rejected, error_message: params[:x_response_reason_text])
   		elsif status == '3'

@@ -1,14 +1,24 @@
 class Order < ApplicationRecord
 
+include ActiveModel::Dirty
+
+#define_attribute_methods :status
+
   enum status:{
     "draft" => 0,
     "posted" => 1,
     "taken" => 2,
     "inTransit" => 3,
     "completed" => 4,
-    "cancelled" => 5
+    "cancelled" => 5,
+    "payment" => 6
   }
 
+  after_save :check_status_is_posted
+
+
+
+  has_one :charge
   belongs_to :sender
   belongs_to :transporter, optional: true
   has_many :locations, as: :addressable
@@ -33,6 +43,13 @@ class Order < ApplicationRecord
     end
   end
 
+
+  def check_status_is_posted
+    if self.saved_change_to_status? && status == 'posted'
+      puts "POSTED JOB STARTED "
+      PostedOrderJob.perform_later(@order.id)
+    end
+  end
 
    # ----------------------------------- || -------------------------------------------------------------
 

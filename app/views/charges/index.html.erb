@@ -9,6 +9,7 @@
 							<th>Date</th>
 							<th>Reference</th>
 							<th>Amount</th>
+							<th>Sender</th>
 							<th>Status</th>
 							<th>Payment Method</th>
 						</tr>
@@ -19,6 +20,7 @@
 							<td><%= charge.created_at %></td>
 							<td><%= charge.uid %></td>
 							<td><%= charge.amount%></td>
+							<td><%= charge.order.present? ? charge.order.sender.name : ""%></td>							
 							<td>
 								<%= charge.status %>
 								<% if charge.error_message %>

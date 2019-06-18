@@ -115,10 +115,11 @@
         <%= form.hidden_field :status, :value => 'draft' %>
       <%= form.submit   Order.human_attribute_name(:save_draft), :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
       </div>
-      <div>
-        <%= form.hidden_field :status, :value => 'posted' %>
-        <%= form.submit  Order.human_attribute_name(:post), :class => ' btn btn-primary btn-post' %>   <!-- , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER -->
-      </div>  
+    <!--  <div>
+        <%#= form.hidden_field :status, :value => 'payment' %>
+        <%#= form.submit  Order.human_attribute_name(:payment), :class => ' btn btn-primary btn-post' %>   , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER 
+      </div>   -->
+
     </div>
   <% else %>
     <div class="actions">

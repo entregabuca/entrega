@@ -42,6 +42,7 @@ es:
         measurement_details: Medidas Aproximadas
         save_draft: Guardar Borrador
         post: Solicitar
+        payment: Pagando
         notification: Notificación
         order_ready: Orden lista para tomar!!
         back_to_orders: Ver Ordenes  

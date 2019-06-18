@@ -10,17 +10,19 @@ class ChargesController < ApplicationController
 
   def create
   	@charge = Charge.new(charge_params)
-  	if @charge.save
-  		render :epayco
+    order = @charge.order
+    order.status = 'payment'    
+  	if order.save && @charge.save
+      render :epayco
   	else
-  		render :new
+  		render :newstau
   	end
   end
 
   private
 
   def charge_params
-  	params.require(:charge).permit(:amount)
+  	params.require(:charge).permit(:amount, :order_id)
   end
 
 end

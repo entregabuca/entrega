@@ -31,7 +31,10 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @charge = Charge.new
+    #@charge.order = @order
   end
+
 
   # GET /orders/new
   def new
@@ -47,12 +50,14 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order= @user.orders.build(order_params)
+    calculate_cost
       respond_to do |format|
         if @order.save
-          draft_or_posted
+          
+          #draft_or_posted
           format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
           format.json { render :show, status: :created, location: @order }
-          order_posted_create
+          #order_posted_create
         else
           format.html { render :new }
           format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -63,12 +68,13 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    calculate_cost
     respond_to do |format|
       if @order.update(order_params)
-        draft_or_posted
+        #draft_or_posted
         format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
-        order_posted_update
+        #order_posted_update
         
         NotificationChannel.broadcast_to(@order.sender,
               title: 'Notificación', 
@@ -104,26 +110,26 @@ class OrdersController < ApplicationController
       @user = resource.singularize.classify.constantize.find(id)
     end
 
-    def order_posted_create
-      if @order.status == 'posted'
-        PostedOrderJob.perform_later(@order.id) # DELTA_TIME
-      end
-    end
+  # def order_posted_create
+  #   if @order.status == 'posted'
+  #     PostedOrderJob.perform_later(@order.id) # DELTA_TIME
+  #   end
+  # end
 
-    def order_posted_update
-      @order = Order.find(params[:id])
-      if @order.status == 'posted'
-      	PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
-      end
-    end
+  # def order_posted_update
+  #   @order = Order.find(params[:id])
+  #   if @order.status == 'posted'
+  #   	PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
+  #   end
+  # end
 
-    def draft_or_posted     
-      if params[:commit] == 'Save Draft' ||  params[:commit] == 'Borrador' 
-        @order.update(status: 'draft', radius: 500)      
-      elsif params[:commit] == 'Posted' ||  params[:commit] == 'Solicitar' 
-        @order.update(status: 'posted', radius: 500)     
-      end
-    end 
+    #def draft_or_posted     
+    #  if params[:commit] == 'Save Draft' ||  params[:commit] == 'Borrador' 
+    #    @order.update(status: 'draft', radius: 500)      
+    #  elsif params[:commit] == 'Payment' ||  params[:commit] == 'Pagando' 
+    #    @order.update(status: 'payment', radius: 500)     
+    #  end
+    #end 
 # See how I can make this Two(2) last methods available globally
     def enum_l(model, enum)
       enum_i18n(model.class, enum, model.send(enum))
@@ -133,6 +139,10 @@ class OrdersController < ApplicationController
      I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
     end
 
+
+    def calculate_cost
+      @order.cost = 40000
+    end
 
 
 # Never trust parameters from the scary internet, only allow the white list through.
