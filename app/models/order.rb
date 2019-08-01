@@ -14,7 +14,7 @@ include ActiveModel::Dirty
     "payment" => 6
   }
 
-  after_save :check_status_is_posted
+  #after_save :check_status_is_posted  !!!!!  OjO IT WAS NECESSARY TO COMMENTED IT OUT BECAUSE OF CONFLICT WITH SEEDS !!!!
 
 
 

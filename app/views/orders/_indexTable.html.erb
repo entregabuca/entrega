@@ -44,11 +44,12 @@
       <% if ['Company', 'Transporter'].include? @user.class.name %>
         <th><%= t (:distance_to_order) %></th>
       <% end %>
+      <th><%= Order.human_attribute_name(:payment_status) %></th>
+      <th><%= Order.human_attribute_name(:payment_method) %></th>
       <th colspan="3"></th>
      
     </tr>
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
       <tr class="odd tableValues">
@@ -67,8 +68,6 @@
 
                 <td><%= order.sender.name %></td>
         <% end %>
-
-      <!-- <td><%#= enum_l(@order, :status) %></td> -->
           <td><%= order.status.present? ? enum_l(order, :status) : "-"  %></td>
           <td><%= order.description %></td>
         <% if  current_admin %>    
@@ -91,6 +90,8 @@
         <% if ['Company', 'Transporter'].include? @user.class.name %>
           <%= render 'orders/distance', order: order %>
         <% end %>
+        <td><%= order.charge.present? ? order.charge.status : ""%></td>
+        <td><%= order.charge.present? ? order.charge.payment_method : ""%></td>
         <%= render 'orders/indexActions', order: order %>
       </tr>
     <% end %>        

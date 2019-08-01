@@ -298,9 +298,23 @@
   </div>
 </div>
 
-
+<!-- RADIUS -->
 <% if current_admin %>
-  <%= @order.radius %>
+  <div class="row mb-3">
+    <div class="col-md-12 mb-3 ">     
+      <div class="card mb-3">        
+        <div class="card-block mt-3 ">
+          <div class="row">
+            <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:radius) %>
+            </div>
+            <div class="d-inline col-sm-6 mb-3 cost-values">
+              <%= @order.radius %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 

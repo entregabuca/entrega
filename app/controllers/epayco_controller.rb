@@ -10,8 +10,10 @@ class EpaycoController < ApplicationController
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
-  	else
+      redirect_to url_for ([@charge.order.sender, @charge.order])
+    else
   		@error = "Unable to retreive the information"
+      redirect_to :root
   	end
   end
 

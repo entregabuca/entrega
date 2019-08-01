@@ -113,7 +113,7 @@
     <div class="actions btn-group" role="group" >
       <div class="space">
         <%= form.hidden_field :status, :value => 'draft' %>
-      <%= form.submit   Order.human_attribute_name(:save_draft), :class => 'btn btn-primary btn-draft ' %> <!-- , name: 'save_draft' -->
+        <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft ' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
       </div>
     <!--  <div>
         <%#= form.hidden_field :status, :value => 'payment' %>

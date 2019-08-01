@@ -50,7 +50,7 @@ gem 'alertifyjs-rails'
 # pg was added as per insructions for ePay
 gem 'pg'
 
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.17.0' # MOST LIKELY TO BE REMOVED, ADDED FOR EPAYCO BUT IT ISN'T NEEDED
 
 #gem 'delayed_job_active_record'
 

@@ -31,8 +31,11 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @charge = Charge.new
-    #@charge.order = @order
+   # if @order.charge.present?
+   #   @charge = @order.charge
+   # else
+      @charge = Charge.new
+   # end
   end
 
 
@@ -130,6 +133,7 @@ class OrdersController < ApplicationController
     #    @order.update(status: 'payment', radius: 500)     
     #  end
     #end 
+    
 # See how I can make this Two(2) last methods available globally
     def enum_l(model, enum)
       enum_i18n(model.class, enum, model.send(enum))

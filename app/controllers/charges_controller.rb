@@ -8,6 +8,7 @@ class ChargesController < ApplicationController
   	@charge = Charge.new
   end
 
+
   def create
   	@charge = Charge.new(charge_params)
     order = @charge.order

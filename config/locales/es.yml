@@ -31,6 +31,8 @@ es:
         delivery_time: Fecha/Hora de Entrega
         status: Estado
         radius: Radio
+        payment_status: Estado del Pago
+        payment_method: Forma de Pago
         cost: Costo
         company: Compañia
         transporter_id: Transportador
@@ -41,6 +43,7 @@ es:
         updated_at: Actualizado el
         measurement_details: Medidas Aproximadas
         save_draft: Guardar Borrador
+        confirm_order: Confirmar Orden
         post: Solicitar
         payment: Pagando
         notification: Notificación
