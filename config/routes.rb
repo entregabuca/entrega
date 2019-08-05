@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   #get 'charges/create'
   
-get '/:locale' => 'access#home' # from GUIDES
+#get '/:locale' => 'access#home' # from GUIDES # Commented for working with Admin
 root 'access#home'
 
 
