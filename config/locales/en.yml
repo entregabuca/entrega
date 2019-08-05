@@ -30,7 +30,9 @@ en:
         reciving_location: Reciving Location
         delivery_time: Delivery Time
         status: Status 
-        radius: Radius       
+        radius: Radius 
+        payment_status: Payment Status
+        payment_method: Payment Method      
         cost: Cost
         company: Compañia
         transporter_id: Transporter
@@ -41,6 +43,7 @@ en:
         updated_at: Updated At
         measurement_details: Approximate Measurements
         save_draft: Save Draft
+        confirm_order: Confirm Order
         post: Posted
         payment: Payment
         notification: Notification

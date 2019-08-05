@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   resources :charges, only: [ :new, :create] 
   
   #get 'charges/create'
-  
+
 #get '/:locale' => 'access#home' # from GUIDES # Commented for working with Admin
 root 'access#home'
+
 
 
   #scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do 

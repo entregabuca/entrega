@@ -16,45 +16,46 @@
 <hr>
 <br>
 
-<%= form_for @charge do |f| %>
-	<div class="form-group">
-		<%= f.label :order_cost, @order.cost.to_s %>
-		<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
-		<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
+
+<div class="buttons"> 
+	<%= render 'epayco/result' %>
+</div>
+
+<div class="charge-form pt-4">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-5">
+			<% if @order.status == 'draft' %>
+				<%= form_for @charge do |f| %>
+					<div class="form-group">
+						<%= f.label :order_cost, @order.cost.to_s %>
+						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
+						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
+					</div>
+					<div>
+						<%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
+						<%= f.submit " Pay ", class: "btn btn-primary" %>
+					</div>
+				<% end %>
+			<% end %>
+			</div>
+		</div>
 	</div>
-	<div>
-		<%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
-		<%= f.submit " Pay ", class: "btn btn-primary" %>
-	</div>
-<% end %>
+</div>
 
 
 <br>
-
 <br>
-
 <br>
-
-
 <br>
-
 <br>
-
 <br>
-
 <br>
-
 <br>
-
 <br>
-
 <br>
-
-
 <br>
-
 <br>
-
 <br>
 
 <br>
