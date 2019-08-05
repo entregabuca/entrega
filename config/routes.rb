@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   
   #get 'charges/create'
   
-get '/:locale' => 'access#home' # from GUIDES
-root 'access#home'
+  #get '/:locale' => 'access#home' # from GUIDES
+  root 'access#home'
 
 
   #scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do 
