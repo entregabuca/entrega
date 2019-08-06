@@ -97,11 +97,11 @@
           <li class="nav-item">            
             <%= link_to_in_li  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
           </li>
-        <% end %>
-
-        <li class="nav-item">
-          <%= admin_signed_in? ? (link_to icon('fas', 'running', 'Sign Out'), destroy_session_path(current_admin), method: :delete, class: 'nav-link') : @user ? (link_to icon('fas', 'running', I18n.t(:sign_out)), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
+        <% end %> 
+         <li class="nav-item">
+          <%= @user ? (link_to icon('fas', 'running', I18n.t(:sign_out)), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
         </li>
+
       </ul>
     </div>
   </div>

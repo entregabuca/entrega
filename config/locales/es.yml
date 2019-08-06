@@ -4,16 +4,19 @@ es:
   activerecord:
     attributes:
       company:
-        created_at: Creado El
-        email: "Email"
-        encrypted_password: Encrypted Password
         name: Nombre
+        telephone: Teléfono
+        email: Email
+        address: Dirección
+        status: Estado
+        coordinates: Coordenadas
+        total_orders: Total de Ordenes
+        created_at: Creado El        
+        encrypted_password: Encrypted Password
         radius: Radio
         remember_created_at: Recordar Creado El
         reset_password_sent_at: Reiniciar Password Enviado El
         reset_password_token: Reiniciar Password Token
-        status: Estado
-        telephone: Teléfono
         updated_at: Actualizado El 
         update: Actualizar
         back_to_company: Ver Compañia
@@ -54,30 +57,32 @@ es:
         taken: Tomada
         inTransit: En Camino
         complet: Completar
-        cancel_order: Cancelar
-
+        cancel_order: Cancelar        
       transporter:
         name: Nombre
         telephone: Teléfono
         email: Email
         status: Estado
         company: Compañia
-        total_orders: Ordenes Totales
+        total_orders: Total de Ordenes 
         password: Contraseña
         password_confirmation: Confirme Contraseña
         update_transporter: Actualizar Transportador
         back_to_transporters: Ver Transportadores
       sender:
-        created_at: Creado El
-        email: "Email"
-        encrypted_password: Encrypted Password
         name: Nombre
+        telephone: Teléfono
+        email: Email
+        address: Dirección
+        status: Estado
+        coordinates: Coordenadas
+        total_orders: Total de Ordenes
+        created_at: Creado El
+        encrypted_password: Encrypted Password
         radius: Radio
         remember_created_at: Recordar Creado El
         reset_password_sent_at: Reiniciar Password Enviado El
         reset_password_token: Reiniciar Password Token
-        status: Estado
-        telephone: Teléfono
         updated_at: Actualizado El
         update: Actualizar
         back_to_sender: Ver Usuario
