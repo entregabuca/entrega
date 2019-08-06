@@ -42,14 +42,16 @@
           <thead>
             <tr>
               <th><%= Company.human_attribute_name(:name) %></th>
-              <th><%= Company.human_attribute_name(:telephone) %><</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Status</th>
-          <!--<th>Coordinates</th> 
-              <th>Radius</th>              
+              <th><%= Company.human_attribute_name(:telephone) %></th>
+              <th><%= Company.human_attribute_name(:email) %></th>
+              <th><%= Company.human_attribute_name(:address)%></th>
+              <th><%= Company.human_attribute_name(:coordinates)%></th>
+              <th><%= Company.human_attribute_name(:status)%></th>
+             
+              
+          <!--<th>Radius</th>              
               <th>Dist. to Search</th>-->
-              <th> Total Orders </th>
+              <th><%= Company.human_attribute_name(:total_orders)%></th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -61,11 +63,11 @@
                 <td><%= company.telephone %></td>
                 <td><%= company.email %></td>
                 <td><%= address(company, 0) %></td>
-                <td><%= company.status %></td>
-            <!--<td><%#= coordinates(company, 0).to_dms %></td>
-                <td><%= company.radius %></td>                
+                <td class="text-center"><%= coordinates(company, 0).to_dms %></td>
+                <!--  <td><%= company.radius %></td>                
                 <td><%#= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td> -->
-                <td><%= company.orders.size %></td>
+                <td><%= company.status %></td>
+                <td class="text-center"><%= company.orders.size %></td>
                 <td><%= link_to company, 'data-turbolinks': false do %><span class="fa fa-eye"></span><% end %></td>
                 <td><%= link_to edit_company_path(company) do %><span class="fa fa-edit"></span><% end %></td>
                 <% if company.orders.size == 0 %>

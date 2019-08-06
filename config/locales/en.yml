@@ -4,19 +4,22 @@ en:
   activerecord:
     attributes:
       company:
-        created_at: Created At
+        name: Name
+        telephone: Telephone
         email: Email
-        encrypted_password: Encrypted Password
-        name: Name1
+        address: Address
+        status: Status
+        coordinates: Coordinates
+        total_orders: Total Orders
+        created_at: Created At
+        encrypted_password: Encrypted Password        
         radius: Radius
         remember_created_at: Remember Cretaed At
         reset_password_sent_at: Reset Password Sent At
-        reset_password_token: Reset Password Token
-        status: Status
-        telephone: Telephone
+        reset_password_token: Reset Password Token        
         updated_at: Updated At
         update: Update
-        back_to_company:: Back to Company
+        back_to_company: Back to Company
       order:
         order_id: Order No.
         description: Description
@@ -55,7 +58,7 @@ en:
         inTransit: In Transit
         complet: Complet
         cancel_order: Cancel
-
+        
       transporter:
         name: Name
         telephone: Telephone
@@ -68,16 +71,18 @@ en:
         update_transporter: Update Transporter
         back_to_transporters: Transporters
       sender:
-        created_at: Created At
-        email: Email
-        encrypted_password: Encrypted Password
         name: Name
+        telephone: Telephone
+        email: Email
+        address: Address
+        status: Status
+        coordinates: Coordinates
+        created_at: Created At
+        encrypted_password: Encrypted Password
         radius: Radius
         remember_created_at: Remember Cretaed At
         reset_password_sent_at: Reset Password Sent At
         reset_password_token: Reset Password Token
-        status: Status
-        telephone: Telephone
         updated_at: Updated At
         update: Update
         back_to_sender: Back to Sender 
