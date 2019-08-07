@@ -53,11 +53,11 @@ class EpaycoController < ApplicationController
         order.status = 'posted'    
         order.save
 
-        NotificationChannel.broadcast_to(charge.order.sender,
+        puts "   Notification Sent to Sender #{@order.sender.id}"
+        NotificationChannel.broadcast_to(@order.sender,
               title: 'Notificación', 
-              body: "Pago Aceptado"
-              )
-
+              body: "Pago Aceptado. El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
+                    ha cambiado.")
 
   		elsif status == '2' || status == '4'
   			charge.update!(status: :rejected, error_message: params[:x_response_reason_text])
