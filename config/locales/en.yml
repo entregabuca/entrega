@@ -2,6 +2,9 @@
 en:
   company_details: Company Details
   activerecord:
+    errors:
+      messages:
+        invalid_format: with invalid format. Try again
     attributes:
       company:
         name: Name
@@ -86,6 +89,9 @@ en:
         updated_at: Updated At
         update: Update
         back_to_sender: Back to Sender 
+      location:
+        address: Address
+        provide_address: You need to provide a valid address
     enums: 
       sender:
         statuses:
@@ -190,6 +196,7 @@ en:
   didnot_receive_confirmation_instructions: Didn't receive confirmation instructions?
   didnot_receive_unlock_instructions: Didn't receive unlock instructions?
   change my password: Change my password
+  #invalid_format: Invalid Email format. Try again
   date:
     abbr_day_names:
     - Sun

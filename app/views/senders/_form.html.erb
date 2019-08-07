@@ -1,7 +1,7 @@
 <%= form_with(model: sender, local: true) do |form| %>
   <% if sender.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sender.errors.count, "error") %> prohibited this sender from being saved:</h2>
+      <!-- <h2><%#= pluralize(sender.errors.count, "error") %> prohibited this sender from being saved:</h2>-->
 
       <ul>
       <% sender.errors.full_messages.each do |message| %>
@@ -29,6 +29,11 @@
           <b><%= form.label :email, :class => "col-sm-5 email"%></b>
           <%= form.text_field :email, :class => "col-sm-6 sender-email" %>
         </div>
+  
+        <div class="row d-flex justify-content-center">
+          <b><%= form.label :status %></b>
+          <%= form.select :status, enum_options_for_select(Sender, :status), {}, { :class => "sender-status"}  %>
+        </div> 
       </div>
     </div>
 
@@ -52,14 +57,7 @@
         </div> -->
 
         <div class="form-group col-md-12 sender-status-card">
-          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
-          <%#= form.text_field :status, :class => " col-sm-6" %>
-          <%#= form.select :status, Sender.statuses.keys[0..1].map {|status| [status.titleize,status]}, {}, { :class => "col-sm-6 sender-status"} %>
-
-
-          <%= form.select :status, enum_options_for_select(Sender, :status), {}, { :class => "col-sm-6 sender-status"}  %>
-
-        </div>            
+                     
       </div>
     </div>
 

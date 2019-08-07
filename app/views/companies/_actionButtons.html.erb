@@ -3,14 +3,10 @@
     <%= link_to "#{Company.human_attribute_name(:back_to_company)}", company_path, :class => "btn btn-primary btn-back" %> 
   </div>
 
-  <% if current_page?(controller: 'companies', action: 'edit')  %> 
+	<div class="d-inline mt-2 mb-2">
+  	<%= form.submit Company.human_attribute_name(:update), :class => ' btn btn-primary btn-update' %>
+	</div>
 
-    <div class="d-inline mt-2 mb-2">
-      
-        <%= form.submit Company.human_attribute_name(:update), :class => ' btn btn-primary btn-update' %>
-     
-    </div>
-  <% end %>
 
 
 

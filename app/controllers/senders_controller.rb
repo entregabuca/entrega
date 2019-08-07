@@ -63,7 +63,7 @@ class SendersController < ApplicationController
       end
     else 
       respond_to do |format|
-        format.html { redirect_to senders_url, notice: 'This Sender can only chage its status to Inactive' }
+        format.html { redirect_to senders_url, alert: 'This Sender can only chage its status to Inactive' }
         format.json { head :no_content }
       end 
     end

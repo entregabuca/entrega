@@ -68,7 +68,7 @@ class CompaniesController < ApplicationController
       end
     else 
       respond_to do |format|
-        format.html { redirect_to companies_url, notice: 'This Company can only chage its status to Inactive' }
+        format.html { redirect_to companies_url, alert: 'This Company can only chage its status to Inactive' }
         format.json { head :no_content }
       end 
     end
