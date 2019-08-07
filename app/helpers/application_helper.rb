@@ -1,4 +1,11 @@
 module ApplicationHelper
+
+	def log_error(msg, trace)
+		puts "\tERROR:: #{msg.class}: #{msg.message} \n\t\t#{trace.first}"
+
+		"App Error: Please contact the Administrator."
+	end
+
 	def address(variable, i)
 		if variable.locations[i].present?
 			variable.locations[i].address
