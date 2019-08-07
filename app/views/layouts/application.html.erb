@@ -20,13 +20,33 @@
 
   <div class="containerfluid">
      
-      <%= render 'layouts/navbar' %>
-      <%= render 'layouts/alerts' %>
-
-
-
+    <%= render 'layouts/navbar' %>
 
     <div class="container"> <!-- this is the cotainer working without action higlighting-->
+      <br>
+      <%= render 'layouts/flash_notice_alert' %>
+
+        <!--  <%# if flash[:notice] %>  Antonio move this to a partial 
+          <div class="alert alert-success">  
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%#= flash[:notice] %>      
+          </div>  
+        <%# elsif flash[:error] %>
+          <div class="alert alert-danger">  
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%#= flash[:error] %>      
+          </div>
+        <%# elsif flash[:alert] %>
+          <div class="alert alert-warning">  
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%#= flash[:alert] %>      
+          </div>
+        <% #end %>
+      
+
+      <%#= render 'layouts/alerts' %> Commented for testing bootstrap styling -->
+
+
        <%= yield %>  <!-- Commented out as it was causing conflict, showing to forms -->
       </div>
 

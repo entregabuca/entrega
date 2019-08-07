@@ -1,7 +1,7 @@
 <% provide(:page_title, "Company") %>
 
 
-<h1 class='headingspace'> <%= @user.name %> <%= t (:profile) %></h1>  
+<h1 class='headingspace'> <%= @user.name.presence || @user.email %> <%= t (:profile) %></h1>  
 
 
 
@@ -38,15 +38,7 @@
           <b><%= Company.human_attribute_name(:status) %>:</b>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
-         <%= enum_l(@user, :status)%>
-        </div>
-      </div>
-      <div class="row">
-        <div class="d-inline col-sm-6 company-Showlabels">
-          <b><%#= "Radius: "%></b>
-        </div>
-        <div class="d-inline col-sm-6 mb-3 company-Showinputs">
-         <%#= @user.radius %>
+          <%= enum_l(@user, :status)%>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 <%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <!--<h2><%#= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2> -->
 
       <ul>
       <% company.errors.full_messages.each do |message| %>
@@ -15,20 +16,27 @@
       <div class="card-body company-top-card"> 
         <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
-        <div class="form-group col-md-12">     
+         <div class="form-group col-md-12">     
           <b><%= form.label :name, :class => "col-sm-5 name"%></b>
           <%= form.text_field :name, :class => "col-sm-6 company-name" %>
-        </div>         
+        </div>        
         
         <div class="form-group col-md-12">      
           <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
           <%= form.text_field :telephone, :class => "col-sm-6 company-telephone" %>
         </div>
 
-         <div class="form-group col-md-12">
+        <div class="form-group col-md-12">
           <b><%= form.label :email, :class => "col-sm-5 email"%></b>
           <%= form.text_field :email, :class => "col-sm-6 company-email" %>
         </div>
+
+<!-- <div class="form-group col-md-12"> -->
+          <div class="row d-flex justify-content-center">
+          <b><%= form.label :status, :class => "email" %></b> 
+          <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => " company-status"} %>
+        </div>   
+      
       </div>
     </div>
 
@@ -44,19 +52,16 @@
 
   
 
-     <div class="card text-center mx-5 mb-5 ">
+  <!--   <div class="card text-center mx-5 mb-5 ">
       <div class="card-body company-rad-status"> 
-        <!--<div class="form-group col-md-12">
+        <div class="form-group col-md-12">
           <%#= form.label :radius, :class => "col-sm-5 width"%>
           <%#= form.text_field :radius, :class => " col-sm-6" %>
-        </div> -->
+        </div> 
 
-        <div class="form-group col-md-12 company-status-card">
-          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
-          <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => "col-sm-6 company-status"} %>
-        </div>            
+                 
       </div>
-    </div>
+    </div>-->
 
 
 

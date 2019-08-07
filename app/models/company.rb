@@ -19,15 +19,19 @@ class Company < ApplicationRecord
    self.status == 'active'     
  end
 # 
-# #EMAIL_REGEX = /\A[a-z0-9.%+-]+@[a-z09.-]+\.[a-z]{2,4}\Z/i
+
 # #t.integer "radius" Unsure if radius needs validation
-# with_options if: :status_active do |company|
-#   company.validates :name, presence: true 
-#   company.validates :telephone, presence: true
-#   company.validates :email, presence: true
-#   company.validates :email, length: { maximum: 25}
-#   #company.validates :email, format: { :with => EMAIL_REGEX, message: "is not valid. Try again." }
-#   #company.validates :email, confirmation: true
-# end
+
+
+ with_options if: :status_active do |company|
+   company.validates :name, presence: true 
+   company.validates :telephone, presence: true
+   company.validates :email, presence: true
+   company.validates :email, length: { maximum: 25}   
+   #company.validates :email, confirmation: true
+ end
+
+EMAIL_REGEX = /\A[a-z0-9.%+-]+@[a-z09.-]+\.[a-z]{2,4}\Z/i
+validates :email, format: { with: EMAIL_REGEX, message: :invalid_format} 
 
 end

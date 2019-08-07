@@ -1,6 +1,6 @@
 <% provide(:page_title, "Edit Sender") %>
 
-<h2 class='headingspace my-5 ml-5'><%= t (:editing_sender) %></h2>
+<h2 class='headingspace my-5 ml-5'><%= t (:editing_sender) %><%= @user.name.presence || @user.email %></h1></h2>
 
 <%= render 'form', sender: @user %>
 

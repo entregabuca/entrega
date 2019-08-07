@@ -2,6 +2,9 @@
 es:
   company_details: Información de la Compañia
   activerecord:
+    errors:
+      messages:
+        invalid_format: formato es invalido. Intentelo de nuevo
     attributes:
       company:
         name: Nombre
@@ -86,6 +89,9 @@ es:
         updated_at: Actualizado El
         update: Actualizar
         back_to_sender: Ver Usuario
+      location:
+        address: Dirección
+        provide_address: Agregue una dirección valida
     enums: 
       sender:
         statuses:
@@ -128,11 +134,11 @@ es:
   recipt_email: Email
  
   distance_to_order: Distancia a la Orden
-  sender_location: Ubicación del Usuario
+  sender_location: Dirección del Usuario
   sender_details: Información del Usuario
-  editing_sender: Actualizando Usuario
-  editing_company: Actualizando Compañia
-  editing_transporter: Actualizando Transportador
+  editing_sender: Actualizar Usuario
+  editing_company: Actualizar Compañia
+  editing_transporter: Actualizar Transportador
   transporter_details: Información del Transportador
 
   restrict_title: Hola !!! No deberias estar aca !!!
@@ -141,7 +147,7 @@ es:
   
   profile: Perfil
 
-  company_location: Ubicación de la Compañia
+  company_location: Dirección de la Compañia
   adress: Dirección
   enter_address: Ingrese Dirección
   search_address: Buscar Dirección
@@ -190,6 +196,7 @@ es:
   didnot_receive_confirmation_instructions: No recibió Instrucciones de confirmacion?
   didnot_receive_unlock_instructions: No recibió Instrucciones para desbloquear cuenta?
   change my password: Cambiar Contraseña
+  #invalid_format: Formato de Email invalido. Intentelo de nuevo
   date:
     abbr_day_names:
     - dom
