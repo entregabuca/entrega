@@ -39,7 +39,7 @@
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs">
 
-          <%= enum_l(@user, :status)%>
+          <%#= enum_l(@user, :status)%><%= enum_l(@user, :status).capitalize rescue log_error($!, $@) %>
 
         </div>
       </div>

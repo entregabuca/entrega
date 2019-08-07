@@ -3,7 +3,7 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
 
   def perform(order_id)
   order = Order.find(order_id)
-
+  puts " ORDER STATUS =#{order.status}"
     if order.status == 'posted'  
       if order.radius < MAX_RADIUS
 	      order.radius += DELTA_RADIUS
