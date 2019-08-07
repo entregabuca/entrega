@@ -74,16 +74,8 @@ class OrdersController < ApplicationController
     calculate_cost
     respond_to do |format|
       if @order.update(order_params)
-        #draft_or_posted
         format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
-        #order_posted_update
-        
-        NotificationChannel.broadcast_to(@order.sender,
-              title: 'Notificación', 
-              body: "El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
-                    ha cambiado a #{enum_l(@order, :status)} ")
-      
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }

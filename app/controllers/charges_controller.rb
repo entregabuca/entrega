@@ -37,17 +37,18 @@ def create
         render :newstau
       end
     else
-        #puts " Redirecionando a Orden"
-        puts "USER ID = #{@user.id}"
-        puts "URL = #{url_for([@user, @order])}"
       @order.status = 'posted'  
       respond_to do |format|
         if @order.save
-          
-          #draft_or_posted
+          puts "   Notification Sent to Sender #{@order.sender.id}"
+          NotificationChannel.broadcast_to(@order.sender,
+                title: 'Notificación', 
+                body: "El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
+                      ha cambiado.")
+
           format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully Paid.' }
           format.json { render :show, status: :created, location: @order }
-          #order_posted_create
+
         else
           format.html { render :new }
           format.json { render json: @order.errors, status: :unprocessable_entity }
