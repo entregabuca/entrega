@@ -26,7 +26,8 @@
 		<div class="row justify-content-center">
 			<div class="col-5">
 			<% if @order.status == 'draft' %>
-				<%= form_for @charge do |f| %>
+
+				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %>
 					<div class="form-group">
 						<%= f.label :order_cost, @order.cost.to_s %>
 						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>

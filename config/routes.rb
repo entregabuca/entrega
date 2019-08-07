@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   
   get 'charges/index'
-  resources :charges, only: [ :new, :create] 
+
   
   #get 'charges/create'
 
@@ -62,6 +62,7 @@ root 'access#home'
         end
 
         resources :senders do
+          resources :charges, only: [ :new, :create] 
           resources :orders do
             resources :recipients 
             collection do

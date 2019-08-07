@@ -1,0 +1,23 @@
+def create
+    puts " Entro al Create"
+    @charge = Charge.new(charge_params)
+    @order = @charge.order
+    if Rails.env == "production"
+      @order.status = 'payment'    
+      if @order.save && @charge.save
+        render :epayco
+      else
+        render :newstau
+      end
+    else
+        puts " Redirecionando a Orden"
+      @order.status = 'posted'  
+      if @order.save          
+        format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: @order }
+      else
+        format.html { render :new }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
