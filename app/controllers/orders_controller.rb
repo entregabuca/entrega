@@ -16,9 +16,14 @@ class OrdersController < ApplicationController
   end
 
   def posts
-    coordinates =[@user.locations[0].latitude, @user.locations[0].longitude]
-    @orders = Order.posted.select {|o| (Geocoder::Calculations.distance_between(coordinates, \
-                [o.locations[0].latitude,o.locations[0].longitude])*1000) <= o.radius ? o : nil}
+    if @user.locations.present?
+      coordinates =[@user.locations[0].latitude, @user.locations[0].longitude]
+      @orders = Order.posted.select {|o| (Geocoder::Calculations.distance_between(coordinates, \
+                  [o.locations[0].latitude,o.locations[0].longitude])*1000) <= o.radius ? o : nil}
+    else
+      @orders = []
+    end
+
     render :index
   end
 
