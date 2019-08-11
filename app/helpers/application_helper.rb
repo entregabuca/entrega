@@ -18,7 +18,8 @@ module ApplicationHelper
 		if variable.present? && variable.locations[i].present?
 			[variable.locations[i].latitude, variable.locations[i].longitude]
 		else
-			[0,0]
+			#raise "ERROR: No coordinates found."
+      [0, 0]
 		end
 	end
 

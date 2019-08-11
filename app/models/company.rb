@@ -8,6 +8,7 @@ class Company < ApplicationRecord
   has_many :locations, as: :addressable, :dependent => :destroy
 
   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
+  before_create :set_default_location
 
   enum status:{
     "inactive" => 0,
@@ -19,6 +20,14 @@ class Company < ApplicationRecord
    self.status == 'active'     
  end
 # 
+
+
+  def set_default_location
+    if !locations.present?
+      self.locations << Location.create( {latitude: 0 , longitude: 0})      
+    end 
+  end
+
 
 # #t.integer "radius" Unsure if radius needs validation
 

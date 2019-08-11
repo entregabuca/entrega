@@ -79,7 +79,7 @@
           <td><%= coordinates(order,0) %></td> 
           <td><%= order.pickup_time %></td>
           <td><%= address(order,1) %></td>
-          <td><%= coordinates(order,1).to_dms %></td>
+          <td><%= coordinates(order,1).to_dms rescue log_error($!, $@) %></td>
           <td><%= order.delivery_time %></td>
           <td><%= number_with_delimiter(order.radius) %></td>
         <% end %>

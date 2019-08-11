@@ -63,7 +63,7 @@
                 <td><%= company.telephone %></td>
                 <td><%= company.email %></td>
                 <td><%= address(company, 0) %></td>
-                <td class="text-center"><%= coordinates(company, 0).to_dms %></td>
+                <td class="text-center"><%= coordinates(company, 0).to_dms rescue log_error($!, $@) %></td>
                 <!--  <td><%= company.radius %></td>                
                 <td><%#= @search_coordinates.present? ? (1000*company.distance).to_i : "" %></td> -->
                 <td><%= company.status %></td>
