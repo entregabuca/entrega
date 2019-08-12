@@ -37,17 +37,40 @@
   width: 800px; 
 }
 
-.container { // Arrange a better container size AS it is no showing correctly or at least make new container for 800 onwards
+.container { 
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    //padding-right: 15px;
+    //padding-left: 15px;
+    //margin-right: auto;
+    //margin-left: auto;
 }
 
 .homelinks a {
     color: #004fff;
 }
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - PORTRAIT ============== */
+/* ========================================================= */
+
+
+/* 
+@media (min-width: 790px) and (orientation : landscape) {
+
+  .space {
+      //margin-right: 120px !important;
+  }
+
+  .container-fluid { 
+      width: 100% !important;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+  }
+} 
+
+*/
 
 
 
