@@ -149,11 +149,12 @@
     text-align: right !important; 
   }
 
-  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values,  .cost-values {
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values {
     max-width: 53% !important;
     padding-right: 0 !important;
     text-align: left !important; 
   }
+
 
   .measurements-headings {
     padding-right:0 !important;
@@ -250,11 +251,8 @@
   .showAddress {
     font-size: 0.9rem !important;
   }
-
-  .company-values, .transporter-values {
-    font-size: 0.85rem !important;
-  }
 }
+
 
 /* =============================================================== */
 /* ========MEDIA QUERIES - LANDSCAPE NOT CHECKED YET FOR SHOW ==== */

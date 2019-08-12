@@ -32,12 +32,12 @@
   font-weight: bold;
 }
 
-.leaflet-container { 
+.leaflet-container {   
   height:400px; 
   width: 800px; 
 }
 
-.container {
+.container { // Arrange a better container size AS it is no showing correctly or at least make new container for 800 onwards
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
