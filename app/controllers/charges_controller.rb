@@ -46,7 +46,7 @@ def create
                 body: "El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
                       ha cambiado.")
 
-          format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully Paid.' }
+          format.html { redirect_to url_for([@user, @order]), notice: 'Order successfully sent for payment.' }
           format.json { render :show, status: :created, location: @order }
 
         else

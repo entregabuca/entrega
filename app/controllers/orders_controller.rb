@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
         if @order.save
           
           #draft_or_posted
-          format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully created.' }
+          format.html { redirect_to url_for([@user, @order]), notice: 'Order ready to be paid. Check deatils.' }
           format.json { render :show, status: :created, location: @order }
           #order_posted_create
         else
