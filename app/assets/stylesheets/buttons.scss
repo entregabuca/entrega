@@ -13,6 +13,8 @@
   margin-left: 30% !important;
 }
 
+
+
 .btn-draft {
   color: black !important;
   border-color: #78a9ba !important;
@@ -324,7 +326,23 @@
     //padding: 0.375rem 0.75rem !important;
   }
 
+  .btn-addres-search {
+    width: 80% !important;
+  }
 
+  .mr-5, .mx-5 {
+    margin-right: 3rem !important;
+  }
+
+  .action_buttons {
+    margin-left: 7%;
+  }
+}
+
+@media (max-width: 330px) and (orientation: portrait) {
+  .action_buttons {
+      margin-left: 2%;
+  }
 }
 
 /* =============================================================== */

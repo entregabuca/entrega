@@ -135,7 +135,7 @@
           <div class="d-inline col-sm-6 sender-headings bolds"><%= Order.human_attribute_name(:recipient)%>
           </div>
           <div class="d-inline col-sm-6 mb-3 recipient-values">
-            <%= @order.recipients.last.name %>
+            <%= @order.recipients.first.present? ? @order.recipients.first.name : "-" %>
           </div>
         </div>
         <div class="row">
@@ -143,7 +143,8 @@
             <%= Order.human_attribute_name(:telephone) %>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-values">
-            <%= @order.recipients.first.telephone %>
+            <%= @order.recipients.first.present? ? @order.recipients.first.telephone : "-" 
+            %>
           </div>
         </div>                
       </div>
@@ -176,27 +177,27 @@
 
     <% if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
       <div class="col-md-6 mb-3 recipientLocation">
-          <div class="card right text-center"> <!-- mdb-color lighten-2  -->
-            <div class="card-body-right ">
-              <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3> 
-              <div class="bolds ">
-                <%= Order.human_attribute_name(:address) %>
-              </div>           
-              <div class="mb-3 showAddress"><%= @order.locations[1].address %>
-              </div>  
-              <br>
-              <div class="row mb-3 text-center pickdeli-times mb-4">
-                <div class="d-inline col-md-6 bolds deliver-label"><%= Order.human_attribute_name(:delivery_time) %>
-                </div>
-                <div class="d-inline col-md-6 deliver-time mb-4"><%= @order.delivery_time.strftime('%d %b %Y  %H:%M') %>
-                </div>
+        <div class="card right text-center"> <!-- mdb-color lighten-2  -->
+          <div class="card-body-right ">
+            <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3> 
+            <div class="bolds ">
+              <%= Order.human_attribute_name(:address) %>
+            </div>           
+            <div class="mb-3 showAddress"><%= @order.locations[1].address %>
+            </div>  
+            <br>
+            <div class="row mb-3 text-center pickdeli-times mb-4">
+              <div class="d-inline col-md-6 bolds deliver-label"><%= Order.human_attribute_name(:delivery_time) %>
               </div>
-            </div> 
-          </div>
+              <div class="d-inline col-md-6 deliver-time mb-4"><%= @order.delivery_time.strftime('%d %b %Y  %H:%M') %>
+              </div>
+            </div>
+          </div> 
         </div>
-      <% end %>
-    </div>
-</div>
+      </div>
+    <% end %>
+  </div>
+
 
 
 <div class="map-row">  
