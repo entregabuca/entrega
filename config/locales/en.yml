@@ -183,6 +183,7 @@ en:
   admin_sign_up: Admin Sign Up
   log_in: Log in
   sign_up: Sign up
+  sign_up_tranporter: Sing up a Transporter
   password: Password
   current_password: Current Password
   password_confirmation: Confirm Pas11sword
@@ -196,7 +197,17 @@ en:
   didnot_receive_confirmation_instructions: Didn't receive confirmation instructions?
   didnot_receive_unlock_instructions: Didn't receive unlock instructions?
   change my password: Change my password
-  #invalid_format: Invalid Email format. Try again
+  company_signup_message_1: If you are a delivery company and want to be part of a network that works with you, you can
+  company_signup_message_2: to start earning extra money.
+  company_signin_message_1: Otherwise if you are already resgister simply 
+  comp_transporter_signup_message_1:   As a company you can signup a Transporter 
+  sender_signup_message_1: If you want to place a service you can 
+  sender_signup_message_2: if you are not registered already
+  sender_signin_message_1: Otherwise simply
+  sender_signin_message_2:  to request a service
+  transporter_signup_message_1:  Sign in to start getting orders on demand
+  solicitar: Request a Service
+  partners: Work with Us as an agency
   date:
     abbr_day_names:
     - Sun
