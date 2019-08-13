@@ -4,8 +4,6 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   #before_action :set_user
 
-  # GET /orders
-  # GET /orders.json
   def index
     @orders = @user.orders
   end
@@ -33,8 +31,6 @@ class OrdersController < ApplicationController
     render :index
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
   def show
    # if @order.charge.present?
    #   @charge = @order.charge
@@ -43,19 +39,15 @@ class OrdersController < ApplicationController
    # end
   end
 
-
-  # GET /orders/new
   def new
     @order = @user.orders.build(status: 'draft')
   end
 
-  # GET /orders/1/edit
+
   def edit
-    #posted_or_taken
+
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
     @order= @user.orders.build(order_params)
     calculate_cost
@@ -73,8 +65,6 @@ class OrdersController < ApplicationController
       end
   end
 
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
     calculate_cost
     respond_to do |format|
@@ -88,9 +78,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy  # only the sender will be allowed to delete orders.
+  def destroy  # At the moment only the sender will be allowed to delete orders .
       @order.destroy
       respond_to do |format|
         format.html { redirect_to url_for([@user, :orders]), notice: 'Order was successfully destroyed.' }
@@ -100,7 +88,7 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_order
       @order = Order.find(params[:id])
     end
@@ -145,8 +133,6 @@ class OrdersController < ApplicationController
       @order.cost = 40000
     end
 
-
-# Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, 
         :cost, :status, :radius, :sender_id, :transporter_id,

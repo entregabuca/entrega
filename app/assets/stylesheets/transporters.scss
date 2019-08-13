@@ -1,13 +1,3 @@
-// Place all the styles related to the Transporters controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-/*.transporer {
-  margin-top: 2.2rem;
-  font-size: 1.9rem;
-}*/
-
 .name, .telephone, .email, .status, .password, .password-confirm {
 	text-align: right !important;
 }
@@ -30,8 +20,6 @@
 .status {
     margin-left: 40px !important;
 }
-
-
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
@@ -75,7 +63,6 @@
 		font-size: 1rem !important;
 	}
 
-
 	.transporter-status-card {
 		text-align: left !important;
 	}
@@ -83,7 +70,6 @@
 	.status {
 	    margin-left: 16px !important;
 	}
-
 }
 
 /* ========================================================= */
@@ -101,7 +87,4 @@
 	.transporter-status-card {
 		text-align: center !important;
 	}
-
-
-
 }

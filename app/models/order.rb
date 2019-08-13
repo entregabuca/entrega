@@ -14,9 +14,7 @@ include ActiveModel::Dirty
     "payment" => 6
   }
 
-  after_save :check_status_is_posted  #!!!!!  OjO IT WAS NECESSARY TO COMMENTED IT OUT BECAUSE OF CONFLICT WITH SEEDS !!!!
-
-
+  after_save :check_status_is_posted 
 
   has_one :charge
   belongs_to :sender

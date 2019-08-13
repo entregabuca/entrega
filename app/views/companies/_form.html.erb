@@ -1,9 +1,6 @@
 <%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
-
-      <!--<h2><%#= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2> -->
-
       <ul>
       <% company.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,63 +9,48 @@
     </div>
   <% end %>
 
-    <div class="card text-center mx-5">
-      <div class="card-body company-top-card"> 
-        <h3 class="h3Space"><%= t (:company_details) %></h3> 
+  <div class="card text-center mx-5">
+    <div class="card-body company-top-card"> 
+      <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
-         <div class="form-group col-md-12">     
-          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
-          <%= form.text_field :name, :class => "col-sm-6 company-name" %>
-        </div>        
-        
-        <div class="form-group col-md-12">      
-          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
-          <%= form.text_field :telephone, :class => "col-sm-6 company-telephone" %>
-        </div>
-
-        <div class="form-group col-md-12">
-          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
-          <%= form.text_field :email, :class => "col-sm-6 company-email" %>
-        </div>
-
-<!-- <div class="form-group col-md-12"> -->
-          <div class="row d-flex justify-content-center">
-          <b><%= form.label :status, :class => "email" %></b> 
-          <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => " company-status"} %>
-        </div>   
+      <div class="form-group col-md-12">     
+        <b><%= form.label :name, :class => "col-sm-5 name"%></b>
+        <%= form.text_field :name, :class => "col-sm-6 company-name" %>
+      </div>        
       
+      <div class="form-group col-md-12">      
+        <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
+        <%= form.text_field :telephone, :class => "col-sm-6 company-telephone" %>
       </div>
+
+      <div class="form-group col-md-12">
+        <b><%= form.label :email, :class => "col-sm-5 email"%></b>
+        <%= form.text_field :email, :class => "col-sm-6 company-email" %>
+      </div>
+
+        <!-- <div class="form-group col-md-12"> -->
+        <div class="row d-flex justify-content-center">
+        <b><%= form.label :status, :class => "email" %></b> 
+        <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => " company-status"} %>
+      </div>   
+    
     </div>
+  </div>
 
- <!-- SHOWING MAP -->
-    <div class="card company-card-location text-center my-5 mx-5">
-      <div class="card-header company-location">
-       <h3><%= t (:company_location) %></h3> 
-      </div>
-      <div class="card-body">   
-      <%= render 'location', form: form, id: 0 %>
-      </div>
+<!-- SHOWING MAP -->
+  <div class="card company-card-location text-center my-5 mx-5">
+    <div class="card-header company-location">
+     <h3><%= t (:company_location) %></h3> 
     </div>
+    <div class="card-body">   
+    <%= render 'location', form: form, id: 0 %>
+    </div>
+  </div>
 
-  
-
-  <!--   <div class="card text-center mx-5 mb-5 ">
-      <div class="card-body company-rad-status"> 
-        <div class="form-group col-md-12">
-          <%#= form.label :radius, :class => "col-sm-5 width"%>
-          <%#= form.text_field :radius, :class => " col-sm-6" %>
-        </div> 
-
-                 
-      </div>
-    </div>-->
-
-
-
-<hr> 
-<div class="row buttons btn-group " > 
-  <%= render 'companies/actionButtons', form: form %>
-</div>
-<hr class="mb-5"> 
+  <hr> 
+  <div class="row buttons btn-group " > 
+    <%= render 'companies/actionButtons', form: form %>
+  </div>
+  <hr class="mb-5"> 
 
 <% end %>

@@ -1,28 +1,23 @@
 class SendersController < ApplicationController
   include Accessible
-   
-  # GET /senders
-  # GET /senders.json
+
   def index
     @users = Sender.all
   end
 
-  # GET /senders/1
-  # GET /senders/1.json
+
   def show
   end
 
-  # GET /senders/new
+
   def new
     @user = Sender.new
   end
 
-  # GET /senders/1/edit
   def edit
   end
 
-  # POST /senders
-  # POST /senders.json
+
   def create
     @user = Sender.new(sender_params)
 
@@ -37,8 +32,7 @@ class SendersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /senders/1
-  # PATCH/PUT /senders/1.json
+
   def update
 
     respond_to do |format|
@@ -52,8 +46,7 @@ class SendersController < ApplicationController
     end
   end
 
-  # DELETE /senders/1
-  # DELETE /senders/1.json
+
   def destroy
     if @user.orders.size == 0
       @user.destroy
@@ -70,7 +63,7 @@ class SendersController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def sender_params
       params.require(:sender).permit(:name, :telephone, :email, :status, locations_attributes: [:id, :address, :latitude, :longitude])
     end

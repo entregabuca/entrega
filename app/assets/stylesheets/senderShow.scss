@@ -27,32 +27,6 @@
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
 
-
-@media (max-width: 1200px) and (orientation : portrait) {
-
-
-
-} 
-
-/* ========================================================= */
-
-@media (max-width: 992px) { 
-
-
-
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 870px)  and (min-width: 768px) and (orientation : portrait) {
-
-
-
-}
-
-/* ========================================================= */
-
 @media (max-width: 767px) and (orientation : portrait) {
   
  	/*.name, .telephone, .email, .status {
@@ -80,14 +54,6 @@
 
 /* ========================================================= */
 
-@media (max-width: 650px) and (orientation : portrait) {
-
-
-
-}
-
-/* ========================================================= */
-
 @media (max-width: 576px) and (orientation : portrait) {
 
 	.name, .telephone, .email, .status {
@@ -103,44 +69,3 @@
 	}
 
 }
-
-/* ========================================================= */
-
-@media (max-width: 500px) and (orientation : portrait) {
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 440px) and (orientation : portrait) {
-
-  
-
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 410px) and (orientation : portrait) {
-	
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 400px) and (orientation : portrait) {
-
-
-
-}
-
-/* =============================================================== */
-/* ===================MEDIA QUERIES - LANDSCAPE ================== */
-/* =============================================================== */
-
-@media (min-width: 1024px) and (orientation : landscape) {
-  
-
-
-}
-

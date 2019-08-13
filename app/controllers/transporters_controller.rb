@@ -2,8 +2,7 @@ class TransportersController < ApplicationController
   include Accessible
   before_action :set_transporter, only: [:show, :edit, :update, :destroy, :orders]
 
-  # GET /transporters
-  # GET /transporters.json
+
   def index
     if @user.present?
       @transporters = @user.transporters
@@ -12,8 +11,7 @@ class TransportersController < ApplicationController
     end
   end
 
-  # GET /transporters/1
-  # GET /transporters/1.json
+
   def show
   end
 
@@ -22,17 +20,15 @@ class TransportersController < ApplicationController
     render 'orders/index'
   end
 
-  # GET /transporters/new
   def new    
     @transporter = @user.transporters.build 
   end
 
-  # GET /transporters/1/edit
+
   def edit
   end
 
-  # POST /transporters
-  # POST /transporters.json
+
   def create
     
     @transporter = @user.transporters.build(transporter_params)
@@ -48,8 +44,7 @@ class TransportersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /transporters/1
-  # PATCH/PUT /transporters/1.json
+
   def update
     respond_to do |format|
       if @transporter.update(transporter_params)
@@ -62,8 +57,6 @@ class TransportersController < ApplicationController
     end
   end
 
-  # DELETE /transporters/1
-  # DELETE /transporters/1.json
   def destroy
     @transporter.destroy
     respond_to do |format|
@@ -73,12 +66,11 @@ class TransportersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_transporter
       @transporter = Transporter.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def transporter_params
       params.require(:transporter).permit(:name, :telephone, :email, :status, :company_id, :password)
     end
