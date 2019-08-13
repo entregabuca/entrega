@@ -2,33 +2,37 @@
 	<%#= link_to t(:users), users_path  THIS IS FROM THE I18N VIDEO CHECK WHAT CAN I DO %>
 
 	<%= content_tag :li do %>
-		<%= link_to 'Switch to English', locale: :en %>
+		<%= link_to 'English', locale: :en %>
 	<% end unless current_page?(locale: :en) %>
 
 	<%= content_tag :li do %>
-		<%= link_to 'Cambiar a Español', locale: :es %>
+		<%= link_to 'Español', locale: :es %>
 	<% end unless current_page?(locale: :es) %>
 
 	
 
 <hr>
-<h1><%= t :company %></h1>
+<h1><%= t :partners %></h1>
 
 <% if current_company %>
 	<%= link_to t(:sign_out), destroy_company_session_path, method: :delete %>
 <% else %>
-	<%= link_to t(:sign_in), new_company_session_path %> |
-	<%= link_to t(:sign_up), new_company_registration_path %>
-<% end %>
+	<p><%= t(:company_signup_message_1) %> <%= link_to t(:sign_up), new_company_registration_path %> <%= t (:company_signup_message_2) %></p>
+	<p><%= t (:company_signin_message_1)%> <%= link_to t(:sign_in), new_company_session_path %> </p>
+	
+	<p><%= t(:comp_transporter_signup_message_1) %> <%= link_to t(:sign_up_tranporter), new_transporter_registration_path %>. Left here for testing </p>
 
+<% end %>
 <hr>
-<h1><%= t :sender %></h1>
+
+<h1><%= t :solicitar %></h1>
 
 <% if current_sender %>
 	<%= link_to t(:sign_out), destroy_sender_session_path, method: :delete %>
 <% else %>
-	<%= link_to t(:sign_in), new_sender_session_path %> |
-	<%= link_to t(:sign_up), new_sender_registration_path %>
+	<p> <%= t (:sender_signup_message_1) %> <%= link_to t(:sign_up), new_sender_registration_path %> <%= t (:sender_signup_message_2) %> </p>
+	<p> <%= t (:sender_signin_message_1) %> <%= link_to t(:sign_in), new_sender_session_path %> <%= t (:sender_signin_message_2) %>  </p>
+
 <% end %>
 
 <hr>
@@ -37,20 +41,30 @@
 <% if current_transporter %>
 	<%= link_to t(:sign_out), destroy_transporter_session_path, method: :delete %>
 <% else %>
-	<%= link_to t(:sign_in), new_transporter_session_path %> |
-	<%= link_to t(:sign_up), new_transporter_registration_path %>
+<div class="hide_adminLogin">
+	<p> <%= link_to t(:sign_up), new_transporter_registration_path %>. Left here for testing </p>
+</div>
+	<p><%= t (:transporter_signup_message_1) %> <%= link_to t(:sign_in), new_transporter_session_path %></p>
+
+	
 <% end %>
 
 <hr>
 <br>
 <hr>
-<h1><%= t :admin%></h1>
 
-<% if current_admin %>
-	<%= link_to t(:admin_sign_out), destroy_admin_session_path, method: :delete %>
-<% else %>
-	<%= link_to t(:admin_sign_in), new_admin_session_path %> |
-	<%= link_to t(:admin_sign_up), new_admin_registration_path %>
-<% end %>
+<%# if current_page? (controller: 'orders', action: 'edit') %> 
+
+	 
+<%# else %>
+<div class="hide_adminLogin">
+<h1><%= t :admin%></h1>
+	<% if current_admin %>
+		<%= link_to t(:admin_sign_out), destroy_admin_session_path, method: :delete %>
+	<% else %>
+		<%= link_to t(:admin_sign_in), new_admin_session_path %> |
+		<%= link_to t(:admin_sign_up), new_admin_registration_path %>
+	<% end %>		
+</div>
 
 </div>

@@ -175,14 +175,15 @@ es:
   trans_profile: Perfil del Transportador
   edit_profile: Actualizar Perfil
 
-  sign_in: Iniciar sesión
+  sign_in: Inicia sesión
   sign_out: Salir
   sign_up: Crear Cuenta
   admin_sign_out: Administrador Terminarsesión
   admin_sign_in: Administrador Iniciar sesión
   admin_sign_up: Administrador Crear Cuenta
   log_in: Ininciar
-  sign_up: Crear Cuenta
+  sign_up: Crear tu Cuenta
+  sign_up_tranporter: Crear Cuenta de Transportador
   password: Contraseña
   current_password : Contraseña actual
   password_confirmation: Confirme Contraseña
@@ -196,7 +197,17 @@ es:
   didnot_receive_confirmation_instructions: No recibió Instrucciones de confirmacion?
   didnot_receive_unlock_instructions: No recibió Instrucciones para desbloquear cuenta?
   change my password: Cambiar Contraseña
-  #invalid_format: Formato de Email invalido. Intentelo de nuevo
+  company_signup_message_1: Eres una agencia de mensajeria y quieres aliarte a la red
+  company_signup_message_2: y comienza a recibir mas clientes al instante
+  company_signin_message_1: Si ya eres parte de la red procede a  
+  comp_transporter_signup_message_1: Como compañia puedes crear la cuenta del tranportador
+  sender_signup_message_1: Si quieres solicitar un servicio debes 
+  sender_signup_message_2: si no estas registrado
+  sender_signin_message_1: Si ya estas registrado simplemente 
+  sender_signin_message_2:  para pedir tu servicio
+  transporter_signup_message_1:  Inicia session y comienza a recibir servicios en edemanda
+  solicitar: Solicitar Servicio
+  partners: Quieres Trabajar con Nosotros como Empresa de Mensajeria aliada?
   date:
     abbr_day_names:
     - dom
