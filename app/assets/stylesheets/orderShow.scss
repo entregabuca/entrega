@@ -1,8 +1,3 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 /* ========================================================= */
 /* ================  VIEW ORDER FROM COMPANY ============== */
 /* ========================================================= */
@@ -149,11 +144,12 @@
     text-align: right !important; 
   }
 
-  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values,  .cost-values {
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values {
     max-width: 53% !important;
     padding-right: 0 !important;
     text-align: left !important; 
   }
+
 
   .measurements-headings {
     padding-right:0 !important;
@@ -167,13 +163,6 @@
   }
 
 }
-
-/* ========================================================= */
-
-@media (max-width: 576px) and (orientation : portrait) {
-
-
-}                         
 
 /* ========================================================= */
 
@@ -250,11 +239,8 @@
   .showAddress {
     font-size: 0.9rem !important;
   }
-
-  .company-values, .transporter-values {
-    font-size: 0.85rem !important;
-  }
 }
+
 
 /* =============================================================== */
 /* ========MEDIA QUERIES - LANDSCAPE NOT CHECKED YET FOR SHOW ==== */

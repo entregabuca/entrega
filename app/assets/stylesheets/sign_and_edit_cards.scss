@@ -99,16 +99,6 @@ input#user_remember_me {
     font-size: 1rem !important;
   
     }
-
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 870px)  and (min-width: 768px) and (orientation : portrait) {
-
-
-
 }
 
 /* ========================================================= */
@@ -118,8 +108,6 @@ input#user_remember_me {
     .login, .signup {   
         font-size: 1.3rem !important;      
     }
-    
-
 }
 
 /* ========================================================= */
@@ -143,37 +131,11 @@ input#user_remember_me {
 
 /* ========================================================= */
 
-@media (max-width: 576px) and (orientation : portrait) {
-
-    
-
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 500px) and (orientation : portrait) {
-
-}
-
-/* ========================================================= */
-
-@media (max-width: 440px) and (orientation : portrait) {
-
-  
-
-
-}
-
-/* ========================================================= */
-
 @media (max-width: 410px) and (orientation : portrait) {
 
     .login, .signup {   
         font-size: 1.1rem !important;      
     }
-    
-
 }
 
 /* ========================================================= */
@@ -189,14 +151,3 @@ input#user_remember_me {
     }
 
 }
-
-/* =============================================================== */
-/* ===================MEDIA QUERIES - LANDSCAPE ================== */
-/* =============================================================== */
-
-@media (min-width: 1024px) and (orientation : landscape) {
-  
-}
-
-
-

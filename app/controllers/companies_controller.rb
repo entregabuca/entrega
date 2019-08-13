@@ -1,8 +1,6 @@
 class CompaniesController < ApplicationController
   include Accessible
-    
-  # GET /companies
-  # GET /companies.json
+
   def index
     @companies = Company.all
 
@@ -14,22 +12,18 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
   end
 
-  # GET /companies/new
+
   def new
     @user = Company.new
   end
 
-  # GET /companies/1/edit
+
   def edit
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
     @user = Company.new(company_params)
     respond_to do |format|
@@ -43,8 +37,7 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /companies/1
-  # PATCH/PUT /companies/1.json
+
   def update
     respond_to do |format|
       if @user.update(company_params)
@@ -57,8 +50,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
     if @user.orders.size == 0
       @user.destroy
@@ -75,7 +66,7 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def company_params
       params.require(:company).permit(:name, :telephone, :email, :radius, 
         :status, locations_attributes: [:id, :address, :latitude, :longitude])
