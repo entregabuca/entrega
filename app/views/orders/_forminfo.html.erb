@@ -48,7 +48,7 @@
           <%= render 'location', form: form, id: 0 %>
         </div>
         <br>
-        <div class="mb-5 time">   
+        <div class="mb-5 time hide_information">  <!-- Time Hiden for Now -->
          <strong><%= form.label Order.human_attribute_name(:pickup_time), :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
           <%= form.datetime_select :pickup_time, :class => "col-sm-12"  %>
         </div>
@@ -60,13 +60,13 @@
   <div class="col-md-6 mb-3 card-right">
     <div class="card text-center z-depth-2">  
       <div class="card-body-right">        
-       <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3>
-       <div class="location_contain">
+      <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3>
+      <div class="location_contain">
         <%= render 'location', form: form, id: 1 %>
-       </div>
-       <br>   
-       <div class="mb-5 time">   
-       <strong><%= form.label Order.human_attribute_name(:delivery_time), :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
+      </div>
+      <br>   
+      <div class="mb-5 time hide_information">   
+        <strong><%= form.label Order.human_attribute_name(:delivery_time), :class => "col-sm-12  delivery-label mb-3 mt-5" %></strong>
         <%= form.datetime_select :delivery_time, :class => "col-sm-12" %>
       </div>
       </div>

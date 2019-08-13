@@ -30,10 +30,10 @@ es:
         length: Largo
         width: Ancho
         heigth: Alto
-        sending_location: Ubicación del Envío 
+        sending_location: Direción de Recogida del Envío 
         address: Dirección
         pickup_time: Fecha/Hora de Recogida
-        reciving_location: Destino del Envío 
+        reciving_location: Direción de Destino del Envío 
         delivery_time: Fecha/Hora de Entrega
         status: Estado
         radius: Radio
