@@ -4,7 +4,7 @@ es:
   activerecord:
     errors:
       messages:
-        invalid_format: formato es invalido. Intentelo de nuevo
+        invalid_format: Formato es invalido. Intentelo de nuevo
     attributes:
       company:
         name: Nombre
@@ -61,6 +61,7 @@ es:
         inTransit: En Camino
         complet: Completar
         cancel_order: Cancelar        
+      
       transporter:
         name: Nombre
         telephone: Teléfono
@@ -114,14 +115,26 @@ es:
           completed: Completado
           cancelled: Cancelado
           payment:  Pagando
+    errors:
+      messages:
+        record_invalid: 'La validación falló: %{errors}'
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
 
-      errors:
-        messages:
-          record_invalid: 'La validación falló: %{errors}'
-          restrict_dependent_destroy:
-            has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-            has_many: No se puede eliminar el registro porque existen %{record} dependientes
-  
+  company_created: Compañia creada  was successfully created !! 
+  company_updated: Compañia actualizada exitosamente !!
+  company_removed: Compañia removida exitosamente !!
+  sender_created: Usuario creado  was successfully created !! 
+  sender_updated: Usuario  actualizada exitosamente !!
+  sender_removed: Usuario removida exitosamente !!
+  transporter_created: Transportador creada  was successfully created !!   
+  transporter_updated: Transportador  actualizada exitosamente !!
+  transporter_removed: Transportador removida exitosamente !!
+  order_created: Orden  creada  was successfully created !!   
+  order_updated: Orden  actualizada exitosamente !! 
+  order_removed: Orden removida exitosamente 
+
   new_order: Nueva Orden
   measurement_details: Medidas Aproximadas
   short_description: Breve Descripción
@@ -307,6 +320,7 @@ es:
       day: Día
       month: Mes
       year: Año
+  
   errors:
     format: "%{attribute} %{message}"
     messages:

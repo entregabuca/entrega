@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
     @user = Company.new(company_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Company was successfully created.' }
+        format.html { redirect_to @user, notice: t(:company_created)}  
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(company_params)
-        format.html { redirect_to @user, notice: 'Company was successfully updated.' }
+        format.html { redirect_to @user, notice: t(:company_updated) }#t('activerecord.successful.messages.updated', model: @user.class.model_name.human)}
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class CompaniesController < ApplicationController
     if @user.orders.size == 0
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+        format.html { redirect_to companies_url, notice: t(:company_removed) }
         format.json { head :no_content }
       end
     else 

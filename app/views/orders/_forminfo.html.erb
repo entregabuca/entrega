@@ -13,7 +13,8 @@
       <b><%= form.label :description, :class => "col-sm-5 description"%></b>
       <%= form.text_field :description, placeholder: "#{t (:short_description)}", :class => "col-sm-6" %>
     </div>         
-    
+
+  <div class="hide_information">   
     <div class="form-group col-md-12 order-measurements text-center">      
       <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
 
@@ -36,7 +37,9 @@
     </div>    
     
   </div>
+
 </div>
+
 
 <!-- MAPS -->
 <div class="maps-row">

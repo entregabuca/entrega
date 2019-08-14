@@ -114,13 +114,25 @@ en:
           completed: Completed
           cancelled: Cancelled
           payment: Payment
-
       errors:
         messages:
           record_invalid: 'Validation failed: %{errors}'
           restrict_dependent_destroy:
             has_one: Cannot delete record because a dependent %{record} exists
             has_many: Cannot delete record because dependent %{record} exist
+
+  company_created: Company was successfully created !! 
+  company_updated: Company was successfully updated !!
+  company_removed: Company was successfully removed.
+  sender_created: Sender was successfully created !!   
+  sender_updated: Sender was successfully updated !!
+  sender_removed: Sender was successfully removed
+  transporter_created: Transporter was successfully created !!  
+  transporter_updated: Transporter was successfully updated !!
+  transporter_removed: Transporter was successfully removed
+  order_created: Order was successfully created !!   
+  order_updated: Orderwas successfully updated !!
+  order_removed: Order was successfully removed
 
   new_order: New Order
   measurement_details: Measurement Details
@@ -307,6 +319,7 @@ en:
       day: Day
       month: Month
       year: Year
+
   errors:
     format: "%{attribute} %{message}"
     messages:
