@@ -165,7 +165,7 @@
           <div class="mb-3 showAddress"><%= @order.locations[0].address %>
           </div>                  
             <br>
-            <div class="row mb-3 text-center pickdeli-times mb-4">
+            <div class="row mb-3 text-center pickdeli-times mb-4 hide_information">
               <div class="d-inline col-md-5 bolds pick-label"><%= Order.human_attribute_name(:pickup_time) %>
               </div>
               <div class="d-inline col-md-6 pick-time mb-4"><%= @order.pickup_time.strftime('%d %b %Y  %H:%M') %> 
@@ -186,7 +186,7 @@
             <div class="mb-3 showAddress"><%= @order.locations[1].address %>
             </div>  
             <br>
-            <div class="row mb-3 text-center pickdeli-times mb-4">
+            <div class="row mb-3 text-center pickdeli-times mb-4 hide_information">
               <div class="d-inline col-md-6 bolds deliver-label"><%= Order.human_attribute_name(:delivery_time) %>
               </div>
               <div class="d-inline col-md-6 deliver-time mb-4"><%= @order.delivery_time.strftime('%d %b %Y  %H:%M') %>
@@ -239,7 +239,7 @@
  </div>
 </div>
 
-
+<div class="hide_information"> 
 <!-- ORDER MEASUREMENTS -->
 <div class="card mb-2  ">
   <div class="card-body"> 
@@ -277,9 +277,10 @@
         <%= @order.heigth %>
       </div>
     </div>
-  </div>        
-</div>
- </div>  
+    </div>        
+  </div>
+</div> 
+</div> 
 
 <!-- COST -->
 

@@ -5,11 +5,16 @@ class Transporter < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :company
   has_many :orders, dependent: :destroy  # if dependent destroy isn't placed we aren't unable to destroy the Company
+  before_create :default_status
 
   enum status:{
     "inactive" => 0,
     "active" => 1
   }
+
+  def default_status
+    self.status = "inactive"
+  end
 
 #  def status_active  # could be changed to order_posted
 #    self.status == 'active'     

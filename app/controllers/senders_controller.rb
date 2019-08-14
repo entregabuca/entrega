@@ -21,9 +21,9 @@ class SendersController < ApplicationController
   def create
     @user = Sender.new(sender_params)
 
-    respond_to do |format|
+    respond_to do |format|   sender_created
       if @user.save
-        format.html { redirect_to @user, notice: 'Sender was successfully created.' }
+        format.html { redirect_to @user, notice: t(:sender_created) }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class SendersController < ApplicationController
 
     respond_to do |format|
       if @user.update(sender_params)
-        format.html { redirect_to @user, notice: 'Sender was successfully updated.' }
+        format.html { redirect_to @user, notice: t(:sender_updated)  }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -51,7 +51,7 @@ class SendersController < ApplicationController
     if @user.orders.size == 0
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to senders_url, notice: 'Sender was successfully destroyed.' }
+        format.html { redirect_to senders_url, notice: t(:sender_removed)  }
         format.json { head :no_content }
       end
     else 

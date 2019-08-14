@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
         if @order.save
           
           #draft_or_posted
-          format.html { redirect_to url_for([@user, @order]), notice: 'Order ready to be paid. Check deatils.' }
+          format.html { redirect_to url_for([@user, @order]), notice: t(:order_created)}
           format.json { render :show, status: :created, location: @order }
           #order_posted_create
         else
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
     calculate_cost
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to url_for([@user, @order]), notice: 'Order was successfully updated.' }
+        format.html { redirect_to url_for([@user, @order]), notice: t(:order_updated) }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
   def destroy  # At the moment only the sender will be allowed to delete orders .
       @order.destroy
       respond_to do |format|
-        format.html { redirect_to url_for([@user, :orders]), notice: 'Order was successfully destroyed.' }
+        format.html { redirect_to url_for([@user, :orders]), notice: t(:order_removed) }
         format.json { head :no_content }
       end
     

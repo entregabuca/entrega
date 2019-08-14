@@ -9,16 +9,21 @@ class Company < ApplicationRecord
 
   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
   before_create :set_default_location
+  before_create :default_status
+
 
   enum status:{
     "inactive" => 0,
     "active" => 1
   }
+ 
+  def default_status
+    self.status = 'inactive'
+  end
 
-
- def status_active  # could be changed to order_posted
-   self.status == 'active'     
- end
+  def status_active  # could be changed to order_posted
+    self.status == 'active'     
+  end
 # 
 
 
