@@ -40,7 +40,10 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = @user.orders.build(status: 'draft')
+    #set_user
+    #if @user.status == 'active'
+      @order = @user.orders.build(status: 'draft')
+    #end
   end
 
 

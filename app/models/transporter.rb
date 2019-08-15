@@ -16,7 +16,7 @@ class Transporter < ApplicationRecord
     self.status = "inactive"
   end
 
-#  def status_active  # could be changed to order_posted
+#  def status_active  # could be changed to order_posted
 #    self.status == 'active'     
 #  end
 #

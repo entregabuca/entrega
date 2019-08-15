@@ -162,7 +162,7 @@
            <div class="bolds ">
             <%= Order.human_attribute_name(:address) %>
           </div>          
-          <div class="mb-3 showAddress"><%= @order.locations[0].address %>
+          <div class="mb-3 showAddress"><%= @order.locations[0].address rescue log_error($!, $@) %>
           </div>                  
             <br>
             <div class="row mb-3 text-center pickdeli-times mb-4 hide_information">
@@ -183,7 +183,7 @@
             <div class="bolds ">
               <%= Order.human_attribute_name(:address) %>
             </div>           
-            <div class="mb-3 showAddress"><%= @order.locations[1].address %>
+            <div class="mb-3 showAddress"><%= @order.locations[1].address rescue log_error($!, $@) %>
             </div>  
             <br>
             <div class="row mb-3 text-center pickdeli-times mb-4 hide_information">
@@ -208,7 +208,6 @@
         :icon_size => [20, 20],
         :icon_anchor => [20, 40],
         :popup_anchor => [0, -40]}
-
         target_icon = {:name => 'target',
         :icon_url => asset_path('target.png'),
         :icon_size => [20, 20],
@@ -218,13 +217,10 @@
          markers = [{:latlng => coordinates(@order, 0),
            :popup => "Sending Location <br><b>#{address(@order,0)}</b>",
           :icon => plane_icon}]
-
          markers << { :latlng => coordinates(@order, 1),
            :popup => "Reciving Location <br><b>#{address(@order,1)}</b>",
           :icon => target_icon
          }
-
-
       latlng = coordinates(@order, 0)
       map(
           :center => {
@@ -318,5 +314,3 @@
     </div>
   </div>
 <% end %>
-
-
