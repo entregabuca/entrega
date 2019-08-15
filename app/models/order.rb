@@ -23,10 +23,12 @@ include ActiveModel::Dirty
   has_many :order_statuses, dependent: :destroy
   has_many :recipients, dependent: :destroy
   
-  accepts_nested_attributes_for :locations, :allow_destroy => true, :reject_if => lambda { |a| a[:address].blank? }   # && a[:line2].blank? && a[:city].blank? && a[:zip].blank?
+  accepts_nested_attributes_for :locations, allow_destroy: true # :reject_if => lambda { |a| a[:address].blank? }   # && a[:line2].blank? && a[:city].blank? && a[:zip].blank?
   accepts_nested_attributes_for :recipients, :allow_destroy => true
   # Sort orders by most recent first
   default_scope {order("created_at DESC")} 
+
+  validates :description, presence: true 
   
   validate :pickup_time_cannot_be_in_the_past
   validate :delivery_time_is_a_minute_greater_than_now
@@ -34,6 +36,10 @@ include ActiveModel::Dirty
   #validate :pickup_time_cannot_be_greater_than_delivery_time
   validate :status_draft_radius_500
  #validate :status_posted_radius_500, on: :create
+
+
+
+
 
   def status_draft_radius_500
     if status == 'draft'

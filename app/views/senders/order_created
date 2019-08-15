@@ -19,7 +19,7 @@
         :circles => [
           {
             :latlng => latlng,
-            :radius => 1, #@user.radius,
+            :radius => 0,  #@user.radius,
             :color => 'red',
             :fillColor => '#111',
             :fillOpacity => 0.35

@@ -36,7 +36,7 @@
             <b><%= Sender.human_attribute_name(:status) %></b>
           </div>
           <div class="d-inline col-sm-6 mb-3 sender-Showinputs">
-             <%= enum_l(@user, :status) %>
+             <%= enum_l(@user, :status) rescue log_error($!, $@) %>
           </div>
         </div>
         <div class="row">

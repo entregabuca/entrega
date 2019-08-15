@@ -5,8 +5,10 @@ class Sender < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
   has_many :locations, as: :addressable, :dependent => :destroy
+  
+  accepts_nested_attributes_for :locations, allow_destroy: true
 
-
+  before_create :set_default_location
   before_create :default_status
 
   enum status:{
@@ -14,7 +16,7 @@ class Sender < ApplicationRecord
     active:  1
   }
 
-  def status_active  # could be changed to order_posted
+  def status_active  # could be changed to order_posted
     self.status == 'active'     
   end
   
@@ -22,11 +24,11 @@ class Sender < ApplicationRecord
     self.status = "inactive"
   end
 
- # def location_validation
- #   if self.status == 'active'
- #     accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
- #   end
- # end
+  def set_default_location
+    if !locations.present?
+      self.locations << Location.create( {latitude: 0 , longitude: 0})      
+    end 
+  end
 
  with_options if: :status_active do |sender|
    sender.validates :name, presence: true 

@@ -131,7 +131,7 @@ es:
   transporter_created: Transportador creada  was successfully created !!   
   transporter_updated: Transportador  actualizada exitosamente !!
   transporter_removed: Transportador removida exitosamente !!
-  order_created: Orden  creada  was successfully created !!   
+  order_created: Orden  creada  exitosamente  !!   
   order_updated: Orden  actualizada exitosamente !! 
   order_removed: Orden removida exitosamente 
 
