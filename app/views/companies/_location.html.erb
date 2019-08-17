@@ -1,17 +1,15 @@
 <!-- THIS LOCATION FORM MUST BE MADE A GENERAL APP TEMPLATE AS ITS BEEN USED BY ALL USERS AND ORDERS -->
 
-
-
 <% id = local_assigns[:id] %>
 <%= form.fields_for :locations, @user.locations[0].present? ? @user.locations[0] : Location.new  do |f| %>
 
   <div class="form-group">
     <%= f.text_field :address, placeholder: "#{t (:enter_address)}", id: "address#{id}", :class => "col-sm-12 address" %>
-    <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-addres-search mb-5" %>
+    <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-address-search mb-5" %>
   </div> 
 
   <div id="MapRow">
-    <div class="mx-auto" id="map<%=id%>">
+    <div id="map<%=id%>"> <!-- class="mx-auto" -->
     </div>   
     <%= f.hidden_field :latitude, id: "latitude#{id}" %>
     <%= f.hidden_field :longitude, id: "longitude#{id}" %>

@@ -59,7 +59,7 @@ en:
         take_order: Take Order
         taken: Taken
         inTransit: In Transit
-        complet: Complet
+        complet: Complete
         cancel_order: Cancel
         
       transporter:

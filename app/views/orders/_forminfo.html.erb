@@ -14,30 +14,28 @@
       <%= form.text_field :description, placeholder: "#{t (:short_description)}", :class => "col-sm-6" %>
     </div>         
 
-  <div class="hide_information">   
-    <div class="form-group col-md-12 order-measurements text-center">      
-      <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
+    <div class="hide_information">   
+      <div class="form-group col-md-12 order-measurements text-center">      
+        <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
+        <%= form.text_field :weight, placeholder: "#{t (:aprrox_weight)}", :class => "col-sm-6" %>
+      </div>
 
-      <%= form.text_field :weight, placeholder: "#{t (:aprrox_weight)}", :class => "col-sm-6" %>
+       <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label  Order.human_attribute_name(:length), :class => "col-sm-5 length"%></b>
+        <%= form.text_field :length, placeholder: "#{t (:aprrox_length)}", :class => "col-sm-6" %>
+      </div>
+
+      <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label Order.human_attribute_name(:width), :class => "col-sm-5 width"%></b>
+        <%= form.text_field :width, placeholder: "#{t (:approx_width)}", :class => "col-sm-6" %>
+      </div>
+
+      <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label Order.human_attribute_name(:heigth),:class => "col-sm-6 height"%></b>
+        <%= form.text_field :heigth, placeholder: "#{t (:approx_height)}", :class => "col-sm-6" %>
+      </div>       
     </div>
-
-     <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label  Order.human_attribute_name(:length), :class => "col-sm-5 length"%></b>
-      <%= form.text_field :length, placeholder: "#{t (:aprrox_length)}", :class => "col-sm-6" %>
-    </div>
-
-    <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label Order.human_attribute_name(:width), :class => "col-sm-5 width"%></b>
-      <%= form.text_field :width, placeholder: "#{t (:approx_width)}", :class => "col-sm-6" %>
-    </div>
-
-    <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label Order.human_attribute_name(:heigth),:class => "col-sm-6 height"%></b>
-      <%= form.text_field :heigth, placeholder: "#{t (:approx_height)}", :class => "col-sm-6" %>
-    </div>    
-    
   </div>
-
 </div>
 
 

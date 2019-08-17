@@ -27,11 +27,11 @@
 }
 
 .tableValues td {
-    font-size: 0.98rem !important;
-  }
+  font-size: 0.98rem !important;
+}
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-     background-color: #cef8fd !important;
+  background-color: #cef8fd !important;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
@@ -51,7 +51,6 @@
   background-color: #78a9ba;
 }
 
-
 .card-body-right {
   background-color: #85ad94;
 }
@@ -64,7 +63,6 @@
   width: 90% !important;
 }
 
-
 .maps-row {
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +72,7 @@
 
 .leaflet-container {
     height: 400px;
-    width: 90% !important;
+    width: 100% !important; 
 }
 
 .pickup-time, .delivery-time{
@@ -98,10 +96,6 @@
     margin-left: 0px !important;
 }
 
-/*.map-no-border {
-  border:0 !important;
-}*/
-
 .card-left, .card-right {
   padding-right: 0 !important;
   padding-left: 0 !important;
@@ -121,7 +115,7 @@
 }
 
 .hide_information {
-    display: none !important;
+  display: none !important;
 }
 
 /* ========================================================= */
@@ -191,11 +185,11 @@
 @media (max-width: 862px)  and (min-width: 768px) and (orientation : portrait) {
 
   .time select {
-        font-size: 0.7rem !important;
+    font-size: 0.7rem !important;
   }
 
   .space {
-      margin-right: 170px !important;
+    margin-right: 170px !important;
   }
 
   .tableHeadingbar th  {
@@ -234,8 +228,6 @@
   .order-measurements {
     text-align: left !important;
   } 
-
-
 
   .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 50% !important;
@@ -283,11 +275,6 @@
     max-width: 100% !important;
   }
 
-  /*#order_description {
-    max-width: 100% !important;
-  }*/
-
-
   #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input  {
     font-size: 1rem !important;
     text-align: center !important;
@@ -311,7 +298,6 @@
 
 /* ========================================================= */
 
-
 @media (max-width: 440px) and (orientation : portrait) {
   
   .card-left, .card-right {
@@ -331,7 +317,6 @@
   .sender {
     font-size: 1.2rem !important;
   }
-
 }
 
 /* ========================================================= */
@@ -357,14 +342,12 @@
 /* =============================================================== */
 
 @media (min-width: 1024px) and (orientation : landscape) {
-
   .space {
       margin-right: 120px !important;
   }
 }
 
 @media (max-width: 1024px) and (orientation : landscape) {
-
   .space {
       margin-right: 90px !important;
   }

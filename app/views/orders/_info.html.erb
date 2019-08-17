@@ -27,10 +27,7 @@
       </div>
     </div>
   </div>
-</div>  <!-- SCSS TICKED -->
-
-
-
+</div> 
 
 <!-- COMPANY & TRANSPORTER  -->  
 <!-- This will be shown only when Transporter & Company need or have been added -->
@@ -41,7 +38,7 @@
         <div class="card-body text-center transporterCompanyAdd-card"> 
           <div class="form-group col-md-12">      
             <div class="d-inline col-sm-6 company-headings bolds">
-               <%#= Order.human_attribute_name(:company) %>
+               <%= Order.human_attribute_name(:company) %>
             </div>
             <div class="d-inline col-sm-6 mb-3 company-values">
              <%= @user.name.upcase  %>
@@ -68,11 +65,28 @@
           </div>
         </div>
       </div>
+      
+      <!-- COST -->
+      <div class="row mb-3">
+        <div class="col-md-12">     
+          <div class="card">        
+            <div class="card-block mt-3 ">
+              <div class="row">
+                <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
+                </div>
+                <div class="d-inline col-sm-6 mb-3 cost-values">            
+                  <%= @order.cost  %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="col-sm-10 col-lg-10 editor">    
+      <div class="d-flex justify-content-center">         
         <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
           <%= form.hidden_field :status, :value => 'taken' %>
-          <%= form.submit  Order.human_attribute_name(:take_order), :class => 'col-sm-2 btn btn-primary btn-taken mb-3', name: 'take' %>
+          <%= form.submit  Order.human_attribute_name(:take_order), :class => 'btn btn-taken my-3', name: 'take' %> 
         <% end %>
       </div> 
     <% end %>
@@ -84,9 +98,9 @@
   <% if @order.transporter.present? %>
     <%= render 'orders/compa-transporter', order: @order %>
   <% else %> 
-    <div class="card mb-3 p-3 messageTransComp text-center"> 
+    <div class="card mb-2 p-3 messageTransComp text-center"> 
       <%= t ".no_company_added" %>
-    </div>  <!-- SCSS TICKED --> 
+    </div> 
   <% end %>
 <% end %>
 
@@ -97,7 +111,7 @@
 <% end %>
 
 <!-- SENDER & RECIPIENT DETAILS -->
-<div class="card mb-2  ">
+<div class="card my-2  ">
   <div class="card-body pl-1"> 
     <div class="col-md-12 mb-2 mt-2">
       <div class="row">
@@ -119,7 +133,7 @@
       </div> 
     </div>
   </div>
-</div>   <!-- SCSS TICKED -->
+</div>
 
 <% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
   <% if @order.transporter.present? %>
@@ -150,8 +164,6 @@
       </div>
     </div>   
   </div>
-  
-<%# end %>
   
 <!-- MAPS -->
  <div class="maps-row">
@@ -197,8 +209,6 @@
       </div>
     <% end %>
   </div>
-
-
 
 <div class="map-row">  
 <div class="col-md-12 card-show-map mb-3 ">  
@@ -277,24 +287,6 @@
   </div>
 </div> 
 </div> 
-
-<!-- COST -->
-
-<div class="row mb-3">
-  <div class="col-md-12 mb-3 ">     
-    <div class="card mb-3">        
-      <div class="card-block mt-3 ">
-        <div class="row">
-          <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
-          </div>
-          <div class="d-inline col-sm-6 mb-3 cost-values">            
-            <%= @order.cost  %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- RADIUS -->
 <% if current_admin %>
