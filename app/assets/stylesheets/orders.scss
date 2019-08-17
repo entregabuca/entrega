@@ -87,19 +87,19 @@
   }
 }
 
-.order-create-update-buttons {
+/* .order-create-update-buttons {
    margin-top: 4rem;
    margin-bottom: 4rem;
-}
+} */
 
 #map {
     margin-left: 0px !important;
 }
 
-.card-left, .card-right {
+/*.card-left, .card-right {
   padding-right: 0 !important;
   padding-left: 0 !important;
-}
+}*/
 
 
 .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
@@ -116,6 +116,10 @@
 
 .hide_information {
   display: none !important;
+}
+
+.card.card-cost {
+    margin-bottom: 3rem;
 }
 
 /* ========================================================= */
