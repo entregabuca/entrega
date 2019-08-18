@@ -6,32 +6,14 @@
     <% if ['completed', 'cancelled'].include?(@order.status) %>
 
     <!-- Sender -->
-
-
     <% elsif @user.class.name == "Sender" && @order.status == 'draft' && current_page?(controller: 'orders', action: 'edit')%>
-        <!-- <div class="d-flex justify-content-center" > 
-          <div class="order-create-update-buttons text-center ">-->
-            <% if @order.status == 'draft' %>
-              <!-- <div class="actions btn-group" role="group" > -->
-                <!-- <div class= "btn btn-primary btn-back my-2"> class="space" -->
-                  <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-                    <%= form.hidden_field :status, :value => 'draft' %>
-                    <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft my-2 status_buttons' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
-                  <% end %>
-                <!-- </div> -->
-          <!--  <div>
-                  <%#= form.hidden_field :status, :value => 'payment' %>
-                  <%#= form.submit  Order.human_attribute_name(:payment), :class => ' btn btn-primary btn-post' %>   , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER 
-                </div>   
-              </div>-->
-            <!-- <%# else %> THIS WAS HIDDEN FOR TESTING CONFIRM BUTTON IN THE SAME LINE AS BACK TO ORDERS
-              <div class="actions">
-                <%#= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
-              </div> -->
-            <% end %>            
+      <% if @order.status == 'draft' %>
+            <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+              <%= form.hidden_field :status, :value => 'draft' %>
+              <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft my-2 status_buttons' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
+            <% end %>
+      <% end %>  
       
-
-
     <% elsif @user.class.name == "Sender" && ['draft', 'posted'].include?(@order.status) %>
           <% if ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'new') %>
             <!-- IT WILL RENDER THE FORM ITSELF -->

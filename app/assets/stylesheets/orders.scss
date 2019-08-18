@@ -67,7 +67,6 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 2rem;
-  //margin-bottom: 2rem;
 }
 
 .leaflet-container {
@@ -87,20 +86,9 @@
   }
 }
 
-/* .order-create-update-buttons {
-   margin-top: 4rem;
-   margin-bottom: 4rem;
-} */
-
 #map {
     margin-left: 0px !important;
 }
-
-/*.card-left, .card-right {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}*/
-
 
 .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 25% !important;
@@ -179,9 +167,14 @@
     font-size: 1.2rem !important;
   }
 
-  .recipient-name-label, .telephone-label, .email-label, .cost-label {
+  /*.recipient-name-label, .telephone-label, .email-label, .cost-label {
       max-width: 15% !important;
-  }  
+  }  */
+
+  .col-sm-5, .col-sm-6 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
 }
 
 /* ========================================================= */
@@ -257,7 +250,6 @@
     font-size: 1.35rem !important;
     margin-bottom: 2.5rem !important;
   }
-
 }
 
 /* ========================================================= */
