@@ -19,7 +19,7 @@
   border-color: #78a9ba !important;
   background-color: #78a9ba !important;
   border-radius: 3.5rem !important;
-  margin-bottom: 1rem;
+  //margin-bottom: 1rem;
 }
 
 .btn-draft:hover {
@@ -49,8 +49,8 @@
   color: black !important;
   background-color: #e5ef04 !important;
   border-radius: 3.5rem !important;
-  width: 194px;
-  margin-left: 180px !important;
+  width: 194px; 
+   margin-left: 180px !important;
 }
 
 .btn-edit:hover {
@@ -59,7 +59,8 @@
   border-color: #0062cc !important;
 }
 
-.btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update {
+//.btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update 
+.btn-draft, .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-comple{
   color: black !important;
   border-color: #00b5ff !important;
   background-color: #85ad94 !important;
@@ -96,7 +97,7 @@
   height: 41px;
   width: 194px;
   font-size :1rem;
-  font-weight: 650;
+  font-weight: 500;
   padding: 0.45rem 1.4rem 0.45rem 1.4rem !important;
 }
 
@@ -233,7 +234,8 @@
     margin-right: 80px !important;
   }
 
-  .btn-edit, .btn-intransit, .btn-complet, .btn-update {  
+  //.btn-edit, .btn-intransit, .btn-complet, .btn-update 
+  .btn-draft, .btn-edit,  .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-complet {  
     margin-left: 40px !important;
   }
 }
@@ -298,7 +300,8 @@
     padding: 0.375rem 0.75rem !important;
   }
 
-  .btn-edit, .btn-intransit, .btn-complet, .btn-update {
+  //.btn-edit, .btn-intransit, .btn-complet, .btn-update
+  .btn-draft, .btn-edit,  .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-comple {
     margin-left: 20px !important;
   }
 }
@@ -315,7 +318,7 @@
 }
 
 @media (max-width: 1200px) and (orientation : landscape) {
-  .btn-back, .btn-taken, .btn-post, .btn-intransit, .btn-complet, .btn-update, .btn-edit {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit {
     font-size: 1.1rem !important;
     width: 194px !important;
     padding: 0.375rem 0.75rem !important;
@@ -323,19 +326,14 @@
   }
 }
 
-/*@media (max-width: 1000px) and (orientation : landscape) {
-  .btn-back, .btn-taken, .btn-post, .btn-intransit, .btn-complet, .btn-update, .btn-edit {
-    font-weight: 500 !important;
-  }
-}*/
-
 @media (max-width: 800px) and (orientation : landscape) {
   .btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel {
     font-size: 1rem !important;
     width: 154px !important;
     padding: 0.45rem 0.75rem !important;
   }
-  .btn-intransit, .btn-complet, .btn-update, .btn-edit {
+
+  .btn-draft, .btn-edit,  .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-comple{
     margin-left: 60px !important;
   }
 
