@@ -107,7 +107,24 @@
   </div>
 </div>
     
-<!-- Action Buttons kicks in -->
+<!-- Think on how to move this Confirm button to ActionButtons in -->
+<!-- SUBMIT BUTTONS -->
+<div class="row justify-content-center " > 
+  <div class="order-create-update-buttons text-center ">
+    <% if @order.status == 'draft' %>
+        <div>
+          <%= form.hidden_field :status, :value => 'draft' %>
+          <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft ' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
+        </div>
+      <!--  <div>
+          <%#= form.hidden_field :status, :value => 'payment' %>
+          <%#= form.submit  Order.human_attribute_name(:payment), :class => ' btn btn-primary btn-post' %>   , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER 
+        </div>   -->
 
-
-
+      </div>
+    <% else %>
+      <div class="actions">
+        <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
+      </div>
+    <% end %>
+</div>

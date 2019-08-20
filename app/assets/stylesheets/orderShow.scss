@@ -34,13 +34,17 @@
   margin-bottom: 1rem;
 }
 
-.order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings  {
+.order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings, .recipient-headings  {
   text-align: right !important; 
 }
 
-.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values {
+.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values, .recipient-values {
   text-align: left !important; 
-}
+  padding-left: 15px !important;
+  max-width: 53% !important;
+  padding-right: 0 !important;
+   
+  }
 
 .messageTransComp {
   color: #e19500 !important;
@@ -115,16 +119,11 @@
     max-width: 100%;
   }
 
-  .order-headings, .sender-headings, .company-headings, .transporter-headings, .cost-heading  {
+  .order-headings, .sender-headings, .company-headings, .transporter-headings, .cost-heading, .recipient-headings 
+    {
     max-width: 47% !important;
     padding-right:0 !important;
     text-align: right !important; 
-  }
-
-  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values {
-    max-width: 53% !important;
-    padding-right: 0 !important;
-    text-align: left !important; 
   }
 
   .measurements-headings {

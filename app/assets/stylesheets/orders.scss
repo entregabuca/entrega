@@ -48,11 +48,11 @@
 }
 
 .card-body-left {
-  background-color: #78a9ba;
+  background-color: #50e5ffcf;
 }
 
 .card-body-right {
-  background-color: #85ad94;
+  background-color: #7cf8abb5;
 }
 .card-header {
   padding-top: 2rem; 
@@ -93,11 +93,13 @@
 .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 25% !important;
     text-align: right !important;
+    padding-right: 20px !important;
+    margin-right: 15px !important;
 }
 
 #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input {
   font-size: 1.12rem;
-  max-width: 30% !important;
+  max-width: 70% !important;
   border-color: #ffffff24 !important;
   text-align: left !important;
 }
@@ -110,6 +112,10 @@
     margin-bottom: 3rem;
 }
 
+  .col-sm-5, .col-sm-6 {
+    padding-right: 0px;
+    //padding-left: 0px;
+  }
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
@@ -124,8 +130,8 @@
       margin-right: 140px !important;
   }
 
-  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input  {
-      max-width: 30% !important;
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input, .recipient-name-input, .telephone-input, .email-input {
+      max-width: 70% !important;
   }
 
   .headingspace {
@@ -144,11 +150,6 @@
   
   .description, .weight, .length, .width, .height, .cost-label {
       max-width: 25% !important;
-  }
-
-  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input {
-    max-width: 30% !important;
-     
   }
 
   .recipient-name-input, .telephone-input, .email-input, .cost-input {
@@ -171,9 +172,8 @@
       max-width: 15% !important;
   }  */
 
-  .col-sm-5, .col-sm-6 {
-    padding-right: 0px !important;
-    padding-left: 0px !important;
+  .col-sm-6 {
+    padding-left: 15px !important;
   }
 }
 
@@ -332,7 +332,6 @@
   }
 }
 
-
 /* =============================================================== */
 /* ===================MEDIA QUERIES - LANDSCAPE ================== */
 /* =============================================================== */
@@ -348,3 +347,22 @@
       margin-right: 90px !important;
   }
 }
+
+@media (max-width: 992px) and (orientation : landscape) {
+  .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  
+  .order-headings, .sender-headings, .company-headings, .transporter-headings, .recipient-headings {
+    width: 100% !important;
+    max-width: 50% !important;
+  }
+
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values {
+    width: 100% !important;
+    max-width: 50% !important;
+    padding-left: 15px !important;
+  }
+}
+

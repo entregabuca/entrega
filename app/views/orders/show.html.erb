@@ -8,39 +8,35 @@
 <hr>
 
 <%= render 'orders/info' %>
-<hr> 
 
+<div class="buttons"> 
+	<%= render 'epayco/result' %>
+</div>
+
+<% if @order.status == 'draft' %>
+	<div class="charge-form pt-4">
+		<div class="card py-5 mb-5">
+			<div class="row justify-content-center">
+				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %>
+					<div class="row form-group justify-content-center">
+						<%= f.label :order_cost, @order.cost.to_s, class: "text-center" %>
+						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
+						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
+					</div>
+					<div>
+						<%= link_to "Cancel", root_path, class: "btn btn-cancel-payment" %>
+						<%= f.submit " Pay ", class: "btn btn-payorder status_buttons" %>
+					</div>
+				<% end %>			
+			</div>
+		</div>
+	</div>
+<% end %>
+<hr> 
 <div class="row justify-content-center"> 
 	<%= render 'orders/actionButtons' %>
 </div> 
 <hr>
 <br>
 
-
-<div class="buttons"> 
-	<%= render 'epayco/result' %>
-</div>
-
-<div class="charge-form pt-4">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-5">
-			<% if @order.status == 'draft' %>
-
-				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %>
-					<div class="form-group">
-						<%= f.label :order_cost, @order.cost.to_s %>
-						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
-						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
-					</div>
-					<div>
-						<%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
-						<%= f.submit " Pay ", class: "btn btn-primary" %>
-					</div>
-				<% end %>
-			<% end %>
-			</div>
-		</div>
-	</div>
-</div>
 

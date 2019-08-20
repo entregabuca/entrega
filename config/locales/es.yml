@@ -54,7 +54,7 @@ es:
         payment: Pagando
         notification: Notificación
         order_ready: Orden lista para tomar!!
-        back_to_orders: Ver Ordenes  
+        back_to_orders: Ver Ordenes 
         edit_order : Editar Orden
         take_order: Tomar Orden
         taken: Tomada

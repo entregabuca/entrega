@@ -47,7 +47,7 @@
 
           <div class="form-group col-md-12"> 
             <div class="d-inline col-sm-6 transporter-headings bolds">
-               <%= "Transporter: "%>
+               <%= "Transporter"%>
             </div> 
             <% if @user.class.name == "Company" && ['completed','cancelled'].include?(@order.status) %>
               <div class="d-inline col-sm-6 mb-3 transporter-values">
@@ -65,7 +65,7 @@
           </div>
         </div>
       </div>
-      
+    
       <!-- COST -->
       <div class="row mb-3">
         <div class="col-md-12">     
@@ -82,13 +82,6 @@
           </div>
         </div>
       </div>
-
-      <div class="d-flex justify-content-center">         
-        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
-          <%= form.hidden_field :status, :value => 'taken' %>
-          <%= form.submit  Order.human_attribute_name(:take_order), :class => 'btn btn-taken my-3', name: 'take' %> 
-        <% end %>
-      </div> 
     <% end %>
   <% end %>
 <% end %>
@@ -146,17 +139,17 @@
     <div class="card-body pl-1"> 
       <div class="col-md-12 mb-2 mt-2">
         <div class="row">
-          <div class="d-inline col-sm-6 sender-headings bolds"><%= Order.human_attribute_name(:recipient)%>
+          <div class="d-inline col-sm-6 recipient-headings bolds"><%= Order.human_attribute_name(:recipient)%>
           </div>
           <div class="d-inline col-sm-6 mb-3 recipient-values">
             <%= @order.recipients.first.present? ? @order.recipients.first.name : "-" %>
           </div>
         </div>
         <div class="row">
-          <div class="d-inline col-sm-6 sender-headings bolds ">
+          <div class="d-inline col-sm-6 recipient-headings bolds ">
             <%= Order.human_attribute_name(:telephone) %>
           </div>
-          <div class="d-inline col-sm-6 mb-3 sender-values">
+          <div class="d-inline col-sm-6 mb-3 recipient-values">
             <%= @order.recipients.first.present? ? @order.recipients.first.telephone : "-" 
             %>
           </div>
@@ -164,6 +157,18 @@
       </div>
     </div>   
   </div>
+
+<% if @user.class.name == "Company"  %> 
+  <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
+      <div class="d-flex justify-content-center">         
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'taken' %>
+          <%= form.submit  Order.human_attribute_name(:take_order), :class => 'btn btn-taken my-3 status_buttons', name: 'take' %> 
+        <% end %>
+      </div> 
+  <% end %>
+<% end %>
+
   
 <!-- MAPS -->
  <div class="maps-row">
@@ -178,7 +183,7 @@
           </div>                  
             <br>
             <div class="row mb-3 text-center pickdeli-times mb-4 hide_information">
-              <div class="d-inline col-md-5 bolds pick-label"><%= Order.human_attribute_name(:pickup_time) %>
+              <div class="d-inline col-md-6 bolds pick-label"><%= Order.human_attribute_name(:pickup_time) %>
               </div>
               <div class="d-inline col-md-6 pick-time mb-4"><%= @order.pickup_time.strftime('%d %b %Y  %H:%M') %> 
               </div>
