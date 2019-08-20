@@ -2,31 +2,15 @@
     padding-top: 0 !important;
 }
 
-.btn-addres-search {
+.btn-address-search {
   width: 30% ;
   border-radius: 3.5rem !important;
 }
 
-.buttons {
-  margin-left: 30% !important;
-}
-
-
-
-.btn-draft {
-  color: black !important;
-  border-color: #78a9ba !important;
-  background-color: #78a9ba !important;
-  border-radius: 3.5rem !important;
-  margin-bottom: 5% !important;
-  font-size: 1.6rem;
-  padding: 0.375rem 1.75rem !important;
-  width: 100% !important;
-}
-
-.btn-draft:hover {
-  color: #fff !important;
-  background-color: #0069d9 !important;
+.btn-address-search:hover {
+  color: #0062cc !important;
+  border-color: #0062cc !important;
+  background-color: #fff !important;
   border-color: #0062cc !important;
 }
 
@@ -35,12 +19,10 @@
 }
 
 .btn-back {
-  color: WHITE!important;
+  color: WHITE !important;
   background-color: #000000 !important;
   border-color: #000000 !important;
-  border-radius: 3.5rem !important;
-  margin-right: 180px !important;
-  padding: 0.45rem 1.4rem 0.45rem 1.4rem;
+  border-radius: 3.5rem !important;  
 }
 
 .btn-back:hover {
@@ -53,127 +35,111 @@
   color: black !important;
   background-color: #e5ef04 !important;
   border-radius: 3.5rem !important;
-  width: 155.75px !important;
+  width: 194px; 
+   margin-left: 180px !important;
 }
 
 .btn-edit:hover {
-  color: #fff !important;
-  background-color: #0069d9 !important;
-  border-color: #0062cc !important;
+  color:   #e5ef04 !important;
+  background-color: black !important; 
+  border-color: #e5ef04 !important;
 }
 
-.btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update {
+.btn-draft, .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-complet,  .btn-payorder {
   color: black !important;
-  border-color: #00b5ff !important;
-  background-color: #85ad94 !important;
   border-radius: 3.5rem !important;
-  font-size: 1.6rem;
-  width: 100% !important;
-  font-size :1rem !important;   
-  font-weight: 500 !important;
 }
 
-.btn-taken {
-  max-width: 210px !important;
-  max-height: 46px !important;
-  margin-left: 48%;
-  font-size: 1.4rem !important;
+.btn-update, .btn-post, .btn-intransit, .btn-complet,  .btn-payorder {
+  margin-left: 180px !important;
+} 
+
+.btn-cancel-payment, .btn-cancel {
+  border-radius: 3.5rem !important;
 }
 
-.btn-post:hover, .btn-taken:hover, .btn-intransit:hover, .btn-complet:hover, .btn-update:hover {
+.btn-draft:hover, .btn-post:hover, .btn-taken:hover, .btn-intransit:hover, .btn-complet:hover, .btn-update:hover, .btn-payorder:hover {
   color: #fff !important;
   background-color: #28a745 !important;
   border-color: #28a745 !important;
 }
 
-.btn-cancel {
+.btn-cancel, .btn-cancel-payment {
   color: #fff !important;
   background-color: #ff0000 !important;
   border-color: #ff0000 !important;
-  font-size: 1rem !important;
-  padding: 0.375rem 0.75rem !important;
   border-radius: 3.5rem !important;
 }
 
-.btn-cancel:hover { 
+.btn-cancel:hover, .btn-cancel-payment:hover { 
   color: #ff0000 !important;
   background-color:  #fff !important;
   border-color:  #ff0000  !important;
 }
 
-.btn-intransit, .btn-complet {
-  color: black !important;
-  background-color: #85ad94 !important;
-  border-radius: 3.5rem !important;
-
-    width: 155.75px !important;
-    height: 40.4px !important;
-    font-size :1rem !important;   
-    font-weight: 500 !important;
+.btn-cancel {
+    border-color: black !important;    
+    padding: 0 !important;
 }
 
-.btn-cancel, .edit  {
-    border-color: black !important;
-    width: 155.75px !important;
-    height: 40.4px !important;
-    font-size :1rem !important;   
-    padding: 0 !important;
-    font-weight: 650 !important;
+.btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder, .btn-cancel {
+  height: 41px;
+  width: 194px;
+  font-size :1rem;
+  font-weight: 500;
+  padding: 0.45rem 1.4rem 0.45rem 1.4rem !important;
+  border-radius: 3.5rem !important;
 }
 
 .status_buttons {
   background-image: linear-gradient(141deg, #2bf506 0%, #76e4f1 51%, #08e924 75%) !important;
+  border-color: #13b041 !important;
     li a {
       color: white !important;
     }
 }
 
-
-.btn-devise {
-  
+btn-cancel-payment {
+    background-color: red !important;
+    color: white !important;
 }
+
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
 
 
+@media (min-width: 1201px) and (orientation : portrait) {
+  .btn-edit, .btn-cancel {  
+    margin-left: 180px !important;
+  }
+}
+
+
 @media (max-width: 1200px) and (orientation : portrait) {
 
- .buttons {
-    margin-left: 30% !important;
+  .btn-edit, .btn-cancel {  
+    margin-left: 180px !important;
   }
 
-  .btn-back {  
-    margin-right: 160px !important;
-  }
-
-  .btn-intransit, .btn-complet {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder, .btn-cancel {
     font-weight: 500 !important;
-  }
-
+  } 
 } 
 
 /* ========================================================= */
 
 @media (max-width: 992px) { 
 
-  .btn-addres-search {
+  .btn-address-search {
     width: 50% !important;
     display: 0 !important;
   } 
 
-  .buttons {
-      margin-left: 27% !important;
+  .btn-edit, .btn-payorder, .btn-cancel {  
+    margin-left: 110px !important;
   }
-
-  .btn-back {  
-    margin-right: 110px !important;
-  }
-
-  .btn-intransit, .btn-complet {
-    font-weight: 500 !important;
-  }  
 }
 
 /* ========================================================= */
@@ -184,41 +150,32 @@
       margin-right: 170px !important;
   }
 
-  .buttons {
-      margin-left: 20% !important;
+  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back {
+    font-weight: 500;
+    max-width: 194px !important;
+    max-height: 41px !important;
   }
 }
 
 /* ========================================================= */
 
 @media (max-width: 767px) and (orientation : portrait) {
-  
-  .btn-taken {
-    margin-left: 35%;
-  }
 
-  .btn-addres-search {
+  .btn-address-search {
     width: 30% !important;
   } 
   .space {
       margin-right: 130px !important;
   }
 
-  .buttons {
-      margin-left: 15% !important;
+  .btn-edit, .btn-cancel{  
+    margin-left: 80px !important;
   }
-
- .btn-back {  
-    margin-right: 80px !important;
-  }
-}
-
-/* ========================================================= */
-
-@media (max-width: 650px) and (orientation : portrait) {
-
-  .buttons {
-      margin-left: 15% !important;
+  
+  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back {
+    font-weight: 500;
+    width: 155.75px !important;
+    max-height: 41px !important;
   }
 }
 
@@ -226,35 +183,26 @@
 
 @media (max-width: 576px) and (orientation : portrait) {
 
-  .btn-taken {
-    margin-left: 25%;
-  }
-
-  .btn-addres-search {
+  .btn-address-search {
     width: 42% !important;
   } 
 
-  .buttons {
-    margin-left: 10% !important;
-  }
-
-  .btn-back {  
-    margin-right: 70px !important;
+  .btn-edit, .btn-cancel{  
+    margin-left: 60px !important;
   }
 
   .btn-post {
     padding: 0.375rem 2.95rem !important;
-  }
-
-  .btn-draft {
-    padding: 0.375rem 1.5rem !important;
   }
 }
 
 /* ========================================================= */
 
 @media (max-width: 500px) and (orientation : portrait) {
-
+    .btn-back, .btn-draft, .btn-edit, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-cancel-payment, .btn-payorder, .btn-cancel {
+      width: 154px !important;
+      height: 38px !important;
+    }
 }
 
 /* ========================================================= */
@@ -265,30 +213,30 @@
     padding-top: 0%;
   }
 
+  .action_buttons {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .btn-taken {
     max-width: 168px !important;
     max-height: 41px !important;
-    margin-left: 25%;
   }
 
-  .btn-addres-search {
+  .btn-address-search {
     width: 62% !important;
   }
 
-  .btn-back {
+  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
     padding: 0.375rem 0.75rem !important;
-    margin-right: 45px !important;
   }  
+
   .space {
-      margin-right: 80px !important;
+    margin-right: 80px !important;
   }
 
-  .btn-draft {
-    padding: 0.375rem 1.5rem !important;
-  }
-
-  btn-update {
-    padding: 0.375rem 0.75rem !important;
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {  
+    margin-left: 40px !important;
   }
 }
 
@@ -296,16 +244,17 @@
 
 @media (max-width: 410px) and (orientation : portrait) {
 
-  .btn-edit, .btn-intransit, .btn-complet {
+  .btn-edit, .btn-intransit, .btn-complet, .btn-cancel {
     width: 155.35px !important;
     height: 40.4px !important;
+    padding: 0.375rem 0.75rem !important;
   }  
 
   .space {
       margin-right: 40px !important;
   }
 
-  .btn-post, .btn-update {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
     padding: 0.375rem 2.95rem !important;
   }
 }
@@ -314,19 +263,15 @@
 
 @media (max-width: 400px) and (orientation : portrait) {
   .buttons {
-    margin-left: 5% !important;
+    margin-left: none !important;
   }
 
-  .btn-back {
-    margin-right: 13px !important;
-  }
-
-  .btn-edit, .btn-intransit, .btn-complet {
-    width: 135.35px !important;
+  .btn-edit, .btn-intransit, .btn-complet, .btn-cancel{
+    width: 154px !important;
     height: 38px !important;
   }
 
-  .btn-addres-search {
+  .btn-address-search {
     width: 80% !important;
   }
 
@@ -339,9 +284,30 @@
   }
 }
 
-@media (max-width: 330px) and (orientation: portrait) {
+@media (max-width: 380px) and (orientation: portrait) {
   .action_buttons {
-      margin-left: 2%;
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+  }
+
+  .buttons {
+    margin-left: none !important;
+  }
+
+  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
+    font-size: 0.9rem !important;
+    width: 134px !important;
+    padding: 0.375rem 0.75rem !important;
+  }
+
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {
+    margin-left: 20px !important;
+  }
+}
+
+@media (max-width: 340px) and (orientation: portrait) {
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {
+    margin-left: 9px !important;
   }
 }
 
@@ -349,10 +315,48 @@
 /* ===================MEDIA QUERIES - LANDSCAPE ================== */
 /* =============================================================== */
 
-@media (min-width: 1024px) and (orientation : landscape) {
+@media (min-width: 1201px) and (orientation : landscape) {
   
   .space {
-      margin-right: 120px !important;
+    margin-right: 120px !important;
+  }
+
+}
+
+
+@media (max-width: 1600px) and (orientation : landscape) {
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel{
+      margin-left: 180px !important;
+    }
+
+}
+@media (max-width: 1600px) and (orientation : landscape) {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder {
+    font-size: 1.1rem !important;
+    width: 194px !important;
+    padding: 0.375rem 0.75rem !important;
+    font-weight: 500 !important;    
   }
 }
 
+@media (max-width: 800px) and (orientation : landscape) {
+  .btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder {
+    font-size: 1rem !important;
+    width: 154px !important;
+    padding: 0.45rem 0.75rem !important;
+  }
+  
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel{
+    margin-left: 60px !important;
+  }
+
+}
+
+@media (max-width: 400px) and (orientation : landscape) {
+  .btn-back, .btn-taken, .btn-post, .btn-intransit, .btn-complet, .btn-update, .btn-cancel {
+    font-size: 0.9rem !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+}
+
+// CHECK WHY EDIT, cancel payment AND DRAFT ARE MIISING FROM THE LAS RULE

@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <div class="card text-center mx-5">
+  <div class="card text-center ">
     <div class="card-body company-top-card"> 
       <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
@@ -38,7 +38,7 @@
   </div>
 
 <!-- SHOWING MAP -->
-  <div class="card company-card-location text-center my-5 mx-5">
+  <div class="card company-card-location text-center my-5">
     <div class="card-header company-location">
      <h3><%= t (:company_location) %></h3> 
     </div>
@@ -48,7 +48,7 @@
   </div>
 
   <hr> 
-  <div class="row buttons btn-group " > 
+  <div class="row buttons btn-group d-flex justify-content-center " > 
     <%= render 'companies/actionButtons', form: form %>
   </div>
   <hr class="mb-5"> 

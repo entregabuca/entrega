@@ -14,30 +14,28 @@
       <%= form.text_field :description, placeholder: "#{t (:short_description)}", :class => "col-sm-6" %>
     </div>         
 
-  <div class="hide_information">   
-    <div class="form-group col-md-12 order-measurements text-center">      
-      <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
+    <div class="hide_information">   
+      <div class="form-group col-md-12 order-measurements text-center">      
+        <b><%= form.label Order.human_attribute_name(:weight), :class => "col-sm-5 weight"%></b>
+        <%= form.text_field :weight, placeholder: "#{t (:aprrox_weight)}", :class => "col-sm-6" %>
+      </div>
 
-      <%= form.text_field :weight, placeholder: "#{t (:aprrox_weight)}", :class => "col-sm-6" %>
+       <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label  Order.human_attribute_name(:length), :class => "col-sm-5 length"%></b>
+        <%= form.text_field :length, placeholder: "#{t (:aprrox_length)}", :class => "col-sm-6" %>
+      </div>
+
+      <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label Order.human_attribute_name(:width), :class => "col-sm-5 width"%></b>
+        <%= form.text_field :width, placeholder: "#{t (:approx_width)}", :class => "col-sm-6" %>
+      </div>
+
+      <div class="form-group col-md-12 order-measurements text-center">
+        <b><%= form.label Order.human_attribute_name(:heigth),:class => "col-sm-6 height"%></b>
+        <%= form.text_field :heigth, placeholder: "#{t (:approx_height)}", :class => "col-sm-6" %>
+      </div>       
     </div>
-
-     <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label  Order.human_attribute_name(:length), :class => "col-sm-5 length"%></b>
-      <%= form.text_field :length, placeholder: "#{t (:aprrox_length)}", :class => "col-sm-6" %>
-    </div>
-
-    <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label Order.human_attribute_name(:width), :class => "col-sm-5 width"%></b>
-      <%= form.text_field :width, placeholder: "#{t (:approx_width)}", :class => "col-sm-6" %>
-    </div>
-
-    <div class="form-group col-md-12 order-measurements text-center">
-      <b><%= form.label Order.human_attribute_name(:heigth),:class => "col-sm-6 height"%></b>
-      <%= form.text_field :heigth, placeholder: "#{t (:approx_height)}", :class => "col-sm-6" %>
-    </div>    
-    
   </div>
-
 </div>
 
 
@@ -100,7 +98,7 @@
 <% end %>
 
 <!-- COST -->    
-<div class="card">
+<div class="card card-cost">
   <div class="card-body text-center">       
     <div class="form-group col-md-12 text-center">
       <b><%= form.label :cost, :class => "col-sm-5 cost-label" %></b>
@@ -108,26 +106,25 @@
     </div>
   </div>
 </div>
-
     
+<!-- Think on how to move this Confirm button to ActionButtons in -->
 <!-- SUBMIT BUTTONS -->
-<div class="order-create-update-buttons text-center ">
-  <% if @order.status == 'draft' %>
-    <div class="actions btn-group" role="group" >
-      <div class="space">
-        <%= form.hidden_field :status, :value => 'draft' %>
-        <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft ' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
+<div class="row justify-content-center " > 
+  <div class="order-create-update-buttons text-center ">
+    <% if @order.status == 'draft' %>
+        <div>
+          <%= form.hidden_field :status, :value => 'draft' %>
+          <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft ' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
+        </div>
+      <!--  <div>
+          <%#= form.hidden_field :status, :value => 'payment' %>
+          <%#= form.submit  Order.human_attribute_name(:payment), :class => ' btn btn-primary btn-post' %>   , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER 
+        </div>   -->
+
       </div>
-    <!--  <div>
-        <%#= form.hidden_field :status, :value => 'payment' %>
-        <%#= form.submit  Order.human_attribute_name(:payment), :class => ' btn btn-primary btn-post' %>   , name: 'post' REMOVED FOR TESTIG CREATION OF NEW ORDER 
-      </div>   -->
-
-    </div>
-  <% else %>
-    <div class="actions">
-      <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
-    </div>
-  <% end %>
+    <% else %>
+      <div class="actions">
+        <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
+      </div>
+    <% end %>
 </div>
-

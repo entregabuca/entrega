@@ -3,7 +3,7 @@
   
   <div class="form-group">
     <%= f.text_field :address, placeholder: "#{t (:enter_address)}", id: "address#{id}", :class => "col-sm-12 address" %>
-    <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-addres-search mb-5" %>
+    <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-address-search mb-5" %>
   </div> 
 
   <div id="MapRow">

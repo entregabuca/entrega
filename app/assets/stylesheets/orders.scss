@@ -27,11 +27,11 @@
 }
 
 .tableValues td {
-    font-size: 0.98rem !important;
-  }
+  font-size: 0.98rem !important;
+}
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-     background-color: #cef8fd !important;
+  background-color: #cef8fd !important;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
@@ -48,12 +48,11 @@
 }
 
 .card-body-left {
-  background-color: #78a9ba;
+  background-color: #50e5ffcf;
 }
 
-
 .card-body-right {
-  background-color: #85ad94;
+  background-color: #7cf8abb5;
 }
 .card-header {
   padding-top: 2rem; 
@@ -64,17 +63,15 @@
   width: 90% !important;
 }
 
-
 .maps-row {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .leaflet-container {
     height: 400px;
-    width: 90% !important;
+    width: 100% !important; 
 }
 
 .pickup-time, .delivery-time{
@@ -89,41 +86,36 @@
   }
 }
 
-.order-create-update-buttons {
-   margin-top: 4rem;
-   margin-bottom: 4rem;
-}
-
 #map {
     margin-left: 0px !important;
 }
 
-/*.map-no-border {
-  border:0 !important;
-}*/
-
-.card-left, .card-right {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
-
 .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 25% !important;
     text-align: right !important;
+    padding-right: 20px !important;
+    margin-right: 15px !important;
 }
 
 #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input {
   font-size: 1.12rem;
-  max-width: 30% !important;
+  max-width: 70% !important;
   border-color: #ffffff24 !important;
   text-align: left !important;
 }
 
 .hide_information {
-    display: none !important;
+  display: none !important;
 }
 
+.card.card-cost {
+    margin-bottom: 3rem;
+}
+
+  .col-sm-5, .col-sm-6 {
+    padding-right: 0px;
+    //padding-left: 0px;
+  }
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
@@ -138,8 +130,8 @@
       margin-right: 140px !important;
   }
 
-  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input  {
-      max-width: 30% !important;
+  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input, .recipient-name-input, .telephone-input, .email-input {
+      max-width: 70% !important;
   }
 
   .headingspace {
@@ -160,11 +152,6 @@
       max-width: 25% !important;
   }
 
-  #order_description, #order_weight, #order_length, #order_width, #order_heigth, .cost-input {
-    max-width: 30% !important;
-     
-  }
-
   .recipient-name-input, .telephone-input, .email-input, .cost-input {
     font-size: 1rem !important;
   }
@@ -181,9 +168,13 @@
     font-size: 1.2rem !important;
   }
 
-  .recipient-name-label, .telephone-label, .email-label, .cost-label {
+  /*.recipient-name-label, .telephone-label, .email-label, .cost-label {
       max-width: 15% !important;
-  }  
+  }  */
+
+  .col-sm-6 {
+    padding-left: 15px !important;
+  }
 }
 
 /* ========================================================= */
@@ -191,11 +182,11 @@
 @media (max-width: 862px)  and (min-width: 768px) and (orientation : portrait) {
 
   .time select {
-        font-size: 0.7rem !important;
+    font-size: 0.7rem !important;
   }
 
   .space {
-      margin-right: 170px !important;
+    margin-right: 170px !important;
   }
 
   .tableHeadingbar th  {
@@ -235,8 +226,6 @@
     text-align: left !important;
   } 
 
-
-
   .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 50% !important;
     text-align: right !important;
@@ -261,7 +250,6 @@
     font-size: 1.35rem !important;
     margin-bottom: 2.5rem !important;
   }
-
 }
 
 /* ========================================================= */
@@ -282,11 +270,6 @@
     text-align: center !important;
     max-width: 100% !important;
   }
-
-  /*#order_description {
-    max-width: 100% !important;
-  }*/
-
 
   #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input  {
     font-size: 1rem !important;
@@ -311,7 +294,6 @@
 
 /* ========================================================= */
 
-
 @media (max-width: 440px) and (orientation : portrait) {
   
   .card-left, .card-right {
@@ -331,7 +313,6 @@
   .sender {
     font-size: 1.2rem !important;
   }
-
 }
 
 /* ========================================================= */
@@ -351,21 +332,37 @@
   }
 }
 
-
 /* =============================================================== */
 /* ===================MEDIA QUERIES - LANDSCAPE ================== */
 /* =============================================================== */
 
 @media (min-width: 1024px) and (orientation : landscape) {
-
   .space {
       margin-right: 120px !important;
   }
 }
 
 @media (max-width: 1024px) and (orientation : landscape) {
-
   .space {
       margin-right: 90px !important;
   }
 }
+
+@media (max-width: 992px) and (orientation : landscape) {
+  .description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  
+  .order-headings, .sender-headings, .company-headings, .transporter-headings, .recipient-headings {
+    width: 100% !important;
+    max-width: 50% !important;
+  }
+
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values {
+    width: 100% !important;
+    max-width: 50% !important;
+    padding-left: 15px !important;
+  }
+}
+

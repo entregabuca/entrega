@@ -15,8 +15,7 @@
 
         <% if admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to_in_li  I18n.t(:companies), companies_path, class: 'nav-link' %>
-            
+            <%= link_to_in_li  I18n.t(:companies), companies_path, class: 'nav-link' %>            
           </li>
           <li class="nav-item">
             <%= link_to_in_li  I18n.t(:senders), senders_path, class: "nav-link"  %>
@@ -24,18 +23,8 @@
         <% end %>
 
       <!-- SENDER -->
-
       <% if @user.class.name == "Sender" && @user.id.present? %>  <!-- @user.id.present? -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= @user.name.presence || @user.email %>
-          </a>
         
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-            <%= link_to I18n.t(:edit_profile), edit_sender_path(@user), class: 'nav-link' %>
-          </div>
-        </li>  
         <% if @user.class.name == "Sender" && @user.active? %>  <!-- @user.id.present? -->
           <li class="nav-item">
              <%= link_to_in_li I18n.t(:new_order), new_sender_order_path(@user), class: 'nav-link'%>    
@@ -47,21 +36,22 @@
              <%= link_to_in_li  I18n.t(:my_posted_orders), posted_sender_orders_path(@user), class: 'nav-link'%>
             </li>              
         <% end %>
+        <!-- Sender dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= @user.name.presence || @user.email %>
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
+            <%= link_to I18n.t(:edit_profile), edit_sender_path(@user), class: 'nav-link' %>
+          </div>
+        </li>  
       <% end %>
 
       <!-- COMPANY -->
       <% if @user.class.name == "Company"  && @user.id.present? %>
-        <!-- Company dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= @user.name.presence || @user.email %>
-            </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-              <%= link_to  I18n.t(:edit_profile), edit_company_path(@user), class: 'nav-link' %>             
-            </div>
-          </li>
         <% if @user.class.name == "Company"  && @user.active? %>   <!-- @user.id.present? -->
           <li class="nav-item">
             <%= link_to_in_li  I18n.t(:available_orders), posts_company_orders_path(@user), class: 'nav-link ' %> 
@@ -76,22 +66,33 @@
             <%= link_to_in_li  I18n.t(:new_transporter), new_company_transporter_path(@user), class: 'nav-link'  %>
           </li> 
         
-          <!-- Viewing the Transporter from the company -->
-          <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= t (:transporter) %> <%= @transporter.name %>
-              </a>
-              <!-- Transporter dropdown -->
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to I18n.t(:trans_orders), orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to I18n.t(:trans_profile), company_transporter_path(@user, @transporter), class: 'nav-link' %>
-                <%= link_to I18n.t(:edit_profile), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
-              </div>
-            </li>        
+            <!-- Viewing the Transporter from the company -->
+            <% if @user.class.name == "Company" && @transporter.present? && @transporter.id.present? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= t (:transporter) %> <%= @transporter.name %>
+                </a>
+                <!-- Transporter dropdown -->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to I18n.t(:trans_orders), orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                  <%= link_to I18n.t(:trans_profile), company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                  <%= link_to I18n.t(:edit_profile), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+                </div>
+              </li>        
+            <% end %>
           <% end %>
+          <!-- Company dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= @user.name.presence || @user.email %>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
+              <%= link_to  I18n.t(:edit_profile), edit_company_path(@user), class: 'nav-link' %>             
+            </div>
+          </li>
         <% end %>
-<% end %>
 
       <!-- TRANSPORTER -->
         <% if @user.class.name == "Transporter" && @user.active? %>

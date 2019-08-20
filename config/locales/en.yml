@@ -40,7 +40,7 @@ en:
         payment_status: Payment Status
         payment_method: Payment Method      
         cost: Cost
-        company: Compañia
+        company: Company
         transporter_id: Transporter
         sender_id: Sender
         telephone: Telephone
@@ -59,7 +59,7 @@ en:
         take_order: Take Order
         taken: Taken
         inTransit: In Transit
-        complet: Complet
+        complet: Complete
         cancel_order: Cancel
         
       transporter:

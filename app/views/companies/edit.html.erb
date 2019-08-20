@@ -1,5 +1,5 @@
 <% provide(:page_title, "Edit Company") %>
 
-<h1 class='headingspace my-5 ml-5'><%= t (:editing_company)%> <%= @user.name.presence || @user.email %></h1>
+<h1 class='headingspace my-5 ml-4'><%= t (:editing_company)%> <%= @user.name.presence || @user.email %></h1>
 
 <%= render 'form', company: @user %>

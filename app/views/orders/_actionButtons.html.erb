@@ -20,14 +20,14 @@
                 <div class="btn-group" role="group" aria-label="First group">
                   <%= form.submit  Order.human_attribute_name(:cancel_order), :class => 'mt-2 btn btn-primary btn-cancel', name: 'cancel' %>
                 </div>
+                <!--
                 <div class="space">
-                  <%= form.submit  Order.human_attribute_name(:save_draft), :class => 'mt-2  btn btn-primary btn-draft' %> 
-                </div>
+                  <%#= form.submit  Order.human_attribute_name(:save_draft), :class => 'mt-2  btn btn-primary btn-draft' %> 
+                </div> -->
               <% end %>
             </div>
 
           <% end %>
- 
     <!-- Company -->
     <% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>     
 
@@ -88,4 +88,5 @@
     <% end %> 
     </div> 
   </div>
+
 
