@@ -1,5 +1,4 @@
-<div class="card text-center mb-4">
-  <%= form_with(model: company, local: true) do |form| %>
+<%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -10,9 +9,9 @@
     </div>
   <% end %>
 
-  
+  <div class="card text-center mb-4"> 
     <div class="card-body company-top-card"> 
-      <h3 class="h3Space"><%= t (:company_details) %></h3> 
+    <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
       <div class="form-group col-md-12">     
         <b><%= form.label :name, :class => "col-sm-5 comp-name"%></b>
@@ -28,10 +27,8 @@
         <b><%= form.label :email, :class => "col-sm-5 comp-email"%></b>
         <%= form.text_field :email, :class => "col-sm-6 company-email" %>
       </div>
-
     </div>
   </div>
-
 
 <div class="card text-center mb-4">
   <div class="card-body card-status my-3">
@@ -59,5 +56,5 @@
     <%= render 'companies/actionButtons', form: form %>
   </div>
   <hr class="mb-5"> 
-
+  <!-- </div> -->
 <% end %>
