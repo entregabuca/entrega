@@ -28,15 +28,6 @@
 /* ========================================================= */
 
 @media (max-width: 767px) and (orientation : portrait) {
-  
- 	/*.name, .telephone, .email, .status {
-		font-size: 1.2rem !important;
-
-	}
-
-  	.sender-name, .sender-telephone, .sender-email, .sender-status {
-		font-size: 1rem !important;
-	}*/
 
 	.sender-Showlabels {
 	max-width: 47% !important;
@@ -54,18 +45,24 @@
 
 /* ========================================================= */
 
-@media (max-width: 576px) and (orientation : portrait) {
-
-	.name, .telephone, .email, .status {
-		text-align: center !important;
-	}
+@media (max-width: 576px) and (orientation : landscape) {
 
 	.sender-name, .sender-telephone, .sender-email, .sender-status {
 	    text-align: center !important;
 	}
+}
 
-	.sender-status-card {
-		width: 100% !important;
-	}
+@media (max-width: 568px) and (min-width: 500px) {
+  .sender-Showlabels, .sender-Showinputs {
+    text-align: center !important;    
+  }
 
+  .sender-Showinputs {
+    max-width: none !important;
+  }
+
+  .sender-show-Status {
+    padding-right: 5% !important;
+
+  }
 }

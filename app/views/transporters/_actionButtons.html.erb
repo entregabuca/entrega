@@ -1,13 +1,13 @@
 
-
+<div class="btn-group" role="group" aria-label="First group"> 
   <div class="d-inline mt-2 mb-2">  
     <%= link_to "#{Transporter.human_attribute_name(:back_to_transporters)}", company_transporters_path(@user), :class => "btn btn-primary btn-back" %> 
   </div>
 
   <div class="d-inline mt-2 mb-2">      
-      <%= form.submit Transporter.human_attribute_name(:update_transporter),:class => ' btn btn-primary btn-update' %>
+      <%= form.submit Transporter.human_attribute_name(:update_transporter),:class => ' btn btn-primary btn-update status_buttons' %>
   </div>
-
+</div>
 
 
 

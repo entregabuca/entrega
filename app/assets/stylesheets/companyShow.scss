@@ -63,4 +63,23 @@
 		width: 100% !important;
 	}
 
+  .sender-status-edit {
+    padding-right: 0 !important;
+  }
+
+}
+
+@media (max-width: 568px) and (min-width: 500px) {
+  .company-Showlabels, .company-Showinputs {
+    text-align: center !important;    
+  }
+
+  .company-Showinputs {
+    max-width: none !important;
+  }
+
+  .company-show-Status {
+    padding-right: 6% !important;
+
+  }
 }

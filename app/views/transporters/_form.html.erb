@@ -1,80 +1,75 @@
-<%= form_with(model: transporter, url: [@user, transporter], local: true) do |form| %>
-  <% if transporter.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(transporter.errors.count, "error") %> prohibited this transporter from being saved:</h2>
+<div class="card text-center mx-5">
+  <%= form_with(model: transporter, url: [@user, transporter], local: true) do |form| %>
+    <% if transporter.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(transporter.errors.count, "error") %> prohibited this transporter from being saved:</h2>
 
-      <ul>
-      <% transporter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-   <div class="card text-center mx-5">
-      <div class="card-body transporter-top-card"> 
-        <h3 class="h3Space"><%= t (:transporter_details) %></h3> 
-
-        <div class="form-group col-md-12 mb-4">  
-          <%= t (:company) %>:
-          <b><%= @transporter.company.name  %></b>
-        </div>
-
-        <div class="form-group col-md-12">     
-          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
-          <%= form.text_field :name, :class => "col-sm-6 transporter-name" %>
-        </div>         
-        
-        <div class="form-group col-md-12">      
-          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
-          <%= form.text_field :telephone, :class => "col-sm-6 transporter-telephone" %>
-        </div>
-
-         
-        <div class="form-group col-md-12 transporter-status-card">
-          <b><%= form.label :status,:class => "col-sm-5 status"%></b>
-          <%= form.select :status, enum_options_for_select(Transporter, :status), {}, { :class => "col-sm-6 transporter-status"} %>
-        </div>
-
-        <div class="form-group col-md-12">
-          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
-          <%= form.text_field :email, :class => "col-sm-6 transporter-email" %>
-        </div>
-
-        <% if transporter.new_record? %>
-          <div class="form-group col-md-12">
-            <b><%= form.label :password, :class => "col-sm-5 password" %></b>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %>
-            <%= form.password_field :password, autocomplete: "new-password", :class => "col-sm-6 transporter-password" %>
-          </div>
-
-          <div class="form-group col-md-12 transporter-status-card">
-            <b><%= form.label :password_confirmation, :class => "col-sm-5 password-confirm" %></b>
-            <%= form.password_field :password_confirmation, autocomplete: "new-password", :class => "col-sm-6 transporter-password-confirm" %>
-          </div>  
+        <ul>
+        <% transporter.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
+        </ul>
+      </div>
+    <% end %>
 
+    <div class="card-body transporter-top-card"> 
+      <h3 class="h3Space"><%= t (:transporter_details) %></h3> 
+
+      <div class="form-group col-md-12 mb-4">  
+        <%= t (:company) %>:
+        <b><%= @transporter.company.name  %></b>
+      </div>
+
+      <div class="form-group col-md-12">     
+        <b><%= form.label :name, :class => "col-sm-5 trans-name"%></b>
+        <%= form.text_field :name, :class => "col-sm-6 transporter-name" %>
+      </div>         
+      
+      <div class="form-group col-md-12">      
+        <b><%= form.label :telephone, :class => "col-sm-5 trans-telephone"%></b>
+        <%= form.text_field :telephone, :class => "col-sm-6 transporter-telephone" %>
+      </div>
+      
+
+      <div class="form-group col-md-12">
+        <b><%= form.label :email, :class => "col-sm-5 trans-email"%></b>
+        <%= form.text_field :email, :class => "col-sm-6 transporter-email" %>
+      </div>
+  </div>
+</div>
+
+<div class="card text-center my-4 mx-5">
+  <div class="card-body card-status my-3">
+    <div class="form-group col-md-12 my-4 "> 
+      <div class="form-group col-md-12 transporter-status-card">
+        <b><%= form.label :status,:class => "col-sm-5 trans-status"%></b>
+        <%= form.select :status, enum_options_for_select(Transporter, :status), {}, { :class => "col-sm-6 transporter-status"} %>
       </div>
     </div>
-    <hr> 
-    <div class="row buttons btn-group " > 
-      <%= render 'transporters/actionButtons', form: form %>
-    </div>
-    <hr class="mb-5"> 
+  </div>
+</div>
+
+<% if transporter.new_record? %>
+  <div class="form-group col-md-12">
+    <b><%= form.label :password, :class => "col-sm-5 password" %></b>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= form.password_field :password, autocomplete: "new-password", :class => "col-sm-6 transporter-password" %>
+  </div>
+
+  <div class="form-group col-md-12 transporter-status-card">
+    <b><%= form.label :password_confirmation, :class => "col-sm-5 password-confirm" %></b>
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", :class => "col-sm-6 transporter-password-confirm" %>
+  </div>  
+<% end %>
+
+
+<hr> 
+<div class="row justify-content-center " > 
+
+  <%= render 'transporters/actionButtons', form: form %>
+</div>
+<hr class="mb-5"> 
 
 <% end %> 
-
-
-
-
-
-
-
-
-
-
-
-
-

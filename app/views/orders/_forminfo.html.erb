@@ -1,6 +1,6 @@
 <!-- SENDER -->
 <div class="form-group sender mb-4">  
-  <%= t (:sender) %>:
+  <%= t (:sender) %>
   <b><%= @order.sender.name %></b>
 </div>
 
@@ -114,7 +114,7 @@
     <% if @order.status == 'draft' %>
         <div>
           <%= form.hidden_field :status, :value => 'draft' %>
-          <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-primary btn-draft ' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
+          <%= form.submit   Order.human_attribute_name(:confirm_order), :class => 'btn btn-draft status_buttons' %> <!-- CHANGED FROM 'save_draft'  to 'confirm_order' -->
         </div>
       <!--  <div>
           <%#= form.hidden_field :status, :value => 'payment' %>
@@ -124,7 +124,7 @@
       </div>
     <% else %>
       <div class="actions">
-        <%= form.submit :class => "col-sm-3 btn btn-primary btn-update-button"%>
+        <%= form.submit :class => "col-sm-3 btn btn-update-button"%>
       </div>
     <% end %>
 </div>

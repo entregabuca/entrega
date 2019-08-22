@@ -18,27 +18,16 @@
   margin-right: 20% !important;
 }
 
-.maps-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 4rem;
-}
-
 .leaflet-container {
     height: 400px;
     width: 100% !important; // Changed from 90%
-}
-
-.pickup-time, .delivery-time {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings, .recipient-headings  {
   text-align: right !important; 
 }
 
-.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values, .recipient-values {
+.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values {
   text-align: left !important; 
   padding-left: 15px !important;
   max-width: 53% !important;
@@ -55,10 +44,6 @@
   margin-bottom: 2.5rem !important;
 }
 
-.hide_information {
-    display: none;
-}
-
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
@@ -68,10 +53,6 @@
   .recipient-title {
     font-size: 1.5rem !important;
     margin-bottom: 2.5rem !important;
-  }
-
-  .card-header {
-   font-size: 1.5rem !important;
   }
 } 
 
@@ -86,6 +67,22 @@
   .pick-time, .deliver-time {
     text-align: left !important;
   }  
+  
+  .order-headings, .sender-headings, .company-headings, .transporter-headings, .cost-heading, .recipient-headings {
+    width: 100% !important;
+    max-width: 50% !important;
+  }
+
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values {
+    width: 100% !important;
+    max-width: 50% !important;
+    padding-left: 15px !important;
+  }
+
+  .cost-values {
+    max-width: 50% !important;
+  }
+
 }
 
 /* ========================================================= */
@@ -104,10 +101,6 @@
 /* ========================================================= */
 
 @media (max-width: 767px) and (orientation : portrait) {
-
-  .card-header {
-   font-size: 1.5rem !important;
-  }
 
   .col-md-12 {
     padding-left: none !important;
@@ -148,10 +141,6 @@
     padding-left: 0px !important;
   }
 
-  #map {
-      margin-left: 0 !important;
-  }
-
   .messageTransComp {
     color: #e19500 !important;
   }
@@ -159,10 +148,6 @@
   .sendLocation, .recipientLocation{
     padding-right: 0 !important;
     padding-left: 0 !important;
-  }
-
-  .card-header {
-   font-size: 1.45rem !important;
   }
 
   .showAddress, .pick-time, .deliver-time {
@@ -181,11 +166,6 @@
     padding-right: 0% !important;
     padding-left: 0% !important;    
   } 
-
-  .leaflet-container {
-    height: 400px;
-    width: 100% !important;
-  }
 }
 
 /* ========================================================= */

@@ -1,4 +1,5 @@
-<%= form_with(model: company, local: true) do |form| %>
+<div class="card text-center mb-4">
+  <%= form_with(model: company, local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -9,33 +10,39 @@
     </div>
   <% end %>
 
-  <div class="card text-center ">
+  
     <div class="card-body company-top-card"> 
       <h3 class="h3Space"><%= t (:company_details) %></h3> 
 
       <div class="form-group col-md-12">     
-        <b><%= form.label :name, :class => "col-sm-5 name"%></b>
+        <b><%= form.label :name, :class => "col-sm-5 comp-name"%></b>
         <%= form.text_field :name, :class => "col-sm-6 company-name" %>
       </div>        
       
       <div class="form-group col-md-12">      
-        <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
+        <b><%= form.label :telephone, :class => "col-sm-5 comp-telephone"%></b>
         <%= form.text_field :telephone, :class => "col-sm-6 company-telephone" %>
       </div>
 
       <div class="form-group col-md-12">
-        <b><%= form.label :email, :class => "col-sm-5 email"%></b>
+        <b><%= form.label :email, :class => "col-sm-5 comp-email"%></b>
         <%= form.text_field :email, :class => "col-sm-6 company-email" %>
       </div>
 
-        <!-- <div class="form-group col-md-12"> -->
-        <div class="row d-flex justify-content-center">
-        <b><%= form.label :status, :class => "email" %></b> 
-        <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => " company-status"} %>
-      </div>   
-    
     </div>
   </div>
+
+
+<div class="card text-center mb-4">
+  <div class="card-body card-status my-3">
+    <div class="form-group col-md-12 my-4 "> 
+      <b><%= form.label :status, :class => "col-sm-5 comp-status" %></b> 
+      <%= form.select :status, enum_options_for_select(Company, :status), {}, { :class => "col-sm-6 company-status"} %>
+    </div> 
+  </div>
+</div>
+
+    
 
 <!-- SHOWING MAP -->
   <div class="card company-card-location text-center my-5">
