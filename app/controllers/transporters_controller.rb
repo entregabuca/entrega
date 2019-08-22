@@ -48,7 +48,7 @@ class TransportersController < ApplicationController
   def update
     respond_to do |format|
       if @transporter.update(transporter_params)
-        format.html { redirect_to company_transporter_path(@user, @transporter), notice: t(:transporter_upated) }
+        format.html { redirect_to company_transporter_path(@user, @transporter), notice: t(:transporter_updated) } 
         format.json { render :show, status: :ok, location: @transporter }
       else
         format.html { render :edit }

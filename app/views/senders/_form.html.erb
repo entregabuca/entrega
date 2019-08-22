@@ -1,4 +1,5 @@
-<%= form_with(model: sender, local: true) do |form| %>
+ <div class="card text-center mb-4">
+  <%= form_with(model: sender, local: true) do |form| %>
   <% if sender.errors.any? %>
     <div id="error_explanation">
       <!-- <h2><%#= pluralize(sender.errors.count, "error") %> prohibited this sender from being saved:</h2>-->
@@ -10,62 +11,50 @@
       </ul>
     </div>
   <% end %>
-  
-      <div class="card text-center">
-      <div class="card-body sender-top-card"> 
-        <h3 class="h3Space"><%= t (:sender_details) %></h3> 
+   
+  <div class="card-body sender-top-card"> 
+    <h3 class="h3Space"><%= t (:sender_details) %></h3> 
 
-        <div class="form-group col-md-12">     
-          <b><%= form.label :name, :class => "col-sm-5 name"%></b>
-          <%= form.text_field :name, :class => "col-sm-6 sender-name" %>
-        </div>         
-        
-        <div class="form-group col-md-12">      
-          <b><%= form.label :telephone, :class => "col-sm-5 telephone"%></b>
-          <%= form.text_field :telephone, :class => "col-sm-6 sender-telephone" %>
-        </div>
-
-         <div class="form-group col-md-12">
-          <b><%= form.label :email, :class => "col-sm-5 email"%></b>
-          <%= form.text_field :email, :class => "col-sm-6 sender-email" %>
-        </div>
-  
-        <div class="row d-flex justify-content-center">
-          <b><%= form.label :status %></b>
-          <%= form.select :status, enum_options_for_select(Sender, :status), {}, { :class => "sender-status"}  %>
-        </div> 
-      </div>
+    <div class="form-group col-md-12">     
+      <b><%= form.label :name, :class => "col-sm-5 send-name"%></b>
+      <%= form.text_field :name, :class => "col-sm-6 sender-name" %>
+    </div>         
+    
+    <div class="form-group col-md-12">      
+      <b><%= form.label :telephone, :class => "col-sm-5 send-telephone"%></b>
+      <%= form.text_field :telephone, :class => "col-sm-6 sender-telephone" %>
     </div>
 
- <!-- SHOWING MAP -->
-    <div class="card sender-card-location text-center my-5 mx-5">
-      <div class="card-header">
-       <h3><%= t (:sender_location) %></h3> 
-      </div>
-      <div class="card-body">   
-      <%= render 'location', form: form, id: 0 %>
-      </div>
+     <div class="form-group col-md-12">
+      <b><%= form.label :email, :class => "col-sm-5 send-email"%></b>
+      <%= form.text_field :email, :class => "col-sm-6 sender-email" %>
     </div>
-
-  
-
-     <div class="card text-center mx-5 mb-5 ">
-      <div class="card-body sender-rad-status"> 
-        <!--<div class="form-group col-md-12">
-          <%#= form.label :radius, :class => "col-sm-5 width"%>
-          <%#= form.text_field :radius, :class => " col-sm-6" %>
-        </div> -->
-
-        <div class="form-group col-md-12 sender-status-card">
-                     
-      </div>
-    </div>
-
-
-
-<hr> 
-<div class="row buttons btn-group " > 
-  <%= render 'senders/actionButtons', form: form %>
+  </div>
 </div>
-<hr class="mb-5"> 
+
+<div class="card text-center mb-4">
+  <div class="card-body card-status my-3">
+    <div class="form-group col-md-12 my-4 "> 
+      <b><%= form.label :status, :class => "col-sm-5 send-status" %></b>
+      <%= form.select :status, enum_options_for_select(Sender, :status), {}, { :class => "col-sm-6 sender-status"}  %>
+    </div> 
+  </div>
+</div>
+
+  <!-- SHOWING MAP -->
+<div class="card sender-card-location text-center">
+  <div class="card-header">
+   <h3><%= t (:sender_location) %></h3> 
+  </div>
+  <div class="card-body">   
+  <%= render 'location', form: form, id: 0 %>
+  </div>
+</div>
+
+  <hr> 
+  <div class="row justify-content-center " > 
+    <%= render 'senders/actionButtons', form: form %>
+  </div>
+  <hr class="mb-5"> 
 <% end %>
+

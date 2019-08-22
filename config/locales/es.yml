@@ -71,8 +71,8 @@ es:
         total_orders: Total de Ordenes 
         password: Contraseña
         password_confirmation: Confirme Contraseña
-        update_transporter: Actualizar Transportador
-        back_to_transporters: Ver Transportadores
+        update_transporter: Actualizar
+        back_to_transporters: Transportadores
       sender:
         name: Nombre
         telephone: Teléfono
@@ -80,8 +80,7 @@ es:
         address: Dirección
         status: Estado
         coordinates: Coordenadas
-        total_orders: Total de Ordenes
-        created_at: Creado El
+        created_at: Creado El  #total_orders: Total de Ordenes 
         encrypted_password: Encrypted Password
         radius: Radio
         remember_created_at: Recordar Creado El
@@ -122,16 +121,16 @@ es:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
 
-  company_created: Compañia creada  was successfully created !! 
-  company_updated: Compañia actualizada exitosamente !!
-  company_removed: Compañia removida exitosamente !!
-  sender_created: Usuario creado  was successfully created !! 
-  sender_updated: Usuario  actualizada exitosamente !!
-  sender_removed: Usuario removida exitosamente !!
-  transporter_created: Transportador creada  was successfully created !!   
-  transporter_updated: Transportador  actualizada exitosamente !!
-  transporter_removed: Transportador removida exitosamente !!
-  order_created: Orden  creada  exitosamente  !!   
+  company_created: Has creado tu cuenta exitosamente !! 
+  company_updated: Has actualizado tu cuenta exitosamente !!
+  company_removed: Cuenta removida exitosamente !!
+  sender_created: Has creado tu cuenta exitosamente !! 
+  sender_updated: Has actualizado tu cuenta exitosamente !!
+  sender_removed: Cuenta removida exitosamente !!
+  transporter_created: Has creado cuenta exitosamente !!   
+  transporter_updated: Has actualizado la cuenta exitosamente !!
+  transporter_removed: Cuenta removida exitosamente !!
+  order_created: Favor confirma tu orden !!   
   order_updated: Orden  actualizada exitosamente !! 
   order_removed: Orden removida exitosamente 
 
@@ -221,6 +220,7 @@ es:
   transporter_signup_message_1:  Inicia session y comienza a recibir servicios en edemanda
   solicitar: Solicitar Servicio
   partners: Quieres Trabajar con Nosotros como Empresa de Mensajeria aliada?
+  no_company_added: No se ha agregado compañia aun
   date:
     abbr_day_names:
     - dom
@@ -230,6 +230,7 @@ es:
     - jue
     - vie
     - sáb
+
     abbr_month_names:
     - 
     - ene

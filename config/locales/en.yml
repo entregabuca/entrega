@@ -71,7 +71,7 @@ en:
         total_orders: Total Orders
         password: Password
         password_confirmation: Confirm New Password
-        update_transporter: Update Transporter
+        update_transporter: Update
         back_to_transporters: Transporters
       sender:
         name: Name
@@ -130,7 +130,7 @@ en:
   transporter_created: Transporter was successfully created !!  
   transporter_updated: Transporter was successfully updated !!
   transporter_removed: Transporter was successfully removed
-  order_created: Order was successfully created !!   
+  order_created: Please confirm your order !!   
   order_updated: Orderwas successfully updated !!
   order_removed: Order was successfully removed
 
@@ -220,6 +220,7 @@ en:
   transporter_signup_message_1:  Sign in to start getting orders on demand
   solicitar: Request a Service
   partners: Work with Us as an agency
+  no_company_added: No company added yet.
   date:
     abbr_day_names:
     - Sun

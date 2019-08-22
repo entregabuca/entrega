@@ -1,4 +1,4 @@
-.sender-top-card, .sender-rad-status{
+.sender-top-card, .sender-status{
 	font-size: 1.32rem;
 }
 
@@ -6,28 +6,27 @@
     background-color: #00fffe !important;
 }
 
+.send-status {
+    font-size: 1.32rem !important;
+}
 
-.sender-top-card, .sender-rad-status{
-	font-size: 1.32rem;
+.sender-status {
+		margin-left: 0 !important;
+		padding-right: 0 !important;
 }
 
 .sender-status-card {
 	width: 80% !important;
 }
 
-.name, .telephone, .email, .status {
-	text-align: right !important;
+.send-name, .send-telephone, .send-email, .send-status {
+	 text-align: right !important;
 }
+
 .sender-name, .sender-telephone, .sender-email, .sender-status {
 	text-align: left !important;
 	border-color: #ffffff24 !important;
 }
-
-.sender-status {
-		margin-left: 20px;
-    max-width: 180px !important;
-}
-
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
@@ -35,8 +34,8 @@
 
 @media (max-width: 767px) and (orientation : portrait) {
   
- 	.name, .telephone, .email, .status {
-		font-size: 1.2rem !important;
+  .send-name, .send-telephone, .send-email, .send-status {
+		font-size: 1rem !important;
 
 	}
 
@@ -44,13 +43,18 @@
 		font-size: 1rem !important;
 	}
 
+  .send-name, .send-telephone, .send-email, .send-status {
+    text-align: right !important;
+    max-width: 65% !important;
+  }
+
 }
 
 /* ========================================================= */
 
 @media (max-width: 576px) and (orientation : portrait) {
 
-	.name, .telephone, .email, .status {
+	 .send-name, .send-telephone, .send-email, .send-status  {
 		text-align: center !important;
 	}
 
@@ -58,8 +62,35 @@
 	    text-align: center !important;
 	}
 
-	.sender-status-card {
-		width: 100% !important;
+	.sender-status-edit {
+    padding-right: 0 !important;
 	}
 
+  .sender-status {
+    padding-left: 38% !important;
+  }
+
+}
+
+
+/* =============================================================== */
+/* ===================MEDIA QUERIES - LANDSCAPE ================== */
+/* =============================================================== */
+
+
+@media (max-width:568px) and (min-width:500px) {
+
+	input#sender_name, input#sender_telephone, input#sender_email{
+    text-align: center !important;
+	}
+
+  .sender-status {
+    padding-left: 41% !important;
+  }
+} 
+
+@media (max-width:568px) and (min-width:500px) {
+    .send-name, .send-telephone, .send-email, .send-status {
+    text-align: center !important;
+  }
 }

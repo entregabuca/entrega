@@ -29,8 +29,102 @@
   </div>
 </div> 
 
-<!-- COMPANY & TRANSPORTER  -->  
-<!-- This will be shown only when Transporter & Company need or have been added -->
+<!-- SENDER & RECIPIENT DETAILS -->
+<div class="card my-2  ">
+  <div class="card-body pl-1"> 
+    <div class="col-md-12 mb-2 mt-2">
+      <div class="row">
+        <div class="d-inline col-sm-6 sender-headings bolds">
+          <%= Order.human_attribute_name(:sender_id) %> 
+        </div>
+        <div class="d-inline col-sm-6 mb-3 sender-values">
+          <%= @order.sender.name %>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="d-inline col-sm-6 sender-headings bolds ">
+          <%= Order.human_attribute_name(:telephone) %> 
+        </div>
+        <div class="d-inline col-sm-6 mb-3 sender-values">
+          <%= @order.sender.telephone %>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+<%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
+  <div class="card mb-2  ">
+    <div class="card-body pl-1"> 
+      <div class="col-md-12 my-2">
+        <div class="row">
+          <div class="d-inline col-sm-6 recipient-headings bolds"><%= Order.human_attribute_name(:recipient)%>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 recipient-values">
+            <%= @order.recipients.first.present? ? @order.recipients.first.name : "-" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-inline col-sm-6 recipient-headings bolds ">
+            <%= Order.human_attribute_name(:telephone) %>
+          </div>
+          <div class="d-inline col-sm-6 mb-3 recipient-values">
+            <%= @order.recipients.first.present? ? @order.recipients.first.telephone : "-" 
+            %>
+          </div>
+        </div>                
+      </div>
+    </div>   
+  </div>
+
+<!-- COST -->
+  <div class="card mb-2">
+    <div class="card-body pl-1">    
+      <div class="col-md-12 my-2">  
+          <div class="row">
+            <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
+            </div>
+            <div class="d-inline col-sm-6 cost-values">            
+              <%= @order.cost  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+<!-- COMPANY & TRANSPORTER FROM SENDER -->
+<% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
+  <% if @order.transporter.present? %>
+    <%= render 'orders/compa-transporter', order: @order %>
+  <% end %>
+<% end %>
+
+
+
+<!-- COMPANY & TRANSPORTER FROM COMPANY --> 
+<!-- ON Show Action -->
+<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
+  <% if @order.transporter.present? %>
+    <%= render 'orders/compa-transporter', order: @order %>
+  <% else %> 
+    <div class="card mb-2 p-3 message3TransComp text-center"> 
+      <%= t (:no_company_added) %>
+    </div> 
+  <% end %>
+<% end %>
+
+<!-- JUST COMMENTED OUT -->
+
+<!-- <%# if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'edit')%> 
+  <%# if @order.transporter.present? %>
+    <%#= render 'orders/compa-transporter', order: @order %>
+  <%# end %>
+<%# end %>  -->
+
+
+<!-- On Editing Actions -->
 <% if @user.class.name == "Company"  %> 
   <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
     <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
@@ -60,112 +154,16 @@
             <% else %>
               <div class="d-inline col-sm-6 mb-3 transporter-values">
                 <%= @order.transporter.name %>
-              </div> 
+              </div>               
             <% end %>           
           </div>
         </div>
       </div>
-    
-      <!-- COST -->
-      <div class="row mb-3">
-        <div class="col-md-12">     
-          <div class="card">        
-            <div class="card-block mt-3 ">
-              <div class="row">
-                <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
-                </div>
-                <div class="d-inline col-sm-6 mb-3 cost-values">            
-                  <%= @order.cost  %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
-
-
-<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
-  <% if @order.transporter.present? %>
-    <%= render 'orders/compa-transporter', order: @order %>
-  <% else %> 
-    <div class="card mb-2 p-3 messageTransComp text-center"> 
-      <%= t ".no_company_added" %>
-    </div> 
-  <% end %>
-<% end %>
-
-<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'edit')%> 
-  <% if @order.transporter.present? %>
-    <%= render 'orders/compa-transporter', order: @order %>
-  <% end %>
-<% end %>
-
-<!-- SENDER & RECIPIENT DETAILS -->
-<div class="card my-2  ">
-  <div class="card-body pl-1"> 
-    <div class="col-md-12 mb-2 mt-2">
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-headings bolds">
-          <%= Order.human_attribute_name(:sender_id) %> 
-        </div>
-        <div class="d-inline col-sm-6 mb-3 sender-values">
-          <%= @order.sender.name %>
-        </div>
-      </div> 
-
-      <div class="row">
-        <div class="d-inline col-sm-6 sender-headings bolds ">
-          <%= Order.human_attribute_name(:telephone) %> 
-        </div>
-        <div class="d-inline col-sm-6 mb-3 sender-values">
-          <%= @order.sender.telephone %>
-        </div>
-      </div> 
-    </div>
-  </div>
-</div>
-
-<% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
-  <% if @order.transporter.present? %>
-    <%= render 'orders/compa-transporter', order: @order %>
-  <% end %>
-<% end %>
-
-  <%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
-  <div class="card mb-2  ">
-    <div class="card-body pl-1"> 
-      <div class="col-md-12 mb-2 mt-2">
-        <div class="row">
-          <div class="d-inline col-sm-6 recipient-headings bolds"><%= Order.human_attribute_name(:recipient)%>
-          </div>
-          <div class="d-inline col-sm-6 mb-3 recipient-values">
-            <%= @order.recipients.first.present? ? @order.recipients.first.name : "-" %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="d-inline col-sm-6 recipient-headings bolds ">
-            <%= Order.human_attribute_name(:telephone) %>
-          </div>
-          <div class="d-inline col-sm-6 mb-3 recipient-values">
-            <%= @order.recipients.first.present? ? @order.recipients.first.telephone : "-" 
-            %>
-          </div>
-        </div>                
-      </div>
-    </div>   
-  </div>
-
-<% if @user.class.name == "Company"  %> 
-  <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
       <div class="d-flex justify-content-center">         
-        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
           <%= form.hidden_field :status, :value => 'taken' %>
           <%= form.submit  Order.human_attribute_name(:take_order), :class => 'btn btn-taken my-3 status_buttons', name: 'take' %> 
-        <% end %>
-      </div> 
+      </div>       
+    <% end %>
   <% end %>
 <% end %>
 
@@ -298,7 +296,7 @@
   <div class="row mb-3">
     <div class="col-md-12 mb-3 ">     
       <div class="card mb-3">        
-        <div class="card-block mt-3 ">
+        <div class="card-block my-3 ">
           <div class="row">
             <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:radius) %>
             </div>
@@ -311,3 +309,4 @@
     </div>
   </div>
 <% end %>
+ </div>

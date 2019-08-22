@@ -9,11 +9,6 @@
     text-align: left !important; 
 } 
 
-
-/*.showing-card {
-	background-image: linear-gradient(141deg, #9fb8ad 0%, ##cc2b5e 51%, #753a88 75%) !important;
-}*/
-
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
 /* ========================================================= */
@@ -21,31 +16,23 @@
 
 @media (max-width: 767px) and (orientation : portrait) {
   
- 	/*.name, .telephone, .email, .status {
-		font-size: 1.2rem !important;
-
-	}
-
-  	.sender-name, .sender-telephone, .sender-email, .sender-status {
-		font-size: 1rem !important;
-	}*/
-
 	.transporter-Showlabels {
-	max-width: 47% !important;
-    padding-right:0 !important;
-    text-align: right !important; 
+  	max-width: 47% !important;
+      padding-right:0 !important;
+      text-align: right !important; 
 	}
 
 	.transporter-Showinputs {
-	max-width: 53% !important;
-    padding-right: 0 !important;
-    text-align: left !important; 
+  	max-width: 53% !important;
+      padding-right: 0 !important;
+      text-align: left !important; 
 	} 
 
 }
 
 /* ========================================================= */
 
+/*
 @media (max-width: 576px) and (orientation : portrait) {
 
 	.name, .telephone, .email, .status {
@@ -60,7 +47,37 @@
 		width: 100% !important;
 	}
 
+}*/
+
+@media (max-width: 568px) and (min-width: 500px) {
+  .transporter-Showlabels, .transporter-Showinputs {
+    text-align: center !important;    
+  }
+
+  .transporter-Showinputs {
+    max-width: none !important;
+  }
+
+  .transporter-show-Status {
+    padding-right: 3% !important;
+
+  }
 }
 
+
+@media (max-width: 568px) and (min-width: 500px) {
+  .company-Showlabels, .company-Showinputs {
+    text-align: center !important;    
+  }
+
+  .company-Showinputs {
+    max-width: none !important;
+  }
+
+  .company-show-Status {
+    padding-right: 5% !important;
+
+  }
+}
 
 

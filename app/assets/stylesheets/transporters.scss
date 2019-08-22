@@ -1,4 +1,4 @@
-.name, .telephone, .email, .status, .password, .password-confirm {
+.trans-name, .trans-telephone, .trans-email, .trans-status, .password, .password-confirm {
 	text-align: right !important;
 }
 
@@ -17,9 +17,6 @@
 	text-align: left !important;
 }
 
-.status {
-    margin-left: 40px !important;
-}
 
 /* ========================================================= */
 /* ================  MEDIA QUERIES - PORTRAIT ============== */
@@ -31,10 +28,6 @@
 	.transporter-status-card {
 		text-align: left !important;
 	}
-
-	.status {
-	    margin-left: 40px !important;
-	}
 }
 
 /* ========================================================= */
@@ -44,17 +37,13 @@
 	.transporter-status-card {
 		text-align: left !important;
 	}
-
-	.status {
-	    margin-left: 32px !important;
-	}
 }
 
 /* ========================================================= */
 
 	@media (max-width: 767px) and (orientation : portrait) {
   
- 	.name, .telephone, .email, .status, .password, .password-confirm  {
+ 	.trans-name, .trans-telephone, .trans-email, .trans-status, .password, .password-confirm  {
 		font-size: 1rem !important;
 
 	}
@@ -76,7 +65,7 @@
 
 @media (max-width: 576px) and (orientation : portrait) {
 
-	.name, .telephone, .email, .status, .password, .password-confirm {
+	.trans-name, .trans-telephone, .trans-email, .trans-status, .password, .password-confirm {
 		text-align: center !important;
 	}
 
@@ -87,4 +76,23 @@
 	.transporter-status-card {
 		text-align: center !important;
 	}
+}
+
+
+/* ========================================================= */
+/* ================  MEDIA QUERIES - LANDSCAPE ============== */
+/* ========================================================= */
+
+@media (max-width: 568px) and (orientation : landscape) {
+	
+	.trans-name, .trans-telephone, .trans-email, .status {
+		width: 100% !important;
+    max-width: 50% !important;
+    text-align: center !important;
+	}
+
+	.company-name, .company-telephone, .company-email, .company-status {
+    text-align: center !important;
+    border-color: #ffffff24 !important;
+}
 }

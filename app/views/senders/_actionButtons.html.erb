@@ -1,7 +1,10 @@
+
+<div class="btn-group" role="group" aria-label="First group"> 
   <div class="d-inline mt-2 mb-2">  
     <%= link_to "#{Sender.human_attribute_name(:back_to_sender)}", sender_path, :class => "btn btn-primary btn-back" %> 
   </div>
  
   <div class="d-inline mt-2 mb-2">      
-      <%= form.submit Sender.human_attribute_name(:update), :class => ' btn btn-primary btn-update' %>   
+      <%= form.submit Sender.human_attribute_name(:update), :class => ' btn btn-primary btn-update status_buttons' %>   
   </div>
+</div>
