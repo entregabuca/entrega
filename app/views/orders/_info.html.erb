@@ -149,7 +149,7 @@
               </div>
             <% elsif @user.class.name == "Company"  && @order.status == ('posted') %>
              <div class="d-inline col-sm-6 mb-3 transporter-values">
-              <%= form.collection_select :transporter_id, @user.transporters, :id, :name, include_blank: false, :class => "d-inline col-sm-6 mb-3 transporter-values" %>
+              <%= form.collection_select :transporter_id, @user.transporters.available, :id, :name, include_blank: false, :class => "d-inline col-sm-6 mb-3 transporter-values" %>
             </div>
             <% else %>
               <div class="d-inline col-sm-6 mb-3 transporter-values">

@@ -1,7 +1,7 @@
 class TransportersController < ApplicationController
   include Accessible
   before_action :set_transporter, only: [:show, :edit, :update, :destroy, :orders]
-
+  before_action :set_company, only: [:show]
 
   def index
     if @user.present?
@@ -70,6 +70,12 @@ class TransportersController < ApplicationController
     def set_transporter
       @transporter = Transporter.find(params[:id])
     end
+
+    def set_company
+      @company = @transporter.company.name
+    end
+
+
 
     def transporter_params
       params.require(:transporter).permit(:name, :telephone, :email, :status, :company_id, :password)

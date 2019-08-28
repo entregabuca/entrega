@@ -1,5 +1,5 @@
 module EnumI18nHelper
-
+# This is used for all Enum translations except from the one where Transporter is ALONE
   # Returns an array of the possible key/i18n values for the enum
   # Example usage:
   # enum_options_for_select(User, :approval_state)

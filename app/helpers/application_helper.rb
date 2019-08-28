@@ -48,6 +48,5 @@ module ApplicationHelper
 	  link_to body, url, html_options
 	  end
 	end
-
-
+  
 end
