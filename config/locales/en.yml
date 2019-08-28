@@ -73,6 +73,14 @@ en:
         password_confirmation: Confirm New Password
         update_transporter: Update
         back_to_transporters: Transporters
+        # This transporter is for the translation from Transporter
+        statuses:
+          inactive: Inactive
+          active: Active
+          available: Available
+          busy: Busy
+          offwork: Off Work
+
       sender:
         name: Name
         telephone: Telephone
@@ -101,10 +109,14 @@ en:
         statuses:
           inactive: Inactive
           active: Active
+      # This transporter is for the translation from Company/Transporter
       transporter:
         statuses:
           inactive: Inactive
           active: Active
+          available: Available
+          busy: Busy
+          offwork: Off Work
       order:
         statuses:
           draft: Draft

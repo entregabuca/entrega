@@ -5,6 +5,17 @@
 <div class="card mb-2 showing-card   ">
   <div class="card-body pl-1"> 
     <div class="col-md-12 mb-2 mt-2">
+
+      <div class="row">
+        <div class="d-inline col-sm-6 transporter-Showlabels">
+           <b><%= t (:company) %></b>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 transporter-Showinputs">
+         <%= @company %>
+        </div>
+      </div> 
+
+
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels">
            <b><%= Transporter.human_attribute_name(:name) %></b>
@@ -13,6 +24,8 @@
          <%= @transporter.name.titlecase %>
         </div>
       </div> 
+
+
 
       <div class="row">
         <div class="d-inline col-sm-6 transporter-Showlabels ">
@@ -35,7 +48,7 @@
           <b><%= Transporter.human_attribute_name(:status) %></b>
         </div>
         <div class="d-inline col-sm-6 mb-3 transporter-Showinputs transporter-show-Status">
-         <%= enum_l(@user, :status).capitalize %>
+         <%= enum_l(@transporter, :status) rescue log_error($!, $@) %>
         </div>
       </div>
       <div class="row">

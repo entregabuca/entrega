@@ -95,14 +95,18 @@
         <% end %>
 
       <!-- TRANSPORTER -->
-        <% if @user.class.name == "Transporter" && @user.active? %>
+        <% if @user.class.name == "Transporter" && !@user.inactive? %>
           <li class="nav-item">
               <%= link_to_in_li  I18n.t(:my_orders), transporter_orders_path(@user), class: 'nav-link'  %> 
           </li>
           <li class="nav-item">            
             <%= link_to_in_li  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
           </li>
+          <li class="nav-item">  
+          <%= link_to  I18n.t(:edit_profile), edit_transporter_path(@user), class: 'nav-link' %>
+          </li>  
         <% end %> 
+        
          <li class="nav-item">
           <%= @user ? (link_to icon('fas', 'running', I18n.t(:sign_out)), destroy_session_path(@user), method: :delete, class: 'nav-link') : '' %>
         </li>
