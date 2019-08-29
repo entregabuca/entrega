@@ -6,24 +6,20 @@
     <% if ['completed', 'cancelled'].include?(@order.status) %>
 
     <!-- Sender -->
-    <% elsif @user.class.name == "Sender" && ['draft', 'posted'].include?(@order.status) %>
+    <% elsif @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) %>
           <% if ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'new') %>
             <!-- IT WILL RENDER THE FORM ITSELF -->
           <% elsif ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
             <div class="btn-group" role="group" aria-label="First group">    
               <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "btn btn-primary btn-edit mb-2 mt-2" %>
             </div>
-          <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit')  %> 
+          <% elsif ['posted', 'taken'].include?(@order.status)  && current_page?(controller: 'orders', action: 'edit')  %> <!-- TAKEN ADDED -->
             <div>    
               <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
                 <%= form.hidden_field :status, :value => 'cancelled' %>
                 <div class="btn-group" role="group" aria-label="First group">
                   <%= form.submit  Order.human_attribute_name(:cancel_order), :class => 'mt-2 btn btn-cancel', name: 'cancel' %>
                 </div>
-                <!--
-                <div class="space">
-                  <%#= form.submit  Order.human_attribute_name(:save_draft), :class => 'mt-2  btn btn-primary btn-draft' %> 
-                </div> -->
               <% end %>
             </div>
 

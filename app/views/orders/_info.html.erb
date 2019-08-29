@@ -78,22 +78,6 @@
     </div>   
   </div>
 
-<!-- COST -->
-  <div class="card mb-2">
-    <div class="card-body pl-1">    
-      <div class="col-md-12 my-2">  
-          <div class="row">
-            <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
-            </div>
-            <div class="d-inline col-sm-6 cost-values">            
-              <%= @order.cost  %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-
 <!-- COMPANY & TRANSPORTER FROM SENDER -->
 <% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
   <% if @order.transporter.present? %>
@@ -101,28 +85,29 @@
   <% end %>
 <% end %>
 
-
-
-<!-- COMPANY & TRANSPORTER FROM COMPANY --> 
-<!-- ON Show Action -->
-<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
-  <% if @order.transporter.present? %>
+<!-- COMPANY & TRANSPORTER FROM COMPANY OR TRANSPORTER  --> 
+<% if @user.class.name == "Company" || @user.class.name == "Transporter"  &&  @order.transporter.present? %> 
     <%= render 'orders/compa-transporter', order: @order %>
-  <% else %> 
+<% else %> 
     <div class="card mb-2 p-3 message3TransComp text-center"> 
       <%= t (:no_company_added) %>
     </div> 
-  <% end %>
 <% end %>
 
-<!-- JUST COMMENTED OUT -->
-
-<!-- <%# if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'edit')%> 
-  <%# if @order.transporter.present? %>
-    <%#= render 'orders/compa-transporter', order: @order %>
-  <%# end %>
-<%# end %>  -->
-
+<!-- COST -->
+<div class="card mb-2">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row">
+        <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
+        </div>
+        <div class="d-inline col-sm-6 cost-values">            
+          <%= @order.cost  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- On Editing Actions -->
 <% if @user.class.name == "Company"  %> 
