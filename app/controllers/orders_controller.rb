@@ -2,16 +2,16 @@ class OrdersController < ApplicationController
   include Accessible 
 
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  #before_action :set_user
+  after_action :set_transporter_statuses_depending_order_status, only: [:update]
 
   def index
     @orders = @user.orders
   end
 
-  def transporter_orders    
-    @transporter = @user.transporter.find(params[:id])
-    @orders = @transporter.orders
-  end
+#  def transporter_orders    
+#    @transporter = @user.transporter.find(params[:id])
+#    @orders = @transporter.orders
+#  end
 
   def posts
     if @user.locations.present?
@@ -70,6 +70,7 @@ class OrdersController < ApplicationController
 
   def update
     calculate_cost
+    #set_transporter_statuses_depending_order_status
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to url_for([@user, @order]), notice: t(:order_updated) }
@@ -100,6 +101,23 @@ class OrdersController < ApplicationController
       resource, id = request.path.split('/')[1,2]
       @user = resource.singularize.classify.constantize.find(id)
     end
+
+
+# New code
+    def set_transporter_statuses_depending_order_status   
+      @order = Order.find(params[:id])
+      @transporter = @order.transporter 
+      if @order.status == "taken"
+        @transporter.status = "busy"
+        @transporter.save
+      elsif (@order.status == 'completed' || @order.status ==  'cancelled')  
+        @transporter.status = 'available'
+        @transporter.save
+        puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}"
+      end
+    end          #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK?
+
+    
 
   # def order_posted_create
   #   if @order.status == 'posted'
