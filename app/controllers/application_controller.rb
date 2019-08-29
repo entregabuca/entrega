@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
 #include Accessible
 	before_action :set_session
 	before_action :set_locale
-	def set_session
-		
+
+	def set_session		
 		if company_signed_in?
 			cookies.encrypted[:user_id] = current_company.id
 			puts "SESSION CREATED!!! Company: #{current_company.id}"

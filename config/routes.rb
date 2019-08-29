@@ -37,7 +37,9 @@ root 'access#home'
         
         devise_for :senders
         devise_for :companies
-        devise_for :transporters
+        #devise_for :transporters  
+
+        devise_for :transporters, controllers: { sessions: 'transporters/sessions' }
 
         get 'locations/geocode'
 
