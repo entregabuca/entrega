@@ -161,6 +161,24 @@
   <% end %>
 <% end %>
 
+<div class="card mb-2">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row">
+        <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:return) %>
+        </div>
+        <div class="d-inline col-sm-6 cost-values"> 
+        <% if   @order.return == true  %>       
+          <%=  t(:this) %>
+        <% else %>
+          <%= t(:no_this) %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   
 <!-- MAPS -->
  <div class="maps-row">

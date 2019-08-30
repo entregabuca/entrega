@@ -64,6 +64,9 @@ en:
         content: Comments or Instructions
         cancel_payment: Cancel Payment
         pay: Pay
+        return: Return to Pickup point
+        #  "yes" : "Yes" 
+        #  "no": "No"
          
       transporter:
         name: Name
@@ -138,6 +141,8 @@ en:
             has_one: Cannot delete record because a dependent %{record} exists
             has_many: Cannot delete record because dependent %{record} exist
 
+  this: "Yes"
+  no_this: "No"
   company_created: Company was successfully created !! 
   company_updated: Company was successfully updated !!
   company_removed: Company was successfully removed.

@@ -63,7 +63,10 @@ es:
         cancel_order: Cancelar Orden
         content: Comentarios o Instrucciones 
         cancel_payment: Cancelar Pago 
-        pay: Pagar      
+        pay: Pagar
+        return: Regresar a Punto de Recogida 
+        # "true": "True"
+        # "false": "False"      
       
       transporter:
         name: Nombre
@@ -138,6 +141,8 @@ es:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
 
+  this: "Si"
+  no_this: "No"
   company_created: Has creado tu cuenta exitosamente !! 
   company_updated: Has actualizado tu cuenta exitosamente !!
   company_removed: Cuenta removida exitosamente !!
