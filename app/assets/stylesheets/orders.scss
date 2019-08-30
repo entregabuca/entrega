@@ -90,16 +90,20 @@
     margin-left: 0px !important;
 }
 
-.description, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
+.description, .content, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
     max-width: 25% !important;
     text-align: right !important;
     padding-right: 20px !important;
     margin-right: 15px !important;
 }
 
-#order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input {
+.content {
+  vertical-align: top !important;
+}
+
+#order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input, #order_comments_attributes_0_content {
   font-size: 1.12rem;
-  max-width: 70% !important;
+  max-width: 60% !important;
   border-color: #ffffff24 !important;
   text-align: left !important;
 }

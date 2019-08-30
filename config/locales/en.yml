@@ -60,8 +60,11 @@ en:
         taken: Taken
         inTransit: In Transit
         complet: Complete
-        cancel_order: Cancel
-        
+        cancel_order: Cancel Order
+        content: Comments or Instructions
+        cancel_payment: Cancel Payment
+        pay: Pay
+         
       transporter:
         name: Name
         telephone: Telephone
@@ -100,6 +103,8 @@ en:
       location:
         address: Address
         provide_address: You need to provide a valid address
+      comment:
+        content: Comments or Instructions 
     enums: 
       sender:
         statuses:
@@ -156,7 +161,7 @@ en:
   recipt_name: Name
   recipt_telephone: Telephone
   recipt_email: Email
-
+  #content: Comments or Instructions
   distance_to_order: Distance to Order
   sender_location: Sender Location
   sender_details: Sender Details

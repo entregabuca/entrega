@@ -25,6 +25,15 @@
         <div class="d-inline col-sm-6 mb-3 order-values"><%= @order.description %>
         </div> 
       </div>
+
+      <div class="row"> 
+        <div class="d-inline col-sm-6 order-headings bolds ">
+          <%= Order.human_attribute_name(:content) %> <%#= Order.human_attribute_name(:description) %>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 content_show"><%= @order.comments.first.present? ? @order.comments.first.content : "-" %>
+        </div> 
+      </div>
+
     </div>
   </div>
 </div> 

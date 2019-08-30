@@ -20,10 +20,12 @@ include ActiveModel::Dirty
   belongs_to :sender
   belongs_to :transporter, optional: true
   has_many :locations, as: :addressable
+  has_many :comments, as: :commentable
   has_many :order_statuses, dependent: :destroy
   has_many :recipients, dependent: :destroy
   
   accepts_nested_attributes_for :locations, allow_destroy: true # :reject_if => lambda { |a| a[:address].blank? }   # && a[:line2].blank? && a[:city].blank? && a[:zip].blank?
+  accepts_nested_attributes_for :comments, allow_destroy: true
   accepts_nested_attributes_for :recipients, :allow_destroy => true
   # Sort orders by most recent first
   default_scope {order("created_at DESC")} 

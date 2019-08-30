@@ -13,7 +13,7 @@
             <div class="btn-group" role="group" aria-label="First group">    
               <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "btn btn-primary btn-edit mb-2 mt-2" %>
             </div>
-          <% elsif ['posted', 'taken'].include?(@order.status)  && current_page?(controller: 'orders', action: 'edit')  %> <!-- TAKEN ADDED -->
+          <% elsif ['posted', 'taken'].include?(@order.status)  && current_page?(controller: 'orders', action: 'edit')  %>
             <div>    
               <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
                 <%= form.hidden_field :status, :value => 'cancelled' %>

@@ -24,8 +24,8 @@
 						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
 					</div>
 					<div>
-						<%= link_to "Cancel", root_path, class: "btn btn-cancel-payment" %>
-						<%= f.submit " Pay ", class: "btn btn-payorder status_buttons" %>
+						<%= link_to "#{Order.human_attribute_name(:cancel_payment)}", root_path, class: "btn btn-cancel-payment" %>
+						<%= f.submit "#{Order.human_attribute_name(:pay)}", class: "btn btn-primary", class: "btn btn-payorder status_buttons" %>
 					</div>
 				<% end %>			
 			</div>

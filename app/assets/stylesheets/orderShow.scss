@@ -1,3 +1,4 @@
+
 /* ========================================================= */
 /* ================  VIEW ORDER FROM COMPANY ============== */
 /* ========================================================= */
@@ -27,12 +28,11 @@
   text-align: right !important; 
 }
 
-.order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values {
+.order-values,.content_show, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values {
   text-align: left !important; 
   padding-left: 15px !important;
-  max-width: 53% !important;
-  padding-right: 0 !important;
-   
+  max-width: 45% !important;
+  padding-right: 0 !important;   
   }
 
 .messageTransComp {

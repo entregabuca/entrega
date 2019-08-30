@@ -12,7 +12,15 @@
     <div class="form-group col-md-12 order-measurements text-center">     
       <b><%= form.label :description, :class => "col-sm-5 description"%></b>
       <%= form.text_field :description, placeholder: "#{t (:short_description)}", :class => "col-sm-6" %>
-    </div>         
+    </div>  
+
+
+    <div class="form-group col-md-12 order-measurements text-center"> 
+    <%= form.fields_for :comments, @order.comments.present? ? @order.comments : Comment.new do |f| %>
+      <b><%= f.label :content, :class => "col-sm-5 content"%></b>
+      <%= f.text_area :content, placeholder: "#{t (:short_description)}", :class => "col-sm-6", :rows => "4", :maxlength => 200 %>
+    <% end %>
+    </div>
 
     <div class="hide_information">   
       <div class="form-group col-md-12 order-measurements text-center">      
