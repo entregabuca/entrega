@@ -60,7 +60,10 @@ es:
         taken: Tomada
         inTransit: En Camino
         complet: Completar
-        cancel_order: Cancelar        
+        cancel_order: Cancelar Orden
+        content: Comentarios o Instrucciones 
+        cancel_payment: Cancelar Pago 
+        pay: Pagar      
       
       transporter:
         name: Nombre
@@ -100,6 +103,8 @@ es:
       location:
         address: Dirección
         provide_address: Agregue una dirección valida
+      comment:
+        content: Comentarios o Instrucciones 
     enums: 
       sender:
         statuses:
@@ -156,7 +161,7 @@ es:
   recipt_name: Nombre
   recipt_telephone: Teléfono
   recipt_email: Email
- 
+  #content: Comentarios o Instrucciones
   distance_to_order: Distancia a la Orden
   sender_location: Dirección del Usuario
   sender_details: Información del Usuario
@@ -164,6 +169,7 @@ es:
   editing_company: Actualizar Compañia
   editing_transporter: Actualizar Transportador
   transporter_details: Información del Transportador
+  #cancel_order: Cancelar Orden
 
   restrict_title: Hola !!! No deberias estar aca !!!
   restrict_body1: No pasa nada. 

@@ -8,8 +8,8 @@
 						<%= f.text_field :amount, class: "form-control" %>
 					</div>
 					<div>
-						<%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
-						<%= f.submit " Pay ", class: "btn btn-primary" %>
+						<%= link_to "#{Order.human_attribute_name(:cancel_payment)}", root_path, class: "btn btn-outline-secondary" %>
+						<%= f.submit "#{Order.human_attribute_name(:pay)}", class: "btn btn-primary" %>
 					</div>
 				<% end %>
 			</div>

@@ -113,7 +113,7 @@ class OrdersController < ApplicationController
       elsif (@order.status == 'completed' || @order.status ==  'cancelled')  
         @transporter.status = 'available'
         @transporter.save
-        puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}"
+        puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Can be removed only for test
       end
     end          #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK?
 
@@ -156,7 +156,7 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, 
-        :cost, :status, :radius, :sender_id, :transporter_id,
+        :cost, :status, :radius, :sender_id, :transporter_id, comments_attributes: [:id, :content], 
         locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
     end
 end
