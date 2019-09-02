@@ -158,7 +158,8 @@ es:
 
   new_order: Nueva Orden
   order_details: Detalles de la Orden
-  short_description: Breve Descripción
+  short_description: Agrgue breve descripción del producto / que es lo que envia?
+  comments_instructions:  Agregue comentarios o Instrucciones necesarias para completar esta orden
   aprrox_weight: Peso approx en gramos
   aprrox_length: Largo approx en cm
   approx_width: Ancho approx en cm
