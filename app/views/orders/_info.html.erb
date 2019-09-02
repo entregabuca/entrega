@@ -1,7 +1,8 @@
 <!-- ORDER REF, STATUS & DESCRIPTION -->
-<div class="card mb-2  ">
+<div class="card mb-2 top-card ">
+  <h3 class="h3Space text-center mt-3"><%= t (:order_details) %></h3> 
   <div class="card-body pl-1"> 
-    <div class="col-md-12 mb-2 mt-2">
+    <div class="col-md-12 mb-2">
       <div class="row">
         <div class="d-inline col-sm-6 order-headings bolds ">
            <%= Order.human_attribute_name(:order_id) %>
@@ -265,7 +266,7 @@
 <div class="card mb-2  ">
   <div class="card-body"> 
     <div class="col-md-12 mb-2 mt-2">
-    <h3 class="recipient-title text-center"><%= Order.human_attribute_name(:measurement_details)%></h3>
+    <h3 class="recipient-title text-center"><%= Order.human_attribute_name(:order_details)%></h3>
     <div class="row">
       <div class="d-inline col-sm-6 measurements-headings bolds"><%=
         Order.human_attribute_name(:weight) %>

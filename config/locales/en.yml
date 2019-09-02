@@ -47,7 +47,7 @@ en:
         recipient: Recipient
         created_at: Created At
         updated_at: Updated At
-        measurement_details: Approximate Measurements
+        order_details: Order Details
         save_draft: Save Draft
         confirm_order: Confirm Order
         post: Posted
@@ -157,7 +157,7 @@ en:
   order_removed: Order was successfully removed
 
   new_order: New Order
-  measurement_details: Measurement Details
+  order_details: Order Details
   short_description: Description
   aprrox_weight: Approx. weight in gramos
   aprrox_length: Approx. length in cm

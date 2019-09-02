@@ -1,0 +1,390 @@
+
+// Hide the returning location
+// Change the title on left card 
+// Makes the card bigger so only one is showing for addding the address
+
+1-
+$('.card-right').hide()  
+$('.card-body-left h3').html("Sending and Receiving Location")  
+$('.maps-row .col-md-6').removeClass( "col-md-6" ).addClass( "col-md-12" ) 
+
+ ===================================== || =====================================
+2-
+var returnTrue = document.getElementById('order_return_true')
+var returnFalse = document.getElementById('order_return_false')
+var address0Value = $('#address0').val()
+
+returnTrue.addEventListener('click', function() {
+  $('.card-right').hide()  
+  $('.card-body-left h3').html("Sending and Receiving Location")  
+  $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12')
+  $('#address1').val(address0Value)  
+});
+
+returnFalse.addEventListener('click', function() {
+  $('.card-right').show()  
+  $('.card-body-left h3').html("Sending Location")  
+  $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6') 
+});
+ ===================================== || =====================================
+3-
+JQuery
+(function($) {
+  document.addEventListener("turbolinks:load", function() {
+    var returnTrue = document.getElementById('order_return_true')
+    var returnFalse = document.getElementById('order_return_false')
+    var address0Value = $('#address0').val()
+
+    returnTrue.addEventListener('click', function() {
+      $('.card-right').hide()  
+      $('.card-body-left h3').html("Sending and Receiving Location")  
+      $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12')
+      $('#address1').val(address0Value) 
+    });
+
+    returnFalse.addEventListener('click', function() {
+      $('.card-right').show()  
+      $('.card-body-left h3').html("Sending Location")  
+      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6') 
+    });
+  })
+})(jQuery)
+
+4- 
+(function($) {
+  document.addEventListener("turbolinks:load", function() {
+    var address0Value = $('#address0').val()
+    var yesChecked = $('input[name="order[return]"]:checked').val()
+    var returnTrue = document.getElementById('order_return_true')
+    var returnFalse = document.getElementById('order_return_false')
+    var topCardh3 = $('.top-card h3').text()
+
+    var latitude0 = $('#latitude0').val()
+    var longitude0 = $('#longitude0').val()
+
+    function comeBack() {
+      $('.card-right').hide() 
+      if ( topCardh3 == "Detalles de la Orden"){
+        $('.card-body-left h3').html("Dirección de Recogida y Entrega") 
+      } else {
+        $('.card-body-left h3').html("Sending and Receiving Location")
+      } 
+      $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12' )
+      $('#address1').val(address0Value)
+      $('#latitude1').val(latitude0)
+      $('#longitude1').val(longitude0)
+      $(".btn-address-search").click()
+    }
+
+    function comeBackNot() {
+      $('.card-right').show()  
+      if ( topCardh3 == "Detalles de la Orden"){
+        $('.card-body-left h3').html("Direción de Recogida") 
+      } else {
+      $('.card-body-left h3').html("Sending Location")  
+      }
+      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6' ) 
+    }
+
+    if (yesChecked == "true"){
+      comeBack()
+    } else {
+      comeBackNot()
+    }
+
+    returnTrue.addEventListener('click', comeBack);
+    returnFalse.addEventListener('click', comeBackNot);
+  })
+})(jQuery)
+
+
+
+
+
+===================================== || ========================================
+Testing practise - WORKS!!
+
+var returnTrue = document.getElementById('order_return_true');
+returnTrue.addEventListener('click', function() {
+  $('.card-right').hide()  
+  $('.card-body-left h3').html("Sending and Receiving Location")  
+  $('.maps-row .col-md-6').removeClass( "col-md-6" ).addClass( "col-md-12" ) 
+});
+
+
+$('input[type=radio][name="order[return]"]').change(function() {
+  alert('OE!!')
+});
+
+
+
+$('#address0').val()
+
+
+
+var yesChecked = $('input[id=order_return_true]:checked')
+
+if (yesChecked){
+  alert("oe!!!")
+}
+
+$('input[type=radio][name="order[return]"]').on('change', function() {
+  alert($('input[name="order[return]"]:checked').val())
+})
+
+
+
+$('input[type=radio][name="order[locations_attributes][0][latitude]"]').val()
+order[locations_attributes][0][latitude]
+
+
+var yesChecked = $('input[name="order[return]"]:checked').attr('id')
+  if (yesChecked == 'order_return_true'){
+   alert("TRUE!!!")
+  } else {
+   alert("FALSE!!!")
+  }
+
+  
+var latitude0 = $('#latitude0').val()
+var lat2 = $('#latitude1').val(latitude0)
+
+var longitude0 = $('#longitude0').val()
+var lon2 = $('#longitude1').val(longitude0)
+
+===================================== || ========================================
+var h3TopCard = $('.top-card h3').text()
+
+if ( h3TopCard == "Detalles de la Orden"){
+  $('.card-body-left h3').html("Punto de Envio y Entrega") 
+} else {
+  $('.card-body-left h3').html("Sending and Receiving Location")
+}
+
+
+
+var latitude0 = $('#latitude0').val()
+var lat2 = $('#latitude1').val(latitude0)
+
+var longitude0 = $('#longitude0').val()
+var lon2 = $('#longitude1').val(longitude0)
+
+
+
+
+
+
+
+var address0Value = $('#address0').val()
+var yesChecked = $('input[name="order[return]"]:checked').val()
+
+function comeBack() {
+  $('.card-right').hide()  
+  $('.card-body-left h3').html("Sending and Receiving Location")  
+  $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12' )
+  $('#address1').val(address0Value)
+}
+
+function comeBacNot() {
+  $('.card-right').show()  
+  $('.card-body-left h3').html("Sending Location")  
+  $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6' ) 
+}
+
+if (yesChecked == "true"){
+  comeBack()
+  alert("TRUE!!!")
+} else {
+  comeBacNot()
+  alert("FALSE!!!") 
+}
+
+
+var yesChecked = $('input[name="order[return]"]:checked').attr('id')
+  if (yesChecked == 'order_return_true'){
+   alert("TRUE!!!")
+  } else {
+   alert("FALSE!!!")
+  }
+
+
+function comeBack() {
+  $('.card-right').hide()  
+  $('.card-body-left h3').html("Sending and Receiving Location")  
+  $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12' )
+  $('#address1').val(address0Value)
+}
+
+
+
+
+var returnTrue = document.getElementById('order_return_true')
+var returnFalse = document.getElementById('order_return_false');
+var address0Value = $('#address0').val()
+function comeBack() {
+    $('.card-right').hide()  
+    $('.card-body-left h3').html("Sending and Receiving Location")  
+    $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12' )
+    $('#address1').val(address0Value)
+    }
+
+
+  if (yesChecked == "true"){
+    alert("TRUE!!!")
+    comeBack
+  } else {
+    alert("FALSE!!!")
+    function comeBacNot() {
+    
+  }
+}
+returnTrue.addEventListener('click', comeBack);
+returnFalse.addEventListener('click', comeBacNot)
+
+
+
+$('input[type=radio][name=Criteria1Score]:checked').attr('id')
+
+
+var yesChecked = $('input[name="order[return]"]:checked').attr('id')
+
+if (yesChecked == true ){
+  alert("oe!!!")
+}
+
+
+var yesChecked = $('input[name="order[return]"]:checked').val()
+
+
+$('input[type=radio][name="order[return]"]').on('change', function() {
+
+  if (yesChecked == "true"){
+   alert("TRUE!!!")
+  } else {
+   alert("FALSE!!!")
+  }
+})
+
+var yesChecked = $('input[name="order[return]"]:checked').val()
+  if (yesChecked == "true"){
+   alert("TRUE!!!")
+  } else {
+   alert("FALSE!!!")
+  }
+
+YES IS SHOWING ALWAYS CHECKED !!! CHECK WHY??
+
+
+
+// var noChecked = $('input[id=order_return_false]:checked')
+
+JQuery
+
+(function($) {
+  document.addEventListener("turbolinks:load", function() {
+
+    var yesChecked = $('input[name="order[return]"]:checked').attr('id')
+    var returnTrue = document.getElementById('order_return_true')
+    var returnFalse = document.getElementById('order_return_false');
+    var address0Value = $('#address0').val() 
+
+    function comeBack() {
+      $('.card-right').hide()  
+      $('.card-body-left h3').html("Sending and Receiving Location")  
+      $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12' )
+      $('#address1').val(address0Value)
+    }
+
+    function comeBacNot() {
+      $('.card-right').show()  
+      $('.card-body-left h3').html("Sending Location")  
+      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6' ) 
+    }
+
+    if (yesChecked == 'order_return_true'){
+       comeBack
+       returnFalse.addEventListener('click', comeBacNot);
+      } else {
+       comeBacNot
+       returnTrue.addEventListener('click', comeBack);
+      }
+
+    returnTrue.addEventListener('click', comeBack);
+    returnFalse.addEventListener('click', comeBacNot);
+  })
+})(jQuery)
+
+
+/*
+var yesChecked = $('input[id=order_return_true]:checked')
+var noChecked = $('input[id=order_return_false]:checked')
+if (yesChecked){
+  comeBack
+} else if (noChecked) {
+  comeBacNot
+}*/ 
+
+
+/* var yesChecked = $('input[name="order[return]"]:checked').attr('id') */
+
+  if (yesChecked == 'order_return_true'){
+   //alert("TRUE!!!") 
+   comeBack
+  } else {
+   //alert("FALSE!!!")
+   comeBacNot
+  }
+
+
+returnTrue.addEventListener('click', comeBack);
+returnFalse.addEventListener('click', comeBacNot);
+
+
+
+
+(function($) {
+  document.addEventListener("turbolinks:load", function() {
+
+
+    var returnTrue = document.getElementById('order_return_true')
+    var returnFalse = document.getElementById('order_return_false')
+    var address0Value = $('#address0').val()
+
+    var yesChecked = $('input[id=order_return_true]:checked')
+    var noChecked = $('input[id=order_return_false]:checked')
+
+
+    $('input[type=radio][name="order[return]"]').on('change', function() {
+       alert("order[return]").val());
+    }
+
+
+   $('input[type=radio][name="order[return]"]').on('change', function() {
+      alert("OEEE!!")
+      $('input[name="order[return]"]:checked', input[name="order[return]").val())
+   })
+
+
+
+    if (yesChecked){
+      comeBack
+    } else if (noChecked) {
+      comeBacNot
+    }
+
+    returnTrue.addEventListener('click', function() {
+      $('.card-right').hide()  
+      $('.card-body-left h3').html("Sending and Receiving Location")  
+      $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12')
+      $('#address1').val(address0Value) 
+    });
+
+    returnFalse.addEventListener('click', function() {
+      $('.card-right').show()  
+      $('.card-body-left h3').html("Sending Location")  
+      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6') 
+    });
+  })
+})(jQuery)
+
+

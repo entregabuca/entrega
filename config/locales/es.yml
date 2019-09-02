@@ -30,10 +30,10 @@ es:
         length: Largo
         width: Ancho
         heigth: Alto
-        sending_location: Direción de Recogida del Envío 
+        sending_location: Direción de Recogida
         address: Dirección
         pickup_time: Fecha/Hora de Recogida
-        reciving_location: Direción de Destino del Envío 
+        reciving_location: Direción de Destino
         delivery_time: Fecha/Hora de Entrega
         status: Estado
         radius: Radio
@@ -47,7 +47,7 @@ es:
         recipient: Receptor
         created_at: Creado el
         updated_at: Actualizado el
-        measurement_details: Medidas Aproximadas
+        order_details: Detalles de la Orden
         save_draft: Guardar Borrador
         confirm_order: Confirmar Orden
         post: Solicitar
@@ -157,7 +157,7 @@ es:
   order_removed: Orden removida exitosamente 
 
   new_order: Nueva Orden
-  measurement_details: Medidas Aproximadas
+  order_details: Detalles de la Orden
   short_description: Breve Descripción
   aprrox_weight: Peso approx en gramos
   aprrox_length: Largo approx en cm
