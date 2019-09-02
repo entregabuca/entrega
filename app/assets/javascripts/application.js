@@ -16,10 +16,11 @@
 //= require jquery3
 //= require popper
 //= require turbolinks
-//= require_tree .
+
 //= require bootstrap-sprockets
 //= require alertify
 //= require alertify/confirm-ujs
+//= require_tree .
 
 alertify.set('notifier','position', 'top-right');
 
@@ -100,7 +101,7 @@ function convertDMS( lat, lng ) {
   return LatDeg + 'º' + LatMin + '′' + LatSeg + '″' + LatCardinal   + " " + LngDeg + 'º' + LngMin + '′' + LngSeg + '″' + LngCardinal;
 }
 
-// Funcion to show coordinates using OSM
+// Funcion to show coordinates using Open Street Map
 function getCoordinatesFromAddressOSM(button){
   var address = encodeURIComponent($(button).closest('td').find('input#address').val());
   $.when($.ajax('https://nominatim.openstreetmap.org/search.php?q=' + address + '&format=json')).done(function(data){

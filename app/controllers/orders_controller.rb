@@ -155,7 +155,7 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :pickup_time, :delivery_time, 
+      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
         :cost, :status, :radius, :sender_id, :transporter_id, comments_attributes: [:id, :content], 
         locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
     end

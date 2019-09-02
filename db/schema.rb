@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_151136) do
+ActiveRecord::Schema.define(version: 2019_08_30_133401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_151136) do
     t.bigint "transporter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "return", default: false
     t.index ["sender_id"], name: "index_orders_on_sender_id"
     t.index ["transporter_id"], name: "index_orders_on_transporter_id"
   end

@@ -44,7 +44,36 @@
 }
 
 .top-card, .recipient, .cost-label {
-    font-size: 1.05rem;
+  font-size: 1.05rem;
+}
+
+.radioLabel {
+    text-align: right !important;
+}
+
+.colright {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.radiobools {
+  text-align: left !important;
+  padding-left: 0 !important;
+}
+
+.radiobool {
+  padding-left: 0 !important;
+}
+
+.card-radleft, .card-radright{
+  border: none !important
+}
+
+#order_return_true, #order_return_false {
+  width: 10% !important;
+}
+
+.content {
+  vertical-align: top !important;
 }
 
 .card-body-left {
@@ -91,15 +120,13 @@
 }
 
 .description, .content, .weight, .length, .width, .height, .recipient-name-label, .telephone-label, .email-label, .cost-label {
-    max-width: 25% !important;
+    max-width: 30% !important;
     text-align: right !important;
     padding-right: 20px !important;
     margin-right: 15px !important;
 }
 
-.content {
-  vertical-align: top !important;
-}
+
 
 #order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input, #order_comments_attributes_0_content {
   font-size: 1.12rem;

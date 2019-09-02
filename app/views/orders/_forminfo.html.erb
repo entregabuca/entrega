@@ -7,7 +7,7 @@
 <!-- DESCRIPTION & MEASUREMENTS -->
 <div class="card text-center ">
   <div class="card-body top-card"> 
-    <h3 class="h3Space"><%= t (:measurement_details) %></h3> 
+    <h3 class="h3Space"><%= t (:order_details) %></h3> 
 
     <div class="form-group col-md-12 order-measurements text-center">     
       <b><%= form.label :description, :class => "col-sm-5 description"%></b>
@@ -20,6 +20,24 @@
       <b><%= f.label :content, :class => "col-sm-5 content"%></b>
       <%= f.text_area :content, placeholder: "#{t (:short_description)}", :class => "col-sm-6", :rows => "4", :maxlength => 200 %>
     <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 colright">
+        <div class="card card-radleft">
+          <div class="card-body radioLabel">
+            <b><%= form.label Order.human_attribute_name(:return)%></b>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 colleft">
+        <div class="card card-radright">
+          <div class="card-body radiobools">
+            <%= form.radio_button :return, true, :value => true %><%= t(:this)%> <br/>        
+            <%= form.radio_button :return, false, :value => false %><%= t(:no_this)%><br/> 
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="hide_information">   
