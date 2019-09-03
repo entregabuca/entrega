@@ -65,14 +65,15 @@
 </div>
 
 <%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
-  <div class="card mb-2  ">
+<% if @order.return == false  %>   
+  <div class="card mb-2 card-show-recipient">
     <div class="card-body pl-1"> 
       <div class="col-md-12 my-2">
         <div class="row">
           <div class="d-inline col-sm-6 recipient-headings bolds"><%= Order.human_attribute_name(:recipient)%>
           </div>
           <div class="d-inline col-sm-6 mb-3 recipient-values">
-            <%= @order.recipients.first.present? ? @order.recipients.first.name : "-" %>
+            <%= @order.recipients.last.present? ? @order.recipients.last.name : "-" %>
           </div>
         </div>
         <div class="row">
@@ -80,13 +81,14 @@
             <%= Order.human_attribute_name(:telephone) %>
           </div>
           <div class="d-inline col-sm-6 mb-3 recipient-values">
-            <%= @order.recipients.first.present? ? @order.recipients.first.telephone : "-" 
+            <%= @order.recipients.last.present? ? @order.recipients.last.telephone : "-" 
             %>
           </div>
         </div>                
       </div>
     </div>   
   </div>
+<% end %>
 
 <!-- COMPANY & TRANSPORTER FROM SENDER -->
 <% if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%> 
@@ -162,18 +164,18 @@
   <% end %>
 <% end %>
 
-<div class="card mb-2">
+<div class="card mb-2 return-card">
   <div class="card-body pl-1">    
     <div class="col-md-12 my-2">  
       <div class="row">
-        <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:return) %>
+        <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:return) %>
         </div>
-        <div class="d-inline col-sm-6 cost-values"> 
-        <% if   @order.return == true  %>       
-          <%=  t(:this) %>
-        <% else %>
-          <%= t(:no_this) %>
-        <% end %>
+        <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+          <% if @order.return == true  %>       
+            <%=t(:this)%>
+          <% else %>
+            <%=t(:no_this)%>
+          <% end %>
         </div>
       </div>
     </div>

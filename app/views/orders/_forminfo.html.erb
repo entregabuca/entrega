@@ -1,6 +1,6 @@
 <!-- SENDER -->
-<div class="form-group sender mb-4">  
-  <%= t (:sender) %>
+<div class="form-group sender mb-4" id='sender'>  
+  <%#= t (:sender) %>
   <b><%= @order.sender.name %></b>
 </div>
 
@@ -18,7 +18,7 @@
     <div class="form-group col-md-12 order-measurements text-center"> 
     <%= form.fields_for :comments, @order.comments.present? ? @order.comments : Comment.new do |f| %>
       <b><%= f.label :content, :class => "col-sm-5 content"%></b>
-      <%= f.text_area :content, placeholder: "#{t (:short_description)}", :class => "col-sm-6", :rows => "4", :maxlength => 200 %>
+      <%= f.text_area :content, placeholder: "#{t (:comments_instructions)}", :class => "col-sm-6", :rows => "4", :maxlength => 200 %>
     <% end %>
     </div>
 
