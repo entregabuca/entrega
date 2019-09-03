@@ -10,7 +10,8 @@
     var longitude0 = $('#longitude0').val()
 
     function comeBack() {
-      $('.card-right').hide() 
+      $('.card-right').hide()
+      $('.recipient-card').hide() 
       if ( topCardh3 == "Detalles de la Orden"){
         $('.card-body-left h3').html("Dirección de Recogida y Entrega") 
       } else {
@@ -25,6 +26,7 @@
 
     function comeBackNot() {
       $('.card-right').show()  
+      $('.recipient-card').show()
       if ( topCardh3 == "Detalles de la Orden"){
         $('.card-body-left h3').html("Direción de Recogida") 
       } else {

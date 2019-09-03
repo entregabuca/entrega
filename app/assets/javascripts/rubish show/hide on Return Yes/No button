@@ -104,6 +104,18 @@ JQuery
 ===================================== || ========================================
 Testing practise - WORKS!!
 
+// GET THE SENDER'S NAME
+var sender = $('#sender b').text()
+sender
+
+// GET THE RECIPIENT'S NAME
+$('input[name="order[recipients_attributes][0][name]"]').val(sender)
+recipientName
+
+
+
+
+
 var returnTrue = document.getElementById('order_return_true');
 returnTrue.addEventListener('click', function() {
   $('.card-right').hide()  
@@ -153,6 +165,32 @@ var longitude0 = $('#longitude0').val()
 var lon2 = $('#longitude1').val(longitude0)
 
 ===================================== || ========================================
+
+var recipientName =  $('input[name="order[recipients_attributes][0][name]"]').val()
+recipientName
+
+
+
+
+order[recipients_attributes][0][name]
+
+
+var returnVal = document.getElementById('returnValue');
+parentHTML = returnVal.parentNode.innerHTML;
+parentHTML = parentHTML.replace(/>\s+</g, "><");
+returnVal.parentNode.innerHTML = parentHTML;
+
+console.log(returnVal, parentHTML);​
+
+
+document.getElementById('order_recipients_attributes_0_name').val()
+
+
+ $('input[name="order[return]"]:checked').val()
+
+$('.recipient-card').hide()
+
+
 var h3TopCard = $('.top-card h3').text()
 
 if ( h3TopCard == "Detalles de la Orden"){
