@@ -128,9 +128,16 @@
 
 
 
-#order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, .cost-input, #order_comments_attributes_0_content {
+#order_description, #order_weight, #order_length, #order_width, #order_heigth, .recipient-name-input, .telephone-input, .email-input, #order_comments_attributes_0_content {
   font-size: 1.12rem;
   max-width: 60% !important;
+  border-color: #ffffff24 !important;
+  text-align: left !important;
+}
+
+.cost-input {
+  font-size: 1.12rem;
+  max-width: 35% !important;
   border-color: #ffffff24 !important;
   text-align: left !important;
 }
@@ -140,7 +147,7 @@
 }
 
 .card.card-cost {
-    margin-bottom: 3rem;
+    margin-bottom: 7rem;
 }
 
 .col-sm-5, .col-sm-6 {

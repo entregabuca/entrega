@@ -1,0 +1,7 @@
+
+<% if @user.class.name == 'Sender' %>
+  <td><%= @user.class.name == 'Sender' ? number_with_delimiter(( \
+        Geocoder::Calculations.distance_between( \
+        [order.locations[0].latitude,order.locations[0].longitude], \
+        [order.locations[1].latitude,order.locations[1].longitude])*1000).to_i) : '-' %></td>
+<% end %>

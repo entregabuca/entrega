@@ -123,15 +123,20 @@
   </div>
 <% end %>
 
-<!-- COST -->    
-<div class="card card-cost">
+
+<!-- COST -->  
+<div class="card card-cost ">
   <div class="card-body text-center">       
     <div class="form-group col-md-12 text-center">
+      <button type="button" class=" btn btn-calcualte-price mb-2 mt-2" ><%= Order.human_attribute_name(:calculate_price) %></button>       
+    </div>
+    <div class="form-group col-md-12 text-center">
       <b><%= form.label :cost, :class => "col-sm-5 cost-label" %></b>
-      <%= form.text_field :cost, :class => "col-sm-6 cost-input"%>
+      <%= form.text_field :cost, :class => "col-sm-6 cost-input", :value => 0%>
     </div>
   </div>
 </div>
+
     
 <!-- Think on how to move this Confirm button to ActionButtons in -->
 <!-- SUBMIT BUTTONS -->
