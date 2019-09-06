@@ -1,3 +1,230 @@
+DISTANCE & COST
+
+var cost = 0
+var basecost = 6000
+var valueKm = 1200
+var k = 1
+
+function roundNumber(number) {  
+  return (Math.round(number * 100)/100).toFixed(2);
+}
+
+var distanceBOP = getDistanceBetweenOrderPointsInKm()
+var roundedDistanceBOP = roundNumber(distanceBOP) 
+console.log("Rounded DistanceBOPP= " + roundedDistanceBOP)
+
+var distanceDifference = (distanceBOP - 4) // 4km
+var roundedDistanceDifference = roundNumber(distanceDifference)
+console.log("Distance Difference : " + roundedDistanceDifference) 
+
+function chargeOver4k (){
+  calchargaGretaer4k = (basecost  + (valueKm * roundedDistanceDifference / k))  // .toFixed(2)
+  var roundedcalchargaGretaer4k = roundNumber(calchargaGretaer4k)
+  return calchargaGretaer4k
+}
+
+console.log(chargeOver4k ())
+
+
+function totalCost (){
+  if (roundedDistanceBOP <= 4){
+    return cost = basecost
+    console.log("DOWN COST =" + cost)
+  } else {
+    return cost = chargeOver4k ()
+    console.log("UPPER COST =" + cost)
+  }
+}
+
+
+$( "a.btn-address-search" ).on( "click", function() {
+   $('input[name="order[cost]').val(totalCost)
+});
+
+//$('input[id="address0').val()
+
+function addressFieldEmpy() {
+var address0 = $('input[id="address0').val()
+var address1 = $('input[id="address0').val()
+
+if ((address0 && address1) != ""){
+alert("NO Empty");
+} else {
+alert('COne of them is Empty');
+}
+
+
+if ((address0 && address1) != ""){
+
+$( "a.btn-address-search" ).on( "click", function()
+
+
+
+
+(Math.round(distanceBOP * 100)/100).toFixed(2)
+
+
+function roundNumber  () {  
+  (Math.round(number * 100)/100).toFixed(2);
+}
+
+//var roundedDistanceBOP = Number(distanceBOP)
+console.log("distanceBOP: " + roundedDistanceBOP) 
+
+
+
+
+
+
+var distanceDifference = (distanceBOP - 4).toFixed(2) // 4km
+var roundedDistanceDifference = Number(distanceDifference)
+console.log("Distance Difference : " + roundedDistanceDifference)
+
+
+
+
+
+//function chargeAfter4K (){
+  chargaGretaer4k = ((valueKm * distanceDifference)/k)
+  return chargaGretaer4k
+//}
+
+
+console.log(chargeAfter4K)
+
+if (distanceBOP <= 4000){
+  cost = basecost
+} else {
+  cost = basecost + chargeAfter4K ()
+}
+
+
+console.log("distanceBOP:" + console.log)
+console.log("Distance Difference : " + distanceDifference)
+console.log("chargeAfter4K : " + chargeAfter4K ())
+
+console.log(getDistanceBetweenOrderPointsInKm())  
+console.log(car)
+
+
+
+
+
+
+//$(document).ready(function() {
+//    alert(' OE!!!')
+//})
+
+
+  if ((latitude1 == latitude0) && (longitude0 == longitude1)) {
+        alert(0)
+      }
+      else {
+        alert('OPOOO')
+      }
+
+ var distaceCrowflies = $('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+  return distaceCrowflies
+1
+2
+3
+  
+var searchAddress = $( "a.btn-address-search" )
+
+$( "a.btn-address-search" ).on( "click", function() {
+   $('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+});
+
+$('input[name="order[cost]').val(getDistanceFromLatLonInKm())
+
+
+
+
+
+searchAddress.on( "click", function() {
+  //console.log( $( this ).text() );
+  $('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+});
+
+
+
+
+returnTrue.addEventListener('click', comeBack);
+
+var searchAddress = $('a.btn-address-search')
+
+
+$('a.btn-address-search').addEventListener('click', setdistance);
+
+function setdistance(){
+  alert('OE!!!') 
+}
+
+
+$('a.btn-address-search').addEventListener('click', setdistance);
+
+searchAddress.addEventListener('click', function setdistance(){
+  alert('OE!!!') 
+});
+
+
+$('a.btn-address-search').addEventListener('click', setdistance);
+$('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+
+
+
+
+
+
+
+var searchAddress = document.getElementsByClassName('btn-address-search')
+
+
+
+function setdistance(){
+  alert('OE!!!')   //$('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+}
+
+searchAddress.addEventListener('click', setdistance);
+
+$('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+
+
+
+
+
+
+
+var distaceCrowflies = $('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+distaceCrowflies
+
+order[distance]
+
+
+
+var empty = $('#address0').blur(function()
+{
+    if( !$(this).val() ) {
+         alert('EMPTY')
+    }
+});
+
+empty
+
+function empty(){
+  var address0 = $('input[id="address0"]').val()
+  if ((address0 !== "") || (address1 !== "")){
+    alert ('address0 o address1 SON DIFFERENTES DE 0')
+    $('input[name="order[distance]').val(getDistanceFromLatLonInKm())
+  }
+  else{
+    alert ( "ambas son BLANKS")
+  }
+}
+empty()
+
+ ===================================== || =====================================
+
 
 // Hide the returning location
 // Change the title on left card 
@@ -27,30 +254,7 @@ returnFalse.addEventListener('click', function() {
   $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6') 
 });
  ===================================== || =====================================
-3-
-JQuery
-(function($) {
-  document.addEventListener("turbolinks:load", function() {
-    var returnTrue = document.getElementById('order_return_true')
-    var returnFalse = document.getElementById('order_return_false')
-    var address0Value = $('#address0').val()
-
-    returnTrue.addEventListener('click', function() {
-      $('.card-right').hide()  
-      $('.card-body-left h3').html("Sending and Receiving Location")  
-      $('.maps-row .col-md-6').removeClass( 'col-md-6' ).addClass( 'col-md-12')
-      $('#address1').val(address0Value) 
-    });
-
-    returnFalse.addEventListener('click', function() {
-      $('.card-right').show()  
-      $('.card-body-left h3').html("Sending Location")  
-      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6') 
-    });
-  })
-})(jQuery)
-
-4- 
+3- 
 (function($) {
   document.addEventListener("turbolinks:load", function() {
     var address0Value = $('#address0').val()
@@ -63,7 +267,8 @@ JQuery
     var longitude0 = $('#longitude0').val()
 
     function comeBack() {
-      $('.card-right').hide() 
+      $('.card-right').hide()
+      $('.recipient-card').hide() 
       if ( topCardh3 == "Detalles de la Orden"){
         $('.card-body-left h3').html("Dirección de Recogida y Entrega") 
       } else {
@@ -78,12 +283,14 @@ JQuery
 
     function comeBackNot() {
       $('.card-right').show()  
+      $('.recipient-card').show()
       if ( topCardh3 == "Detalles de la Orden"){
         $('.card-body-left h3').html("Direción de Recogida") 
       } else {
       $('.card-body-left h3').html("Sending Location")  
       }
-      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6' ) 
+      $('.maps-row .col-md-12').removeClass( 'col-md-12' ).addClass( 'col-md-6' )
+       
     }
 
     if (yesChecked == "true"){
@@ -100,9 +307,18 @@ JQuery
 
 
 
-
 ===================================== || ========================================
 Testing practise - WORKS!!
+
+
+?? ADDRESS SHOULD BE DIFERENT
+var address0Value = $('#address0').val()
+var address1Value = $('#address1').val()
+if (address0Value == address1Value){
+  alert("Pick up address Should be different !! ")
+} else {
+  alert ("tey are DIFFERENT")
+}
 
 // GET THE SENDER'S NAME
 var sender = $('#sender b').text()
@@ -111,6 +327,54 @@ sender
 // GET THE RECIPIENT'S NAME
 $('input[name="order[recipients_attributes][0][name]"]').val(sender)
 recipientName
+
+===================================== || ========================================
+
+// GET THE the Lat and Long 
+
+var latitude0 = $('input[id="latitude0"]').val()
+var latitude1 = $('input[id="latitude1"]').val()
+var longitude0 = $('input[id="longitude0"]').val()
+var longitude1 = $('input[id="longitude1"]').val()
+var R = 6371; // Radius of the earth in km
+
+// Then the whole calculation 
+
+function getDistanceFromLatLonInKm() {
+  var latitude0 = $('input[id="latitude0"]').val()
+  var latitude1 = $('input[id="latitude1"]').val()
+  var longitude0 = $('input[id="longitude0"]').val()
+  var longitude1 = $('input[id="longitude1"]').val()
+  var R = 6371; // Radius of the earth in km
+
+  if ((latitude1 == latitude0) && (longitude0 == longitude1)) {
+    return 0
+  }
+  else {
+
+  var diffLat = deg2rad(latitude1 - latitude0)
+  var diffLon = deg2rad(longitude1 - longitude0)
+  var a = 
+    Math.sin(diffLat/2) * Math.sin(diffLat/2) +
+    Math.cos(deg2rad(latitude0)) * Math.cos(deg2rad(latitude1)) * 
+    Math.sin(diffLon/2) * Math.sin(diffLon/2)
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d
+  }
+
+  function deg2rad(deg) {
+    return deg * (Math.PI/180)
+  }
+}
+
+getDistanceFromLatLonInKm()
+
+
+
+
+
+
 
 
 

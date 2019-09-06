@@ -25,7 +25,7 @@
         <th><%= Order.human_attribute_name(:status) %></th>
         <th><%= Order.human_attribute_name(:description) %></th>
 
-      <% if  current_admin %>       
+      <% if current_admin %>       
         <th><%= Order.human_attribute_name(:weight) %></th>
         <th><%= Order.human_attribute_name(:length) %></th>
         <th><%= Order.human_attribute_name(:widht) %></th>
@@ -44,6 +44,8 @@
       <% if ['Company', 'Transporter'].include? @user.class.name %>
         <th><%= t (:distance_to_order) %></th>
       <% end %>
+
+      <th><%= "Order Distance between points" %>
       <th><%= Order.human_attribute_name(:payment_status) %></th>
       <th><%= Order.human_attribute_name(:payment_method) %></th>
       <th colspan="3"></th>
@@ -61,12 +63,10 @@
           <td><%= order.transporter.present? ? order.transporter.name : "No Added yet" %></td>
 
         <% elsif @user.class.name == "Sender" %>
-
-                <td><%= order.transporter.present? ? order.transporter.company.name : "" %></td>
-                <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
+          <td><%= order.transporter.present? ? order.transporter.company.name : "" %></td>
+          <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
         <% elsif @user.class.name == "Company" ||  @user.class.name == "Transporter"%>
-
-                <td><%= order.sender.name %></td>
+          <td><%= order.sender.name %></td>
         <% end %>
           <td><%= order.status.present? ? enum_l(order, :status) : "-"  %></td>
           <td><%= order.description %></td>
@@ -90,6 +90,11 @@
         <% if ['Company', 'Transporter'].include? @user.class.name %>
           <%= render 'orders/distance', order: order %>
         <% end %>
+
+        <% if @user.class.name == 'Sender' %>
+        <%= render 'orders/distance_between_order_points', order: order %>
+        <% end %>
+
         <td><%= order.charge.present? ? order.charge.status : ""%></td>
         <td><%= order.charge.present? ? order.charge.payment_method : ""%></td>
         <%= render 'orders/indexActions', order: order %>

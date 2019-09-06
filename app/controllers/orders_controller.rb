@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
 
   def create
     @order= @user.orders.build(order_params)
-    calculate_cost
+    #calculate_cost
       respond_to do |format|
         if @order.save
           
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    calculate_cost
+    #calculate_cost
     #set_transporter_statuses_depending_order_status
     respond_to do |format|
       if @order.update(order_params)
@@ -103,7 +103,7 @@ class OrdersController < ApplicationController
     end
 
 
-# New code
+# New code  => MOve this to the models
     def set_transporter_statuses_depending_order_status   
       @order = Order.find(params[:id])
       @transporter = @order.transporter 
@@ -115,7 +115,29 @@ class OrdersController < ApplicationController
         @transporter.save
         puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Can be removed only for test
       end
-    end          #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK?
+    end    #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK in line 113?
+
+    def enum_l(model, enum)
+      enum_i18n(model.class, enum, model.send(enum))
+    end
+
+    def enum_i18n(class_name, enum, key)
+     I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
+    end
+
+
+    #def calculate_cost
+    #  @order.cost = 40000
+    #end
+
+    def order_params
+      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
+        :cost, :status, :radius, :sender_id, :transporter_id, comments_attributes: [:id, :content], 
+        locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
+    end
+end
+
+
 
     
 
@@ -128,7 +150,7 @@ class OrdersController < ApplicationController
   # def order_posted_update
   #   @order = Order.find(params[:id])
   #   if @order.status == 'posted'
-  #   	PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
+  #     PostedOrderJob.set(wait: 2.second).perform_later(@order.id) # DELTA_TIME
   #   end
   # end
 
@@ -141,23 +163,7 @@ class OrdersController < ApplicationController
     #end 
     
 # See how I can make this Two(2) last methods available globally
-    def enum_l(model, enum)
-      enum_i18n(model.class, enum, model.send(enum))
-    end
-
-    def enum_i18n(class_name, enum, key)
-     I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
-    end
 
 
-    def calculate_cost
-      @order.cost = 40000
-    end
 
-    def order_params
-      params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
-        :cost, :status, :radius, :sender_id, :transporter_id, comments_attributes: [:id, :content], 
-        locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
-    end
-end
 

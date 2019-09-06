@@ -4,12 +4,14 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.all
 
+=begin
     if params[:search].present? & params[:radius].present?
       @search_coordinates = Geocoder.search(params[:search]).first.coordinates
       @companies_near = Company.near(@search_coordinates, params[:radius].to_f/1000, {:units => :km})
     else
       @companies_near = Company.all
     end
+=end
   end
 
   def show

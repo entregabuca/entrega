@@ -39,7 +39,7 @@ es:
         radius: Radio
         payment_status: Estado del Pago
         payment_method: Forma de Pago
-        cost: Costo
+        cost: Precio
         company: Compañia
         transporter_id: Transportador
         sender_id: Usuario
@@ -64,7 +64,8 @@ es:
         content: Comentarios o Instrucciones 
         cancel_payment: Cancelar Pago 
         pay: Pagar
-        return: Regresar a Punto de Recogida 
+        return: Regresar a Punto de Recogida
+        calculate_price: Calcular Precio 
         # "true": "True"
         # "false": "False"      
       

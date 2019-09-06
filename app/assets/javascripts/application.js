@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require rails-ujs
 //= require activestorage
 //= require leaflet
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require turbolinks
 
@@ -112,3 +114,32 @@ function getCoordinatesFromAddressOSM(button){
     }
   });
 }
+
+// Get distance between the two order points as the crow flies (stright line)
+//function getDistanceBetweenOrderPointsInKm() {
+//  var latitude0 = $('input[id="latitude0"]').val()
+//  var latitude1 = $('input[id="latitude1"]').val()
+//  var longitude0 = $('input[id="longitude0"]').val()
+//  var longitude1 = $('input[id="longitude1"]').val()
+//  var R = 6371; // Radius of the earth in km
+//  if ((latitude1 == latitude0) && (longitude0 == longitude1)) {
+//    return 0
+//  }
+//  else {
+//
+//  function deg2rad(deg) {
+//    return deg * (Math.PI/180)
+//  }
+//
+//  var diffLat = deg2rad(latitude1 - latitude0)
+//  var diffLon = deg2rad(longitude1 - longitude0)
+//  var a = 
+//    Math.sin(diffLat/2) * Math.sin(diffLat/2) +
+//    Math.cos(deg2rad(latitude0)) * Math.cos(deg2rad(latitude1)) * 
+//    Math.sin(diffLon/2) * Math.sin(diffLon/2)
+//  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+//  var d = R * c; // Distance in km
+//  return d
+//  }
+//}   //console.log(getDistanceBetweenOrderPointsInKm()) // For visualization only on console
+

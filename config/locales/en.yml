@@ -65,6 +65,7 @@ en:
         cancel_payment: Cancel Payment
         pay: Pay
         return: Return to Pickup point
+        calculate_price: Calculate Price
         #  "yes" : "Yes" 
         #  "no": "No"
          
