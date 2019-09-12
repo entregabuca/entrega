@@ -19,6 +19,7 @@ class EpaycoController < ApplicationController
 
 
   def confirmation
+    puts " Entro a CONFIRMATION "
   	charge = Charge.where(uid: params[:x_id_invoice]).take
   	if charge.nil?
   		head :unprocessable_entity
@@ -26,11 +27,15 @@ class EpaycoController < ApplicationController
   	end
 
   	charge.update!(response_data: params.as_json, error_message: nil)
-
+      # puts " #{signature}"
   	if signature == params[:x_signature]
+      puts " X-CODE RESPONSE #{params[:x_cod_response]}"
+      puts "  PARAMS  #{params}"
   		update_status(charge, params[:x_cod_response])
+
       ##update_status(charge, params[:x_cod_transaction_state])
   		update_payment_method(charge, params[:x_franchise])
+      puts "X FRANCHISE  !!! #{params[:x_franchise]}"
   		head :no_content
   	else
   		puts "Signature: #{signature}"

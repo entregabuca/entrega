@@ -120,6 +120,13 @@
         <div class="d-inline col-sm-6 cost-values">            
           <%= @order.cost  %>
         </div>
+        <% if @charge.present? %>
+          <div class="d-inline col-sm-6 cost-values">  
+            <%= @charge.status %>
+            <%= @charge.payment_method %>
+          </div>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -186,15 +193,17 @@
   </div>
 </div>
 
-<div class="card mb-2 return-card">
-  <div class="card-body pl-1">    
-    <div class="col-md-12 my-2">  
-      <div class="row">
-        <%= render 'orders/users_earings'%>
+<% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) %>
+  <div class="card mb-2 return-card">
+    <div class="card-body pl-1">    
+      <div class="col-md-12 my-2">  
+        <div class="row">          
+            <%= render 'orders/users_earings'%>          
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
   
 <!-- MAPS -->
@@ -338,4 +347,6 @@
     </div>
   </div>
 <% end %>
+
+
  </div>
