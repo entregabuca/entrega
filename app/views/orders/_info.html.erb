@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED -->
+<%# if @order.recipients.present? %> <!-- ANTONIO!!! REMOVED THIS (IF) WHEN SEEDS ARE REMOVED . October NOT TO SURE NOW -->
 <% if @order.return == false  %>   
   <div class="card mb-2 card-show-recipient">
     <div class="card-body pl-1"> 
@@ -98,12 +98,16 @@
 <% end %>
 
 <!-- COMPANY & TRANSPORTER FROM COMPANY OR TRANSPORTER  --> 
-<% if @user.class.name == "Company" || @user.class.name == "Transporter"  &&  @order.transporter.present? %> 
+<%# if @user.class.name == "Company" || @user.class.name == "Transporter"  &&  @order.transporter.present? %> 
+<!-- ON Show Action -->
+<% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
+  <% if @order.transporter.present? %>
     <%= render 'orders/compa-transporter', order: @order %>
 <% else %> 
     <div class="card mb-2 p-3 message3TransComp text-center"> 
       <%= t (:no_company_added) %>
     </div> 
+<% end %>
 <% end %>
 
 <!-- COST -->
@@ -177,6 +181,16 @@
             <%=t(:no_this)%>
           <% end %>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-2 return-card">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row">
+        <%= render 'orders/users_earings'%>
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@
           <td><%= transporter.name %></td>
           <td><%= transporter.telephone %></td>
           <td><%= transporter.email %></td>
-          <td><%= transporter.status %></td>
+          <td><%= transporter.status.capitalize %></td>
           <td><%= transporter.company.name %></td>
           <td><%= transporter.orders.size %></td>
           <td><%= link_to url_for([@user, transporter]), 'data-turbolinks': false do %><span class="fa fa-eye"></span><% end %></td>

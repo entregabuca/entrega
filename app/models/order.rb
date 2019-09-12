@@ -39,6 +39,8 @@ include ActiveModel::Dirty
   validate :status_draft_radius_500
  #validate :status_posted_radius_500, on: :create
 
+  validate  :set_earnings
+
   def status_draft_radius_500
     if status == 'draft'
       self.radius = 500      
@@ -52,6 +54,34 @@ include ActiveModel::Dirty
       PostedOrderJob.perform_later(self.id)
     end
   end
+
+
+ # def posted 
+ #   self.status = 'posted'
+ # end
+
+  def set_earnings
+    if self.status == 'posted'
+      self.company_earning = cost * 0.3
+      self.transporter_earning = cost * 0.6
+      self.admin_earning = cost * 0.1
+    end
+  end
+
+  #def set_transporter_earning
+  #  set_order
+  #  #@transporter = @order.transporter
+  #  @order.transporter_earning = cost * 0.6
+  #end
+#
+  #def set_admin_earning
+  #  set_order
+  #  @order.admin_earning = cost * 0.1
+  #end
+
+
+
+
    # ----------------------------------- || -------------------------------------------------------------
 
 # CHECK REFACTORING ON TIME LOGICS TO SEE WHAT CAN BE COMBINED OR ELIMINATED

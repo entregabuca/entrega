@@ -35,7 +35,7 @@ es:
         pickup_time: Fecha/Hora de Recogida
         reciving_location: Direción de Destino
         delivery_time: Fecha/Hora de Entrega
-        status: Estado
+        status: Estado de la Orden
         radius: Radio
         payment_status: Estado del Pago
         payment_method: Forma de Pago
@@ -65,7 +65,12 @@ es:
         cancel_payment: Cancelar Pago 
         pay: Pagar
         return: Regresar a Punto de Recogida
-        calculate_price: Calcular Precio 
+        calculate_price: Calcular Precio
+        company_earning: Ganancia de la Agencia
+        transporter_earning: Ganacia del Transportador
+        admin_earning: Ganacia de la Plataforma
+        total_distance: Distancia Total
+        earning: Ganancia
         # "true": "True"
         # "false": "False"      
       

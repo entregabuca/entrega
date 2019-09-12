@@ -102,7 +102,7 @@
 </div>          
   
 <!-- RECIPIENT-->
-<%= form.fields_for :recipients, @order.recipients[0].present? ? @order.recipients[0] : Recipient.new  do |f| %>
+<%= form.fields_for :recipients, @order.recipients[0].present? ? @order.recipients.last : Recipient.new  do |f| %>
 
   <div class="card recipient text-center recipient-card">
     <div class="card-body">            

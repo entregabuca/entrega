@@ -1,0 +1,19 @@
+<% if  @user.class.name == "Company" %>
+  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:company_earning) %>
+  </div>        
+  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+    <%= @order.company_earning %> 
+  </div>
+<% elsif  @user.class.name == "Transporter" %>
+  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:transporter_earning) %>
+  </div>        
+  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+    <%= @order.transporter_earning %> 
+  </div>
+<% else  @user.class.name == "Admin" %>
+  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:admin_earning) %>
+  </div>        
+  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+    <%= @order.admin_earning %> 
+  </div>
+<% end %>

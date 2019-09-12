@@ -35,7 +35,7 @@ en:
         pickup_time: Pickup Time
         reciving_location: Reciving Location
         delivery_time: Delivery Time
-        status: Status 
+        status: Order Status 
         radius: Radius 
         payment_status: Payment Status
         payment_method: Payment Method      
@@ -66,6 +66,11 @@ en:
         pay: Pay
         return: Return to Pickup point
         calculate_price: Calculate Price
+        company_earning: Company Earning
+        transporter_earning:
+        admin_earning: Platform Earning
+        total_distance: Total Distance
+        earning: Eaning
         #  "yes" : "Yes" 
         #  "no": "No"
          

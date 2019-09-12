@@ -1,5 +1,4 @@
-    
-function getDistanceBetweenOrderPointsInKm() { 
+function getDistanceBetweenOrderPointsInKm(yesChecked) { 
 
   var latitude0 = map0.getCenter().lat
   var latitude1 = map1.getCenter().lat
@@ -27,7 +26,5 @@ function getDistanceBetweenOrderPointsInKm() {
     return d 
   } else {
     return d 
-  }
-
-       
+  }       
 }

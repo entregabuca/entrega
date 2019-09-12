@@ -3,8 +3,6 @@
 
 <h1 class='headingspace'> <%= @user.name.presence || @user.email %> <%= t (:profile) %></h1>  
 
-
-
 <div class="card mb-2  ">
   <div class="card-body pl-1"> 
     <div class="col-md-12 mb-2 mt-2">
@@ -38,9 +36,7 @@
           <b><%= Company.human_attribute_name(:status) %>:</b>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-Showinputs company-show-Status">
-
-          <%#= enum_l(@user, :status)%><%= enum_l(@user, :status).capitalize rescue log_error($!, $@) %>
-
+          <%= enum_l(@user, :status).capitalize rescue log_error($!, $@) %>
         </div>
       </div>
     </div>
@@ -58,7 +54,7 @@
         </div> 
         <% if @user.locations.present? %>         
           <div class="mb-5 companyAddress">
-             <%= @user.locations[0].address %>
+             <%= @user.locations.last.address %>
           </div> 
           <div class="comp-Map d-flex justify-content-center mb-5">
            <%= render 'companies/showingMap' %> 
