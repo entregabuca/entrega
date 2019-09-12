@@ -126,7 +126,13 @@
             <%= @order.charge.payment_method %>
             <%= @order.cost %>
           </div>
-        <% end %>
+          <% end %>
+          <% if @charge.present? %>
+            <div>          
+              <%= @order.charge.status %>
+            </div>
+          <% end %>
+         
         </div>
       </div>
     </div>
