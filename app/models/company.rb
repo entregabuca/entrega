@@ -6,7 +6,7 @@ class Company < ApplicationRecord
   has_many :transporters, dependent: :destroy
   has_many :orders, through: :transporters
   has_many :locations, as: :addressable, :dependent => :destroy
-
+  
   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
   before_create :set_default_location
   before_create :default_status

@@ -1,6 +1,4 @@
 
-
-
 <table class="table table-striped table-hover mb-5">
   <thead>
     <tr class="tableHeadingbar"> 
@@ -41,13 +39,17 @@
 <!-- <th>Distance to Order</th>-->
         <th><%= Order.human_attribute_name(:cost) %></th> 
 
-      <% if ['Company', 'Transporter'].include? @user.class.name %>
+      
+      <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
         <th><%= t (:distance_to_order) %></th>
+        <th><%= Order.human_attribute_name(:total_distance) %> 
       <% end %>
-
-      <th><%= "Order Distance between points" %>
       <th><%= Order.human_attribute_name(:payment_status) %></th>
       <th><%= Order.human_attribute_name(:payment_method) %></th>
+      <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
+        <th><%= Order.human_attribute_name(:earning) %></th>
+      <% end %>
+      
       <th colspan="3"></th>
      
     </tr>
@@ -68,7 +70,7 @@
         <% elsif @user.class.name == "Company" ||  @user.class.name == "Transporter"%>
           <td><%= order.sender.name %></td>
         <% end %>
-          <td><%= order.status.present? ? enum_l(order, :status) : "-"  %></td>
+          <td><%= order.status.present? ? enum_l(order, :status).capitalize : "-"  %></td>
           <td><%= order.description %></td>
         <% if  current_admin %>    
           <td><%= order.weight %></td>
@@ -90,13 +92,14 @@
         <% if ['Company', 'Transporter'].include? @user.class.name %>
           <%= render 'orders/distance', order: order %>
         <% end %>
-
-        <% if @user.class.name == 'Sender' %>
-        <%= render 'orders/distance_between_order_points', order: order %>
+        <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
+          <%= render 'orders/distance_between_order_points', order: order %>
         <% end %>
-
-        <td><%= order.charge.present? ? order.charge.status : ""%></td>
-        <td><%= order.charge.present? ? order.charge.payment_method : ""%></td>
+        <td><%= order.charge.present? ? order.charge.status.capitalize : "" %></td>
+        <td><%= order.charge.present? ? order.charge.payment_method.capitalize : "" %></td>
+        <% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) && (order.status =='completed') %>
+          <%= render 'orders/users_earnings_index', order: order %>
+        <% end %>
         <%= render 'orders/indexActions', order: order %>
       </tr>
     <% end %>        

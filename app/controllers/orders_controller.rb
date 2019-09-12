@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   after_action :set_transporter_statuses_depending_order_status, only: [:update]
+  
 
   def index
     @orders = @user.orders
@@ -35,8 +36,7 @@ class OrdersController < ApplicationController
    # if @order.charge.present?
    #   @charge = @order.charge
    # else
-      @charge = Charge.new
-   # end
+      @charge = Charge.new      
   end
 
   def new
@@ -125,10 +125,6 @@ class OrdersController < ApplicationController
      I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
     end
 
-
-    #def calculate_cost
-    #  @order.cost = 40000
-    #end
 
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
