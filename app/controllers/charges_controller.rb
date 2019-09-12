@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
 #  end
 
 
-
+# lines 31 and 33 to be checked!!!
 
 def create
     #puts " Entro al Create"
