@@ -32,6 +32,7 @@ def create
     if Rails.env == "production"
       @order.status = 'payment'    
       if @order.save && @charge.save
+        puts " STATUS BEFORE PAYMENT: #{@charge.status}"
         render :epayco
       else
         render :newstau
