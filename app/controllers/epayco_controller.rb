@@ -9,15 +9,15 @@ class EpaycoController < ApplicationController
     #puts " BEFORE PARSED. RESPONSE STATUS #{@charge.status}"
     puts ""
     #puts " BEFORE PARSED.  @CHARGE IS #{@charge}"
+
   	parsed = JSON.parse(response.body)
+    puts parsed
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
       puts " DATA HAS BEEN PARSED "
       puts ""
    
-
-
       redirect_to url_for ([@charge.order.sender, @charge.order])
     else
   		@error = "Unable to retreive the information"
@@ -65,17 +65,18 @@ class EpaycoController < ApplicationController
   	end
 
   	def update_status(charge, status)
+      puts " UPADTING STATUS !!"
   		if status == '1'
   			charge.paid!
-        order = charge.order
-        order.status = 'posted'    
-        order.save
-
-        puts "   Notification Sent to Sender #{@order.sender.id}"
-        NotificationChannel.broadcast_to(@order.sender,
-              title: 'Notificación', 
-              body: "Pago Aceptado. El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
-                    ha cambiado.")
+        #order = charge.order
+        #order.status = 'posted'    
+        #order.save
+#
+        #puts "   Notification Sent to Sender #{@order.sender.id}"
+        #NotificationChannel.broadcast_to(@order.sender,
+        #      title: 'Notificación', 
+        #      body: "Pago Aceptado. El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
+        #            ha cambiado.")
 
   		elsif status == '2' || status == '4'
   			charge.update!(status: :rejected, error_message: params[:x_response_reason_text])
