@@ -5,12 +5,19 @@ class EpaycoController < ApplicationController
   def result
   	url = "https://secure.epayco.co/validation/v1/reference/#{params[:ref_payco]}"
   	response = HTTParty.get(url)
-
+    puts " ON RESULT CONTROLLER OF EPAYCO"
+    puts " BEFORE PARSED. RESPONSE STATUS #{@charge.status}"
+    puts ""
+    puts " BEFORE PARSED.  @CHARGE IS #{@charge}"
   	parsed = JSON.parse(response.body)
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
       puts " RESPONSE STATUS #{@charge.status}"
+      puts ""
+      puts " @CHARGE IS #{@charge}"
+
+
       redirect_to url_for ([@charge.order.sender, @charge.order])
     else
   		@error = "Unable to retreive the information"
@@ -19,8 +26,10 @@ class EpaycoController < ApplicationController
   end
 
 
+# WHY SOME HAVE @CHARGE AND OTHERS ONLY CHARGE
+
   def confirmation
-    puts " Entro a CONFIRMATION "
+    puts " ON CONFIRMATION "
   	charge = Charge.where(uid: params[:x_id_invoice]).take
   	if charge.nil?
   		head :unprocessable_entity
@@ -28,7 +37,9 @@ class EpaycoController < ApplicationController
   	end
 
   	charge.update!(response_data: params.as_json, error_message: nil)
-      # puts " #{signature}"
+       puts " ON CONFIRMATION CHARGE IS #{charge}"
+       puts " ON CONFIRMATION SIGNATURE IS  #{params[:x_signature]}"
+
   	if signature == params[:x_signature]
       puts " X-CODE RESPONSE #{params[:x_cod_response]}"
       puts "  PARAMS  #{params}"

@@ -103,11 +103,11 @@
 <% if @user.class.name == "Company" &&  current_page?(controller: 'orders', action: 'show')%> 
   <% if @order.transporter.present? %>
     <%= render 'orders/compa-transporter', order: @order %>
-<% else %> 
+  <% else %> 
     <div class="card mb-2 p-3 message3TransComp text-center"> 
       <%= t (:no_company_added) %>
     </div> 
-<% end %>
+  <% end %>
 <% end %>
 
 <!-- COST -->
