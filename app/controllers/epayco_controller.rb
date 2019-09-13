@@ -5,17 +5,17 @@ class EpaycoController < ApplicationController
   def result
   	url = "https://secure.epayco.co/validation/v1/reference/#{params[:ref_payco]}"
   	response = HTTParty.get(url)
-    puts " ON RESULT CONTROLLER OF EPAYCO"
-    puts " BEFORE PARSED. RESPONSE STATUS #{@charge.status}"
+    puts " ON EPAYCO RESULT CONTROLLER !!!"
+    #puts " BEFORE PARSED. RESPONSE STATUS #{@charge.status}"
     puts ""
-    puts " BEFORE PARSED.  @CHARGE IS #{@charge}"
+    #puts " BEFORE PARSED.  @CHARGE IS #{@charge}"
   	parsed = JSON.parse(response.body)
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
-      puts " RESPONSE STATUS #{@charge.status}"
+      puts " DATA HAS BEEN PARSED "
       puts ""
-      puts " @CHARGE IS #{@charge}"
+   
 
 
       redirect_to url_for ([@charge.order.sender, @charge.order])
@@ -37,7 +37,7 @@ class EpaycoController < ApplicationController
   	end
 
   	charge.update!(response_data: params.as_json, error_message: nil)
-       puts " ON CONFIRMATION CHARGE IS #{charge}"
+       
        puts " ON CONFIRMATION SIGNATURE IS  #{params[:x_signature]}"
 
   	if signature == params[:x_signature]
@@ -45,12 +45,13 @@ class EpaycoController < ApplicationController
       puts "  PARAMS  #{params}"
   		update_status(charge, params[:x_cod_response])
 
-      ##update_status(charge, params[:x_cod_transaction_state])
+      update_status(charge, params[:x_cod_transaction_state])
+      puts "X COD TRANSACTION STATE !!! #{params[:x_cod_transaction_state]}"
   		update_payment_method(charge, params[:x_franchise])
       puts "X FRANCHISE  !!! #{params[:x_franchise]}"
   		head :no_content
   	else
-  		puts "Signature: #{signature}"
+  		puts "Signature if doesn't match: #{signature}"
   		puts "Received signature: #{params[:x_signature]}"
   		head :unprocessable_entity
   	end

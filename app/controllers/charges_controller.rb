@@ -28,10 +28,10 @@ class ChargesController < ApplicationController
 def create
     puts " ON CREATED CONTROLLER"
     @charge = Charge.new(charge_params)
-    puts " THIS IS THE CREATED CHARGE  #{@charge}"
+    puts " THIS IS THE CREATED CHARGE  #{@charge.id}"
     @order = @charge.order
     if Rails.env == "production"
-      puts " PRODUCTION. THIS IS WHAT IS SEEN AS CHARGE #{@charge}"
+      
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @CHARGE.STATUS is #{@charge.status.capitalize} "
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
@@ -39,7 +39,7 @@ def create
       @order.status = 'payment'    
       if @order.save && @charge.save
         puts " PRODUCTION. IF ORDER AND CHARGE SAVED. VALUES AFTER SAVE."
-        puts " PRODUCTION. VALUES AFTER SAVE. THIS IS WHAT IS SEEN AS CHARGE #{@charge}"
+        
         puts " PRODUCTION. VALUES AFTER SAVE. @ORDER.STATUS is #{@order.status.capitalize} "
         puts " PRODUCTION. VALUES AFTER SAVE. @CHARGE.STATUS is #{@charge.status.capitalize} "
         puts " PRODUCTION. VALUES AFTER SAVE. @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
