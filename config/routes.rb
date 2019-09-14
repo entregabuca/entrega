@@ -78,7 +78,9 @@ root 'access#home'
           resources :orders 
         end
 
-
+        resources :orders do 
+          resources :charges, only: [ :new, :create]
+        end
    # end
     
   #end
