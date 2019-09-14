@@ -36,8 +36,8 @@ def create
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @CHARGE.STATUS is #{@charge.status.capitalize} "
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
       puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @CHARGE.AMOUNT is #{@charge.amount} "
-      @order.status = 'payment'    
-      if @order.save && @charge.save
+      #@order.status = 'payment'    
+      if  @charge.save #@order.save &&
         puts " PRODUCTION. IF ORDER AND CHARGE SAVED. VALUES AFTER SAVE."
         
         puts " PRODUCTION. VALUES AFTER SAVE. @ORDER.STATUS is #{@order.status.capitalize} "
@@ -46,7 +46,7 @@ def create
         puts " PRODUCTION. VALUES AFTER SAVE. @CHARGE.AMOUNT is #{@charge.amount} "
         render :epayco
       else
-        render :newstau
+        render :new
       end
     else
       puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
