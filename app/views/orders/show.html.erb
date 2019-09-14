@@ -18,7 +18,7 @@
 	<div class="charge-form pt-4">
 		<div class="card py-5 mb-5">
 			<div class="row justify-content-center">
-				<%= form_with(model: @charge, url: [@order, @charge], local: true) do |f| %> <!-- @user was change for @order -->
+				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %> <!-- @user was change for @order -->
 					<div class="row form-group justify-content-center">
 						<%= f.label :order_cost, @order.cost.to_s, class: "text-center" %>
 						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
