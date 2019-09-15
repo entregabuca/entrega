@@ -64,7 +64,7 @@ root 'access#home'
         end
 
         resources :senders do
-          resources :charges, only: [ :new, :create, :update] 
+          resources :charges, only: [ :new, :create] 
           resources :orders do
             resources :recipients 
             collection do
