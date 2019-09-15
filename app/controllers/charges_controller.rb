@@ -40,10 +40,13 @@ def create
         render :new
       end
     else
-      #puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
+      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS before setting status to update  #{@order.status.capitalize} "
 
       @order.status = 'posted'  
+      @order.save
+      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
       respond_to do |format|
+        #sends notification to sender saying that order has been sent
         if @order.save
           puts "   Notification Sent to Sender #{@order.sender.id}"
           NotificationChannel.broadcast_to(@order.sender,

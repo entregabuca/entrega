@@ -107,13 +107,15 @@ class OrdersController < ApplicationController
     def set_transporter_statuses_depending_order_status   
       @order = Order.find(params[:id])
       @transporter = @order.transporter 
-      if @order.status == "taken"
-        @transporter.status = "busy"
-        @transporter.save
-      elsif (@order.status == 'completed' || @order.status ==  'cancelled')  
-        @transporter.status = 'available'
-        @transporter.save
-        puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Can be removed only for test
+      if @transporter.present?
+        if @order.status == "taken"
+          @transporter.status = "busy"
+          @transporter.save
+        elsif (@order.status == 'completed' || @order.status ==  'cancelled')  
+          @transporter.status = 'available'
+          @transporter.save
+          puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Can be removed only for test
+        end
       end
     end    #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK in line 113?
 
