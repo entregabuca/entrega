@@ -46,6 +46,7 @@
       <% end %>
       <th><%= Order.human_attribute_name(:payment_status) %></th>
       <th><%= Order.human_attribute_name(:payment_method) %></th>
+      <!--<th><%#= Order.human_attribute_name(:card) %></th> -->
       <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
         <th><%= Order.human_attribute_name(:earning) %></th>
       <% end %>
@@ -97,6 +98,7 @@
         <% end %>
         <td><%= order.charge.present? ? order.charge.status.capitalize : "" %></td>
         <td><%= order.charge.present? ? order.charge.payment_method.capitalize : "" %></td>
+        <!-- <td><%#= order.charge.present? ? order.charge.x_franchise : "" %></td> -->
         <% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) && (order.status =='completed') %>
           <%= render 'orders/users_earnings_index', order: order %>
         <% end %>

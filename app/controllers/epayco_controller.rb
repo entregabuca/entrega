@@ -68,6 +68,7 @@ class EpaycoController < ApplicationController
       puts " UPADTING STATUS !!"
   		if status == '1'
   			charge.paid!
+         puts " CHARGE STATUS FROM UPDATE STATUS METHOD in EPAYCO CONTROLLER  IS #{@charge.status}"
         #order = charge.order
         #order.status = 'posted'    
         #order.save
