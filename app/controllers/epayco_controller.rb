@@ -10,6 +10,9 @@ class EpaycoController < ApplicationController
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
+
+
+
       redirect_to url_for ([@charge.order.sender, @charge.order])
     else
   		@error = "Unable to retreive the information"
@@ -33,6 +36,7 @@ class EpaycoController < ApplicationController
        puts " ON CONFIRMATION SIGNATURE IS  #{params[:x_signature]}"
 
   	if signature == params[:x_signature]
+
       puts " X-CODE RESPONSE #{params[:x_cod_response]}"
       puts "  PARAMS  #{params}"
   		update_status(charge, params[:x_cod_response])
@@ -40,8 +44,26 @@ class EpaycoController < ApplicationController
       update_status(charge, params[:x_cod_transaction_state])
       puts "X COD TRANSACTION STATE !!! #{params[:x_cod_transaction_state]}"
   		update_payment_method(charge, params[:x_franchise])
+
+
+      
+
+
       puts "X FRANCHISE  !!! #{params[:x_franchise]}"
   		head :no_content
+
+        order = charge.order
+        order.status = 'posted'    
+        order.save
+
+        puts "   Notification Sent to Sender #{@order.sender.id}"
+        NotificationChannel.broadcast_to(@order.sender,
+              title: 'Notificación', 
+              body: "Pago Aceptado. El Estado de la <a href=""#{url_for([@order.sender, @order])}""> orden No: #{@order.id.to_s} </a>, 
+                    ha cambiado.")
+
+
+
   	else
   		puts "Signature if doesn't match: #{signature}"
   		puts "Received signature: #{params[:x_signature]}"
