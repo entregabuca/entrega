@@ -5,19 +5,11 @@ class EpaycoController < ApplicationController
   def result
   	url = "https://secure.epayco.co/validation/v1/reference/#{params[:ref_payco]}"
   	response = HTTParty.get(url)
-    puts " ON EPAYCO RESULT CONTROLLER !!!"
-    #puts " BEFORE PARSED. RESPONSE STATUS #{@charge.status}"
-    puts ""
-    #puts " BEFORE PARSED.  @CHARGE IS #{@charge}"
-
-  	parsed = JSON.parse(response.body)
+    parsed = JSON.parse(response.body)
     puts parsed
   	if parsed["success"]
   		@data = parsed["data"]
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
-      puts " DATA HAS BEEN PARSED "
-      puts ""
-   
       redirect_to url_for ([@charge.order.sender, @charge.order])
     else
   		@error = "Unable to retreive the information"
@@ -68,7 +60,7 @@ class EpaycoController < ApplicationController
       puts " UPADTING STATUS !!"
   		if status == '1'
   			charge.paid!
-         puts " CHARGE STATUS FROM UPDATE STATUS METHOD in EPAYCO CONTROLLER  IS #{@charge.status}"
+
         #order = charge.order
         #order.status = 'posted'    
         #order.save

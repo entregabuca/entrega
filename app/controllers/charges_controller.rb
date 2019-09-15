@@ -28,35 +28,22 @@ class ChargesController < ApplicationController
 def create
     puts " ON CREATED CONTROLLER"
     @charge = Charge.new(charge_params)
-    puts " THIS IS THE CREATED CHARGE  #{@charge.id}"
+    
     @order = @charge.order
     if Rails.env == "production"
-      
-      puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
-      puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @CHARGE.STATUS is #{@charge.status.capitalize} "
-      puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
-      puts " PRODUCTION. ORDER SENT FOR PAYMENT!!! @CHARGE.AMOUNT is #{@charge.amount} "
+
       #@order.status = 'payment'    
       if  @charge.save #@order.save &&
-        puts " PRODUCTION. IF ORDER AND CHARGE SAVED. VALUES AFTER SAVE."
-        
-        puts " PRODUCTION. VALUES AFTER SAVE. @ORDER.STATUS is #{@order.status.capitalize} "
-        puts " PRODUCTION. VALUES AFTER SAVE. @CHARGE.STATUS is #{@charge.status.capitalize} "
-        puts " PRODUCTION. VALUES AFTER SAVE. @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
-        puts " PRODUCTION. VALUES AFTER SAVE. @CHARGE.AMOUNT is #{@charge.amount} "
+       
         render :epayco
       else
         render :new
       end
     else
-      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
-      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @CHARGE.STATUS is #{@charge.status.capitalize} "
-      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize}"
-      puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @CHARGE.AMOUNT is #{@charge.amount} "
+      #puts "   DEVELOPMENT. ORDER SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
+
       @order.status = 'posted'  
       respond_to do |format|
-        puts "  DEVELOPMENT.ORDER STATUS AFTER SETTING IT TO STATUS = POSTED WHENT SENT FOR PAYMENT!!! @ORDER.STATUS is #{@order.status.capitalize} "
-        puts "  DEVELOPMENT.ORDER STATUS AFTER SETTING IT TO STATUS = POSTED ORDER SENT FOR PAYMENT!!! @ORDER.CHARGE.STATUS is #{@order.charge.status.capitalize} "
         if @order.save
           puts "   Notification Sent to Sender #{@order.sender.id}"
           NotificationChannel.broadcast_to(@order.sender,
@@ -74,27 +61,6 @@ def create
       end
     end
   end
-
-
-def update
-  respond_to do |format|
-    @charge.update(charge_params)
-    @charge.save
-    puts " CHARGE STATUS FROM CHARGE CONTROLLER IS #{@charge.status}"
-
-      #if @charge.update(charge_params)
-      #  format.html { redirect_to @user, notice: t(:company_updated) }#t('activerecord.successful.messages.updated', model: @user.class.model_name.human)}
-      #  format.json { render :show, status: :ok, location: @user }
-      #else
-      #  format.html { render :edit }
-      #  format.json { render json: @user.errors, status: :unprocessable_entity }
-      #end
-    end
-
-end
-
-
-
 
   private
 
