@@ -38,6 +38,10 @@ include ActiveModel::Dirty
     "cancelled" => 5,
     "payment" => 6
   }
+
+  enum pay_with:{ cash: "cash", card: "card" }
+
+
   validates :description, presence: true 
   after_save :check_status_is_posted 
 

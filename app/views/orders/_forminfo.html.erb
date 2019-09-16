@@ -137,6 +137,28 @@
   </div>
 </div>
 
+<!-- PAY WITH -->
+<div class="card mb-2 return-card">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row">
+        <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
+        </div>
+        <div class="col-sm-6 colleft">
+        <div class="card card-radright">
+          <div class="card-body radiobools">
+            <%= form.radio_button :pay_with, 'cash' , :checked => true %>
+            <%= label :pay_with_cash, t(:cash) %> <br/>
+            <%= form.radio_button :pay_with, 'card' %>
+            <%= label :pay_with_cash, t(:card) %> 
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     
 <!-- Think on how to move this Confirm button to ActionButtons in -->
 <!-- SUBMIT BUTTONS -->

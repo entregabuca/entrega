@@ -71,6 +71,7 @@ en:
         admin_earning: Platform Earning
         total_distance: Total Distance
         earning: Eaning
+        pay_with: Pay with
         #  "yes" : "Yes" 
         #  "no": "No"
          
@@ -140,6 +141,9 @@ en:
           completed: Completed
           cancelled: Cancelled
           payment: Payment
+        pay_withs:
+          cash: Cash
+          card: Card
       errors:
         messages:
           record_invalid: 'Validation failed: %{errors}'
@@ -147,6 +151,8 @@ en:
             has_one: Cannot delete record because a dependent %{record} exists
             has_many: Cannot delete record because dependent %{record} exist
 
+  cash: Cash
+  card: Card
   this: "Yes"
   no_this: "No"
   company_created: Company was successfully created !! 

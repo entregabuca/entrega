@@ -1,0 +1,61 @@
+<!-- PAY WITH CASH -->
+<% if @order.pay_with == 'cash' %>
+	<div class="card mb-2">
+	  <div class="card-body pl-1">    
+	    <div class="col-md-12 my-2">  
+	      <div class="row">
+	        <div class="d-inline col-sm-6 cost-heading bolds">
+	        	<%= Order.human_attribute_name(:pay_with) %>
+	        </div>
+	        <div class="d-inline col-sm-6 cost-values">            
+	          <%= enum_l(@order, :pay_with) %>  
+	        </div>
+	      </div>
+
+				<%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+				  <div>
+			        <%= form.hidden_field :status, :value => 'posted' %>
+			        <%= form.submit  Order.human_attribute_name(:post), :class => ' btn btn-primary btn-post' %>   
+			    </div>  
+				<% end %>
+
+			</div>
+	  </div>
+	</div>
+
+<% else %> 
+<!-- PAY WITH CARD -->
+	<div class="charge-form pt-4">
+		<div class="card py-5 mb-5">
+			<div class="row mb-5">
+        <div class="d-inline col-sm-6 cost-heading bolds">
+        	<%= Order.human_attribute_name(:pay_with) %>
+        </div>
+        <div class="d-inline col-sm-6 cost-values">            
+          <%= enum_l(@order, :pay_with)  %>  
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="d-inline col-sm-6 cost-heading bolds"><%= Order.human_attribute_name(:cost) %>
+        </div>
+        <div class="d-inline col-sm-6 cost-values">            
+          <%= @order.cost  %>
+        </div>
+    	</div>
+
+			<div class="row justify-content-center">
+				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %> 
+					<div class="row form-group justify-content-center">
+						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
+						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
+					</div>
+					<div>
+						<%= link_to "#{Order.human_attribute_name(:cancel_payment)}", root_path, class: "btn btn-cancel-payment" %>
+						<%= f.submit "#{Order.human_attribute_name(:pay)}", class: "btn btn-primary", class: "btn btn-payorder status_buttons" %>
+					</div>
+				<% end %>			
+			</div>
+		</div>
+	</div>
+<% end %>
