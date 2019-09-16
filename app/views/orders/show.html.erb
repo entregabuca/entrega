@@ -10,28 +10,12 @@
 <%= render 'orders/info' %>
 
 <!-- !! EPAYCO !!! -->
-<div class="buttons"> 
-	<%= render 'epayco/result' %>
-</div>
+<!--<div class="buttons"> 
+	<%#= render 'epayco/result' %>
+</div> -->
 
 <% if @order.status == 'draft' %>
-	<div class="charge-form pt-4">
-		<div class="card py-5 mb-5">
-			<div class="row justify-content-center">
-				<%= form_with(model: @charge, url: [@user, @charge], local: true) do |f| %> <!-- @user was change for @order -->
-					<div class="row form-group justify-content-center">
-						<%= f.label :order_cost, @order.cost.to_s, class: "text-center" %>
-						<%= f.hidden_field :amount, :value => @order.cost , class: "form-control" %>
-						<%= f.hidden_field :order_id, :value => @order.id , class: "form-control" %>
-					</div>
-					<div>
-						<%= link_to "#{Order.human_attribute_name(:cancel_payment)}", root_path, class: "btn btn-cancel-payment" %>
-						<%= f.submit "#{Order.human_attribute_name(:pay)}", class: "btn btn-primary", class: "btn btn-payorder status_buttons" %>
-					</div>
-				<% end %>			
-			</div>
-		</div>
-	</div>
+	<%= render 'orders/pay_with', order: @order, user: @user %>
 <% end %>
 
 <hr> 

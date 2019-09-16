@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_092550) do
+ActiveRecord::Schema.define(version: 2019_09_15_200005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 2019_09_11_092550) do
     t.decimal "company_earning"
     t.decimal "transporter_earning"
     t.decimal "admin_earning"
+    t.string "pay_with"
+    t.index ["pay_with"], name: "index_orders_on_pay_with"
     t.index ["sender_id"], name: "index_orders_on_sender_id"
     t.index ["transporter_id"], name: "index_orders_on_transporter_id"
   end

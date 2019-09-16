@@ -39,7 +39,7 @@ es:
         radius: Radio
         payment_status: Estado del Pago
         payment_method: Forma de Pago
-        cost: Precio
+        cost: Total a Pagar
         company: Compañia
         transporter_id: Transportador
         sender_id: Usuario
@@ -71,6 +71,7 @@ es:
         admin_earning: Ganacia de la Plataforma
         total_distance: Distancia Total
         earning: Ganancia
+        pay_with: Paga con
         # "true": "True"
         # "false": "False"      
       
@@ -140,6 +141,9 @@ es:
           completed: Completado
           cancelled: Cancelado
           payment:  Pagando
+        pay_withs:
+          cash: Efectivo
+          card: Tarjeta
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -147,6 +151,8 @@ es:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
 
+  cash: Efectivo
+  card: Tarjeta
   this: "Sí"
   no_this: "No"
   company_created: Has creado tu cuenta exitosamente !! 
