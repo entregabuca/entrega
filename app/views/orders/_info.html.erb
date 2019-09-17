@@ -134,17 +134,29 @@
   <div class="card mb-2 pay-with-card">
     <div class="card-body pl-1">    
       <div class="col-md-12 my-2">  
-        <div class="row">      
+        <div class="row">  
+        <% if @order.pay_with == "cash" %>    
           <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
           </div>        
           <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
             <%= enum_l(@order, :pay_with) %>
-          </div>            
+          </div> 
+        <% else %>
+          <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
+            <%= enum_l(@order.charge, :payment_method) %>
+          </div> 
+          <!-- FOR TESTING ONLY STARTS -->
+          <div class="d-inline col-sm-6 payment-status-heading  bolds">
+              <%= @order.charge.present?  ? enum_l(@order.charge, :payment_method) : "" %>
+          </div>
+          <!-- FOR TESTING ONLY ENDS -->
+        <% end %>
         </div>
       </div>
     </div>
   </div>
 <%# end %>
+
 
 <!-- COST -->
 <div class="card mb-2">
@@ -164,7 +176,7 @@
 
 
 
-<!-- On Editing Actions -->
+<!-- On Editing Actions for Taking Order -->
 <% if @user.class.name == "Company"  %> 
   <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
     <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
@@ -225,21 +237,31 @@
 
 
 <!-- PAYMENT STATUS -->
-<div class="card mb-2 payment-status-card">
-  <div class="card-body pl-1">    
-    <div class="col-md-12 my-2">  
-      <div class="row"> 
-        <div class="d-inline col-sm-6 payment-status-heading  bolds">
-          <%= Order.human_attribute_name(:payment_status) %>
-        </div>
-        <div class="d-inline col-sm-6 mb-3 payment-status-values">        
-         <%= enum_l(@order, :payment_status)  %>
+  <div class="card mb-2 payment-status-card">
+    <div class="card-body pl-1">    
+      <div class="col-md-12 my-2">  
+        <div class="row"> 
+          <div class="d-inline col-sm-6 payment-status-heading  bolds">
+            <%= Order.human_attribute_name(:payment_status) %>
+          </div>
+          <% if @order.pay_with == "cash" %>
+            <div class="d-inline col-sm-6 mb-3 payment-status-values">        
+             <%= enum_l(@order, :payment_status)  %>
+            </div>
+          <% else %>
+            <div class="d-inline col-sm-6 mb-3 payment-status-values">        
+             <%= enum_l(@order.charge, :status)  %>
+            </div>
+            <!-- FOR TESTING ONLY STARTS -->
+            <div class="d-inline col-sm-6 payment-status-heading  bolds">
+              <%= @order.charge.present?  ? enum_l(@order.charge, :status) : "" %>
+            </div>
+            <!-- FOR TESTING ONLY ENDS -->
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
-
 
 <!-- MAPS -->
  <div class="maps-row">

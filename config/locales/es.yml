@@ -151,9 +151,16 @@ es:
         statuses:
           created: Creada
           pending: Pendiente
-          paid: Pagada
+          paid: Pagado
           rejected: Rechazada
           error: Error
+        payment_methods: 
+          unknown: Desconicido
+          credit_card: Tarjeta Credito
+          debit_card:  Tarjeta Debito 
+          pse: PSE
+          cash: Cash
+          referenced: Referenciado
 
 
     errors:
