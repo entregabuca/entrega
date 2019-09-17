@@ -99,14 +99,14 @@
         <% end %>
 
 
-<!-- Find the way to translate the values below -->
+      <!-- Find the way to translate the values below -->
         <% if order.charge.present? %>
-          <td><%= order.charge.present? ? order.charge.payment_method.capitalize : "" %></td>
-          <td><%= order.charge.present?  ? order.charge.status.capitalize : "" %></td>        
+          <td><%= order.charge.present?  ? enum_l(order.charge, :payment_method) : "" %>
           <td><%= order.charge.present?  ? enum_l(order.charge, :status) : "" %></td>
+          <!-- <td><%#= order.charge.present?  ? order.charge.status.capitalize : "" %></td> -->
 
         <% elsif order.pay_with.present? %> 
-          <td><%= order.pay_with.present? ? order.pay_with.capitalize : "" %></td>
+          <td><%= order.pay_with.present? ? enum_l(order, :pay_with): "" %></td>
           <%# if order.payment_status.present? %>
             <td><%= order.payment_status.present? ? enum_l(order, :payment_status) : ""  %></td>
           <%# end %> 
