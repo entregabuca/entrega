@@ -110,6 +110,42 @@
   <% end %>
 <% end %>
 
+<!-- RETURN TO PICKUP POINT -->
+<div class="card mb-2 return-card">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row">
+        <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:return) %>
+        </div>
+        <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+          <% if @order.return == true  %>       
+            <%=t(:this)%>
+          <% else %>
+            <%=t(:no_this)%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAY WITH -->
+<%# if @user.class.name == "Sender" &&  current_page?(controller: 'orders', action: 'show')%>
+  <div class="card mb-2 pay-with-card">
+    <div class="card-body pl-1">    
+      <div class="col-md-12 my-2">  
+        <div class="row">      
+          <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
+          </div>        
+          <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
+            <%= enum_l(@order, :pay_with) %>
+          </div>            
+        </div>
+      </div>
+    </div>
+  </div>
+<%# end %>
+
 <!-- COST -->
 <div class="card mb-2">
   <div class="card-body pl-1">    
@@ -124,6 +160,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 <!-- On Editing Actions -->
@@ -169,23 +207,7 @@
   <% end %>
 <% end %>
 
-<div class="card mb-2 return-card">
-  <div class="card-body pl-1">    
-    <div class="col-md-12 my-2">  
-      <div class="row">
-        <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:return) %>
-        </div>
-        <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
-          <% if @order.return == true  %>       
-            <%=t(:this)%>
-          <% else %>
-            <%=t(:no_this)%>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- USER EARNINGS -->
 
@@ -202,22 +224,23 @@
 <% end %>
 
 
-<!-- PAY WITH -->
-<div class="card mb-2 return-card">
+<!-- PAYMENT STATUS -->
+<div class="card mb-2 payment-status-card">
   <div class="card-body pl-1">    
     <div class="col-md-12 my-2">  
-      <div class="row">      
-        <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
-        </div>        
-        <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
-          <%= enum_l(@order, :pay_with) %> 
-        </div>            
+      <div class="row"> 
+        <div class="d-inline col-sm-6 payment-status-heading  bolds">
+          <%= Order.human_attribute_name(:payment_status) %>
+        </div>
+        <div class="d-inline col-sm-6 mb-3 payment-status-values">        
+         <%= enum_l(@order, :payment_status)  %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-  
+
 <!-- MAPS -->
  <div class="maps-row">
     <div class="col-md-6 mb-3 sendLocation">

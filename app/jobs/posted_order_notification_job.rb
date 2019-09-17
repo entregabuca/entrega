@@ -8,7 +8,7 @@ class PostedOrderNotificationJob < ApplicationJob
                c.locations[0].present? ? [c.locations[0].latitude,c.locations[0].longitude] : [0, 0])*1000) <= order.radius ? c : nil}
 
     companies_near.each do |company|
-      puts "   Notification Sent to Company #{company.id}"
+      puts "   Notification Sent to COMPANY #{company.id}"
       NotificationChannel.broadcast_to(company, title: "#{Order.human_attribute_name(:notification)}", body: "#{Order.human_attribute_name(:order_ready)}")
     end
   end

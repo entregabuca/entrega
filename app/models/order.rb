@@ -40,6 +40,7 @@ include ActiveModel::Dirty
   }
 
   enum pay_with:{ cash: "cash", card: "card" }
+  enum payment_status:{ paid: "paid", unpaid: "unpaid" }
 
 
   validates :description, presence: true 
@@ -68,7 +69,8 @@ include ActiveModel::Dirty
   validate :status_draft_radius_500
  #validate :status_posted_radius_500, on: :create
 
-  validate  :set_earnings
+  validate :set_earnings
+  #before_save :set_paid_payment_status_when_cash
 
   def status_draft_radius_500
     if status == 'draft'
@@ -97,6 +99,14 @@ include ActiveModel::Dirty
     end
   end
 
+
+  #def set_paid_payment_status_when_cash
+  #  if self.pay_with == 'cash' && self.will_save_change_to_status?
+  #    self.payment_status = 'paid'
+  #    #save!
+  #  end
+  #end
+#
   #def set_transporter_earning
   #  set_order
   #  #@transporter = @order.transporter

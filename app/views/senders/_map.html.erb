@@ -1,4 +1,4 @@
-<%= @senders = @senders.select{|c| c.locations[0]}
+<%= @senders = @senders.select{|c| c.locations.last}
     sender_icon = {:name => 'sender',
                   :icon_url => asset_path('sender.png'),
                   :icon_size => [20, 20],

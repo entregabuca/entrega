@@ -47,6 +47,7 @@
       <% elsif @order.status == 'inTransit' %> 
           <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
             <%= form.hidden_field :status, :value => 'completed' %>
+            <%= form.hidden_field :payment_status, :value => 'paid' %>
             <div class="btn-group" role="group" aria-label="First group"> 
               <%= form.submit  "#{Order.human_attribute_name(:complet)}", :class => 'btn btn-primary btn-complet mb-2 mt-2 status_buttons', name: 'complete' %>
             </div>

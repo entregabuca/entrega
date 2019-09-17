@@ -3,8 +3,8 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
 
   def perform(order_id)
   order = Order.find(order_id)
-  puts " ORDER STATUS =#{order.status}"
-    if order.status == 'posted'  
+  puts " ORDER STATUS = #{order.status}"
+    if order.status == "posted"  
       if order.radius < MAX_RADIUS
 	      order.radius += DELTA_RADIUS
 	      order.save
@@ -14,7 +14,7 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
         PostedOrderNotificationJob.perform_later(order)  
         PostedOrderJob.set(wait: 10.second).perform_later(order.id) # DELTA_TIME
       else 
-        order.status = 'draft'         
+        order.status = "draft"         
         order.radius = 500
         order.save       
       end

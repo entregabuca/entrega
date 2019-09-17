@@ -97,21 +97,29 @@
         <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
           <%= render 'orders/distance_between_order_points', order: order %>
         <% end %>
+
+
+<!-- Find the way to translate the values below -->
         <% if order.charge.present? %>
           <td><%= order.charge.present? ? order.charge.payment_method.capitalize : "" %></td>
           <td><%= order.charge.present?  ? order.charge.status.capitalize : "" %></td>        
-          
-        <% elsif order.pay_with.present? %> <!-- add a new column for Paid/ Unpaid radio buttons  or -->
-          <td><%= order.pay_with.present? ? order.pay_with.capitalize : "" %></td>
-          <% if order.status == 'completed' %>
-            <td><%= order.pay_with.present? ? "Paid" : "" %></td>
-          <% end %>
+          <td><%= order.charge.present?  ? enum_l(order.charge, :status) : "" %></td>
 
+        <% elsif order.pay_with.present? %> 
+          <td><%= order.pay_with.present? ? order.pay_with.capitalize : "" %></td>
+          <%# if order.payment_status.present? %>
+            <td><%= order.payment_status.present? ? enum_l(order, :payment_status) : ""  %></td>
+          <%# end %> 
 
         <% end %>
+
+
+
         <!-- <td><%#= order.charge.present? ? order.charge.x_franchise : "" %></td> -->
         <% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) && (order.status =='completed') %>
           <%= render 'orders/users_earnings_index', order: order %>
+        <% else %>
+          <td><%= "" %></td>
         <% end %>
         <%= render 'orders/indexActions', order: order %>
       </tr>
