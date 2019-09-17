@@ -154,7 +154,13 @@ en:
           paid: Paid
           rejected: Rejected
           error: Error
-
+        payment_methods: 
+          unknown: Unknown
+          credit_card: Credit Card
+          debit_card:  Debit Card 
+          pse: PSE
+          cash: Cash
+          referenced: Referenced
 
 
           #errors may need to indent one back 

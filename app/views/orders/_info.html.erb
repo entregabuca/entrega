@@ -145,11 +145,6 @@
           <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
             <%= enum_l(@order.charge, :payment_method) %>
           </div> 
-          <!-- FOR TESTING ONLY STARTS -->
-          <div class="d-inline col-sm-6 payment-status-heading  bolds">
-              <%= @order.charge.present?  ? enum_l(@order.charge, :payment_method) : "" %>
-          </div>
-          <!-- FOR TESTING ONLY ENDS -->
         <% end %>
         </div>
       </div>
@@ -252,11 +247,6 @@
             <div class="d-inline col-sm-6 mb-3 payment-status-values">        
              <%= enum_l(@order.charge, :status)  %>
             </div>
-            <!-- FOR TESTING ONLY STARTS -->
-            <div class="d-inline col-sm-6 payment-status-heading  bolds">
-              <%= @order.charge.present?  ? enum_l(@order.charge, :status) : "" %>
-            </div>
-            <!-- FOR TESTING ONLY ENDS -->
           <% end %>
         </div>
       </div>
