@@ -144,6 +144,18 @@ es:
         pay_withs:
           cash: Efectivo
           card: Tarjeta
+        payment_statuses:
+          paid: Pagado
+          unpaid: Sin Pagar
+      charge: 
+        statuses:
+          created: Creada
+          pending: Pendiente
+          paid: Pagada
+          rejected: Rechazada
+          error: Error
+
+
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -170,7 +182,7 @@ es:
 
   new_order: Nueva Orden
   order_details: Detalles de la Orden
-  short_description: Agrgue breve descripción del producto / que es lo que envia?
+  short_description: Agregue breve descripción del producto / que es lo que envia?
   comments_instructions:  Agregue Comentarios o Instrucciones necesarias para completar esta orden
   aprrox_weight: Peso approx en gramos
   aprrox_length: Largo approx en cm

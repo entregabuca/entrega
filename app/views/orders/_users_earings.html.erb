@@ -1,19 +1,19 @@
 <% if  @user.class.name == "Company" %>
-  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:company_earning) %>
+  <div class="d-inline col-sm-6 company-earning-heading bolds"><%= Order.human_attribute_name(:company_earning) %>
   </div>        
-  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+  <div class="d-inline col-sm-6 company-earning-show-values" > 
     <%= @order.company_earning %> 
   </div>
 <% elsif  @user.class.name == "Transporter" %>
-  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:transporter_earning) %>
+  <div class="d-inline col-sm-6 transporter-earning-heading bolds"><%= Order.human_attribute_name(:transporter_earning) %>
   </div>        
-  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+  <div class="d-inline col-sm-6 transporter-earning-show-values" > 
     <%= @order.transporter_earning %> 
   </div>
 <% else  @user.class.name == "Admin" %>
-  <div class="d-inline col-sm-6 return-show-heading bolds"><%= Order.human_attribute_name(:admin_earning) %>
+  <div class="d-inline col-sm-6 admin-earning-heading bolds"><%= Order.human_attribute_name(:admin_earning) %>
   </div>        
-  <div class="d-inline col-sm-6 return-show-values" id='returnValue'> 
+  <div class="d-inline col-sm-6 admin-earning-show-values" > 
     <%= @order.admin_earning %>  <!-- @user.class.name   -->
   </div>
 <% end %>

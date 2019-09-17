@@ -57,17 +57,15 @@
       <div class="card left text-center sender-card-location">
         <div class="card-body-left sender-card-location">
           <h3 class="card-header"><%= t (:sender_location) %></h3>
-           <div class="bolds ">
+            <div class="bolds ">
             <%= t :adress %>:
-          </div>          
-          <% if @user.locations.present? %>
+            </div>            
             <div class="mb-5 senderAddress">
-               <%= @user.locations.last.address %>
+               <%= @user.locations[0].address %>
             </div> 
             <div class="comp-Map d-flex justify-content-center mb-5">
              <%= render 'senders/showMap' %> 
             </div>  
-          <% end %>  
         </div> 
       </div>
     </div>

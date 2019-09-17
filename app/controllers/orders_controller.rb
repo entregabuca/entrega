@@ -130,7 +130,7 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
-        :cost, :status, :radius, :sender_id, :transporter_id, :company_earning, :transporter_earning, :admin_earning, :pay_with, comments_attributes: [:id, :content], 
+        :cost, :status, :radius, :sender_id, :transporter_id, :company_earning, :transporter_earning, :admin_earning, :pay_with, :payment_status, comments_attributes: [:id, :content], 
         locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
     end
 end

@@ -1,17 +1,9 @@
 <!-- PAY WITH CASH -->
-<% if @order.pay_with == 'cash' %>
+<% if @order.pay_with == "cash" %>
 	<div class="card mb-2">
 	  <div class="card-body pl-1">    
 	    <div class="col-md-12 my-2">  
-	      <div class="row">
-	        <div class="d-inline col-sm-6 cost-heading bolds">
-	        	<%= Order.human_attribute_name(:pay_with) %>
-	        </div>
-	        <div class="d-inline col-sm-6 cost-values">            
-	          <%= enum_l(@order, :pay_with) %>  
-	        </div>
-	      </div>
-
+	      
 				<%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
 				  <div>
 			        <%= form.hidden_field :status, :value => 'posted' %>
@@ -59,3 +51,5 @@
 		</div>
 	</div>
 <% end %>
+
+
