@@ -21,6 +21,8 @@
 #  company_earning     :decimal(, )
 #  transporter_earning :decimal(, )
 #  admin_earning       :decimal(, )
+#  pay_with            :string
+#  payment_status      :string
 #
 
 class Order < ApplicationRecord
@@ -57,6 +59,7 @@ include ActiveModel::Dirty
   accepts_nested_attributes_for :locations, allow_destroy: true # :reject_if => lambda { |a| a[:address].blank? }   # && a[:line2].blank? && a[:city].blank? && a[:zip].blank?
   accepts_nested_attributes_for :comments, allow_destroy: true
   accepts_nested_attributes_for :recipients, :allow_destroy => true
+  accepts_nested_attributes_for :order_statuses, :allow_destroy => true
   # Sort orders by most recent first
   default_scope {order("created_at DESC")} 
 
@@ -70,8 +73,7 @@ include ActiveModel::Dirty
  #validate :status_posted_radius_500, on: :create
 
   validate :set_earnings
-  #before_save :set_paid_payment_status_when_cash
-
+  
   def status_draft_radius_500
     if status == 'draft'
       self.radius = 500      
@@ -98,28 +100,6 @@ include ActiveModel::Dirty
       self.admin_earning = cost * 0.1
     end
   end
-
-
-  #def set_paid_payment_status_when_cash
-  #  if self.pay_with == 'cash' && self.will_save_change_to_status?
-  #    self.payment_status = 'paid'
-  #    #save!
-  #  end
-  #end
-#
-  #def set_transporter_earning
-  #  set_order
-  #  #@transporter = @order.transporter
-  #  @order.transporter_earning = cost * 0.6
-  #end
-#
-  #def set_admin_earning
-  #  set_order
-  #  @order.admin_earning = cost * 0.1
-  #end
-
-
-
 
    # ----------------------------------- || -------------------------------------------------------------
 

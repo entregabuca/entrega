@@ -135,17 +135,17 @@
     <div class="card-body pl-1">    
       <div class="col-md-12 my-2">  
         <div class="row">  
-        <% if @order.pay_with == "cash" %>    
-          <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
-          </div>        
-          <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
-            <%= enum_l(@order, :pay_with) %>
-          </div> 
-        <% else %>
-          <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
-            <%= enum_l(@order.charge, :payment_method) %>
-          </div> 
-        <% end %>
+           <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
+          </div>  
+          <% if @order.pay_with == "cash" %>       
+            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
+              <%= enum_l(@order, :pay_with) %>
+            </div> 
+          <% else %>
+            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
+              <%= enum_l(@order.charge, :payment_method) %>
+            </div> 
+          <% end %>
         </div>
       </div>
     </div>
@@ -240,11 +240,11 @@
             <%= Order.human_attribute_name(:payment_status) %>
           </div>
           <% if @order.pay_with == "cash" %>
-            <div class="d-inline col-sm-6 mb-3 payment-status-values">        
+            <div class="d-inline col-sm-6 mb-3 payment-status-show-values">        
              <%= enum_l(@order, :payment_status)  %>
             </div>
           <% else %>
-            <div class="d-inline col-sm-6 mb-3 payment-status-values">        
+            <div class="d-inline col-sm-6 mb-3 payment-status-show-values">        
              <%= enum_l(@order.charge, :status)  %>
             </div>
           <% end %>
@@ -323,7 +323,7 @@
       map(
           :center => {
             :latlng => latlng,
-            :zoom => 13
+            :zoom => 14
           },
           :markers => markers                      
       )
@@ -397,5 +397,28 @@
   </div>
 <% end %>
 
+
+<!-- ORDER STATUS AND TIMES -->
+ <div class="card my-5 order-statuses-time-card ">
+  <div class="card-body"> 
+  <h2 class="text-center mb-5 justify-content-center"><%= t(:order_statuses_time_heading)%></h2>
+    <table class="table table-striped table-hover mb-5">
+      <thead>
+        <tr class="tableHeadingbar"> 
+          <th class="text-center"><%= Order.human_attribute_name(:status) %></th>
+          <th class="text-center"><%= Order.human_attribute_name(:updated_at) %></th>
+        </tr>
+      </thead>
+      <tbody> 
+        <% @order.order_statuses.each do |order_status| %>
+          <tr class="odd tableValues">
+            <td class="text-center"><%= enum_l(order_status, :status)  %></td>
+            <td class="text-center"><%= order_status.status_time %></td> 
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 

@@ -21,6 +21,8 @@
 #  company_earning     :decimal(, )
 #  transporter_earning :decimal(, )
 #  admin_earning       :decimal(, )
+#  pay_with            :string
+#  payment_status      :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

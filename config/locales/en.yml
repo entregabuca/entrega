@@ -161,7 +161,14 @@ en:
           pse: PSE
           cash: Cash
           referenced: Referenced
-
+      order_status:
+        statuses:
+          posted: Posted
+          taken: Taken
+          inTransit: In Transit
+          completed: Completed
+          cancelled: Cancelled
+          payment: Payment
 
           #errors may need to indent one back 
       errors:
@@ -175,6 +182,8 @@ en:
   card: Card
   this: "Yes"
   no_this: "No"
+
+  order_statuses_time_heading: ORDER STATUSES - DATE & TIMES 
   company_created: Company was successfully created !! 
   company_updated: Company was successfully updated !!
   company_removed: Company was successfully removed.
@@ -211,6 +220,7 @@ en:
   restrict_title: Oeee!!! You shouldn't be here !!!
   restrict_body1: Don't worry we got help at hand. 
   restrict_body2: Simply click on the button below
+  status: Order Status
 
   profile: Profile
 

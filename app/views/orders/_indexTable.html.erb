@@ -17,6 +17,7 @@
       <% elsif ['Company', 'Transporter'].include? @user.class.name %>
 
         <th><%= Order.human_attribute_name(:sender_id) %></th> 
+        <th><%= Order.human_attribute_name(:transporter_id) %></th>
 
       <% end %>
 
@@ -71,6 +72,8 @@
           <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
         <% elsif @user.class.name == "Company" ||  @user.class.name == "Transporter"%>
           <td><%= order.sender.name %></td>
+          <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
+
         <% end %>
           <td><%= order.status.present? ? enum_l(order, :status).capitalize : "-"  %></td>
           <td><%= order.description %></td>
@@ -97,23 +100,14 @@
         <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
           <%= render 'orders/distance_between_order_points', order: order %>
         <% end %>
-
-
-      <!-- Find the way to translate the values below -->
+     
         <% if order.charge.present? %>
           <td><%= order.charge.present?  ? enum_l(order.charge, :payment_method) : "" %>
           <td><%= order.charge.present?  ? enum_l(order.charge, :status) : "" %></td>
-          <!-- <td><%#= order.charge.present?  ? order.charge.status.capitalize : "" %></td> -->
-
         <% elsif order.pay_with.present? %> 
           <td><%= order.pay_with.present? ? enum_l(order, :pay_with): "" %></td>
-          <%# if order.payment_status.present? %>
-            <td><%= order.payment_status.present? ? enum_l(order, :payment_status) : ""  %></td>
-          <%# end %> 
-
+          <td><%= order.payment_status.present? ? enum_l(order, :payment_status) : ""  %></td>
         <% end %>
-
-
 
         <!-- <td><%#= order.charge.present? ? order.charge.x_franchise : "" %></td> -->
         <% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) && (order.status =='completed') %>

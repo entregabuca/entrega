@@ -24,11 +24,11 @@
     width: 100% !important; // Changed from 90%
 }
 
-.order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings, .recipient-headings, .return-show-heading, .recipient-show-heading, .company-earning-heading, .transporter-earning-heading, .admin-earning-heading, .pay-with-heading, .payment-status-heading {
+.order-headings, .sender-headings, .company-headings,  .cost-heading, .company-headings, .transporter-headings, .measurements-headings, .recipient-headings, .return-show-heading, .recipient-show-heading, .company-earning-heading, .transporter-earning-heading, .admin-earning-heading, .pay-with-heading, .payment-status-heading, .order-statuses-time-heading {
   text-align: right !important; 
 }
 
-.order-values,.content_show, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values, .return-show-values, .company-earning-show-values, .pay-with-show-values, .payment-status-show-values {
+.order-values,.content_show, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values  .measurements-values, .return-show-values, .company-earning-show-values, .pay-with-show-values, .payment-status-show-values, .order-statuses-time-show-values {
   text-align: left !important; 
   padding-left: 15px !important;
   max-width: 45% !important;
@@ -73,7 +73,7 @@
     max-width: 50% !important;
   }
 
-  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values, .return-show-values, company-earning-show-values, .pay-with-show-values, .payment-status-show-values {
+  .order-values, .sender-values, .company-values, .transporter-values, .recipient-values, .cost-values, .return-show-values, company-earning-show-values, .pay-with-show-values, .payment-status-show-values, .order-statuses-time-show-values {
     width: 100% !important;
     max-width: 50% !important;
     padding-left: 15px !important;
