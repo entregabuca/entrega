@@ -163,6 +163,7 @@ en:
           referenced: Referenced
       order_status:
         statuses:
+          draft: Draft
           posted: Posted
           taken: Taken
           inTransit: In Transit
