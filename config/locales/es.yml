@@ -163,6 +163,7 @@ es:
           referenced: Referenciado
       order_status:
         statuses:
+          draft: Borrador
           posted: Solicitado
           taken: Tomado
           inTransit: En Camino

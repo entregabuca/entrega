@@ -158,3 +158,119 @@ FILE : cost.js
     })
 })(jQuery)
 
+
+==============================|| =============================
+
+/////////////////////////////////////////////////////////////////////
+
+LAST FUNCTION ADDS ADDRESS TO SENDING/RECEIVING LOCATION DEPENDING ON CHECKBOX:CHECKED
+
+FILE : none
+
+/////////////////////////////////////////////////////////////////////
+
+// Check if checkbox is checked
+
+  var x = document.getElementById("AddRegisteredAddress").checked;
+  if ( x == true ) {
+    console.log(" OE!!")
+  } else {
+     console.log(" BLANK!!")
+    }
+
+------------------------------------------------------
+//  get the value of the field
+var a = $('.card-left input[id=address0]').val()
+a
+------------------------------------------------------
+//If checkbox is checked print the value on the field
+
+  var x = document.getElementById("AddRegisteredAddress").checked;
+  if ( x == true ) {
+    var a = $('.card-left input[id=address0]').val()
+    a
+    console.log(a)
+  } else {
+     console.log(" BLANK!!")
+  }
+
+------------------------------------------------------
+// Add event listener to checked/unchecked and change dinamically 
+
+var a = $('.card-left input[id=address0]').val()
+
+
+
+var username = "<%= @user.name %>";
+$('input[name=AddsAddress]').change(function(){
+    if($(this).is(':checked')) {
+       
+    document.getElementById("address0").value = username
+    console.log("NO Blank")
+    } else {
+    document.getElementById("address0").value =  ""
+        console.log(" BLANK!!")
+    }
+});
+
+------------------------------------------------------
+
+var username = <%= @user.name %>;
+
+
+$('input[name=AddsAddress]').change(function(){
+    if($(this).is(':checked')) {
+       
+    address 
+    console.log("NO Blank")
+    } else {
+    document.getElementById("address0").value =  ""
+        console.log(" BLANK!!")
+    }
+});
+
+
+
+------------------------------------------------------
+This Worked at the HTML
+
+<script>
+  function address(){
+    document.getElementById("address0").value =  "<%= @user.locations[0].address%>"
+  }
+</script>
+
+-----------------------------------------------------
+FINAL SCRIPT ADDED TO LOCATION.HTML.ERB FILE
+
+<!-- Adds User address if checnbos:checked -->         
+    <script>
+      $('.card-left input[name=AddsAddress]').change(function(){
+        if($(this).is(':checked')) {
+          document.getElementById("address0").value =  "<%= @user.locations[0].address%>"
+          console.log("NO Blank")
+        } else {
+          document.getElementById("address0").value =  ""
+          console.log(" BLANK!!")
+        }
+      })
+
+      $('.card-right input[name=AddsAddress]').change(function(){
+        if($(this).is(':checked')) {
+          document.getElementById("address1").value =  "<%= @user.locations[0].address%>"
+          console.log("NO Blank")
+        } else {
+          document.getElementById("address1").value =  ""
+          console.log(" BLANK!!")
+        }
+      })
+      ;  
+    </script>
+
+<!-- Adds User address if checnbos:checked --> 
+
+
+
+
+
+

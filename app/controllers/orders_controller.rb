@@ -79,12 +79,11 @@ class OrdersController < ApplicationController
   end
 
   def destroy  # At the moment only the sender will be allowed to delete orders .
-      @order.destroy
-      respond_to do |format|
-        format.html { redirect_to url_for([@user, :orders]), notice: t(:order_removed) }
-        format.json { head :no_content }
-      end
-    
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to url_for([@user, :orders]), notice: t(:order_removed) }
+      format.json { head :no_content }
+    end    
   end
 
   private
@@ -121,7 +120,7 @@ class OrdersController < ApplicationController
       @order_status = @order.order_statuses.create!(status: statuso, status_time: status_timeo)
     end
 
-  def enum_l(model, enum)
+    def enum_l(model, enum)
       enum_i18n(model.class, enum, model.send(enum))
     end
 
