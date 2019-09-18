@@ -2,7 +2,38 @@
 <%= form.fields_for :locations, @order.locations[id].present? ? @order.locations[id] : Location.new  do |f| %> 
   
   <div class="form-group">
+   
+    <input type="checkbox" name="AddsAddress" id="AddRegisteredAddress" > Use my registered address <br>
+    <br>
     <%= f.text_field :address, placeholder: "#{t (:enter_address)}", id: "address#{id}", :class => "col-sm-12 address" %>
+
+<!-- Adds User address if checnbos:checked -->         
+    <script>
+      $('.card-left input[name=AddsAddress]').change(function(){
+        if($(this).is(':checked')) {
+          document.getElementById("address0").value =  "<%= @user.locations[0].address %>"
+          console.log("NO Blank")
+        } else {
+          document.getElementById("address0").value =  ""
+          console.log(" BLANK!!")
+        }
+      })
+
+      $('.card-right input[name=AddsAddress]').change(function(){
+        if($(this).is(':checked')) {
+          document.getElementById("address1").value =  "<%= @user.locations[0].address %>"
+          console.log("NO Blank")
+        } else {
+          document.getElementById("address1").value =  ""
+          console.log(" BLANK!!")
+        }
+      })
+      ;  
+    </script>
+
+<!-- Adds User address if checnbos:checked --> 
+
+
     <%= link_to t(:search_address), {action: 'geocode', controller: 'locations', map_id: id}, remote: true, :class => "col-sm-6 btn btn-primary btn-address-search mb-5" %>  
   </div> 
 
