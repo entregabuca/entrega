@@ -161,8 +161,16 @@ es:
           pse: PSE
           cash: Cash
           referenced: Referenciado
+      order_status:
+        statuses:
+          posted: Solicitado
+          taken: Tomado
+          inTransit: En Camino
+          completed: Completado
+          cancelled: Cancelado
+          payment:  Pagando
 
-
+        #errors may need to indent one back 
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -174,6 +182,8 @@ es:
   card: Tarjeta
   this: "Sí"
   no_this: "No"
+
+  order_statuses_time_heading: ESTADOS DE LA ORDEN - FECHA Y HORA  
   company_created: Has creado tu cuenta exitosamente !! 
   company_updated: Has actualizado tu cuenta exitosamente !!
   company_removed: Cuenta removida exitosamente !!
@@ -206,12 +216,10 @@ es:
   editing_company: Actualizar Compañia
   editing_transporter: Actualizar Transportador
   transporter_details: Información del Transportador
-  #cancel_order: Cancelar Orden
-
   restrict_title: Hola !!! No deberias estar aca !!!
   restrict_body1: No pasa nada. 
   restrict_body2: Simplemente haga clic en el botón que esta abajo.
-  
+  status: Estado de la Orden
   profile: Perfil
 
   company_location: Dirección de la Compañia

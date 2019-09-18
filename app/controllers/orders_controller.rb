@@ -53,11 +53,8 @@ class OrdersController < ApplicationController
 
   def create
     @order= @user.orders.build(order_params)
-    #calculate_cost
       respond_to do |format|
         if @order.save
-          
-          #draft_or_posted
           format.html { redirect_to url_for([@user, @order]), notice: t(:order_created)}
           format.json { render :show, status: :created, location: @order }
           #order_posted_create
@@ -69,10 +66,9 @@ class OrdersController < ApplicationController
   end
 
   def update
-    #calculate_cost
-    #set_transporter_statuses_depending_order_status
     respond_to do |format|
       if @order.update(order_params)
+        set_order_statuses
         format.html { redirect_to url_for([@user, @order]), notice: t(:order_updated) }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -102,7 +98,6 @@ class OrdersController < ApplicationController
       @user = resource.singularize.classify.constantize.find(id)
     end
 
-
 # New code => Try to move this to the models
     def set_transporter_statuses_depending_order_status   
       @order = Order.find(params[:id])
@@ -119,7 +114,14 @@ class OrdersController < ApplicationController
       end
     end    #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK in line 113?
 
-    def enum_l(model, enum)
+    def set_order_statuses
+      @order = Order.find(params[:id])
+      statuso = @order.status
+      status_timeo = @order.updated_at
+      @order_status = @order.order_statuses.create!(status: statuso, status_time: status_timeo)
+    end
+
+  def enum_l(model, enum)
       enum_i18n(model.class, enum, model.send(enum))
     end
 
@@ -131,7 +133,7 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:description, :weight, :length, :width, :heigth, :return, :pickup_time, :delivery_time, 
         :cost, :status, :radius, :sender_id, :transporter_id, :company_earning, :transporter_earning, :admin_earning, :pay_with, :payment_status, comments_attributes: [:id, :content], 
-        locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email])
+        locations_attributes: [:id, :address, :latitude, :longitude], recipients_attributes: [:name, :telephone, :email], order_statuses_attributes: [:id, :status, :status_time]) #, order_statuses_attributes: [:id, :status, :status_time]
     end
 end
 
