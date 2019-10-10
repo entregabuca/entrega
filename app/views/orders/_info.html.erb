@@ -142,8 +142,10 @@
               <%= enum_l(@order, :pay_with) %>
             </div> 
           <% else %>
-            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
+            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'>
+            <% if @order.charge.present? %> 
               <%= enum_l(@order.charge, :payment_method) %>
+            <% end %>
             </div> 
           <% end %>
         </div>
@@ -214,6 +216,29 @@
   <% end %>
 <% end %>
 
+<!-- PAYMENT STATUS -->
+<div class="card mb-2 payment-status-card">
+  <div class="card-body pl-1">    
+    <div class="col-md-12 my-2">  
+      <div class="row"> 
+        <div class="d-inline col-sm-6 payment-status-heading  bolds">
+          <%= Order.human_attribute_name(:payment_status) %>
+        </div>
+        <% if @order.pay_with == "cash" %>
+          <div class="d-inline col-sm-6 mb-3 payment-status-show-values">        
+           <%= enum_l(@order, :payment_status)  %>
+          </div>
+        <% else %>
+          <div class="d-inline col-sm-6 mb-3 payment-status-show-values"> 
+          <% if @order.charge.present? %>        
+            <%= enum_l(@order.charge, :status)  %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- USER EARNINGS -->
@@ -230,28 +255,6 @@
   </div>
 <% end %>
 
-
-<!-- PAYMENT STATUS -->
-  <div class="card mb-2 payment-status-card">
-    <div class="card-body pl-1">    
-      <div class="col-md-12 my-2">  
-        <div class="row"> 
-          <div class="d-inline col-sm-6 payment-status-heading  bolds">
-            <%= Order.human_attribute_name(:payment_status) %>
-          </div>
-          <% if @order.pay_with == "cash" %>
-            <div class="d-inline col-sm-6 mb-3 payment-status-show-values">        
-             <%= enum_l(@order, :payment_status)  %>
-            </div>
-          <% else %>
-            <div class="d-inline col-sm-6 mb-3 payment-status-show-values">        
-             <%= enum_l(@order.charge, :status)  %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <!-- MAPS -->
  <div class="maps-row">
@@ -279,7 +282,7 @@
       <div class="col-md-6 mb-3 recipientLocation">
         <div class="card right text-center"> <!-- mdb-color lighten-2  -->
           <div class="card-body-right ">
-            <h3 class="card-header"><%= Order.human_attribute_name(:reciving_location) %></h3> 
+            <h3 class="card-header"><%= Order.human_attribute_name(:receiving_location) %></h3> 
             <div class="bolds ">
               <%= Order.human_attribute_name(:address) %>
             </div>           
@@ -335,48 +338,6 @@
 
 
 
-<div class="hide_information"> 
-<!-- ORDER MEASUREMENTS -->
-<div class="card mb-2  ">
-  <div class="card-body"> 
-    <div class="col-md-12 mb-2 mt-2">
-    <h3 class="recipient-title text-center"><%= Order.human_attribute_name(:order_details)%></h3>
-    <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds"><%=
-        Order.human_attribute_name(:weight) %>
-      </div>
-      <div class="d-inline col-sm-6 mb-3 measurements-values">
-        <%= @order.weight%>
-      </div>
-    </div>
-    <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds">
-        <%= Order.human_attribute_name(:length) %>
-      </div>
-      <div class="d-inline col-sm-6 mb-3 measurements-values">
-        <%=  @order.length %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds">
-        <%= Order.human_attribute_name(:width) %>
-      </div>
-      <div class="d-inline col-sm-6 mb-3 measurements-values">
-        <%= @order.width %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="d-inline col-sm-6 measurements-headings bolds">
-        <%= Order.human_attribute_name(:heigth) %>
-      </div>
-      <div class="d-inline col-sm-6 mb-3 measurements-values">
-        <%= @order.heigth %>
-      </div>
-    </div>
-    </div>        
-  </div>
-</div> 
-</div> 
 
 <!-- RADIUS -->
 <% if current_admin %>
@@ -420,5 +381,49 @@
     </table>
   </div>
 </div>
+
+
+
+<!-- ORDER MEASUREMENTS -->
+<div class="card mb-2  ">
+  <div class="card-body"> 
+    <div class="col-md-12 mb-2 mt-2">
+    <h3 class="recipient-title text-center"><%= Order.human_attribute_name(:order_measurements)%></h3>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds"><%=
+        Order.human_attribute_name(:weight) %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.weight%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:length) %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%=  @order.length %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:width) %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.width %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-inline col-sm-6 measurements-headings bolds">
+        <%= Order.human_attribute_name(:heigth) %>
+      </div>
+      <div class="d-inline col-sm-6 mb-3 measurements-values">
+        <%= @order.heigth %>
+      </div>
+    </div>
+    </div>        
+  </div>
+</div> 
+
 
 

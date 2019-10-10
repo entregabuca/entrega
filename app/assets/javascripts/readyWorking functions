@@ -247,7 +247,8 @@ FINAL SCRIPT ADDED TO LOCATION.HTML.ERB FILE
     <script>
       $('.card-left input[name=AddsAddress]').change(function(){
         if($(this).is(':checked')) {
-          document.getElementById("address0").value =  "<%= @user.locations[0].address%>"
+          document.getElementById("address0").value =  "<%= @user.locations[0].address %>"
+          $(".btn-address-search").click()
           console.log("NO Blank")
         } else {
           document.getElementById("address0").value =  ""
@@ -257,16 +258,38 @@ FINAL SCRIPT ADDED TO LOCATION.HTML.ERB FILE
 
       $('.card-right input[name=AddsAddress]').change(function(){
         if($(this).is(':checked')) {
-          document.getElementById("address1").value =  "<%= @user.locations[0].address%>"
+          document.getElementById("address1").value =  "<%= @user.locations[0].address %>"
+          $(".btn-address-search").click()
           console.log("NO Blank")
         } else {
           document.getElementById("address1").value =  ""
           console.log(" BLANK!!")
         }
-      })
-      ;  
+      })  
     </script>
 
+    
+-----------------------------------------------------
+a Better way to avoid hitting Google
+
+
+    <script>
+      $('.card-left input[name=AddsAddress]').change(function(){
+        if($(this).is(':checked')) {
+          document.getElementById("address0").value =  "<%= @user.locations[0].address %>"
+          var lat = "<%= @user.locations[0].latitude %>"
+          var lng = "<%= @user.locations[0].longitude %>"
+
+          document.getElementById("latitude0").value =  lat
+          document.getElementById("longitude0").value =  lng
+          map0.setView([lat,lng])
+
+        } else {
+          document.getElementById("address0").value =  ""          
+        }
+      })
+
+   </script>
 <!-- Adds User address if checnbos:checked --> 
 
 
