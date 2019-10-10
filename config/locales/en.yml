@@ -31,9 +31,9 @@ en:
         width: Width
         heigth: Heigth
         sending_location: Sending Location
-        address: Dirección
+        address: Address
         pickup_time: Pickup Time
-        reciving_location: Reciving Location
+        receiving_location: Receiving Location
         delivery_time: Delivery Time
         status: Order Status 
         radius: Radius 
@@ -48,6 +48,7 @@ en:
         created_at: Created At
         updated_at: Updated At
         order_details: Order Details
+        order_measurements: Order Measurements (approximate)
         save_draft: Save Draft
         confirm_order: Confirm Order
         post: Posted

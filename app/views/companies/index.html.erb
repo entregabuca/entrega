@@ -35,7 +35,7 @@
   <hr>
   <br>
 
-  <% if !@companies_near.nil? %>
+
     <div class="row card indextable">
       <div class="container-fluid">
         <table class="table table-striped">
@@ -57,7 +57,7 @@
           </thead>
 
           <tbody>
-            <% @companies_near.each do |company| %>
+            <% @companies.each do |company| %>
               <tr>
                 <td><%= company.name %></td>
                 <td><%= company.telephone %></td>
@@ -81,7 +81,7 @@
         </table>  
       </div>   
     </div>
-  <% end %>
+
 
   <hr>
   <%= link_to 'New Company', new_company_path %>

@@ -3,32 +3,33 @@
   
   <div class="form-group">
    
-    <input type="checkbox" name="AddsAddress" id="AddRegisteredAddress" > Use my registered address <br>
+    <input type="checkbox" name="AddsAddress<%=id%>" id="AddRegisteredAddress" > Use my registered address <br>
     <br>
     <%= f.text_field :address, placeholder: "#{t (:enter_address)}", id: "address#{id}", :class => "col-sm-12 address" %>
 
-<!-- Adds User address if checnbos:checked -->         
+<!-- Adds User's address if checkbox:checked -->         
     <script>
-      $('.card-left input[name=AddsAddress]').change(function(){
+      $('input[name=AddsAddress<%=id%>]').change(function(){
         if($(this).is(':checked')) {
-          document.getElementById("address0").value =  "<%= @user.locations[0].address %>"
-          console.log("NO Blank")
-        } else {
-          document.getElementById("address0").value =  ""
-          console.log(" BLANK!!")
-        }
-      })
+          document.getElementById("address<%=id%>").value =  "<%= @user.locations[0].address %>"
 
-      $('.card-right input[name=AddsAddress]').change(function(){
-        if($(this).is(':checked')) {
-          document.getElementById("address1").value =  "<%= @user.locations[0].address %>"
-          console.log("NO Blank")
+          var lat<%=id%> = "<%= @user.locations[0].latitude %>"
+          var lng<%=id%> = "<%= @user.locations[0].longitude %>"
+
+          document.getElementById("latitude<%=id%>").value =  lat<%=id%>
+          document.getElementById("longitude<%=id%>").value =  lng<%=id%>
+          map<%=id%>.setView([lat<%=id%>,lng<%=id%>])
+
         } else {
-          document.getElementById("address1").value =  ""
-          console.log(" BLANK!!")
+          document.getElementById("address<%=id%>").value =  ""
+          lat<%=id%> = 0
+          lng<%=id%> = 0
+          document.getElementById("latitude<%=id%>").value = lat<%=id%>
+          document.getElementById("longitude<%=id%>").value =  lng<%=id%>
+          map<%=id%>.setView([lat<%=id%>,lng<%=id%>])         
         }
       })
-      ;  
+      
     </script>
 
 <!-- Adds User address if checnbos:checked --> 

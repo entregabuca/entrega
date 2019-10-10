@@ -33,7 +33,7 @@ es:
         sending_location: Direción de Recogida
         address: Dirección
         pickup_time: Fecha/Hora de Recogida
-        reciving_location: Direción de Destino
+        receiving_location: Direción de Destino
         delivery_time: Fecha/Hora de Entrega
         status: Estado de la Orden
         radius: Radio
@@ -48,6 +48,7 @@ es:
         created_at: Creado el
         updated_at: Actualizado el
         order_details: Detalles de la Orden
+        order_measurements: Medidas de la Orden (aproximado)
         save_draft: Guardar Borrador
         confirm_order: Confirmar Orden
         post: Solicitar
@@ -73,8 +74,8 @@ es:
         earning: Ganancia
         pay_with: Paga con
         # "true": "True"
-        # "false": "False"      
-      
+        # "false": "False"
+              
       transporter:
         name: Nombre
         telephone: Teléfono
@@ -110,6 +111,8 @@ es:
         updated_at: Actualizado El
         update: Actualizar
         back_to_sender: Ver Usuario
+      locations:
+        address: Dirección
       location:
         address: Dirección
         provide_address: Agregue una dirección valida
@@ -281,7 +284,7 @@ es:
   sender_signup_message_2: si no estas registrado
   sender_signin_message_1: Si ya estas registrado simplemente 
   sender_signin_message_2:  para pedir tu servicio
-  transporter_signup_message_1:  Inicia session y comienza a recibir servicios en edemanda
+  transporter_signup_message_1:  Inicia session y comienza a recibir servicios en demanda
   solicitar: Solicitar Servicio
   partners: Quieres Trabajar con Nosotros como Empresa de Mensajeria aliada?
   no_company_added: No se ha agregado compañia aun
