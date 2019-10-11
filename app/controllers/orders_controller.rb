@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy  # At the moment only the sender will be allowed to delete orders .
+  def destroy  # At the moment only the sender will be allowed to delete orders SORT OF .
     @order.destroy
     respond_to do |format|
       format.html { redirect_to url_for([@user, :orders]), notice: t(:order_removed) }
@@ -138,7 +138,21 @@ end
 
 
 
-    
+=begin  PROBABLY FOR GETTING TOTL EARNINGS ALTHOUGH IT MAY BE BETTER TO SET ITS OWN MODEL 
+def total_earnings
+  @order = Order.find(params[:id])
+  @orders = Order.all
+  statusearning = @order.status
+  total_earnings = 0
+  if statusearning == 'completed'
+    total_earnings += @user.earning
+  end
+
+end
+=end
+
+
+
 
   # def order_posted_create
   #   if @order.status == 'posted'

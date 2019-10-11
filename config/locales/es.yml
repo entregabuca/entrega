@@ -144,6 +144,8 @@ es:
           completed: Completado
           cancelled: Cancelado
           payment:  Pagando
+          pickArrived: Transportador llego a dirección de Recogida
+          deliverArrived: Transportador llego a dirección de Destino
         pay_withs:
           cash: Efectivo
           card: Tarjeta

@@ -3,15 +3,15 @@
 <% if ['completed','cancelled'].include?(@order.status) %>
   <%= render 'restrictedAccess'%>
 
-<% elsif @user.class.name == "Sender" && ['inTransit'].include?(@order.status) %> 
+<% elsif @user.class.name == "Sender" && ['inTransit'].include?(@order.status) %> <!-- Check other statuses to be added -->
   <%= render 'restrictedAccess'%>
   
 <% elsif @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) %> 
   <%= render 'form', order: @order %> 
 
-<% elsif @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(@order.status) %>
+<% elsif @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %>
   <%= render 'form', order: @order %>   
 
-<% elsif @user.class.name == "Transporter" && ['taken', 'inTransit'].include?(@order.status) %>
-  <%= render 'form', order: @order %>  
+<% elsif @user.class.name == "Transporter" && ['taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %>
+  <%= render 'info', order: @order %>  
 <% end %>

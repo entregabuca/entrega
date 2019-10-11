@@ -1,24 +1,18 @@
 <!-- DIRECTS LOGIC TO RENDER VIEWS DEPENDING ON THE USER & THE ORDER.STATUS -->
 
-<% if @user.class.name == "Sender"  %> 
-
+<% if @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) %> 
     <% if @order.status == 'draft' %>     
       <%= render 'forminfo', form: form %>
-    <% elsif @order.status == 'posted'%>      
-       <%= render 'info', order: @order %>      
-    <% elsif @order.status == 'taken'%>       
-       <%= render 'info', order: @order %> <!-- Order Taken can be cancelled- Will need to contact Agency directly. 2B DISCUSSED -->
-    <% end %>  
+    <% elsif ['posted', 'taken'].include?(@order.status) %>    
+       <%= render 'info', order: @order %> 
+    <% end %>    
 
-<% elsif @user.class.name == "Company"  %>  
-  <% if @order.status == 'posted' %>
-      <%= render 'info', order: @order %> <!-- Pilas commented out -->
-    <% elsif @order.status == 'taken' %>
-      <%= render 'info', order: @order %>
-    <% elsif @order.status == 'inTransit' %>
-      <%= render 'info', order: @order %>
-  <% end %>
+<% elsif @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %>
+  <%= render 'info', order: @order %>
 
-<% elsif @user.class.name == "Transporter"  %> 
+<% elsif @user.class.name == "Transporter" && ['taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %>
     <%= render 'info', order: @order %> 
 <% end %>
+
+
+

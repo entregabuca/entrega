@@ -1,0 +1,133 @@
+<!-- Back Button --> 
+  <div class="action_buttons">
+    <div class="btn-group" role="group" aria-label="First group"> 
+      <%= link_to "#{Order.human_attribute_name(:back_to_orders)}", url_for([@user, :orders]), :class => "btn btn-primary btn-back mb-2 mt-2" %> 
+
+    <% if ['completed', 'cancelled'].include?(@order.status) %>
+
+    <!-- Sender -->
+    <% elsif @user.class.name == "Sender" && ['draft', 'posted', 'taken'].include?(@order.status) %>
+      <% if ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'new') %>
+        <!-- IT WILL RENDER THE FORM ITSELF -->
+      <% elsif ['draft', 'posted'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') %>
+        <div class="btn-group" role="group" aria-label="First group">    
+          <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "btn btn-primary btn-edit mb-2 mt-2" %>
+        </div>
+      <% elsif ['posted', 'taken'].include?(@order.status)  && current_page?(controller: 'orders', action: 'edit')  %>
+        <div>    
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'cancelled' %>
+            <div class="btn-group" role="group" aria-label="First group">
+              <%= form.submit  Order.human_attribute_name(:cancel_order), :class => 'mt-2 btn btn-cancel', name: 'cancel' %>
+            </div>
+          <% end %>
+        </div>
+
+      <% end %>
+
+
+    <!-- Company -->
+    <% elsif @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %>   
+
+      <% if current_page?(controller: 'orders', action: 'show') %>
+        <%# if ['posted','taken', 'inTransit'].include?(@order.status) && current_page?(controller: 'orders', action: 'show') THIS COULD BE REMOVED IF ALL WORKS FINE %>
+        <div class="btn-group" role="group" aria-label="First group">   
+          <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "btn btn-primary btn-edit mb-2 mt-2" %>
+        </div>
+
+      <% elsif @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> <!-- THIS ELSIF SEEMS THAT WASN'T DOING-->
+      <!--<%#= render 'editOrderStatusLogic', order: @order %>  LEAVE IT COMMENTED OUT UNFITL END OF TESTING -->
+
+      <% elsif  @order.status == 'taken' %>
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'pickArrived' %>
+            <div class="btn-group" role="group" aria-label="First group"> 
+              <%= form.submit  "#{Order.human_attribute_name(:pickArrived)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'pickArrived' %>
+            </div>
+          <% end %>
+
+<!--   || ||  -->
+
+      <% elsif  @order.status == 'pickArrived' %>
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'inTransit' %>
+          <div class="btn-group" role="group" aria-label="First group"> 
+            <%= form.submit  "#{Order.human_attribute_name(:inTransit)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'inTransit' %>
+          </div>
+        <% end %>
+
+      <% elsif  @order.status == 'inTransit' %>
+        <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+          <%= form.hidden_field :status, :value => 'deliverArrived' %>
+          <div class="btn-group" role="group" aria-label="First group"> 
+            <%= form.submit  "#{Order.human_attribute_name(:deliverArrived)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'deliverArrived' %>
+          </div>
+        <% end %>
+
+<!-- || ||  -->
+
+      <% elsif @order.status == 'deliverArrived' %> 
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'completed' %>
+            <%= form.hidden_field :payment_status, :value => 'paid' %>
+            <div class="btn-group" role="group" aria-label="First group"> 
+              <%= form.submit  "#{Order.human_attribute_name(:complet)}", :class => 'btn btn-primary btn-complet mb-2 mt-2 status_buttons', name: 'complete' %>
+            </div>
+          <% end %>
+        <!-- </div> -->
+      <% end %>    
+
+
+
+
+
+
+    <!-- Transporter -->
+    <% elsif @user.class.name == "Transporter" && ['taken', 'pickArrived', 'inTransit', 'deliverArrived'].include?(@order.status) %> 
+      <% if @user.class.name == "Transporter" && current_page?(controller: 'orders', action: 'show') %>
+      <%= link_to "#{Order.human_attribute_name(:edit_order)}", url_for([:edit, @user, @order]), :class => "btn btn-primary btn-edit mb-2 mt-2" %>
+
+      <% elsif current_page?(controller: 'orders', action: 'edit') %> 
+
+        <% if  @order.status == 'taken' %>   
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'pickArrived' %>
+            <div class="btn-group" role="group" aria-label="First group"> 
+              <%= form.submit  "#{Order.human_attribute_name(:pickArrived)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'pickArrived' %>
+            </div>
+          <% end %>
+
+        <% elsif  @order.status == 'pickArrived' %>
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'inTransit' %>
+            <div class="btn-group" role="group" aria-label="First group"> 
+              <%= form.submit  "#{Order.human_attribute_name(:inTransit)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'inTransit' %>
+            </div>
+          <% end %>
+
+        <% elsif  @order.status == 'inTransit' %>
+          <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+            <%= form.hidden_field :status, :value => 'deliverArrived' %>
+            <div class="btn-group" role="group" aria-label="First group"> 
+              <%= form.submit  "#{Order.human_attribute_name(:deliverArrived)}", :class => 'btn btn-primary btn-intransit mb-2 mt-2 status_buttons', name: 'deliverArrived' %>
+            </div>
+          <% end %>
+
+        <% elsif @order.status == 'deliverArrived' %> 
+            <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
+              <%= form.hidden_field :status, :value => 'completed' %>
+              <%= form.hidden_field :payment_status, :value => 'paid' %>
+              <div class="btn-group" role="group" aria-label="First group"> 
+                <%= form.submit  "#{Order.human_attribute_name(:complet)}", :class => 'btn btn-primary btn-complet mb-2 mt-2 status_buttons', name: 'complete' %>
+              </div>
+            <% end %>
+          <!-- </div> -->
+        <% end %>  
+
+      <% end %>
+      
+    <% end %> 
+    </div> 
+  </div>
+
+

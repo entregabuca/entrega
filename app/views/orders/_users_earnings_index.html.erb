@@ -1,17 +1,9 @@
 <% if current_admin %>
-  <td><%= order.admin_earning.present? ? order.admin_earning : "0"%></td>
-  <td><%= order.company_earning.present? ? order.company_earning : " "%></td>
-  <td><%= order.transporter_earning.present? ? order.transporter_earning : " "%></td>
-
-<% elsif  @user.class.name == "Company" %>
-  <td><%= order.company_earning.present? ? order.company_earning : "0"%></td>
- 	<td><%= '' %></td>
-  <td><%= '' %></td>
-
-
-<% elsif  @user.class.name == "Transporter" %>
-  <td><%= order.transporter_earning.present? ? order.transporter_earning : "0"%></td> 
-  <td><%= '' %></td>
-  <td><%= '' %></td>
-
+  <td><%= order.admin_earning.present? ? order.admin_earning : "" %></td>
+  <td><%= order.company_earning.present? ? order.company_earning : ""  %></td>
+  <td><%= order.transporter_earning.present? ? order.transporter_earning : ""  %></td>
+<% elsif  current_company %>
+  <td><%= order.company_earning.present? ? order.company_earning : 0 %></td>
+<% elsif  current_transporter %>
+  <td><%= order.transporter_earning.present? ? order.transporter_earning : 0 %></td> 
 <% end %>

@@ -21,6 +21,8 @@ class OrderStatus < ApplicationRecord
     "inTransit" => 3,
     "completed" => 4,
     "cancelled" => 5,
-    "payment" => 6
+    "payment" => 6,
+    "pickArrived" => 7,
+    "deliverArrived" => 8
   }
 end
