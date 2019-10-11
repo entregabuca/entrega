@@ -55,6 +55,12 @@ es:
         payment: Pagando
         notification: Notificación
         order_ready: Orden lista para tomar!!
+        new_order: Nueva Orden
+        new_order_assigned: Tienes una Nueva Orden!
+        at_pick_location: En Dirección de Recogida
+        transporter_at_pick_location: Transportador llego a @@ Dirección de Recogida
+        at_delivery_location: En Dirección de Destino
+        transporter_at_delivery_location: Transportador llego a Dirección de Destino
         back_to_orders: Ver Ordenes 
         edit_order : Editar Orden
         take_order: Tomar Orden
@@ -175,6 +181,8 @@ es:
           completed: Completado
           cancelled: Cancelado
           payment:  Pagando
+          pickArrived: Transportador llego a dirección de Recogida
+          deliverArrived: Transportador llego a dirección de Destino
 
         #errors may need to indent one back 
     errors:
