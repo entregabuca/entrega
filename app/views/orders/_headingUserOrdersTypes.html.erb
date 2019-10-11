@@ -10,6 +10,8 @@
   <h1 class='headingspace'><%= t (:available_orders) %></h1>
 <% elsif @user.class.name == 'Company' && current_page?(controller: 'orders', action: 'index') %>  
   <h1 class='headingspace'><%= t (:total) %> (<%= @user.orders.size %>) <%= t (:orders)%></h1>
+
+  <!-- <h2 class='headingspace'><%#= t (:total_earning) %> (<%= @user.orders.size %>) <%#= t (:orders)%></h2> -->
 <% elsif @user.class.name == 'Company' && @transporter.present? %>
   <h1 class='headingspace'> <%= @transporter.name %> <%= t (:has)%> (<%= @transporter.orders.size %>) <%= t (:orders)%></h1>
 <% end %>
@@ -17,3 +19,4 @@
 <% if @user.class.name == 'Transporter' %> 
   <h1 class='headingspace'><%= t (:total) %> (<%= @user.orders.size %>) <%= t (:orders)%></h1>
 <% end %>
+

@@ -111,8 +111,10 @@ en:
         updated_at: Updated At
         update: Update
         back_to_sender: Back to Sender 
-      location:
+      locations:
         address: Address
+      location: # This may need to be removed as it seems it isn't needed
+        address: Address 
         provide_address: You need to provide a valid address
       comment:
         content: Comments or Instructions 
@@ -142,6 +144,8 @@ en:
           completed: Completed
           cancelled: Cancelled
           payment: Payment
+          pickArrived: Arrived at Pickup address
+          deliverArrived: Arrived at Delivery address
         pay_withs:
           cash: Cash
           card: Card

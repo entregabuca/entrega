@@ -7,19 +7,16 @@
         <th><%= Order.human_attribute_name(:sender_id) %></th> 
         <th><%= Order.human_attribute_name(:company_id) %></th>
         <th><%= Order.human_attribute_name(:transporter) %></th>
-
       <% elsif @user.class.name == "Sender" %>
         <th><%= Order.human_attribute_name(:company) %></th>
         <th><%= Order.human_attribute_name(:transporter_id) %></th>
-
       <% elsif ['Company', 'Transporter'].include? @user.class.name %>
         <th><%= Order.human_attribute_name(:sender_id) %></th> 
         <th><%= Order.human_attribute_name(:transporter_id) %></th>
-
       <% end %>
 
-        <th><%= Order.human_attribute_name(:status) %></th>
-        <th><%= Order.human_attribute_name(:description) %></th>
+      <th><%= Order.human_attribute_name(:status) %></th>
+      <th><%= Order.human_attribute_name(:description) %></th>
 
       <% if current_admin %>       
         <th><%= Order.human_attribute_name(:weight) %></th>
@@ -34,10 +31,9 @@
         <th><%= Order.human_attribute_name(:pdelivery_time) %></th>             
         <th><%= Order.human_attribute_name(:radius) %></th>         
       <% end %>
-<!-- <th>Distance to Order</th>-->
-        <th><%= Order.human_attribute_name(:cost) %></th> 
-
       
+      <th><%= Order.human_attribute_name(:cost) %></th> 
+
       <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
         <th><%= t (:distance_to_order) %></th>
         <th><%= Order.human_attribute_name(:total_distance) %> 
@@ -46,31 +42,20 @@
       <th><%= Order.human_attribute_name(:payment_method) %></th>
       <th><%= Order.human_attribute_name(:payment_status) %></th>
       
-      <!--<th><%#= Order.human_attribute_name(:card) %></th> -->
       <% if current_admin %>
         <th><%= Order.human_attribute_name(:admin_earning) %></th>
         <th><%= Order.human_attribute_name(:company_earning) %></th>
         <th><%= Order.human_attribute_name(:transporter_earning) %></th>
       <% elsif current_company %>
-        <th><%= Order.human_attribute_name(:company_earning) %></th>
-         <!-- <th><%#= '' %></th>
-        <th><%#= '' %></th> -->
+        
+      <th><%= Order.human_attribute_name(:company_earning) %></th>
+
       <% elsif @user.class.name == 'Transporter' %>
         <th><%= Order.human_attribute_name(:transporter_earning) %></th>
-        <!-- <th><%#= '' %></th>
-        <th><%#= '' %></th>-->
       <% end %>
+
+      <th colspan="3">Actions</th>
       
-      <%# if current_sender %> 
-        <th colspan="3">Actions</th> <!-- 2 B Checked -->
-      <%# end %>
-      <%# else %>
-        <!--th colspan="3" >Actions</th> -->
-      <%# end %>
-
-  
-
-     
     </tr>
   </thead>
   <tbody>
@@ -109,7 +94,6 @@
           
           <td><%= number_with_delimiter(order.cost.to_i) %></td>
 
-       <!-- <td><%= number_with_delimiter(order.radius) %></td> -->
         <% if ['Company', 'Transporter', 'Admin'].include? @user.class.name %>
           <%= render 'orders/distance', order: order %>        
           <%= render 'orders/distance_between_order_points', order: order %>
@@ -126,33 +110,9 @@
           <td><%= 'None' %></td> 
         <% end %>
 
-
-
-        <!-- <td><%#= order.charge.present? ? order.charge.x_franchise : "" %></td> -->
-
-<!-- CHECK 1 - SOME OF THE CODE ADDED FOR TESTING/DEVELOPMENT ONLY. MOST LIKELY 2 B REMOVED ONCE ON PROD (for spaces purposes) -->
-
         <% if (['Company', 'Transporter', 'Admin'].include? @user.class.name) %>
-          <% if (order.status =='completed') %>
-            <%= render 'orders/users_earnings_index', order: order %>
-
-          <% elsif ['taken', 'inTransit', 'cancelled'].include? order.status %> <!-- ANTONIO ADD THE OTHER TWO STATUSES !!!!!!  -->
-            <% if current_admin %>
-              <td><%= "" %></td>   
-              <td><%= "" %></td> 
-              <td><%= "" %></td> 
-            <% elsif (['Company', 'Transporter'].include? @user.class.name) %> 
-              <td><%= "" %></td>   
-            <% end %>        
-          <% end %>
-        <% end %>
-
-        <% if current_admin && @user.class.name == "Sender"  %>
-          <td><%= "" %></td> 
-          <td><%= "" %></td> 
-          <td><%= "" %></td>           
-        <% end %>
-<!-- END CHECK 1 - UP TO HERE CODE TO B REVIEWED -->
+          <%= render 'orders/users_earnings_index', order: order %>
+         <% end %>         
 
         <%= render 'orders/indexActions', order: order %>
       </tr>
