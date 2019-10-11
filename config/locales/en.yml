@@ -58,9 +58,9 @@ en:
         new_order: New Order
         new_order_assigned: You have a New Order!
         at_pick_location: At Pickup Location
-        transporter_at_pick_location: Transporter arrived @@ at Pickup Location
+        transporter_at_pick_location: Transporter arrived at Pickup Location
         at_delivery_location: At Pickup Location
-        transporter_at_delivery_location: Transporter arrived @@ at Delivery Location   
+        transporter_at_delivery_location: Transporter arrived at Delivery Location   
         back_to_orders: Back to Orders
         edit_order: Edit Order
         take_order: Take Order
