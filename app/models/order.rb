@@ -49,6 +49,9 @@ include ActiveModel::Dirty
 
   validates :description, presence: true 
   after_save :check_status_is_posted 
+  after_save :notify_transporter_of_new_order
+  after_save :notify_sender_transporter_is_at_sending_point
+  after_save :notify_sender_transporter_is_at_delivery_point
 
   has_one :charge
   belongs_to :sender
@@ -91,6 +94,52 @@ include ActiveModel::Dirty
   end
 
 
+def notify_transporter_of_new_order
+  #transporter = order.transporter
+  if status == 'taken'
+    puts "  "
+    puts "  "
+    puts "  "
+    puts "   Notification Sent to TRANSPORTER #{transporter.id}"
+    puts "  "
+    puts "  "
+    puts "  "
+    NotificationChannel.broadcast_to(transporter, title: "#{Order.human_attribute_name(:new_order)}", body: "#{Order.human_attribute_name(:new_order_assigned)}")
+    puts "  "
+    puts "  "
+    puts "  "
+  end
+end
+
+def notify_sender_transporter_is_at_sending_point
+  if status == 'pickArrived'
+    puts "  "
+    puts "   Notification Sent to SENDER #{sender.id}"
+    puts "  "
+    puts "  "
+    puts "  "
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_pick_location)}", body: "#{Order.human_attribute_name(:transporter_at_pick_location)}")
+    puts "  "
+    puts "  "
+    puts "  "
+  end    
+end
+
+def notify_sender_transporter_is_at_delivery_point
+  if status == 'deliverArrived'
+    puts "  "
+    puts "   Notification Sent to SENDER #{sender.id}"
+    puts "  "
+    puts "  "
+    puts "  "
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_delivery_location)}", body: "#{Order.human_attribute_name(:transporter_at_delivery_location)}")
+    puts "  "
+    puts "  "
+    puts "  "
+  end    
+end
+
+
  # def posted 
  #   self.status = 'posted'
  # end
@@ -102,7 +151,7 @@ include ActiveModel::Dirty
       self.admin_earning = cost * 0.1
     end
   end
-
+end
    # ----------------------------------- || -------------------------------------------------------------
 
 # CHECK REFACTORING ON TIME LOGICS TO SEE WHAT CAN BE COMBINED OR ELIMINATED
@@ -149,4 +198,4 @@ include ActiveModel::Dirty
 #      end
 #    end
 #  end
-end
+
