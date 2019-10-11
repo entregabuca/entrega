@@ -58,7 +58,7 @@ es:
         new_order: Nueva Orden
         new_order_assigned: Tienes una Nueva Orden!
         at_pick_location: En Dirección de Recogida
-        transporter_at_pick_location: Transportador llego a @@ Dirección de Recogida
+        transporter_at_pick_location: Transportador llego a Dirección de Recogida
         at_delivery_location: En Dirección de Destino
         transporter_at_delivery_location: Transportador llego a Dirección de Destino
         back_to_orders: Ver Ordenes 
