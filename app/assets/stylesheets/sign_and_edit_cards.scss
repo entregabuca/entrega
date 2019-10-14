@@ -24,15 +24,24 @@ input#user_remember_me {
 
 
 .login, .signup {
-    font-size: 2rem vmin !important;
+    font-size: 2rem !important;
 }
 .signup-label, .signin-label, .rememberme, .forgotPassword  {
     font-size: 1.2rem !important;
 }
+
+a.forgotPassword:hover {
+    color: black;
+    background: #fffd08f5;
+    pading: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+}
+
 .singup-input, .signin-input {
     border-color: #ffffff24 !important;
-    width: 25vmin !important;
-    font-size: 1.6vmin !important;
+    width: 80% !important;
+    font-size: 1.2rem important;
     text-align: center !important;
 }
 
@@ -52,7 +61,7 @@ input#user_remember_me {
     padding-top: 3vmin !important;
 }
 
-/* Forgot Password Buttond */
+/* Forgot Password Button */
 
 .message {
     font-size: 1.5rem !important;
@@ -72,14 +81,14 @@ input#user_remember_me {
 
 @media (max-width: 1200px){
 
-    .signup-label, .signin-label, .rememberme, .forgotPassword {
-        font-size: 2vmin !important;
-    }
+  .signup-label, .signin-label, .rememberme, .forgotPassword {
+    font-size: 1rem !important;
+  }
 
-    .singup-input, .signin-input {   
-    font-size: 1.6vmin !important;
-  
-    }
+  .singup-input, .signin-input {   
+    font-size: 0.9rem !important;
+
+  }
 
 } 
 
@@ -87,18 +96,17 @@ input#user_remember_me {
 
 @media (max-width: 992px) { 
 
-    .login, .signup {   
-        font-size: 1.5rem !important;      
-    }
+  .login, .signup {   
+      font-size: 1.5rem !important;      
+  }
 
-    .signup-label, .signin-label, .rememberme, .forgotPassword  {
-        font-size: 1.1rem !important;
-    }
+  .signup-label, .signin-label, .rememberme, .forgotPassword  {
+      font-size: 1.1rem !important;
+  }
 
-    .singup-input, .signin-input {   
+  .singup-input, .signin-input {   
     font-size: 1rem !important;
-  
-    }
+  }
 }
 
 /* ========================================================= */
@@ -116,11 +124,11 @@ input#user_remember_me {
 
     .signup-label, .signin-label, .rememberme, 
     .forgotPassword  {
-        font-size: 0.9rem !important;
+        font-size: 1rem !important;
     }
 
     .singup-input, .signin-input {   
-        font-size: 0.7rem !important;      
+        font-size: 0.9rem !important;      
     }
 
     .btn-devise {
@@ -140,14 +148,40 @@ input#user_remember_me {
 
 /* ========================================================= */
 
-@media (max-width: 300px) and (orientation : portrait) {
+@media (max-width: 320px) and (orientation : portrait) {
 
-    .message {
+    
+  /*.singup-input, .signin-input {   
+    font-size: 0.9rem !important;
+  }*/
+
+  .message {
         font-size: 0.65rem !important;
     }
 
     .btn-devise {
         line-height: 1.2 !important;
     }
+
+}
+
+/* =============================================================== */
+/* ===================MEDIA QUERIES - LANDSCAPE ================== */
+/* =============================================================== */
+
+@media (min-width: 1024px) and (orientation : landscape) {
+  
+}
+
+@media (max-width: 1024px) and (orientation : landscape) {
+  
+}
+
+@media (max-width: 992px) and (orientation : landscape) {
+  
+}
+
+@media (max-width: 568px) and (orientation : landscape) {
+  
 
 }

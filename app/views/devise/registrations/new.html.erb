@@ -10,18 +10,18 @@
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-inputs mb-5">
             <div class="field"> 
-              <%= f.label :email, :class => "signup-label" %><br />
+              <b><%= f.label :email, :class => "signup-label" %></b><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "singup-input mb-4"  %>
             </div> 
 
             <div class="field"> 
-              <%= f.label t(:password), :class => "signup-label"  %>
+              <b><%= f.label t(:password), :class => "signup-label"  %></b>
               <br />
               <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{t (:minimum_password_length)}", :class => "singup-input mb-4" %>
             </div>
 
             <div class="field"> 
-              <%= f.label t(:password_confirmation), :class => "signup-label" %><br/>
+              <b><%= f.label t(:password_confirmation), :class => "signup-label" %></b><br/>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "#{t (:confirm_password)}", :class => "singup-input mb-4" %>
             </div> 
           </div>
