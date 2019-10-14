@@ -91,4 +91,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]  # this has been uncommented to try is it was working
+
+  
+  config.action_mailer.default_url_options = { :host => 'entregabuca.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+ 
+  config.action_mailer.perform_deliveries = true
+
+  # THIS IS MANDATORY TO BE ABLE TO SEND MAILS IN PRODUCTION
+  Rails.application.routes.default_url_options[:host] = 'entregabuca.herokuapp.com'
+
+  config.action_mailer.default :charset => "utf-8"
+
 end
