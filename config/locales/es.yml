@@ -292,7 +292,7 @@ es:
   send_reset_password: Enviame instrucciones
   didnot_receive_confirmation_instructions: No recibió Instrucciones de confirmacion?
   didnot_receive_unlock_instructions: No recibió Instrucciones para desbloquear cuenta?
-  change my password: Cambiar Contraseña
+  change_my_password: Cambiar Contraseña
   company_signup_message_1: Eres una agencia de mensajeria y quieres aliarte a la red
   company_signup_message_2: y comienza a recibir mas clientes al instante
   company_signin_message_1: Si ya eres parte de la red procede a  

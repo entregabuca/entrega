@@ -282,7 +282,7 @@ en:
   sign_up_tranporter: Sing up a Transporter
   password: Password
   current_password: Current Password
-  password_confirmation: Confirm Pas11sword
+  password_confirmation: Confirm Password
   minimum_password_length: 6 characters minimum
   confirm_password: Confirm Password
   enter_email: Enter Email
@@ -292,7 +292,7 @@ en:
   send_reset_password: Send me reset password instructions 
   didnot_receive_confirmation_instructions: Didn't receive confirmation instructions?
   didnot_receive_unlock_instructions: Didn't receive unlock instructions?
-  change my password: Change my password
+  change_my_password: Change my password
   company_signup_message_1: If you are a delivery company and want to be part of a network that works with you, you can
   company_signup_message_2: to start earning extra money.
   company_signin_message_1: Otherwise if you are already resgister simply 
