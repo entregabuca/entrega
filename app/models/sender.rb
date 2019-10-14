@@ -16,6 +16,7 @@
 #
 
 class Sender < ApplicationRecord
+  include InactiveStatus
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,7 +27,7 @@ class Sender < ApplicationRecord
   accepts_nested_attributes_for :locations, allow_destroy: true
 
   before_create :set_default_location
-  before_create :default_status
+  before_create :inactive_status 
 
   enum status:{
     inactive:  0,

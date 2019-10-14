@@ -230,10 +230,12 @@ es:
   editing_company: Actualizar Compañia
   editing_transporter: Actualizar Transportador
   transporter_details: Información del Transportador
+
   restrict_title: Hola !!! No deberias estar aca !!!
   restrict_body1: No pasa nada. 
   restrict_body2: Simplemente haga clic en el botón que esta abajo.
   status: Estado de la Orden
+  
   profile: Perfil
 
   company_location: Dirección de la Compañia
@@ -263,6 +265,11 @@ es:
   my_profile: Mi Perfil
   trans_profile: Perfil del Transportador
   edit_profile: Actualizar Perfil
+  change_password: Cambiar Contraseña
+  leave_blank: (Dejar en blanco si no quiere cambiarla)
+  current_password_message: (Ingresa tu contraseña actual para confirmar los cambios)
+  update_user_passor_or_email: Actualizar
+  cancel_account: Cancelar Cuenta
 
   sign_in: Inicia sesión
   sign_out: Salir

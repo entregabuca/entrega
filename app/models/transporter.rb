@@ -17,6 +17,7 @@
 #
 
 class Transporter < ApplicationRecord
+  include InactiveStatus
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -24,7 +25,7 @@ class Transporter < ApplicationRecord
   belongs_to :company
   has_many :orders, dependent: :destroy  # if dependent destroy isn't placed we aren't unable to destroy the Company
   
-  before_create :default_status
+  before_create :inactive_status 
 
   enum status:{
    "inactive" => 0,
@@ -34,9 +35,9 @@ class Transporter < ApplicationRecord
    "offwork" => 4
   }
   
-  def default_status
-    self.status = "inactive"
-  end
+  #def default_status
+  #  self.status = "inactive"
+  #end
 
 
 

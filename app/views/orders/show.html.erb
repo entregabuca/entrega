@@ -26,3 +26,29 @@
 <br>
 
 
+
+
+
+<!-- THIS COULD BE USED TO ALERT WITH SOUNDS. CURRENTLY NEEDS TO GET PERMISSION FROM THE USER, TO BE CHECKED 
+<audio id="mysoundclip" preload="auto">
+  <source src="triangle-Dinner-Bell.wav"></source>
+</audio>
+
+
+
+
+<script>
+   // $(document).ready(function() {
+    	var message2Alert = $('#notice').text()
+    	var audio = $("#mysoundclip")[0];
+		  if (message2Alert.includes("Orderwas successfully updated")){  // This is only because this is the example I'm using at the moment
+		    console.log(message2Alert) 
+		    console.log(audio);        
+        audio.play();
+       
+		  } else {
+		  console.log(" It doesn't")
+		  }
+	
+</script>
+ -->

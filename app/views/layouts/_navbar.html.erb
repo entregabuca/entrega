@@ -45,6 +45,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
             <%= link_to I18n.t(:edit_profile), edit_sender_path(@user), class: 'nav-link' %>
+            <%= link_to I18n.t(:change_password), edit_sender_registration_path, class: 'nav-link'  %>   
           </div>
         </li>  
       <% end %>
@@ -77,9 +78,13 @@
                   <%= link_to I18n.t(:trans_orders), orders_company_transporter_path(@user, @transporter), class: 'nav-link' %>
                   <%= link_to I18n.t(:trans_profile), company_transporter_path(@user, @transporter), class: 'nav-link' %>
                   <%= link_to I18n.t(:edit_profile), edit_company_transporter_path(@user, @transporter), class: 'nav-link' %>
+
                 </div>
               </li>        
             <% end %>
+            <!-- <li class="nav-item">
+             
+            </li>  -->
           <% end %>
           
           <!-- Company dropdown -->
@@ -90,7 +95,8 @@
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
-              <%= link_to  I18n.t(:edit_profile), edit_company_path(@user), class: 'nav-link' %>             
+              <%= link_to  I18n.t(:edit_profile), edit_company_path(@user), class: 'nav-link' %> 
+              <%= link_to I18n.t(:change_password), edit_company_registration_path, class: 'nav-link'  %>            
             </div>
           </li>
         <% end %>
@@ -105,7 +111,10 @@
           </li>
           <li class="nav-item">  
           <%= link_to  I18n.t(:edit_profile), edit_transporter_path(@user), class: 'nav-link' %>
-          </li>  
+          </li>
+          <li class="nav-item"> 
+           <%= link_to I18n.t(:change_password), edit_transporter_registration_path, class: 'nav-link'  %>
+          <li class="nav-item">      
         <% end %> 
         
          <li class="nav-item">

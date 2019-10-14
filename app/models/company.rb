@@ -17,6 +17,7 @@
 #
 
 class Company < ApplicationRecord
+  include InactiveStatus
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,7 +28,7 @@ class Company < ApplicationRecord
   
   accepts_nested_attributes_for :locations, reject_if: :all_blank, allow_destroy: true
   before_create :set_default_location
-  before_create :default_status
+  before_create :inactive_status 
 
 
   enum status:{
@@ -35,9 +36,9 @@ class Company < ApplicationRecord
     "active" => 1
   }
  
-  def default_status
-    self.status = 'inactive'
-  end
+  #def default_status
+  #  self.status = 'inactive'
+  #end
 
   def status_active  # could be changed to order_posted
     self.status == 'active'     
@@ -50,10 +51,6 @@ class Company < ApplicationRecord
       self.locations << Location.create( {latitude: 0 , longitude: 0})      
     end 
   end
-
-
-# #t.integer "radius" Unsure if radius needs validation
-
 
  with_options if: :status_active do |company|
    company.validates :name, presence: true 

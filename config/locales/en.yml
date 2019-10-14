@@ -265,6 +265,11 @@ en:
   my_profile: My Profile
   trans_profile: Transporter Profile
   edit_profile: Edit Profile
+  change_password: Change Password
+  leave_blank: (leave blank if you don't want to change it)
+  current_password_message: (Enter your current password to confirm your changes)
+  update_user_passor_or_email: Update
+  cancel_account:  Cancel my account
 
   sign_in: Sign In
   sign_out: Sign Out
