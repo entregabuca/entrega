@@ -9,26 +9,21 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-inputs mb-5">
-          <div class="field"> 
-            <%= f.label :email, :class => "signup-label" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "singup-input mb-4"  %>
-          </div> 
+            <div class="field"> 
+              <%= f.label :email, :class => "signup-label" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "singup-input mb-4"  %>
+            </div> 
 
-          <div class="field"> 
-            <%= f.label t(:password), :class => "signup-label"  %>
-            <!--<%# if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> )</em>
-            <%# end %> -->
+            <div class="field"> 
+              <%= f.label t(:password), :class => "signup-label"  %>
+              <br />
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{t (:minimum_password_length)}", :class => "singup-input mb-4" %>
+            </div>
 
-            <br />
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{t (:minimum_password_length)}", :class => "singup-input mb-4" %>
-          </div>
-
-          <div class="field"> 
-            <%= f.label t(:password_confirmation), :class => "signup-label" %><br/>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "#{t (:confirm_password)}", :class => "singup-input mb-4" %>
-          </div> 
-          
+            <div class="field"> 
+              <%= f.label t(:password_confirmation), :class => "signup-label" %><br/>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "#{t (:confirm_password)}", :class => "singup-input mb-4" %>
+            </div> 
           </div>
 
           <div class="form-actions text-center">

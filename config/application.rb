@@ -19,6 +19,9 @@ module Entrega
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :en
 
+    # Added to get the modules on models
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # Code below sets environment variables from local_env.yml file.
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
