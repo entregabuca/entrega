@@ -1,3 +1,92 @@
+
+// $("button").click(function(){
+  // $("p:first").addClass("intro");
+// });
+
+var completed = $(".cost-values").text()
+//console.log(completed)
+
+
+var orderStatus = $(".order-values-status").text()  
+console.log(orderStatus)
+
+
+//
+
+var completed = $(".cost-values").text()
+
+
+var orderStatus = $(".order-values-status").text()  
+if (orderStatus == "Completed") {
+  //$('div .earn').addClass('green')
+  console.log(" OE!!!!!")
+} else {
+  console.log(" It isn't")
+  console.log(orderStatus)
+}
+
+
+
+(orderStatus.includes('Completed'))
+
+
+var indexStatus = $(".indexStatus").text()
+console.log(indexStatus)
+
+
+var orderStatus = $(".order-values-status").text()  
+if (orderStatus.includes('Completed')) {
+  $('div .earn').addClass('green')
+} else {
+  console.log(" It isn't")
+  console.log(orderStatus)
+}
+
+
+
+var Row = document.getElementsByClassName("tableValues");
+var Cells = Row..getElementsByTagName("td");
+alert(Cells[0].innerText);
+
+
+
+var status = $(this).val(),
+      node_to_change = $(this).closest('.nested-fields').find('.statusValue'); 
+      
+        if(status == 'In Progress')      
+          node_to_change.val(50)
+        else if(status == 'Completed')
+          node_to_change.val(100)
+        else  node_to_change.val(0)
+                
+      });  
+
+
+
+var indexStatus = $(".indexStatus").text()
+if (indexStatus.includes('Completed')) {
+
+
+
+
+$('td .earn').addClass('green')
+
+}
+
+var indexStatus = $(".indexStatus").text()
+node_to_change = $(tr).closest('.td').find('.indexStatus'); 
+      
+        if(indexStatus == 'Completed') {
+          console.log("OE!!!")
+        }    else {
+        console.log(" Not here")
+        }
+
+
+
+
+
+
 DISTANCE & COST
 
 var cost = 0

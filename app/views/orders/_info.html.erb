@@ -15,7 +15,7 @@
       <div class="row">
         <div class="d-inline col-sm-6 order-headings bolds "><%= Order.human_attribute_name(:status) %>
         </div>
-        <div class="d-inline col-sm-6 mb-3 order-values"><%= enum_l(@order, :status) %>
+        <div class="d-inline col-sm-6 mb-3 order-values-status"><%= enum_l(@order, :status) %>
         </div>
       </div>
 
@@ -135,19 +135,11 @@
     <div class="card-body pl-1">    
       <div class="col-md-12 my-2">  
         <div class="row">  
-           <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:pay_with) %>
+           <div class="d-inline col-sm-6 pay-with-heading bolds"><%= Order.human_attribute_name(:payment_method) %>
           </div>  
-          <% if @order.pay_with == "cash" %>       
-            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'> 
-              <%= enum_l(@order, :pay_with) %>
-            </div> 
-          <% else %>
-            <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'>
-            <% if @order.charge.present? %> 
-              <%= enum_l(@order.charge, :payment_method) %>
-            <% end %>
-            </div> 
-          <% end %>
+          <div class="d-inline col-sm-6 pay-with-show-values" id='payWithValue'>
+            <%= enum_l(@order, :pay_with) %>
+          </div> 
         </div>
       </div>
     </div>
