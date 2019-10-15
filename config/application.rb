@@ -30,7 +30,6 @@ module Entrega
       end if File.exists?(env_file)
     end
 
-
     config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
@@ -40,8 +39,5 @@ module Entrega
     enable_starttls_auto: true,
     domain: 'gmail.com'  # Added to see if it will work after a block by Google
     }   
-
-
-
   end  
 end
