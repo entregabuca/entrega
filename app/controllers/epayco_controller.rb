@@ -12,8 +12,8 @@ class EpaycoController < ApplicationController
   		@charge = Charge.where(uid: @data["x_id_invoice"]).take
 
 
-
-      redirect_to url_for ([@charge.order.sender, @charge.order])
+      redirect_to url_for ([@sender, orders])
+      #redirect_to url_for ([@charge.order.sender, @charge.order]) # has to be to show view
     else
   		@error = "Unable to retreive the information"
       redirect_to :root
