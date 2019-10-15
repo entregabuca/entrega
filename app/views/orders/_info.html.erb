@@ -366,7 +366,7 @@
         <% @order.order_statuses.each do |order_status| %>
           <tr class="odd tableValues">
             <td class="text-center"><%= enum_l(order_status, :status)  %></td>
-            <td class="text-center"><%= order_status.status_time.strftime("%e %B %Y at %I:%M:%S %p ") %></td> 
+            <td class="text-center"><%= l order_status.status_time, format: :long %></td> 
           </tr> 
         <% end %>
       </tbody>

@@ -314,21 +314,20 @@ es:
     - jue
     - vie
     - sáb
-
     abbr_month_names:
     - 
-    - ene
-    - feb
-    - mar
-    - abr
-    - may
-    - jun
-    - jul
-    - ago
-    - sep
-    - oct
-    - nov
-    - dic
+    - Ene
+    - Feb
+    - Mar
+    - Abr
+    - May
+    - Jun
+    - Jul
+    - Ago
+    - Sep
+    - Oct
+    - Nov
+    - Dic
     day_names:
     - domingo
     - lunes
@@ -341,20 +340,21 @@ es:
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
       short: "%d de %b"
+
     month_names:
     - 
-    - enero
-    - febrero
-    - marzo
-    - abril
-    - mayo
-    - junio
-    - julio
-    - agosto
-    - septiembre
-    - octubre
-    - noviembre
-    - diciembre
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
     order:
     - :day
     - :month
@@ -514,6 +514,13 @@ es:
     am: am
     formats:
       default: "%a, %d de %b de %Y a las %H:%M:%S %Z"
-      long: "%A, %d de %B de %Y a las %I:%M %p"
+      long: "%d - %B - %Y a las  %I:%M:%S %p %Z "  #"%A, %d de %B de %Y"
       short: "%d de %b a las %H:%M hrs"
-    pm: pm
+    pm: 
+
+
+
+
+
+
+
