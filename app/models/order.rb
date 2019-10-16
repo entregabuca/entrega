@@ -40,7 +40,8 @@ include ActiveModel::Dirty
     "cancelled" => 5,
     "payment" => 6,
     "pickArrived" => 7,
-    "deliverArrived" => 8
+    "deliverArrived" => 8,
+    "onWayPick" => 9
   }
 
   enum pay_with:{ cash: "cash", card: "card" }
@@ -50,6 +51,7 @@ include ActiveModel::Dirty
   validates :description, presence: true 
   after_save :check_status_is_posted 
   after_save :notify_transporter_of_new_order
+  after_save :notify_sender_and_company_transporter_is_on_the_way_to_pick_up_address
   after_save :notify_sender_transporter_is_at_sending_point
   after_save :notify_sender_transporter_is_at_delivery_point
 
@@ -96,6 +98,14 @@ def notify_transporter_of_new_order
   end
 end
 
+def notify_sender_and_company_transporter_is_on_the_way_to_pick_up_address 
+  if status == 'onWayPick'
+    puts " Notification Sent to SENDER #{sender.id} and to company #{transporter.company.id}"
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:accept_order)}", body: "#{Order.human_attribute_name(:on_the_way_pick)}")
+    NotificationChannel.broadcast_to(transporter.company, title: "#{Order.human_attribute_name(:accept_order)}", body: "#{Order.human_attribute_name(:on_the_way_pick)}")
+  end
+end
+
 def notify_sender_transporter_is_at_sending_point
   if status == 'pickArrived'
     puts " Notification Sent to SENDER #{sender.id}"
@@ -109,6 +119,10 @@ def notify_sender_transporter_is_at_delivery_point
     NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_delivery_location)}", body: "#{Order.human_attribute_name(:transporter_at_delivery_location)}")
   end    
 end
+
+
+
+
 
   def set_earnings
     if self.status == 'posted'

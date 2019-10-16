@@ -23,6 +23,8 @@ class OrderStatus < ApplicationRecord
     "cancelled" => 5,
     "payment" => 6,
     "pickArrived" => 7,
-    "deliverArrived" => 8
+    "deliverArrived" => 8,
+    "onWayPick" => 9
   }
+  
 end

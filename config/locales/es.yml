@@ -56,7 +56,9 @@ es:
         notification: Notificación
         order_ready: Orden lista para tomar!!
         new_order: Nueva Orden
+        accept_order: Orden Acceptada 
         new_order_assigned: Tienes una Nueva Orden!
+        on_the_way_pick: En camino Dirección de Recogida
         at_pick_location: En Dirección de Recogida
         transporter_at_pick_location: Transportador llego a Dirección de Recogida
         at_delivery_location: En Dirección de Destino
@@ -67,6 +69,10 @@ es:
         taken: Tomada
         inTransit: En Camino
         complet: Completar
+        pickArrived: Llegué a Recoger
+        deliverArrived: Llegué a Entregar
+        onWayPick: Voy a Recoger
+
         cancel_order: Cancelar Orden
         content: Comentarios o Instrucciones 
         cancel_payment: Cancelar Pago 
@@ -152,6 +158,7 @@ es:
           payment:  Pagando
           pickArrived: Transportador llego a dirección de Recogida
           deliverArrived: Transportador llego a dirección de Destino
+          onWayPick: Transportador en camino a dirección de Recogida
         pay_withs:
           cash: Efectivo
           card: Tarjeta
@@ -183,7 +190,7 @@ es:
           payment:  Pagando
           pickArrived: Transportador llego a dirección de Recogida
           deliverArrived: Transportador llego a dirección de Destino
-
+          onWayPick: En camino a dirección de Recogida
         #errors may need to indent one back 
     errors:
       messages:
