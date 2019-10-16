@@ -72,6 +72,7 @@ en:
         pickArrived: Arrived to Pickup
         deliverArrived: Arrived to Deliver
         onWayPick: On My Way
+        refuse: Refuse
         
         cancel_order: Cancel Order
         content: Comments or Instructions
@@ -159,6 +160,7 @@ en:
           pickArrived: Arrived at Pickup address
           deliverArrived: Arrived at Delivery address
           onWayPick: On the way to Pickup address
+          refuse: Refuse
         pay_withs:
           cash: Cash
           card: Card
@@ -191,6 +193,7 @@ en:
           pickArrived: Arrived at Pickup address
           deliverArrived: Arrived at Delivery address
           onWayPick: On the way to Pickup address
+          refuse: Refuse
 
           #errors may need to indent one back 
       errors:

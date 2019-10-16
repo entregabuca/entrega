@@ -24,7 +24,8 @@ class OrderStatus < ApplicationRecord
     "payment" => 6,
     "pickArrived" => 7,
     "deliverArrived" => 8,
-    "onWayPick" => 9
+    "onWayPick" => 9,
+    "refuse" => 10
   }
   
 end

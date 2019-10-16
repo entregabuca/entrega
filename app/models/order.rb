@@ -41,7 +41,8 @@ include ActiveModel::Dirty
     "payment" => 6,
     "pickArrived" => 7,
     "deliverArrived" => 8,
-    "onWayPick" => 9
+    "onWayPick" => 9,
+    "refuse" => 10
   }
 
   enum pay_with:{ cash: "cash", card: "card" }
