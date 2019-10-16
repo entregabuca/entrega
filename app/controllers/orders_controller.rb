@@ -102,7 +102,7 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
       @transporter = @order.transporter 
       if @transporter.present?
-        if @order.status == "taken"
+        if @order.status == "onWayPick"
           @transporter.status = "busy"
           @transporter.save
         elsif (@order.status == 'completed' || @order.status ==  'cancelled')  

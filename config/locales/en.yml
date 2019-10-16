@@ -56,7 +56,9 @@ en:
         notification: Notification
         order_ready: New order available!!
         new_order: New Order
+        accept_order: Order Accepted
         new_order_assigned: You have a New Order!
+        on_the_way_pick: Transporter on the way to Pickup location
         at_pick_location: At Pickup Location
         transporter_at_pick_location: Transporter arrived at Pickup Location
         at_delivery_location: At Pickup Location
@@ -67,6 +69,10 @@ en:
         taken: Taken
         inTransit: In Transit
         complet: Complete
+        pickArrived: Arrived to Pickup
+        deliverArrived: Arrived to Deliver
+        onWayPick: On My Way
+        
         cancel_order: Cancel Order
         content: Comments or Instructions
         cancel_payment: Cancel Payment
@@ -152,6 +158,7 @@ en:
           payment: Payment
           pickArrived: Arrived at Pickup address
           deliverArrived: Arrived at Delivery address
+          onWayPick: On the way to Pickup address
         pay_withs:
           cash: Cash
           card: Card
@@ -183,6 +190,7 @@ en:
           payment: Payment
           pickArrived: Arrived at Pickup address
           deliverArrived: Arrived at Delivery address
+          onWayPick: On the way to Pickup address
 
           #errors may need to indent one back 
       errors:
