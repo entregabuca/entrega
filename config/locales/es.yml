@@ -72,6 +72,7 @@ es:
         pickArrived: Llegué a Recoger
         deliverArrived: Llegué a Entregar
         onWayPick: Voy a Recoger
+        refuse: Rechazar
 
         cancel_order: Cancelar Orden
         content: Comentarios o Instrucciones 
@@ -159,6 +160,7 @@ es:
           pickArrived: Transportador llego a dirección de Recogida
           deliverArrived: Transportador llego a dirección de Destino
           onWayPick: Transportador en camino a dirección de Recogida
+          refuse: Rechazar
         pay_withs:
           cash: Efectivo
           card: Tarjeta
@@ -191,6 +193,7 @@ es:
           pickArrived: Transportador llego a dirección de Recogida
           deliverArrived: Transportador llego a dirección de Destino
           onWayPick: En camino a dirección de Recogida
+          refuse: Rechazar
         #errors may need to indent one back 
     errors:
       messages:

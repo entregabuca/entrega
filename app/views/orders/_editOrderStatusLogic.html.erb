@@ -7,10 +7,10 @@
        <%= render 'info', order: @order %> 
     <% end %>    
 
-<% elsif @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick'].include?(@order.status) %>
+<% elsif @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick', 'refuse'].include?(@order.status) %>
   <%= render 'info', order: @order %>
 
-<% elsif @user.class.name == "Transporter" && ['taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick'].include?(@order.status) %>
+<% elsif @user.class.name == "Transporter" && ['taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick', 'refuse'].include?(@order.status) %>
     <%= render 'info', order: @order %> 
 <% end %>
 
