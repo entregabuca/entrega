@@ -102,16 +102,18 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
       @transporter = @order.transporter 
       if @transporter.present?
-        if @order.status == "onWayPick"
+        if ['taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick'].include?(@order.status)  #@order.status == "onWayPick"
+
+
           @transporter.status = "busy"
           @transporter.save
-        elsif (@order.status == 'completed' || @order.status ==  'cancelled')  
+        elsif ['refuse', 'completed','cancelled'].include?(@order.status)  
           @transporter.status = 'available'
           @transporter.save
-          puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Can be removed only for test
+          puts " TRANSPORTER #{@transporter.name} STATUS IS #{@transporter.status}" # Will be removed only for test
         end
       end
-    end    #@order.status == ['completed', 'cancelled'].include?(@order.status)  WHY THIS CODE DOESN'T WORK in line 113?
+    end   
 
     def set_order_statuses
       @order = Order.find(params[:id])

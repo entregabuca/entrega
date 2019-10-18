@@ -61,13 +61,13 @@ a.btn-back-loggins {
 }
 
 
-.btn-draft, .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-complet,  .btn-payorder, .btn-calcualte-price {
+.btn-draft, .btn-update, .btn-post, .btn-taken, .btn-intransit, .btn-complet,  .btn-payorder, .btn-calcualte-price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
   color: black !important;
   border-radius: 3.5rem !important;
 }
 
 
-.btn-update, .btn-post, .btn-intransit, .btn-complet,  .btn-payorder, .btn-calcualte_price {
+.btn-update, .btn-post, .btn-intransit, .btn-complet,  .btn-payorder, .btn-calcualte_price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived, .btn-refuse, .btn-cancel {
   margin-left: 180px !important;
 } 
 
@@ -78,35 +78,35 @@ a.btn-back-loggins {
       color: white !important;
     }
 }
-.btn-cancel-payment, .btn-cancel {
+.btn-cancel-payment, .btn-cancel, .btn-refuse {
   border-radius: 3.5rem !important;
 }
 
-.btn-draft:hover, .btn-post:hover, .btn-taken:hover, .btn-intransit:hover, .btn-complet:hover, .btn-update:hover, .btn-payorder:hover, .btn-calcualte-price:hover {
+.btn-draft:hover, .btn-post:hover, .btn-taken:hover, .btn-intransit:hover, .btn-complet:hover, .btn-update:hover, .btn-payorder:hover, .btn-calcualte-price:hover, .btn-onWayPick:hover, .btn-pickArrived:hover, .btn-deliverArrived:hover {
   color: #fff !important;
   background-color: #28a745 !important;
   border-color: #28a745 !important;
 }
 
-.btn-cancel, .btn-cancel-payment {
+.btn-cancel, .btn-cancel-payment, .btn-refuse {
   color: #fff !important;
   background-color: #ff0000 !important;
   border-color: #ff0000 !important;
   border-radius: 3.5rem !important;
 }
 
-.btn-cancel:hover, .btn-cancel-payment:hover { 
+.btn-cancel:hover, .btn-cancel-payment:hover, .btn-refuse:hover { 
   color: #ff0000 !important;
   background-color:  #fff !important;
   border-color:  #ff0000  !important;
 }
 
-.btn-cancel {
+.btn-cancel, .btn-refuse {
     border-color: black !important;    
     padding: 0 !important;
 }
 
-.btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-calcualte-price {
+.btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-calcualte-price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived, .btn-refuse  {
   height: 41px;
   width: 194px;
   font-size :1rem;
@@ -123,7 +123,7 @@ a.btn-back-loggins {
     }
 }
 
-btn-cancel-payment {
+btn-cancel-payment, .btn-refuse  {
     background-color: red !important;
     color: white !important;
 }
@@ -147,7 +147,7 @@ btn-cancel-payment {
     margin-left: 180px !important;
   }
 
-   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder, .btn-cancel {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
     font-weight: 500 !important;
   } 
 } 
@@ -174,7 +174,7 @@ btn-cancel-payment {
       margin-right: 170px !important;
   }
 
-  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back, .btn-cancel-payment, .btn-cancel {
+  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back, .btn-cancel-payment, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     font-weight: 500;
     max-width: 194px !important;
     max-height: 41px !important;
@@ -196,7 +196,7 @@ btn-cancel-payment {
     margin-left: 80px !important;
   }
   
-  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back, .btn-cancel-payment, .btn-cancel {
+  .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-back, .btn-cancel-payment, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     font-weight: 500;
     width: 155.75px !important;
     max-height: 41px !important;
@@ -223,7 +223,7 @@ btn-cancel-payment {
 /* ========================================================= */
 
 @media (max-width: 500px) and (orientation : portrait) {
-    .btn-back, .btn-draft, .btn-edit, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-cancel-payment, .btn-payorder, .btn-cancel {
+    .btn-back, .btn-draft, .btn-edit, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
       width: 154px !important;
       height: 38px !important;
     }
@@ -251,7 +251,7 @@ btn-cancel-payment {
     width: 62% !important;
   }
 
-  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
+  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
     padding: 0.375rem 0.75rem !important;
   }  
 
@@ -259,7 +259,7 @@ btn-cancel-payment {
     margin-right: 80px !important;
   }
 
-  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {  
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {  
     margin-left: 40px !important;
   }
 }
@@ -278,7 +278,7 @@ btn-cancel-payment {
       margin-right: 40px !important;
   }
 
-   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     padding: 0.375rem 2.95rem !important;
   }
 }
@@ -290,7 +290,7 @@ btn-cancel-payment {
     margin-left: none !important;
   }
 
-  .btn-edit, .btn-intransit, .btn-complet, .btn-cancel{
+  .btn-edit, .btn-intransit, .btn-complet, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
     width: 154px !important;
     height: 38px !important;
   }
@@ -318,19 +318,19 @@ btn-cancel-payment {
     margin-left: none !important;
   }
 
-  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel {
+  .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit,  .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     font-size: 0.9rem !important;
     width: 134px !important;
     padding: 0.375rem 0.75rem !important;
   }
 
-  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     margin-left: 20px !important;
   }
 }
 
 @media (max-width: 340px) and (orientation: portrait) {
-  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     margin-left: 9px !important;
   }
 }
@@ -349,13 +349,13 @@ btn-cancel-payment {
 
 
 @media (max-width: 1600px) and (orientation : landscape) {
-  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel {
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
       margin-left: 180px !important;
     }
 
 }
 @media (max-width: 1600px) and (orientation : landscape) {
-   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-calcualte_price {
+   .btn-back, .btn-draft, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel-payment, .btn-payorder, .btn-cancel, .btn-calcualte_price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     font-size: 1.1rem !important;
     width: 194px !important;
     padding: 0.375rem 0.75rem !important;
@@ -364,20 +364,20 @@ btn-cancel-payment {
 }
 
 @media (max-width: 800px) and (orientation : landscape) {
-  .btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder, .btn-calcualte_price {
+  .btn-draft, .btn-back, .btn-post, .btn-taken, .btn-intransit, .btn-complet, .btn-update, .btn-edit, .btn-cancel, .btn-cancel-payment, .btn-payorder, .btn-calcualte_price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
     font-size: 1rem !important;
     width: 154px !important;
     padding: 0.45rem 0.75rem !important;
   }
   
-  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-calcualte_price{
+  .btn-edit,  .btn-update, .btn-post, .btn-intransit, .btn-complet, .btn-payorder, .btn-cancel, .btn-calcualte_price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived {
     margin-left: 60px !important;
   }
 
 }
 
 @media (max-width: 400px) and (orientation : landscape) {
-  .btn-back, .btn-taken, .btn-post, .btn-intransit, .btn-complet, .btn-update, .btn-cancel-payment, .btn-cancel, .btn-calcualte_price {
+  .btn-back, .btn-taken, .btn-post, .btn-intransit, .btn-complet, .btn-update, .btn-cancel-payment, .btn-cancel, .btn-calcualte_price, .btn-onWayPick, .btn-pickArrived, .btn-deliverArrived  {
     font-size: 0.9rem !important;
     padding: 0.35rem 0.75rem !important;
   }

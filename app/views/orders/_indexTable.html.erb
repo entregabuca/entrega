@@ -3,6 +3,7 @@
   <thead>
     <tr class="tableHeadingbar"> 
       <th class="text-center"><%= Order.human_attribute_name(:order_id) %></th>
+
       <% if current_admin %>         
         <th><%= Order.human_attribute_name(:sender_id) %></th> 
         <th><%= Order.human_attribute_name(:company_id) %></th>
@@ -10,9 +11,12 @@
       <% elsif @user.class.name == "Sender" %>
         <th><%= Order.human_attribute_name(:company) %></th>
         <th><%= Order.human_attribute_name(:transporter_id) %></th>
-      <% elsif ['Company', 'Transporter'].include? @user.class.name %>
-        <th><%= Order.human_attribute_name(:sender_id) %></th> 
+      <% elsif current_company %> 
+        <th><%= Order.human_attribute_name(:sender_id) %></th>    
         <th><%= Order.human_attribute_name(:transporter_id) %></th>
+      <% elsif current_transporter %>
+        <th><%= Order.human_attribute_name(:sender_id) %></th> 
+        <th><%= Order.human_attribute_name(:company) %></th>
       <% end %>
 
       <th><%= Order.human_attribute_name(:status) %></th>
@@ -70,10 +74,12 @@
         <% elsif @user.class.name == "Sender" %>
           <td><%= order.transporter.present? ? order.transporter.company.name : "" %></td>
           <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
-
-        <% elsif @user.class.name == "Company" ||  @user.class.name == "Transporter"%>
+        <% elsif current_company %>
           <td><%= order.sender.name %></td>
           <td><%= order.transporter.present? ? order.transporter.name : "" %></td>
+        <% elsif current_transporter %>
+          <td><%= order.sender.name %></td>
+          <td><%= order.transporter.present? ? order.transporter.company.name : "" %></td>
         <% end %>
 
           <td><%= order.status.present? ? enum_l(order, :status).capitalize : "-"  %></td>

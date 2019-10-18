@@ -50,11 +50,16 @@ include ActiveModel::Dirty
 
 
   validates :description, presence: true 
-  after_save :check_status_is_posted 
-  after_save :notify_transporter_of_new_order
-  after_save :notify_sender_and_company_transporter_is_on_the_way_to_pick_up_address
-  after_save :notify_sender_transporter_is_at_sending_point
-  after_save :notify_sender_transporter_is_at_delivery_point
+
+  # BEFORE & AFTER CALLS BACK NEED TO BE COMMENTED OUT BEFORE RUNNIG SEEDS 
+
+ after_save :check_status_is_posted 
+ after_save :notify_transporter_of_new_order
+ after_save :notify_company_transporter_refused_order # it was before_save
+ after_save :notify_sender_and_company_transporter_is_on_the_way_to_pick_up_address
+ after_save :notify_sender_transporter_is_at_pickup_point
+ after_save :notify_sender_transporter_is_at_delivery_point
+ after_save :notify_sender_transporter_has_completed_order
 
   has_one :charge
   belongs_to :sender
@@ -86,7 +91,7 @@ include ActiveModel::Dirty
 
   def check_status_is_posted
     if self.saved_change_to_status? && status == 'posted'
-      puts "POSTED JOB STARTED "
+      puts "POSTED JOB STARTED && STATUS= #{status}"
       PostedOrderJob.perform_later(self.id)
     end
   end
@@ -95,32 +100,48 @@ include ActiveModel::Dirty
 def notify_transporter_of_new_order
   if status == 'taken'
     puts " Notification Sent to TRANSPORTER #{transporter.id}"
-    NotificationChannel.broadcast_to(transporter, title: "#{Order.human_attribute_name(:new_order)}", body: "#{Order.human_attribute_name(:new_order_assigned)}")
+    NotificationChannel.broadcast_to(transporter, title: "#{Order.human_attribute_name(:new_order)}", body: "ORDER NO: #{id}. #{Order.human_attribute_name(:new_order_assigned)}")
+  end
+end
+
+def notify_company_transporter_refused_order
+  if status == 'refuse'
+    #self.status = 'posted'
+    #save
+    puts " Notification Sent to Company #{transporter.company.id}"
+    NotificationChannel.broadcast_to(transporter.company, title: "#{Order.human_attribute_name(:refuse_order)}", body: "ORDER NO: #{id}. #{Order.human_attribute_name(:transporter_refused_order)}")
   end
 end
 
 def notify_sender_and_company_transporter_is_on_the_way_to_pick_up_address 
   if status == 'onWayPick'
     puts " Notification Sent to SENDER #{sender.id} and to company #{transporter.company.id}"
-    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:accept_order)}", body: "#{Order.human_attribute_name(:on_the_way_pick)}")
-    NotificationChannel.broadcast_to(transporter.company, title: "#{Order.human_attribute_name(:accept_order)}", body: "#{Order.human_attribute_name(:on_the_way_pick)}")
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:accept_order)}", body: "ORDER NO: #{id}. #{transporter.name} #{Order.human_attribute_name(:on_the_way_pick)}")
+    NotificationChannel.broadcast_to(transporter.company, title: "#{Order.human_attribute_name(:accept_order)}", body: "ORDER NO:  #{id}.  #{transporter.name} #{Order.human_attribute_name(:on_the_way_pick)}")
   end
 end
 
-def notify_sender_transporter_is_at_sending_point
+def notify_sender_transporter_is_at_pickup_point
   if status == 'pickArrived'
     puts " Notification Sent to SENDER #{sender.id}"
-    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_pick_location)}", body: "#{Order.human_attribute_name(:transporter_at_pick_location)}")
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_pick_location)}", body: "ORDER NO: #{id}. #{transporter.name} #{transporter.name} #{Order.human_attribute_name(:transporter_at_pick_location)}")
   end    
 end
 
 def notify_sender_transporter_is_at_delivery_point
   if status == 'deliverArrived'
     puts " Notification Sent to SENDER #{sender.id}"
-    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_delivery_location)}", body: "#{Order.human_attribute_name(:transporter_at_delivery_location)}")
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:at_delivery_location)}", body: "ORDER NO: #{id}. #{transporter.name} #{Order.human_attribute_name(:transporter_at_delivery_location)}")
   end    
 end
 
+
+def notify_sender_transporter_has_completed_order
+  if status == 'completed'
+    puts " Notification Sent to SENDER #{sender.id}"
+    NotificationChannel.broadcast_to(sender, title: "#{Order.human_attribute_name(:has_completed_order)}", body: "ORDER NO: #{id}. #{transporter.name} #{Order.human_attribute_name(:transporter_has_completed_order)}")
+  end    
+end
 
 
 

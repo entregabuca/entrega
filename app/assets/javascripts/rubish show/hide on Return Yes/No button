@@ -1,4 +1,22 @@
 
+// Trying to get a different color for alertify when Transporter refuse the order
+                  
+
+
+$(".btn-refuse").click(function(){  
+  <%= form.hidden_field :status, :value => 'refuse' %>
+});
+
+$(".onWayPick)").click(function(){  
+  <%= form.hidden_field :status, :value => 'onWayPick' %>
+});
+
+
+var refuseClicked = $(".onWayPick").click(function(){  
+  alert("OE!!");
+});
+
+
 // $("button").click(function(){
   // $("p:first").addClass("intro");
 // });
