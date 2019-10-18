@@ -1,6 +1,6 @@
 <td><%= link_to url_for([@user, order]) do %><span class="fa fa-eye"></span><% end %></td>
 
-<% if @user.class.name == "Company" && ['posted','taken', 'inTransit'].include?(order.status) %>          
+<% if @user.class.name == "Company" && ['posted','taken', 'pickArrived', 'inTransit', 'deliverArrived', 'onWayPick', 'refuse'].include?(order.status) %>          
   <td><%= link_to url_for([:edit, @user, order]) do %><span class="fa fa-edit"></span><% end %></td>
   <td></td> 
 

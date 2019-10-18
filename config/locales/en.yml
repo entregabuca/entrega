@@ -57,12 +57,16 @@ en:
         order_ready: New order available!!
         new_order: New Order
         accept_order: Order Accepted
+        refuse_order: Order Refused
         new_order_assigned: You have a New Order!
-        on_the_way_pick: Transporter on the way to Pickup location
+        on_the_way_pick: is on the way to Pickup location
+        transporter_refused_order: Transporter has refused the Order
         at_pick_location: At Pickup Location
-        transporter_at_pick_location: Transporter arrived at Pickup Location
+        transporter_at_pick_location: has arrived at Pickup Location
         at_delivery_location: At Pickup Location
-        transporter_at_delivery_location: Transporter arrived at Delivery Location   
+        transporter_at_delivery_location: has arrived at Delivery Location
+        has_completed_order: Order Completed
+        transporter_has_completed_order: has Completed the Order          
         back_to_orders: Back to Orders
         edit_order: Edit Order
         take_order: Take Order

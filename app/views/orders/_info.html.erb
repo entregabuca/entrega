@@ -167,7 +167,12 @@
 
 <!-- On Editing Actions for Taking Order -->
 <% if @user.class.name == "Company"  %> 
-  <% if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> 
+  <%# if @order.status == 'posted' && current_page?(controller: 'orders', action: 'edit') %> <!--  CHANGED FOR TESTING REFUSE -->
+
+
+  <% if ['posted', 'refuse'].include?(@order.status) && current_page?(controller: 'orders', action: 'edit') %>
+
+  
     <%= form_with(model: @order, url: [@user, @order], local: true) do |form| %>
       <div class="card mb-3">
         <div class="card-body text-center transporterCompanyAdd-card"> 
@@ -188,7 +193,8 @@
               <div class="d-inline col-sm-6 mb-3 transporter-values">
                <%= @order.transporter.name %>
               </div>
-            <% elsif @user.class.name == "Company"  && @order.status == ('posted') %>
+            <%# elsif @user.class.name == "Company"  &&  @order.status == ('posted') %><!--  CHANGED FOR TESTING REFUSE -->
+            <% elsif @user.class.name == "Company" %>
              <div class="d-inline col-sm-6 mb-3 transporter-values">
               <%= form.collection_select :transporter_id, @user.transporters.available, :id, :name, include_blank: false, :class => "d-inline col-sm-6 mb-3 transporter-values" %>
             </div>

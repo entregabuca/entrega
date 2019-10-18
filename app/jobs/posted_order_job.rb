@@ -2,22 +2,24 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
   queue_as :default
 
   def perform(order_id)
-  order = Order.find(order_id)
-  puts " ORDER STATUS = #{order.status}"
-    if ['posted', 'taken'].include?(order.status)               #order.status == "posted"  
-      if order.radius < MAX_RADIUS
-	      order.radius += DELTA_RADIUS
-	      order.save
-
-        puts "   RADIUS Order #{order.id} :: #{order.radius}"
-
-        PostedOrderNotificationJob.perform_later(order)  
-        PostedOrderJob.set(wait: 10.second).perform_later(order.id) # DELTA_TIME
-      else 
-        order.status = "draft"         
-        order.radius = 500
-        order.save       
+    order = Order.find(order_id)
+    puts""
+    puts " ORDER STATUS = #{order.status}"
+    puts""
+      if ['posted', 'taken', 'refuse'].include?(order.status)          # Other statuses has been allowed to be able to let the order #order.status == "posted" 
+          if order.radius < MAX_RADIUS
+    	      order.radius += DELTA_RADIUS
+    	      order.save
+            puts""
+            puts "   RADIUS Order #{order.id} :: #{order.radius}"
+            puts""
+            PostedOrderNotificationJob.perform_later(order)  
+            PostedOrderJob.set(wait: 15.second).perform_later(order.id) # DELTA_TIME
+          else 
+            order.status = "draft"         
+            order.radius = 500
+            order.save       
+          end
       end
-    end
   end
 end

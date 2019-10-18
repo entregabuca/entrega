@@ -56,13 +56,17 @@ es:
         notification: Notificación
         order_ready: Orden lista para tomar!!
         new_order: Nueva Orden
-        accept_order: Orden Acceptada 
+        accept_order: Orden Acceptada
+        refuse_order: Orden Rechazada 
         new_order_assigned: Tienes una Nueva Orden!
-        on_the_way_pick: En camino Dirección de Recogida
+        on_the_way_pick: va en camino Dirección de Recogida
+        transporter_refused_order: Transportador ha rechazado la Orden
         at_pick_location: En Dirección de Recogida
-        transporter_at_pick_location: Transportador llego a Dirección de Recogida
+        transporter_at_pick_location: ha llegado a Dirección de Recogida
         at_delivery_location: En Dirección de Destino
-        transporter_at_delivery_location: Transportador llego a Dirección de Destino
+        transporter_at_delivery_location: ha llegado a Dirección de Destino
+        has_completed_order: Orden Completada
+        transporter_has_completed_order: ha completado la orden
         back_to_orders: Ver Ordenes 
         edit_order : Editar Orden
         take_order: Tomar Orden
