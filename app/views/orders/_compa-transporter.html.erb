@@ -6,7 +6,7 @@
           <%= Order.human_attribute_name(:company) %>
         </div>
         <div class="d-inline col-sm-6 mb-3 company-values">
-         <%= @order.transporter.company.name  %>
+         <%= link_to "#{@order.transporter.company.name}", company_path  %>
         </div>
       </div> 
       <div class="row">

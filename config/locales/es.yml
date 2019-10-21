@@ -211,6 +211,8 @@ es:
   this: "Sí"
   no_this: "No"
 
+  cant_change_status: No puedes cambiar tu estado mientras estas ejececutando un servicio 
+
   order_statuses_time_heading: ESTADOS DE LA ORDEN - FECHA Y HORA  
   company_created: Has creado tu cuenta exitosamente !! 
   company_updated: Has actualizado tu cuenta exitosamente !!

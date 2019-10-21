@@ -75,8 +75,6 @@ class TransportersController < ApplicationController
       @company = @transporter.company.name
     end
 
-    
-
 
 
     def transporter_params
