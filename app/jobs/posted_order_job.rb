@@ -6,7 +6,7 @@ class PostedOrderJob < ApplicationJob #ActiveJob::Base
     puts""
     puts " ORDER STATUS = #{order.status}"
     puts""
-      if ['posted', 'taken', 'refuse'].include?(order.status)          # Other statuses has been allowed to be able to let the order #order.status == "posted" 
+      if ['posted', 'taken'].include?(order.status)          # , 'refuse' removed to check what happens// Other statuses has been allowed to be able to let the order #order.status == "posted" 
           if order.radius < MAX_RADIUS
     	      order.radius += DELTA_RADIUS
     	      order.save

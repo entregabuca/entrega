@@ -198,7 +198,6 @@ en:
           deliverArrived: Arrived at Delivery address
           onWayPick: On the way to Pickup address
           refuse: Refuse
-
           #errors may need to indent one back 
       errors:
         messages:
@@ -212,6 +211,8 @@ en:
   this: "Yes"
   no_this: "No"
 
+  cant_change_status: You can't change status while working on a request
+  
   order_statuses_time_heading: ORDER STATUSES - DATE & TIMES 
   company_created: Company was successfully created !! 
   company_updated: Company was successfully updated !!

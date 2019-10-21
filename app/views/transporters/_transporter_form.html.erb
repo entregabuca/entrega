@@ -38,15 +38,19 @@
 <div class="card text-center my-4">
   <div class="card-body card-status my-3">
     <div class="form-group col-md-12 my-4 "> 
+    <% if @transporter.status != 'busy'%> <!-- Stops Transporter for changing status while busy on a job -->
       <div class="form-group col-md-12 transporter-status-card">
         <b><%= form.label :status,:class => "col-sm-5 trans-status"%></b>
         <%= form.select :status, Transporter.statuses.keys[2..4].collect { |status| [Transporter.human_enum_name(:status, status), status] }, {}, { :class => "col-sm-6 transporter-status"} %>
       </div>
+      <% else %>
+       <%= t(:cant_change_status) %>
+    <% end %>
     </div>
   </div>
 </div>
 
-<% if transporter.new_record? %> <!-- Create logic to update Password -->
+<% if transporter.new_record? %> <!-- Creates logic to update Password -->
   <div class="form-group col-md-12">
     <b><%= form.label :password, :class => "col-sm-5 password" %></b>
     <% if @minimum_password_length %>

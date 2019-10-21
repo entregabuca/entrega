@@ -109,9 +109,11 @@
           <li class="nav-item">            
             <%= link_to_in_li  I18n.t(:my_profile), url_for(@user), class: 'nav-link' %>
           </li>
-          <li class="nav-item">  
-          <%= link_to  I18n.t(:edit_profile), edit_transporter_path(@user), class: 'nav-link' %>
-          </li>
+          <%#if @user.status != 'busy'%> <!-- Stops Transporter for changing status while busy on a job, IF UNCOMMENTED WORKS STRAY AWAY -->
+            <li class="nav-item">  
+            <%= link_to  I18n.t(:edit_profile), edit_transporter_path(@user), class: 'nav-link' %>
+            </li>
+          <%# end %> 
           <li class="nav-item"> 
            <%= link_to I18n.t(:change_password), edit_transporter_registration_path, class: 'nav-link'  %>
           <li class="nav-item">      
