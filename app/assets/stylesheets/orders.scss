@@ -30,6 +30,21 @@
     }
 }
 
+
+.company-values a {
+    color: #007bff;
+}
+
+.company-values a:hover {
+    color: white;
+    background-color: #007bff;
+}
+
+.company-values a:visited {
+    color: #ff39f8 !important;
+    background-color: #efe1e1;
+} 
+
 .tableValues td {
   font-size: 0.98rem !important;
 }
