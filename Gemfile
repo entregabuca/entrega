@@ -44,7 +44,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem 'faker'
 gem 'leaflet-rails'
-gem 'geocoder'
+gem 'geocoder'#, '~> 1.6', '>= 1.6.3'
 gem 'geo_units'
 
 gem 'alertifyjs-rails'
@@ -57,7 +57,10 @@ gem 'httparty', '~> 0.17.0' # MOST LIKELY TO BE REMOVED, ADDED FOR EPAYCO BUT IT
 #gem 'delayed_job_active_record'
 
 gem 'rubocop-faker'
-
+gem 'activesupport', '~> 6.0', '>= 6.0.3.2'
+gem 'actionpack', '~> 6.0', '>= 6.0.3.2'
+gem 'activestorage', '~> 6.0', '>= 6.0.3.2'
+gem 'actionview', '~> 6.0', '>= 6.0.3.2'
 
 
 
